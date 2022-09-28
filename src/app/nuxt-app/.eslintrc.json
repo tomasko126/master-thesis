@@ -8,11 +8,6 @@
         "eslint:recommended",
         "plugin:vue/vue3-recommended"
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "parser": "@typescript-eslint/parser",
-        "sourceType": "module"
-    },
     "plugins": [
         "vue"
     ],
