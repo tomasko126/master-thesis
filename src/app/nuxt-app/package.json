@@ -16,6 +16,7 @@
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
+    "@iconify-prerendered/vue-fa6-solid": "^0.13.1662097839",
     "@pinia/nuxt": "^0.4.2",
     "cornerstone-core": "^2.6.1",
     "cornerstone-math": "^0.1.10",
