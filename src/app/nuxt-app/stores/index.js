@@ -16,6 +16,7 @@ export const useGlobalStore = defineStore({
             imageContainers: [],
             mainImageContainer: null,
             imageIds: [],
+            tools: [],
         };
     },
     getters: {
@@ -92,6 +93,11 @@ export const useGlobalStore = defineStore({
 
                 await this.displayImageInElement(imageContainer, this.imageIds[0]);
 
+                // todo: re-registering tools
+                for (const tool of this.tools) {
+                    cornerstoneTools.addTool(tool);
+                }
+
                 // todo: move tools functionality to another place
                 // const FreehandRoiTool = cornerstoneTools.FreehandRoiTool;
                 // cornerstoneTools.addTool(FreehandRoiTool);
@@ -152,6 +158,27 @@ export const useGlobalStore = defineStore({
                     this.mainImageContainer = null;
                 }
             }
+        },
+        /**
+         * @param {string} toolName
+         * @param {Object} toolOptions
+         */
+        activateTool(toolName, toolOptions = {}) {
+            // todo: deactivate another tools
+            cornerstoneTools.setToolActive(toolName, toolOptions);
+        },
+        /**
+         *
+         * @param {string} toolName
+         */
+        registerTool(toolName) {
+            const tool = cornerstoneTools[`${toolName}`];
+            if (!tool) {
+                throw new Error(`Tool ${toolName} does not exist!`);
+            }
+            // Pushing tool to the queue so it can get registered
+            this.tools.push(tool); // todo: do I need this?
+            cornerstoneTools.addTool(tool);
         },
     },
 });
