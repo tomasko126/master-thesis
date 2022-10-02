@@ -22,10 +22,16 @@ export default {
       type: String,
       required: true,
     },
+    isCustomTool: {
+      type: Boolean,
+      default: false,
+    }
   },
   emits: ['click'],
   mounted() {
-    this.registerTool(this.toolName);
+    if (!this.isCustomTool) {
+      this.registerTool(this.toolName);
+    }
   },
   methods: {
     ...mapActions(useGlobalStore, {

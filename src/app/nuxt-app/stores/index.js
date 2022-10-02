@@ -8,23 +8,25 @@ import Hammer from 'hammerjs';
 import dicomParser from 'dicom-parser';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 
+import { sleep } from '~/functions/utils';
+
 export const useGlobalStore = defineStore({
     id: 'globalStore',
     state: () => {
         return {
+            isLoopingImages: false,
             init: false,
             imageContainers: [],
             mainImageContainer: null,
             imageIds: [],
+            lastImageId: null,
             tools: [],
         };
-    },
-    getters: {
     },
     actions: {
         async initLibraries() {
             // todo: do not store the reference to cornerstone in the |window| object
-            window.cornerstone = cornerstone
+            window.cornerstone = cornerstone;
             if (this.init) {
                 return;
             }
@@ -120,6 +122,7 @@ export const useGlobalStore = defineStore({
             this.registerImageContainer(imageContainer);
             const image = await cornerstone.loadImage(imageId);
             cornerstone.displayImage(imageContainer, image);
+            this.lastImageId = imageId;
         },
         /**
          * Display image in main window
@@ -129,6 +132,7 @@ export const useGlobalStore = defineStore({
         async displayImageInMainWindow(imageId) {
             const image = await cornerstone.loadImage(imageId);
             cornerstone.displayImage(this.mainImageContainer, image);
+            this.lastImageId = imageId;
         },
         /**
          * Register image container
@@ -179,6 +183,38 @@ export const useGlobalStore = defineStore({
             // Pushing tool to the queue so it can get registered
             this.tools.push(tool); // todo: do I need this?
             cornerstoneTools.addTool(tool);
+        },
+        /**
+         * Start looping all images in the main window
+         * @returns {Promise<void>}
+         */
+        async startLoopingImages() {
+            console.log(cornerstoneTools.getToolState(this.mainImageContainer, 'FreehandRoi'));
+
+            // todo: start looping from last opened image
+            this.isLoopingImages = true;
+
+            const leftImageIds = this.imageIds.slice(this.imageIds.indexOf(this.lastImageId));
+            for (const imageId of leftImageIds) {
+                if (!this.isLoopingImages) {
+                    return;
+                }
+                await this.displayImageInMainWindow(imageId);
+                await sleep(50); // todo: configurable?
+            }
+
+            while (this.isLoopingImages) {
+                for (const imageId of this.imageIds) {
+                    if (!this.isLoopingImages) {
+                        return;
+                    }
+                    await this.displayImageInMainWindow(imageId);
+                    await sleep(50); // todo: configurable?
+                }
+            }
+        },
+        stopLoopingImages() {
+            this.isLoopingImages = false;
         },
     },
 });
