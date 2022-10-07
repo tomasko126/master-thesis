@@ -1,0 +1,51 @@
+<template>
+  <BaseTool
+    label="Open images"
+    tool-name="Open images"
+    is-custom-tool
+    @click="openFileInput"
+  >
+    <template #icon>
+      <IconFolderOpen />
+    </template>
+  </BaseTool>
+  <input
+    ref="fileInput"
+    class="file-input"
+    type="file"
+    multiple
+    @change="handleFileInput"
+  >
+</template>
+
+<script>
+import { mapActions } from 'pinia';
+import { useGlobalStore } from '~/stores/index';
+
+import BaseTool from './BaseTool.vue';
+import { IconFolderOpen } from '@iconify-prerendered/vue-fa6-solid';
+
+export default {
+  components: {
+    IconFolderOpen,
+    BaseTool,
+  },
+  methods: {
+    ...mapActions(useGlobalStore, {
+      loadImagesFromFiles: 'loadImagesFromFiles',
+    }),
+    async handleFileInput() {
+      await this.loadImagesFromFiles(this.$refs['fileInput'].files);
+    },
+    openFileInput() {
+      this.$refs['fileInput'].click();
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.file-input {
+  display: none;
+}
+</style>

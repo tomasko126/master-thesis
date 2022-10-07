@@ -1,6 +1,7 @@
 <template>
   <div
     class="tool-container"
+    :title="label"
     @click="$emit('click')"
   >
     <slot name="icon" />
@@ -30,12 +31,13 @@ export default {
   emits: ['click'],
   mounted() {
     if (!this.isCustomTool) {
-      this.registerTool(this.toolName);
+      this.addTool(this.toolName);
+      //this.registerTool(this.toolName);
     }
   },
   methods: {
     ...mapActions(useGlobalStore, {
-      registerTool: 'registerTool',
+      addTool: 'addTool',
     }),
   },
 };

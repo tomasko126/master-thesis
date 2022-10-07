@@ -1,15 +1,17 @@
 <template>
-  <div
-    ref="fakeThumbnail"
-    class="fake-thumbnail"
-    :class="{ 'is-hidden': pngBlobImageSource }"
-  />
-  <img
-    class="thumbnail"
-    :src="pngBlobImageSource"
-    alt=""
-    @click="displayImageInMainWindow(imageId)"
-  >
+  <div>
+    <div
+      ref="fakeThumbnail"
+      class="fake-thumbnail"
+      :class="{ 'is-hidden': pngBlobImageSource }"
+    />
+    <img
+      class="thumbnail"
+      :src="pngBlobImageSource"
+      alt=""
+      @click="displayImageInMainWindow(imageId)"
+    >
+  </div>
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
     };
   },
   async mounted() {
-    this.registerImageContainer(this.$refs['fakeThumbnail']);
+    await this.registerImageContainer(this.$refs['fakeThumbnail']);
     await this.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
     setTimeout(() => {
       this.convertCanvasToBlob();
@@ -72,10 +74,11 @@ export default {
   }
 }
 .thumbnail {
-  margin: 20px;
+  margin: 0 20px;
   border: 1px solid #2d47d2;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  height: 100px;
 }
 </style>

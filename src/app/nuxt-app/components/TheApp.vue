@@ -1,10 +1,10 @@
 <template>
   <main>
-    <TheTopPanel />
     <section class="grid-section">
-      <TheLeftPanel />
-      <TheMainWindow />
-      <TheRightPanel />
+      <TheTopPanel class="top-panel" />
+      <TheLeftPanel class="left-panel" />
+      <TheMainWindow class="main-window" />
+      <TheRightPanel class="right-panel" />
     </section>
   </main>
 </template>
@@ -24,7 +24,26 @@ export default {
 @use "assets/global";
 .grid-section {
   display: grid;
-  grid-template-columns: minmax(250px, 20%) auto minmax(250px, 20%);
-  height: calc(100vh - global.$top-panel-height);
+  grid-template-columns: repeat(5, 1fr);
+
+  .top-panel {
+    grid-column: 1 / 6;
+    grid-row: 1;
+  }
+
+  .left-panel {
+    grid-column: 1;
+    grid-row: 1 / 4;
+  }
+
+  .main-window {
+    grid-column: 2 / 5;
+    grid-row: 2 / 4;
+  }
+
+  .right-panel {
+    grid-column: 5;
+    grid-row: 1 / 4;
+  }
 }
 </style>

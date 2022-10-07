@@ -1,41 +1,46 @@
 <template>
   <section class="main-window">
-    <input
-      type="file"
-      multiple
-      @change="handleFileInput"
-    >
     <div
-      ref="dicomImage"
-      class="dicom-image"
+      id="dicom-image"
+      ref="dicomImageContainer"
     />
+    <section class="image-thumbnails">
+      <MainWindowImageThumbnail
+        v-for="imageId in imageIds"
+        :key="imageId"
+        :image-id="imageId"
+      />
+    </section>
   </section>
 </template>
 
 <script>
-import { mapActions } from 'pinia';
-import { useGlobalStore } from '../stores/index'
+import { mapState } from 'pinia';
+import { useGlobalStore } from '~/stores/index';
 
 export default {
-  methods: {
-    ...mapActions(useGlobalStore, {
-      loadImagesFromFiles: 'loadImagesFromFiles',
+  computed: {
+    ...mapState(useGlobalStore, {
+      imageIds: 'imageIds',
     }),
-    async handleFileInput(event) {
-      await this.loadImagesFromFiles(event.target.files, this.$refs['dicomImage']);
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@use "assets/global";
+@use 'assets/global';
 .main-window {
-  border: 2px solid global.$color-active;
-  border-radius: 8px;
+  display: grid;
+  border: 2px solid #5b5bd0;
+  border-radius: 3px;
+  height: calc(100vh - global.$top-panel-height);
 
-  .dicom-image {
-    height: calc(100vh - global.$top-panel-height)
+  .image-thumbnails {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #5b5bd0;
+    overflow: auto;
+    max-width: 100%;
   }
 }
 </style>

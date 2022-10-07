@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import {defineStore, mapActions} from 'pinia';
 
 import cornerstone from 'cornerstone-core';
 import cornerstoneMath from 'cornerstone-math';
@@ -15,29 +15,21 @@ export const useGlobalStore = defineStore({
     state: () => {
         return {
             isLoopingImages: false,
-            init: false,
             imageContainers: [],
             mainImageContainer: null,
             imageIds: [],
             lastImageId: null,
-            tools: [],
+            toolNames: [],
         };
     },
     actions: {
         async initLibraries() {
-            // todo: do not store the reference to cornerstone in the |window| object
-            window.cornerstone = cornerstone;
-            if (this.init) {
-                return;
-            }
-
             // Setup all required cornerstone-tools dependencies
             cornerstoneTools.external.cornerstone = cornerstone;
             cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
             cornerstoneTools.external.Hammer = Hammer;
             cornerstoneTools.init({
                 mouseEnabled: true,
-                touchEnabled: true,
                 showSVGCursors: true,
                 globalToolSyncEnabled: true,
             });
@@ -65,19 +57,14 @@ export const useGlobalStore = defineStore({
             };
 
             cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
-
-            this.init = true;
         },
         /**
          * Load images from given |files| and show the first in a main window
          * @param {File[]} imageFiles
-         * @param {HTMLElement} imageContainer
          * @returns {Promise<void>}
          */
-        async loadImagesFromFiles(imageFiles, imageContainer) {
-            // First, we need to register main window as an image container
-            this.registerImageContainer(imageContainer, true);
-
+        async loadImagesFromFiles(imageFiles) {
+            this.registerImageContainer(document.getElementById('dicom-image'), true);
             // Retrieve image IDs used later for referencing images
             const imageIds = [];
             for (const imageFile of imageFiles) {
@@ -85,32 +72,14 @@ export const useGlobalStore = defineStore({
             }
             this.imageIds = imageIds;
 
-            try {
-                const stack = {
-                    currentImageIdIndex: 0,
-                    imageIds: this.imageIds,
-                };
-                cornerstoneTools.addStackStateManager(imageContainer, ['stack']);
-                cornerstoneTools.addToolState(imageContainer, 'stack', stack);
+            const stack = {
+                currentImageIdIndex: 0,
+                imageIds: this.imageIds,
+            };
+            cornerstoneTools.addStackStateManager(this.mainImageContainer, ['stack']);
+            cornerstoneTools.addToolState(this.mainImageContainer, 'stack', stack);
 
-                await this.displayImageInElement(imageContainer, this.imageIds[0]);
-
-                // todo: re-registering tools
-                for (const tool of this.tools) {
-                    cornerstoneTools.addTool(tool);
-                }
-
-                // todo: move tools functionality to another place
-                // const FreehandRoiTool = cornerstoneTools.FreehandRoiTool;
-                // cornerstoneTools.addTool(FreehandRoiTool);
-                // cornerstoneTools.setToolActive('FreehandRoi', { mouseButtonMask: 1 });
-
-                // const StackScrollMouseWheelTool = cornerstoneTools.StackScrollMouseWheelTool;
-                // cornerstoneTools.addTool(StackScrollMouseWheelTool);
-                // cornerstoneTools.setToolActive('StackScrollMouseWheel', {});
-            } catch (e) {
-                console.error(e);
-            }
+            await this.displayImageInMainWindow(this.imageIds[0]);
         },
         /**
          * Display image in a given element
@@ -119,7 +88,6 @@ export const useGlobalStore = defineStore({
          * @returns {Promise<void>}
          */
         async displayImageInElement(imageContainer, imageId) {
-            this.registerImageContainer(imageContainer);
             const image = await cornerstone.loadImage(imageId);
             cornerstone.displayImage(imageContainer, image);
             this.lastImageId = imageId;
@@ -141,10 +109,14 @@ export const useGlobalStore = defineStore({
          */
         registerImageContainer(imageContainer, isMainImageContainer = false) {
             if (!this.imageContainers.includes(imageContainer)) {
+                console.log('registering main image container: ', isMainImageContainer);
                 cornerstone.enable(imageContainer);
                 this.imageContainers.push(imageContainer);
                 if (isMainImageContainer) {
                     this.mainImageContainer = imageContainer;
+                    for (const toolName of this.toolNames) {
+                        this.registerTool(toolName);
+                    }
                 }
             }
         },
@@ -156,6 +128,7 @@ export const useGlobalStore = defineStore({
         unregisterImageContainer(imageContainer, isMainImageContainer = false) {
             const imageFileIdx = this.imageContainers.indexOf(imageContainer);
             if (imageFileIdx > -1) {
+                console.log('unregistering image container: ', isMainImageContainer);
                 cornerstone.disable(imageContainer);
                 this.imageContainers.splice(imageFileIdx, 1);
                 if (isMainImageContainer) {
@@ -163,25 +136,27 @@ export const useGlobalStore = defineStore({
                 }
             }
         },
+        addTool(toolName) {
+          console.log('adding tool: ', toolName);
+          this.toolNames.push(toolName);
+        },
         /**
          * @param {string} toolName
          * @param {Object} toolOptions
          */
         activateTool(toolName, toolOptions = {}) {
             // todo: deactivate another tools
+            this.registerImageContainer(document.getElementById('dicom-image'), true);
+            this.registerTool(toolName + 'Tool');
+            console.log('activating tool: ', toolName);
             cornerstoneTools.setToolActive(toolName, toolOptions);
         },
-        /**
-         *
-         * @param {string} toolName
-         */
         registerTool(toolName) {
+            console.log('registering tool: ', toolName, this.mainImageContainer);
             const tool = cornerstoneTools[`${toolName}`];
             if (!tool) {
                 throw new Error(`Tool ${toolName} does not exist!`);
             }
-            // Pushing tool to the queue so it can get registered
-            this.tools.push(tool); // todo: do I need this?
             cornerstoneTools.addTool(tool);
         },
         /**

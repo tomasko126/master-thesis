@@ -1,5 +1,6 @@
 <template>
   <section class="tools-panel">
+    <OpenImagesTool />
     <PanTool />
     <ZoomTool />
     <FreehandRoiTool />
@@ -12,10 +13,12 @@ import FreehandRoiTool from './tools/FreehandRoiTool.vue';
 import ZoomTool from './tools/ZoomTool.vue';
 import PanTool from './tools/PanTool.vue';
 import PlayPauseTool from './tools/PlayPauseTool.vue';
+import OpenImagesTool from './tools/OpenImagesTool.vue';
 
 export default {
   name: 'TheToolsPanel',
   components: {
+    OpenImagesTool,
     PlayPauseTool,
     PanTool,
     FreehandRoiTool,

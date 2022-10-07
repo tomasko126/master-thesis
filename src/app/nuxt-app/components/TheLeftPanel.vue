@@ -1,23 +1,9 @@
 <template>
-  <section class="left-panel">
-    <LeftPanelImageThumbnail
-      v-for="imageId in imageIds"
-      :key="imageId"
-      :image-id="imageId"
-    />
-  </section>
+  <section class="left-panel" />
 </template>
 
 <script>
-import { mapState } from 'pinia';
-import { useGlobalStore } from '~/stores/index';
-
 export default {
-  computed: {
-    ...mapState(useGlobalStore, {
-      imageIds: 'imageIds',
-    }),
-  },
 };
 </script>
 
