@@ -6,4 +6,9 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
   ],
-})
+  plugins: [
+    {
+      src: '~/plugins/oruga.js',
+    },
+  ],
+});
