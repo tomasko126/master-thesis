@@ -110,7 +110,7 @@ export const useGlobalStore = defineStore({
          * @returns {Promise<void>}
          */
         async displayImageInMainWindow(imageId) {
-            const image = await cornerstone.loadImage(imageId);
+            const image = await cornerstone.loadAndCacheImage(imageId);
             cornerstone.displayImage(this.mainImageContainer, image);
             this.lastImageId = imageId;
         },
@@ -184,6 +184,9 @@ export const useGlobalStore = defineStore({
                     return;
                 }
                 await this.displayImageInMainWindow(imageId);
+                if (!this.isLoopingImages) {
+                    return;
+                }
                 await sleep(this.animation.speed);
             }
 
@@ -194,6 +197,9 @@ export const useGlobalStore = defineStore({
                         return;
                     }
                     await this.displayImageInMainWindow(imageId);
+                    if (!this.isLoopingImages) {
+                        return;
+                    }
                     await sleep(this.animation.speed);
                 }
             }
