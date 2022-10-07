@@ -9,10 +9,10 @@
   },
   "devDependencies": {
     "eslint": "^8.24.0",
-    "eslint-plugin-vue": "^9.5.1",
-    "nuxt": "3.0.0-rc.11",
+    "eslint-plugin-vue": "^9.6.0",
+    "nuxt": "^3.0.0-rc.11",
     "sass": "^1.55.0",
-    "sass-loader": "^13.0.2",
+    "sass-loader": "^13.1.0",
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
