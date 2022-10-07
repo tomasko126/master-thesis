@@ -191,5 +191,15 @@ export const useGlobalStore = defineStore({
         stopLoopingImages() {
             this.isLoopingImages = false;
         },
+        updateBrightness(newValue) {
+            const viewport = cornerstone.getViewport(this.mainImageContainer);
+            viewport.voi.windowCenter = newValue;
+            cornerstone.setViewport(this.mainImageContainer, viewport);
+        },
+        updateContrast(newValue) {
+            const viewport = cornerstone.getViewport(this.mainImageContainer);
+            viewport.voi.windowWidth = newValue;
+            cornerstone.setViewport(this.mainImageContainer, viewport);
+        },
     },
 });

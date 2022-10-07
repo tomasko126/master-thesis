@@ -33,7 +33,7 @@ export default {
 
   .left-panel {
     grid-column: 1;
-    grid-row: 1 / 4;
+    grid-row: 2 / 4;
   }
 
   .main-window {
@@ -43,7 +43,7 @@ export default {
 
   .right-panel {
     grid-column: 5;
-    grid-row: 1 / 4;
+    grid-row: 2 / 4;
   }
 }
 </style>

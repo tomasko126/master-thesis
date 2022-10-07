@@ -80,5 +80,6 @@ export default {
   padding: 10px;
   cursor: pointer;
   height: 100px;
+  min-width: 80px;
 }
 </style>
