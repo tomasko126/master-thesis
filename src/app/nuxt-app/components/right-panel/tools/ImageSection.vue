@@ -1,5 +1,5 @@
 <template>
-  <GeneralTabSection header="Image">
+  <GeneralTabSection title="Image">
     <template #content>
       <label for="brightness-setting">Brightness:</label>
       <input

@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ header }}</h2>
+  <h2>{{ title }}</h2>
   <div class="tab-content">
     <slot name="content" />
   </div>
@@ -8,7 +8,7 @@
 <script>
 export default {
   props: {
-    header: {
+    title: {
       type: String,
       required: true,
     },

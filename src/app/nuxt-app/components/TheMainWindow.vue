@@ -32,7 +32,6 @@ export default {
 .main-window {
   display: grid;
   border: 2px solid #5b5bd0;
-  border-radius: 3px;
   height: calc(100vh - global.$top-panel-height);
 
   .image-thumbnails {

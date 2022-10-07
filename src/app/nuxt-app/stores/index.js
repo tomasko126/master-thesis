@@ -1,4 +1,4 @@
-import {defineStore, mapActions} from 'pinia';
+import { defineStore } from 'pinia';
 
 import cornerstone from 'cornerstone-core';
 import cornerstoneMath from 'cornerstone-math';
@@ -14,6 +14,11 @@ export const useGlobalStore = defineStore({
     id: 'globalStore',
     state: () => {
         return {
+            animation: {
+                speed: 50, // in ms
+                fromIdx: 0, // image idx
+                toIdx: 0, // image idx
+            },
             isLoopingImages: false,
             imageContainers: [],
             mainImageContainer: null,
@@ -64,14 +69,17 @@ export const useGlobalStore = defineStore({
          * @returns {Promise<void>}
          */
         async loadImagesFromFiles(imageFiles) {
+            // Register main image container
             this.registerImageContainer(document.getElementById('dicom-image'), true);
-            // Retrieve image IDs used later for referencing images
+
+            // Retrieve image IDs used for referencing images
             const imageIds = [];
             for (const imageFile of imageFiles) {
                 imageIds.push(cornerstoneWADOImageLoader.wadouri.fileManager.add(imageFile));
             }
             this.imageIds = imageIds;
 
+            // Set image stack
             const stack = {
                 currentImageIdIndex: 0,
                 imageIds: this.imageIds,
@@ -79,7 +87,11 @@ export const useGlobalStore = defineStore({
             cornerstoneTools.addStackStateManager(this.mainImageContainer, ['stack']);
             cornerstoneTools.addToolState(this.mainImageContainer, 'stack', stack);
 
+            // Display first image in main window
             await this.displayImageInMainWindow(this.imageIds[0]);
+
+            // Set default animation settings
+            this.setDefaultAnimationSettings();
         },
         /**
          * Display image in a given element
@@ -160,36 +172,41 @@ export const useGlobalStore = defineStore({
             cornerstoneTools.addTool(tool);
         },
         /**
-         * Start looping all images in the main window
+         * Start looping selected images in the main window
          * @returns {Promise<void>}
          */
         async startLoopingImages() {
-            console.log(cornerstoneTools.getToolState(this.mainImageContainer, 'FreehandRoi'));
-
-            // todo: start looping from last opened image
             this.isLoopingImages = true;
 
-            const leftImageIds = this.imageIds.slice(this.imageIds.indexOf(this.lastImageId));
+            const leftImageIds = this.imageIds.slice(this.imageIds.indexOf(this.lastImageId), this.animation.toIdx + 1);
             for (const imageId of leftImageIds) {
                 if (!this.isLoopingImages) {
                     return;
                 }
                 await this.displayImageInMainWindow(imageId);
-                await sleep(50); // todo: configurable?
+                await sleep(this.animation.speed);
             }
 
+            const allSelectedImages = this.imageIds.slice(this.animation.fromIdx, this.animation.toIdx + 1);
             while (this.isLoopingImages) {
-                for (const imageId of this.imageIds) {
+                for (const imageId of allSelectedImages) {
                     if (!this.isLoopingImages) {
                         return;
                     }
                     await this.displayImageInMainWindow(imageId);
-                    await sleep(50); // todo: configurable?
+                    await sleep(this.animation.speed);
                 }
             }
         },
         stopLoopingImages() {
             this.isLoopingImages = false;
+        },
+        setDefaultAnimationSettings() {
+            this.animation = {
+                speed: 50,
+                fromIdx: 0,
+                toIdx: this.imageIds.length - 1,
+            }
         },
         updateBrightness(newValue) {
             const viewport = cornerstone.getViewport(this.mainImageContainer);
