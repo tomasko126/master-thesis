@@ -9,21 +9,24 @@
       class="thumbnail"
       :src="pngBlobImageSource"
       alt=""
-      @click="displayImageInMainWindow(imageId)"
+      @click="store.displayImageInMainWindow(imageId)"
     >
   </div>
 </template>
 
 <script>
-import { mapActions } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
   props: {
-    'imageId': {
+    imageId: {
       type: String,
       required: true,
     },
+  },
+  setup() {
+    const store = useGlobalStore();
+    return { store };
   },
   data() {
     return {
@@ -31,23 +34,17 @@ export default {
     };
   },
   async mounted() {
-    await this.registerImageContainer(this.$refs['fakeThumbnail']);
-    await this.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
+    await this.store.registerImageContainer(this.$refs['fakeThumbnail']);
+    await this.store.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
     setTimeout(() => {
       this.convertCanvasToBlob();
-      this.unregisterImageContainer(this.$refs['fakeThumbnail']);
+      this.store.unregisterImageContainer(this.$refs['fakeThumbnail']);
     }, 250);
   },
   unmounted() {
     URL.revokeObjectURL(this.pngBlobImageSource);
   },
   methods: {
-    ...mapActions(useGlobalStore, {
-      displayImageInElement: 'displayImageInElement',
-      displayImageInMainWindow: 'displayImageInMainWindow',
-      registerImageContainer: 'registerImageContainer',
-      unregisterImageContainer: 'unregisterImageContainer',
-    }),
     convertCanvasToBlob() {
       /** @type {HTMLCanvasElement} **/
       return new Promise((resolve) => {

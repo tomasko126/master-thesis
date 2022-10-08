@@ -9,7 +9,7 @@ import TheToolsPanel from './top-panel/TheToolsPanel.vue';
 export default {
   components: {
     TheToolsPanel,
-  }
+  },
 };
 </script>
 

@@ -13,9 +13,12 @@
 import { useGlobalStore } from '~/stores/index';
 
 export default {
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
   async mounted() {
-    const globalStore = useGlobalStore();
-    await globalStore.initLibraries();
+    await this.store.initLibraries();
   },
 }
 </script>

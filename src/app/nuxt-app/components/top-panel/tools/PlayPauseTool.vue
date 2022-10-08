@@ -3,10 +3,10 @@
     label="Play"
     tool-name="PlayTool"
     is-custom-tool
-    @click="isLoopingImages ? stopLoopingImages() : startLoopingImages()"
+    @click="store.isLoopingImages ? store.stopLoopingImages() : store.startLoopingImages()"
   >
     <template #icon>
-      <IconPlay v-if="!isLoopingImages" />
+      <IconPlay v-if="!store.isLoopingImages" />
       <IconStop v-else />
     </template>
   </BaseTool>
@@ -16,7 +16,6 @@
 import BaseTool from './BaseTool.vue';
 import { IconPlay, IconStop } from '@iconify-prerendered/vue-fa6-solid';
 
-import { mapActions, mapState } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
@@ -26,16 +25,9 @@ export default {
     BaseTool,
     IconPlay,
   },
-  computed: {
-    ...mapState(useGlobalStore, {
-      isLoopingImages: 'isLoopingImages',
-    }),
-  },
-  methods: {
-    ...mapActions(useGlobalStore, {
-      startLoopingImages: 'startLoopingImages',
-      stopLoopingImages: 'stopLoopingImages',
-    }),
+  setup() {
+    const store = useGlobalStore();
+    return { store };
   },
 };
 </script>

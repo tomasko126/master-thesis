@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
@@ -29,16 +28,14 @@ export default {
     }
   },
   emits: ['click'],
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
   mounted() {
     if (!this.isCustomTool) {
-      this.addTool(this.toolName);
-      //this.registerTool(this.toolName);
+      this.store.addTool(this.toolName);
     }
-  },
-  methods: {
-    ...mapActions(useGlobalStore, {
-      addTool: 'addTool',
-    }),
   },
 };
 </script>

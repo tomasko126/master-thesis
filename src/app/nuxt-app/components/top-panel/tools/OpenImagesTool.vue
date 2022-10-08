@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 import BaseTool from './BaseTool.vue';
@@ -30,12 +29,13 @@ export default {
     IconFolderOpen,
     BaseTool,
   },
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
   methods: {
-    ...mapActions(useGlobalStore, {
-      loadImagesFromFiles: 'loadImagesFromFiles',
-    }),
     async handleFileInput() {
-      await this.loadImagesFromFiles(this.$refs['fileInput'].files);
+      await this.store.loadImagesFromFiles(this.$refs['fileInput'].files);
     },
     openFileInput() {
       this.$refs['fileInput'].click();

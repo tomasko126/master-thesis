@@ -32,23 +32,22 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
   methods: {
-    ...mapActions(useGlobalStore, {
-      updateBrightness: 'updateBrightness',
-      updateContrast: 'updateContrast',
-    }),
     onBrightnessInput(event) {
       const value = 300 + Number(event.target.value) * 4 * -1;
-      this.updateBrightness(value);
+      this.store.updateBrightness(value);
     },
     onContrastInput(event) {
       const value = 100 + Number(event.target.value) * 4;
-      this.updateContrast(value);
-    }
+      this.store.updateContrast(value);
+    },
   },
 };
 </script>

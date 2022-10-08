@@ -20,9 +20,9 @@
           ref="from-image-idx"
           class="idx-inputs"
           type="number"
-          :min="imageIds ? 1 : 0"
-          :max="imageIds ? imageIds.length : 1"
-          @input="animation.fromIdx = $event.target.value - 1"
+          :min="store.imageIds ? 1 : 0"
+          :max="store.imageIds ? store.imageIds.length : 1"
+          @input="store.animation.fromIdx = $event.target.value - 1"
         >
       </div>
       <div class="input-wrapper">
@@ -32,9 +32,9 @@
           ref="to-image-idx"
           class="idx-inputs"
           type="number"
-          :min="imageIds ? 1 : 0"
-          :max="imageIds ? imageIds.length : 1"
-          @input="animation.toIdx = $event.target.value - 1"
+          :min="store.imageIds ? 1 : 0"
+          :max="store.imageIds ? store.imageIds.length : 1"
+          @input="store.animation.toIdx = $event.target.value - 1"
         >
       </div>
     </template>
@@ -43,25 +43,21 @@
 
 <script>
 import { useGlobalStore } from '~/stores/index';
-import { mapState } from 'pinia';
 
 export default {
-  computed: {
-    ...mapState(useGlobalStore, {
-      animation: 'animation',
-      imageIds: 'imageIds',
-      isLoopingImages: 'isLoopingImages',
-    }),
+  setup() {
+    const store = useGlobalStore();
+    return { store };
   },
   watch: {
     imageIds(newValue) {
-      this.$refs['from-image-idx'].value = 1;
+      this.$refs['from-image-idx'].value = '1';
       this.$refs['to-image-idx'].value = newValue.length;
     },
   },
   mounted() {
     // Set animation speed slider value
-    this.$refs['animation-speed'].value = this.normalizeSpeed(this.animation.speed);
+    this.$refs['animation-speed'].value = this.normalizeSpeed(this.store.animation.speed);
   },
   methods: {
     normalizeSpeed(desiredSpeed) {
@@ -69,7 +65,7 @@ export default {
       return MAX_SPEED_PLUS_MIN_SPEED - desiredSpeed;
     },
     onRangeInput(event) {
-      this.animation.speed = this.normalizeSpeed(event.target.value);
+      this.store.animation.speed = this.normalizeSpeed(event.target.value);
     },
   },
 };

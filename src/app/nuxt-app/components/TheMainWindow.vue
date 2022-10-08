@@ -6,7 +6,7 @@
     />
     <section class="image-thumbnails">
       <MainWindowImageThumbnail
-        v-for="imageId in imageIds"
+        v-for="imageId in store.imageIds"
         :key="imageId"
         :image-id="imageId"
       />
@@ -15,14 +15,18 @@
 </template>
 
 <script>
-import { mapState } from 'pinia';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
-  computed: {
-    ...mapState(useGlobalStore, {
-      imageIds: 'imageIds',
-    }),
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
+  mounted() {
+    this.$refs['dicomImageContainer'].addEventListener('cornerstoneimagerendered', this.store.registerAllTools);
+  },
+  beforeUnmount() {
+    this.$refs['dicomImageContainer'].removeEventListener('cornerstoneimagerendered', this.store.registerAllTools);
   },
 };
 </script>
