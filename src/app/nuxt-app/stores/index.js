@@ -36,7 +36,6 @@ export const useGlobalStore = defineStore({
             cornerstoneTools.init({
                 mouseEnabled: true,
                 showSVGCursors: true,
-                globalToolSyncEnabled: true,
             });
 
             // Setup all required cornerstone-wado-image-loader dependencies
@@ -100,7 +99,7 @@ export const useGlobalStore = defineStore({
          * @returns {Promise<void>}
          */
         async displayImageInElement(imageContainer, imageId) {
-            const image = await cornerstone.loadImage(imageId);
+            const image = await cornerstone.loadAndCacheImage(imageId);
             cornerstone.displayImage(imageContainer, image);
             this.lastImageId = imageId;
         },
@@ -121,14 +120,10 @@ export const useGlobalStore = defineStore({
          */
         registerImageContainer(imageContainer, isMainImageContainer = false) {
             if (!this.imageContainers.includes(imageContainer)) {
-                console.log('registering main image container: ', isMainImageContainer);
                 cornerstone.enable(imageContainer);
                 this.imageContainers.push(imageContainer);
                 if (isMainImageContainer) {
                     this.mainImageContainer = imageContainer;
-                    for (const toolName of this.toolNames) {
-                        this.registerTool(toolName);
-                    }
                 }
             }
         },
@@ -140,7 +135,6 @@ export const useGlobalStore = defineStore({
         unregisterImageContainer(imageContainer, isMainImageContainer = false) {
             const imageFileIdx = this.imageContainers.indexOf(imageContainer);
             if (imageFileIdx > -1) {
-                console.log('unregistering image container: ', isMainImageContainer);
                 cornerstone.disable(imageContainer);
                 this.imageContainers.splice(imageFileIdx, 1);
                 if (isMainImageContainer) {
@@ -149,7 +143,6 @@ export const useGlobalStore = defineStore({
             }
         },
         addTool(toolName) {
-          console.log('adding tool: ', toolName);
           this.toolNames.push(toolName);
         },
         /**
@@ -158,21 +151,23 @@ export const useGlobalStore = defineStore({
          */
         activateTool(toolName, toolOptions = {}) {
             // todo: deactivate another tools
-            this.registerImageContainer(document.getElementById('dicom-image'), true);
-            this.registerTool(toolName + 'Tool');
-            console.log('activating tool: ', toolName);
             cornerstoneTools.setToolActive(toolName, toolOptions);
         },
         registerTool(toolName) {
-            console.log('registering tool: ', toolName, this.mainImageContainer);
             const tool = cornerstoneTools[`${toolName}`];
             if (!tool) {
                 throw new Error(`Tool ${toolName} does not exist!`);
             }
             cornerstoneTools.addTool(tool);
         },
+        registerAllTools() {
+            for (const toolName of this.toolNames) {
+                this.registerTool(toolName);
+            }
+        },
         /**
          * Start looping selected images in the main window
+         * todo: when idx are updated, it is not reflected in the video sequence, bug when max idx is less than min
          * @returns {Promise<void>}
          */
         async startLoopingImages() {
