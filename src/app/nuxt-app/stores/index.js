@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import cornerstone from 'cornerstone-core';
 import cornerstoneMath from 'cornerstone-math';
-import cornerstoneTools from 'cornerstone-tools';
+import 'cornerstone-tools';
 import Hammer from 'hammerjs';
 
 import dicomParser from 'dicom-parser';
