@@ -2,7 +2,6 @@
   <BaseTool
     label="Open images"
     tool-name="Open images"
-    is-custom-tool
     @click="openFileInput"
   >
     <template #icon>

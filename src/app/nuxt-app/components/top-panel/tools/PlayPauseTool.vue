@@ -2,7 +2,6 @@
   <BaseTool
     label="Play"
     tool-name="PlayTool"
-    is-custom-tool
     @click="store.isLoopingImages ? store.stopLoopingImages() : store.startLoopingImages()"
   >
     <template #icon>

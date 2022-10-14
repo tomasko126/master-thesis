@@ -2,6 +2,7 @@
   <BaseTool
     label="Freehand"
     tool-name="FreehandRoiTool"
+    register-tool
     @click="store.activateTool('FreehandRoi', { mouseButtonMask: 1 })"
   >
     <template #icon>

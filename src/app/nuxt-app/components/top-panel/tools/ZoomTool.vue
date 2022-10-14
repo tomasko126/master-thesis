@@ -2,6 +2,7 @@
   <BaseTool
     label="Zoom"
     tool-name="ZoomTool"
+    register-tool
     @click="store.activateTool('Zoom', { mouseButtonMask: 1 })"
   >
     <template #icon>

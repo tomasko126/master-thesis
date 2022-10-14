@@ -22,7 +22,7 @@ export default {
       type: String,
       required: true,
     },
-    isCustomTool: {
+    registerTool: {
       type: Boolean,
       default: false,
     }
@@ -33,7 +33,7 @@ export default {
     return { store };
   },
   mounted() {
-    if (!this.isCustomTool) {
+    if (this.registerTool) {
       this.store.addTool(this.toolName);
     }
   },

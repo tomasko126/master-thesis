@@ -2,6 +2,7 @@
   <BaseTool
     label="Pan"
     tool-name="PanTool"
+    register-tool
     @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
   >
     <template #icon>
