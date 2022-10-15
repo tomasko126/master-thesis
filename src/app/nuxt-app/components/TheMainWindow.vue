@@ -38,12 +38,17 @@ export default {
   border: 2px solid #5b5bd0;
   height: calc(100vh - global.$top-panel-height);
 
+  #dicom-image {
+    height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height);
+  }
+
   .image-thumbnails {
     display: flex;
     align-items: center;
     border-top: 2px solid #5b5bd0;
     overflow: auto;
     max-width: 100%;
+    height: global.$bottom-image-thumbnails-height;
   }
 }
 </style>
