@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     if (this.registerTool) {
-      this.store.addTool(this.toolName);
+      this.store.toolNames.push(this.toolName);
     }
   },
 };

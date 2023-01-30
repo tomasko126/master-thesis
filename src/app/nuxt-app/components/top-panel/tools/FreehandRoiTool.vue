@@ -1,19 +1,22 @@
 <template>
   <BaseTool
-    label="Freehand"
+    label="Create grid"
     tool-name="FreehandRoiTool"
     register-tool
     @click="store.activateTool('FreehandRoi', { mouseButtonMask: 1 })"
   >
     <template #icon>
-      <IconPen />
+      <img
+        id="grid-icon"
+        alt="Grid"
+        src="/grid-icon.svg"
+      >
     </template>
   </BaseTool>
 </template>
 
 <script>
 import BaseTool from './BaseTool.vue';
-import { IconPen } from '@iconify-prerendered/vue-fa6-solid';
 
 import { useGlobalStore } from '~/stores/index';
 
@@ -21,7 +24,6 @@ export default {
   name: 'FreehandRoiTool',
   components: {
     BaseTool,
-    IconPen,
   },
   setup() {
     const store = useGlobalStore();
@@ -29,3 +31,10 @@ export default {
   },
 };
 </script>
+
+<style>
+#grid-icon {
+  height: 16px;
+  width: 16px;
+}
+</style>

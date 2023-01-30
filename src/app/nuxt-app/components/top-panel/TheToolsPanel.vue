@@ -1,16 +1,18 @@
 <template>
   <section class="tools-panel">
     <OpenImagesTool />
-    <PanTool />
-    <ZoomTool />
-    <FreehandRoiTool />
     <PlayPauseTool />
+    <ZoomPlusTool />
+    <ZoomMinusTool />
+    <PanTool />
+    <FreehandRoiTool />
   </section>
 </template>
 
 <script>
 import FreehandRoiTool from './tools/FreehandRoiTool.vue';
-import ZoomTool from './tools/ZoomTool.vue';
+import ZoomPlusTool from './tools/ZoomPlusTool.vue';
+import ZoomMinusTool from './tools/ZoomMinusTool.vue';
 import PanTool from './tools/PanTool.vue';
 import PlayPauseTool from './tools/PlayPauseTool.vue';
 import OpenImagesTool from './tools/OpenImagesTool.vue';
@@ -22,7 +24,8 @@ export default {
     PlayPauseTool,
     PanTool,
     FreehandRoiTool,
-    ZoomTool,
+    ZoomPlusTool,
+    ZoomMinusTool,
   },
 };
 </script>

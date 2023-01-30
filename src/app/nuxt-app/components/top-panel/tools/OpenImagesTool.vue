@@ -5,7 +5,7 @@
     @click="openFileInput"
   >
     <template #icon>
-      <IconFolderOpen />
+      <font-awesome-icon icon="fa-solid fa-folder" />
     </template>
   </BaseTool>
   <input
@@ -21,11 +21,11 @@
 import { useGlobalStore } from '~/stores/index';
 
 import BaseTool from './BaseTool.vue';
-import { IconFolderOpen } from '@iconify-prerendered/vue-fa6-solid';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
   components: {
-    IconFolderOpen,
+    FontAwesomeIcon,
     BaseTool,
   },
   setup() {
