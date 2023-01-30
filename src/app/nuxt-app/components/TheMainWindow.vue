@@ -1,10 +1,11 @@
 <template>
-  <section class="main-window">
+  <section id="main-window">
     <div
       id="dicom-image"
-      ref="dicomImageContainer"
+      ref="dicomImage"
+      @cornerstoneimagerendered="onNewImage"
     />
-    <section class="image-thumbnails">
+    <section id="image-thumbnails">
       <MainWindowImageThumbnail
         v-for="imageId in store.imageIds"
         :key="imageId"
@@ -17,32 +18,55 @@
 <script>
 import { useGlobalStore } from '~/stores/index';
 
+/* global cornerstone */
+
 export default {
   setup() {
     const store = useGlobalStore();
     return { store };
   },
+  watch: {
+    'store.shownImageId'(newImageId) {
+      this.displayImage(newImageId);
+    },
+  },
   mounted() {
-    this.$refs['dicomImageContainer'].addEventListener('cornerstoneimagerendered', this.store.registerAllTools);
+    this.store.registerImageContainer(this.$refs['dicomImage'], true);
+    this.store.registerAllTools();
   },
-  beforeUnmount() {
-    this.$refs['dicomImageContainer'].removeEventListener('cornerstoneimagerendered', this.store.registerAllTools);
+  unmounted() {
+    this.store.unregisterImageContainer(this.$refs['dicomImage'], true);
+    this.store.unregisterAllTools();
   },
+  methods: {
+    async displayImage(imageId) {
+      if (!imageId) {
+        return;
+      }
+      const image = await cornerstone.loadAndCacheImage(imageId);
+      cornerstone.displayImage(this.$refs['dicomImage'], image);
+    },
+    onNewImage() {
+      this.store.registerAllTools();
+    },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @use 'assets/global';
-.main-window {
+#main-window {
   display: grid;
   border: 2px solid #5b5bd0;
   height: calc(100vh - global.$top-panel-height);
 
   #dicom-image {
     height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height);
+    max-width: 100%;
+    overflow: hidden;
   }
 
-  .image-thumbnails {
+  #image-thumbnails {
     display: flex;
     align-items: center;
     border-top: 2px solid #5b5bd0;
