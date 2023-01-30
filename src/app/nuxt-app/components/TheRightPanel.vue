@@ -3,11 +3,15 @@
     <o-tabs expanded>
       <o-tab-item
         value="1"
-        label="Tools"
+        label="Image tools"
       >
-        <RightPanelToolsImageSection />
-        <RightPanelToolsAnimationSection />
+        <RightPanelToolsImageSettings />
+        <RightPanelToolsAnimationSettings />
       </o-tab-item>
+      <o-tab-item
+        value="2"
+        label="Grid settings"
+      />
     </o-tabs>
   </section>
 </template>

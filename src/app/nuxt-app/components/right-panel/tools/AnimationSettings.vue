@@ -10,29 +10,32 @@
           min="50"
           max="250"
           step="10"
+          :disabled="!store.imageIds.length"
         >
       </div>
       <div class="input-wrapper">
         <label for="from-image-idx">From image:</label>
-        <input
+        <o-input
           id="from-image-idx"
           v-model="fromIdx"
-          class="idx-inputs"
           type="number"
+          class="idx-inputs"
+          :disabled="store.isLoopingImages || !store.imageIds.length"
           :min="store.imageIds ? 1 : 0"
           :max="store.imageIds ? store.imageIds.length : 1"
-        >
+        />
       </div>
       <div class="input-wrapper">
         <label for="to-image-idx">To image:</label>
-        <input
+        <o-input
           id="to-image-idx"
           v-model="toIdx"
-          class="idx-inputs"
           type="number"
+          class="idx-inputs"
+          :disabled="store.isLoopingImages || !store.imageIds.length"
           :min="store.imageIds ? 1 : 0"
           :max="store.imageIds ? store.imageIds.length : 1"
-        >
+        />
       </div>
     </template>
   </GeneralTabSection>
@@ -84,8 +87,12 @@ export default {
   align-items: center;
   margin: 10px 0;
 
-  .idx-inputs {
-    width: 100px;
+  #animation-speed {
+    width: 120px;
+  }
+
+  :deep(.idx-inputs) {
+    width: 70px;
   }
 }
 </style>
