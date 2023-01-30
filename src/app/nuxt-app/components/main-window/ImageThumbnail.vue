@@ -3,19 +3,22 @@
     <div
       ref="fakeThumbnail"
       class="fake-thumbnail"
-      :class="{ 'is-hidden': pngBlobImageSource }"
+      :class="{ 'is-hidden': imageSrc }"
+      @cornerstoneimagerendered="onCanvasImageRendered"
     />
     <img
       class="thumbnail"
-      :src="pngBlobImageSource"
+      :src="imageSrc"
       alt=""
-      @click="store.displayImageInMainWindow(imageId)"
+      @click="this.store.shownImageId = imageId"
     >
   </div>
 </template>
 
 <script>
 import { useGlobalStore } from '~/stores/index';
+
+/* global cornerstone */
 
 export default {
   props: {
@@ -30,30 +33,38 @@ export default {
   },
   data() {
     return {
-      pngBlobImageSource: null,
+      imageSrc: null,
     };
   },
   async mounted() {
+    // Register image container
     await this.store.registerImageContainer(this.$refs['fakeThumbnail']);
-    await this.store.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
-    setTimeout(() => {
-      this.convertCanvasToBlob();
-      this.store.unregisterImageContainer(this.$refs['fakeThumbnail']);
-    }, 250);
+
+    // Display image using cornerstone
+    await this.showCanvasImage();
   },
   unmounted() {
-    URL.revokeObjectURL(this.pngBlobImageSource);
+    URL.revokeObjectURL(this.imageSrc);
   },
   methods: {
-    convertCanvasToBlob() {
-      /** @type {HTMLCanvasElement} **/
+    convertCanvasImageToSrc() {
       return new Promise((resolve) => {
         const canvasElement = this.$refs['fakeThumbnail'].firstChild;
         canvasElement.toBlob((blob) => {
-          this.pngBlobImageSource = URL.createObjectURL(blob);
-          resolve();
+          resolve(URL.createObjectURL(blob));
         });
       });
+    },
+    async onCanvasImageRendered() {
+      // When canvas contains rendered image, convert it to src for later usage
+      this.imageSrc = await this.convertCanvasImageToSrc();
+
+      // We do not need this container anymore
+      this.store.unregisterImageContainer(this.$refs['fakeThumbnail']);
+    },
+    async showCanvasImage() {
+      const image = await cornerstone.loadAndCacheImage(this.imageId);
+      cornerstone.displayImage(this.$refs['fakeThumbnail'], image);
     },
   },
 };
