@@ -11,8 +11,8 @@
     "eslint": "^8.33.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.9.0",
-    "nuxt": "^3.1.1",
-    "sass": "^1.57.1",
+    "nuxt": "^3.1.2",
+    "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
     "vite-plugin-eslint": "^1.8.1"
   },
@@ -25,7 +25,7 @@
     "@oruga-ui/theme-bulma": "^0.2.8",
     "@pinia/nuxt": "^0.4.6",
     "@types/cornerstone-core": "^2.3.0",
-    "pinia": "^2.0.29",
-    "vue": "^3.2.45"
+    "pinia": "^2.0.30",
+    "vue": "^3.2.47"
   }
 }
