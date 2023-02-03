@@ -1,6 +1,10 @@
 <template>
   <section class="right-panel">
-    <o-tabs expanded>
+    <o-tabs
+      :animated="false"
+      expanded
+      tab-item-wrapper-class="tab-header"
+    >
       <o-tab-item
         value="1"
         label="Image tools"
@@ -11,7 +15,9 @@
       <o-tab-item
         value="2"
         label="Grid settings"
-      />
+      >
+        <RightPanelToolsGridSettings />
+      </o-tab-item>
     </o-tabs>
   </section>
 </template>
@@ -21,5 +27,13 @@
   border: 2px solid #5b5bd0;
   background-color: white;
   color: black;
+
+  :deep(nav) {
+    justify-content: space-evenly;
+  }
+
+  :deep(.tab-header) {
+    width: 100%;
+  }
 }
 </style>

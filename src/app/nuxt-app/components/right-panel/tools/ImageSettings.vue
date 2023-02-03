@@ -1,46 +1,48 @@
 <template>
-  <GeneralTabSection title="Image">
+  <GeneralTabContent title="Image">
     <template #content>
-      <div class="brightness-settings">
-        <span>Brightness:</span>
-        <span>
-          <o-button
-            size="small"
-            icon-pack="fas"
-            icon-right="plus"
-            :disabled="isButtonDisabled"
-            @click="onBrightnessChange(10)"
-          />
-          <o-button
-            size="small"
-            icon-pack="fas"
-            icon-right="minus"
-            :disabled="isButtonDisabled"
-            @click="onBrightnessChange(-10)"
-          />
-        </span>
-      </div>
-      <div class="contrast-settings">
-        <span>Contrast:</span>
-        <span>
-          <o-button
-            size="small"
-            icon-pack="fas"
-            icon-right="plus"
-            :disabled="isButtonDisabled"
-            @click="onContrastChange(-10)"
-          />
-          <o-button
-            size="small"
-            icon-pack="fas"
-            icon-right="minus"
-            :disabled="isButtonDisabled"
-            @click="onContrastChange(10)"
-          />
-        </span>
-      </div>
+      <GeneralTabSection label-text="Brightness:">
+        <template #content>
+          <div class="brightness-settings">
+            <o-button
+              size="small"
+              icon-pack="fas"
+              icon-right="plus"
+              :disabled="isButtonDisabled"
+              @click="onBrightnessChange(10)"
+            />
+            <o-button
+              size="small"
+              icon-pack="fas"
+              icon-right="minus"
+              :disabled="isButtonDisabled"
+              @click="onBrightnessChange(-10)"
+            />
+          </div>
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="Contrast:">
+        <template #content>
+          <div class="contrast-settings">
+            <o-button
+              size="small"
+              icon-pack="fas"
+              icon-right="plus"
+              :disabled="isButtonDisabled"
+              @click="onContrastChange(-10)"
+            />
+            <o-button
+              size="small"
+              icon-pack="fas"
+              icon-right="minus"
+              :disabled="isButtonDisabled"
+              @click="onContrastChange(10)"
+            />
+          </div>
+        </template>
+      </GeneralTabSection>
     </template>
-  </GeneralTabSection>
+  </GeneralTabContent>
 </template>
 
 <script>
@@ -75,10 +77,6 @@ export default {
 
 <style lang="scss" scoped>
 .brightness-settings, .contrast-settings {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-
   button {
     margin: 0 2.5px 0 2.5px;
     width: 35px;

@@ -3,7 +3,7 @@
     <div
       id="dicom-image"
       ref="dicomImage"
-      @cornerstoneimagerendered="onNewImage"
+      @cornerstonetoolsmeasurementcompleted="onMeasurementCompleted"
     />
     <section id="image-thumbnails">
       <MainWindowImageThumbnail
@@ -29,6 +29,12 @@ export default {
     'store.shownImageId'(newImageId) {
       this.displayImage(newImageId);
     },
+    'store.imageIds': {
+      deep: true,
+      handler() {
+        this.onNewImages();
+      },
+    },
   },
   mounted() {
     this.store.registerImageContainer(this.$refs['dicomImage'], true);
@@ -46,7 +52,11 @@ export default {
       const image = await cornerstone.loadAndCacheImage(imageId);
       cornerstone.displayImage(this.$refs['dicomImage'], image);
     },
-    onNewImage() {
+    onMeasurementCompleted(e) {
+      console.log('measurement completed');
+      console.log(e);
+    },
+    onNewImages() {
       this.store.registerAllTools();
     },
   }

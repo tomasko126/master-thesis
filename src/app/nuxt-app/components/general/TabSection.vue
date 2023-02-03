@@ -1,6 +1,6 @@
 <template>
-  <h2>{{ title }}</h2>
-  <div class="tab-content">
+  <div class="tab-section">
+    <label>{{ labelText }}</label>
     <slot name="content" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   props: {
-    title: {
+    labelText: {
       type: String,
       required: true,
     },
@@ -17,13 +17,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  margin-bottom: 10px;
-}
-.tab-content {
-  margin: 5px;
-  border: 2px solid #8080805e;
-  border-radius: 3px;
-  background-color: #80808014;
+.tab-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+
+  :deep(input[type="number"]) {
+    width: 80px;
+  }
 }
 </style>

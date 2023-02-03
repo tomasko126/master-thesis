@@ -1,9 +1,9 @@
 <template>
   <BaseTool
     label="Create grid"
-    tool-name="FreehandRoiTool"
+    tool-name="GridTool"
     register-tool
-    @click="store.activateTool('FreehandRoi', { mouseButtonMask: 1 })"
+    @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
   >
     <template #icon>
       <img
@@ -21,7 +21,7 @@ import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores/index';
 
 export default {
-  name: 'FreehandRoiTool',
+  name: 'GridTool',
   components: {
     BaseTool,
   },

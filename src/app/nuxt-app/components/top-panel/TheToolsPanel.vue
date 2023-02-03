@@ -5,12 +5,12 @@
     <ZoomPlusTool />
     <ZoomMinusTool />
     <PanTool />
-    <FreehandRoiTool />
+    <GridTool />
   </section>
 </template>
 
 <script>
-import FreehandRoiTool from './tools/FreehandRoiTool.vue';
+import GridTool from './tools/GridTool.vue';
 import ZoomPlusTool from './tools/ZoomPlusTool.vue';
 import ZoomMinusTool from './tools/ZoomMinusTool.vue';
 import PanTool from './tools/PanTool.vue';
@@ -23,7 +23,7 @@ export default {
     OpenImagesTool,
     PlayPauseTool,
     PanTool,
-    FreehandRoiTool,
+    GridTool,
     ZoomPlusTool,
     ZoomMinusTool,
   },

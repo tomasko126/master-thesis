@@ -1,44 +1,43 @@
 <template>
-  <GeneralTabSection title="Animation">
+  <GeneralTabContent title="Animation">
     <template #content>
-      <div class="input-wrapper">
-        <label for="animation-speed">Speed:</label>
-        <input
-          id="animation-speed"
-          v-model="speed"
-          type="range"
-          min="50"
-          max="250"
-          step="10"
-          :disabled="!store.imageIds.length"
-        >
-      </div>
-      <div class="input-wrapper">
-        <label for="from-image-idx">From image:</label>
-        <o-input
-          id="from-image-idx"
-          v-model="fromIdx"
-          type="number"
-          class="idx-inputs"
-          :disabled="store.isLoopingImages || !store.imageIds.length"
-          :min="store.imageIds ? 1 : 0"
-          :max="store.imageIds ? store.imageIds.length : 1"
-        />
-      </div>
-      <div class="input-wrapper">
-        <label for="to-image-idx">To image:</label>
-        <o-input
-          id="to-image-idx"
-          v-model="toIdx"
-          type="number"
-          class="idx-inputs"
-          :disabled="store.isLoopingImages || !store.imageIds.length"
-          :min="store.imageIds ? 1 : 0"
-          :max="store.imageIds ? store.imageIds.length : 1"
-        />
-      </div>
+      <GeneralTabSection label-text="Speed:">
+        <template #content>
+          <input
+            id="animation-speed"
+            v-model="speed"
+            type="range"
+            min="50"
+            max="250"
+            step="10"
+            :disabled="!store.imageIds.length"
+          >
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="From image:">
+        <template #content>
+          <o-input
+            v-model="fromIdx"
+            type="number"
+            :disabled="store.isLoopingImages || !store.imageIds.length"
+            :min="store.imageIds ? 1 : 0"
+            :max="store.imageIds ? store.imageIds.length : 1"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="To image:">
+        <template #content>
+          <o-input
+            v-model="toIdx"
+            type="number"
+            :disabled="store.isLoopingImages || !store.imageIds.length"
+            :min="store.imageIds ? 1 : 0"
+            :max="store.imageIds ? store.imageIds.length : 1"
+          />
+        </template>
+      </GeneralTabSection>
     </template>
-  </GeneralTabSection>
+  </GeneralTabContent>
 </template>
 
 <script>
@@ -81,18 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.input-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
-
-  #animation-speed {
-    width: 120px;
-  }
-
-  :deep(.idx-inputs) {
-    width: 70px;
-  }
+#animation-speed {
+  width: 105px;
 }
 </style>
