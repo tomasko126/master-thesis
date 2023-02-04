@@ -9,16 +9,14 @@
     <img
       class="thumbnail"
       :src="imageSrc"
-      alt=""
-      @click="this.store.shownImageId = imageId"
+      alt="thumbnail"
+      @click="store.displayImageInElement(store.mainImageContainer, imageId)"
     >
   </div>
 </template>
 
 <script>
 import { useGlobalStore } from '~/stores/index';
-
-/* global cornerstone */
 
 export default {
   props: {
@@ -41,7 +39,7 @@ export default {
     await this.store.registerImageContainer(this.$refs['fakeThumbnail']);
 
     // Display image using cornerstone
-    await this.showCanvasImage();
+    await this.store.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
   },
   unmounted() {
     URL.revokeObjectURL(this.imageSrc);
@@ -61,10 +59,6 @@ export default {
 
       // We do not need this container anymore
       this.store.unregisterImageContainer(this.$refs['fakeThumbnail']);
-    },
-    async showCanvasImage() {
-      const image = await cornerstone.loadAndCacheImage(this.imageId);
-      cornerstone.displayImage(this.$refs['fakeThumbnail'], image);
     },
   },
 };

@@ -36,7 +36,34 @@
 </template>
 
 <script>
-export default {
 
+/* global cornerstoneTools */
+import { useGlobalStore } from '~/stores';
+
+export default {
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
+  watch: {
+    'store.imageIds': {
+      deep: true,
+      handler() {
+        this.getGridSettingsForCurrentImage(); // on image load
+      },
+    },
+    'store.shownImageId': {
+      handler() {
+        this.getGridSettingsForCurrentImage(); // on image switch
+      },
+    },
+  },
+  methods: {
+    getGridSettingsForCurrentImage() {
+      const { config, state } = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid').getToolsStateAndConfig();
+      console.log('config: ', config);
+      console.log('state: ', state);
+    },
+  },
 };
 </script>

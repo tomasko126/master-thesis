@@ -7,9 +7,8 @@
             id="animation-speed"
             v-model="speed"
             type="range"
-            min="50"
-            max="250"
-            step="10"
+            min="1"
+            max="30"
             :disabled="!store.imageIds.length"
           >
         </template>
@@ -52,7 +51,7 @@ export default {
     return {
       fromIdx: this.store.animation.fromIdx,
       toIdx: this.store.animation.toIdx,
-      speed: this.convertSpeedToInputValue(this.store.animation.speed),
+      speed: 30,
     };
   },
   watch: {
@@ -67,13 +66,7 @@ export default {
       this.store.animation.toIdx = newValue - 1;
     },
     speed(newValue) {
-      this.store.animation.speed = this.convertSpeedToInputValue(newValue);
-    },
-  },
-  methods: {
-    convertSpeedToInputValue(speed) {
-      const MAX_SPEED_PLUS_MIN_SPEED = 300;
-      return MAX_SPEED_PLUS_MIN_SPEED - speed;
+      this.store.animation.speed = newValue;
     },
   },
 };

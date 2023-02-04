@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
-//import cornerstone from "cornerstone-core";
-//window.cornerstone = cornerstone; // todo: remove once we do not need it
+// import cornerstone from "cornerstone-core";
+// window.cornerstone = cornerstone; // todo: remove once we do not need it
 // import cornerstoneMath from 'cornerstone-math';
 // import 'cornerstone-tools';
 // import Hammer from 'hammerjs';
@@ -16,7 +16,7 @@ export const useGlobalStore = defineStore({
     state: () => {
         return {
             animation: {
-                speed: 50, // in ms
+                speed: 30, // in fps
                 fromIdx: 0, // image idx
                 toIdx: 0, // image idx
             },
@@ -51,18 +51,15 @@ export const useGlobalStore = defineStore({
             cornerstone.disable(this.mainImageContainer);
             cornerstone.enable(this.mainImageContainer);
 
-            cornerstoneTools.addStackStateManager(this.mainImageContainer, ['stack']);
+            cornerstoneTools.addStackStateManager(this.mainImageContainer, ['stack', 'playClip']);
             cornerstoneTools.addToolState(this.mainImageContainer, 'stack', stack);
 
             // Set default animation settings
             this.animation = {
-                speed: 50,
+                speed: 30,
                 fromIdx: 0,
                 toIdx: Math.max( this.imageIds.length - 1, 0),
             }
-
-            // Display first image in main window
-            this.shownImageId = this.imageIds[0] ?? null;
         },
         /**
          * Register image container
@@ -107,6 +104,13 @@ export const useGlobalStore = defineStore({
             for (const toolName of this.toolNames) {
                 this.unregisterTool(toolName);
             }
+        },
+        async displayImageInElement(element, imageId) {
+            if (!imageId) {
+                return;
+            }
+            const image = await cornerstone.loadAndCacheImage(imageId);
+            cornerstone.displayImage(element, image);
         },
     },
 });

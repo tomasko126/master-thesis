@@ -3,6 +3,7 @@
     <div
       id="dicom-image"
       ref="dicomImage"
+      @cornerstonenewimage="onImageShown"
       @cornerstonetoolsmeasurementcompleted="onMeasurementCompleted"
     />
     <section id="image-thumbnails">
@@ -18,17 +19,12 @@
 <script>
 import { useGlobalStore } from '~/stores/index';
 
-/* global cornerstone */
-
 export default {
   setup() {
     const store = useGlobalStore();
     return { store };
   },
   watch: {
-    'store.shownImageId'(newImageId) {
-      this.displayImage(newImageId);
-    },
     'store.imageIds': {
       deep: true,
       handler() {
@@ -45,19 +41,18 @@ export default {
     this.store.unregisterAllTools();
   },
   methods: {
-    async displayImage(imageId) {
-      if (!imageId) {
-        return;
-      }
-      const image = await cornerstone.loadAndCacheImage(imageId);
-      cornerstone.displayImage(this.$refs['dicomImage'], image);
-    },
     onMeasurementCompleted(e) {
       console.log('measurement completed');
       console.log(e);
     },
     onNewImages() {
+      this.store.displayImageInElement(this.store.mainImageContainer, this.store.imageIds[0]);
       this.store.registerAllTools();
+    },
+    onImageShown(e) {
+      console.log('on image shown');
+      console.log(e);
+      this.store.shownImageId = e.detail.image.imageId;
     },
   }
 };
