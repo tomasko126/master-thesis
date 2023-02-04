@@ -1,14 +1,18 @@
 <template>
-  <BaseTool
+  <o-tooltip
     label="Move image"
-    tool-name="PanTool"
-    register-tool
-    @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
+    position="bottom"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
-    </template>
-  </BaseTool>
+    <BaseTool
+      tool-name="PanTool"
+      register-tool
+      @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
+    >
+      <template #icon>
+        <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
+      </template>
+    </BaseTool>
+  </o-tooltip>
 </template>
 
 <script>

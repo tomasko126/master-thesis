@@ -1,13 +1,17 @@
 <template>
-  <BaseTool
+  <o-tooltip
     label="Open images"
-    tool-name="Open images"
-    @click="openFileInput"
+    position="bottom"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-folder" />
-    </template>
-  </BaseTool>
+    <BaseTool
+      tool-name="Open images"
+      @click="openFileInput"
+    >
+      <template #icon>
+        <font-awesome-icon icon="fa-solid fa-folder" />
+      </template>
+    </BaseTool>
+  </o-tooltip>
   <input
     ref="fileInput"
     class="file-input"

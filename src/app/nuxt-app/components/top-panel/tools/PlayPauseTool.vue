@@ -1,20 +1,24 @@
 <template>
-  <BaseTool
+  <o-tooltip
     :label="labelName"
-    tool-name="PlayTool"
-    @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
+    position="bottom"
   >
-    <template #icon>
-      <font-awesome-icon
-        v-if="!store.isLoopingImages"
-        icon="fa-solid fa-play"
-      />
-      <font-awesome-icon
-        v-else
-        icon="fa-solid fa-stop"
-      />
-    </template>
-  </BaseTool>
+    <BaseTool
+      tool-name="PlayTool"
+      @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
+    >
+      <template #icon>
+        <font-awesome-icon
+          v-if="!store.isLoopingImages"
+          icon="fa-solid fa-play"
+        />
+        <font-awesome-icon
+          v-else
+          icon="fa-solid fa-stop"
+        />
+      </template>
+    </BaseTool>
+  </o-tooltip>
 </template>
 
 <script>

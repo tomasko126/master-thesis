@@ -1,18 +1,22 @@
 <template>
-  <BaseTool
+  <o-tooltip
     label="Create grid"
-    tool-name="GridTool"
-    register-tool
-    @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
+    position="bottom"
   >
-    <template #icon>
-      <img
-        id="grid-icon"
-        alt="Grid"
-        src="/grid-icon.svg"
-      >
-    </template>
-  </BaseTool>
+    <BaseTool
+      tool-name="GridTool"
+      register-tool
+      @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
+    >
+      <template #icon>
+        <img
+          id="grid-icon"
+          alt="Grid"
+          src="/grid-icon.svg"
+        >
+      </template>
+    </BaseTool>
+  </o-tooltip>
 </template>
 
 <script>

@@ -1,14 +1,18 @@
 <template>
-  <BaseTool
+  <o-tooltip
     label="Zoom out"
-    tool-name="ZoomMinusTool"
-    @mousedown="zoomStart"
-    @mouseup="zoomEnd"
+    position="bottom"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
-    </template>
-  </BaseTool>
+    <BaseTool
+      tool-name="ZoomMinusTool"
+      @mousedown="zoomStart"
+      @mouseup="zoomEnd"
+    >
+      <template #icon>
+        <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
+      </template>
+    </BaseTool>
+  </o-tooltip>
 </template>
 
 <script>

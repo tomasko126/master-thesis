@@ -1,7 +1,6 @@
 <template>
   <div
     class="tool-container"
-    :title="label"
     @click="$emit('click')"
   >
     <slot name="icon" />
@@ -14,10 +13,6 @@ import { useGlobalStore } from '~/stores/index';
 export default {
   name: 'BaseTool',
   props: {
-    label: {
-      type: String,
-      required: true,
-    },
     toolName: {
       type: String,
       required: true,
