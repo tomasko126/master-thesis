@@ -11,8 +11,8 @@
     "eslint": "^8.34.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.9.0",
-    "nuxt": "^3.2.0",
-    "sass": "^1.58.0",
+    "nuxt": "^3.2.2",
+    "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
     "vite-plugin-eslint": "^1.8.1"
   },
@@ -26,6 +26,6 @@
     "@vuestic/nuxt": "^1.0.10",
     "pinia": "^2.0.30",
     "vue": "^3.2.47",
-    "vuestic-ui": "^1.5.3"
+    "vuestic-ui": "^1.6.0"
   }
 }
