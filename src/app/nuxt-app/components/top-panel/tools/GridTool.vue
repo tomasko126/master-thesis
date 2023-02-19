@@ -1,7 +1,7 @@
 <template>
-  <o-tooltip
-    label="Create grid"
-    position="bottom"
+  <va-popover
+    message="Create grid"
+    placement="bottom"
   >
     <BaseTool
       tool-name="GridTool"
@@ -16,7 +16,7 @@
         >
       </template>
     </BaseTool>
-  </o-tooltip>
+  </va-popover>
 </template>
 
 <script>

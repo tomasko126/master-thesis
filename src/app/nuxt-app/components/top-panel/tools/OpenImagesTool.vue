@@ -1,7 +1,7 @@
 <template>
-  <o-tooltip
-    label="Open images"
-    position="bottom"
+  <va-popover
+    message="Open images"
+    placement="bottom"
   >
     <BaseTool
       tool-name="Open images"
@@ -11,7 +11,7 @@
         <font-awesome-icon icon="fa-solid fa-folder" />
       </template>
     </BaseTool>
-  </o-tooltip>
+  </va-popover>
   <input
     ref="fileInput"
     class="file-input"

@@ -1,7 +1,7 @@
 <template>
-  <o-tooltip
-    label="Move image"
-    position="bottom"
+  <va-popover
+    message="Move image"
+    placement="bottom"
   >
     <BaseTool
       tool-name="PanTool"
@@ -12,7 +12,7 @@
         <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
       </template>
     </BaseTool>
-  </o-tooltip>
+  </va-popover>
 </template>
 
 <script>

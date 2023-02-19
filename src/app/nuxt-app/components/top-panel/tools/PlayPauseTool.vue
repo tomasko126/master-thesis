@@ -1,7 +1,7 @@
 <template>
-  <o-tooltip
-    :label="labelName"
-    position="bottom"
+  <va-popover
+    :message="labelName"
+    placement="bottom"
   >
     <BaseTool
       tool-name="PlayTool"
@@ -18,7 +18,7 @@
         />
       </template>
     </BaseTool>
-  </o-tooltip>
+  </va-popover>
 </template>
 
 <script>

@@ -4,40 +4,48 @@
       <GeneralTabSection label-text="Brightness:">
         <template #content>
           <div class="brightness-settings">
-            <o-button
+            <va-button
               size="small"
-              icon-pack="fas"
-              icon-right="plus"
               :disabled="isButtonDisabled"
               @click="onBrightnessChange(10)"
-            />
-            <o-button
+            >
+              <template #default>
+                <font-awesome-icon icon="fa-solid fa-plus" />
+              </template>
+            </va-button>
+            <va-button
               size="small"
-              icon-pack="fas"
-              icon-right="minus"
               :disabled="isButtonDisabled"
               @click="onBrightnessChange(-10)"
-            />
+            >
+              <template #default>
+                <font-awesome-icon icon="fa-solid fa-minus" />
+              </template>
+            </va-button>
           </div>
         </template>
       </GeneralTabSection>
       <GeneralTabSection label-text="Contrast:">
         <template #content>
           <div class="contrast-settings">
-            <o-button
+            <va-button
               size="small"
-              icon-pack="fas"
-              icon-right="plus"
               :disabled="isButtonDisabled"
               @click="onContrastChange(-10)"
-            />
-            <o-button
+            >
+              <template #default>
+                <font-awesome-icon icon="fa-solid fa-plus" />
+              </template>
+            </va-button>
+            <va-button
               size="small"
-              icon-pack="fas"
-              icon-right="minus"
               :disabled="isButtonDisabled"
               @click="onContrastChange(10)"
-            />
+            >
+              <template #default>
+                <font-awesome-icon icon="fa-solid fa-minus" />
+              </template>
+            </va-button>
           </div>
         </template>
       </GeneralTabSection>
@@ -47,10 +55,14 @@
 
 <script>
 import { useGlobalStore } from '~/stores/index';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* global cornerstone */
 
 export default {
+  components: {
+    FontAwesomeIcon,
+  },
   setup() {
     const store = useGlobalStore();
     return { store };

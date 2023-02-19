@@ -1,30 +1,41 @@
 <template>
   <section class="right-panel">
-    <o-tabs
-      :animated="false"
-      expanded
-      tab-item-wrapper-class="tab-header"
+    <va-tabs
+      v-model="tabIndex"
+      class="tabs"
+      grow
     >
-      <o-tab-item
-        value="1"
-        label="Image tools"
-      >
-        <RightPanelToolsImageSettings />
-        <RightPanelToolsAnimationSettings />
-      </o-tab-item>
-      <o-tab-item
-        value="2"
-        label="Grid settings"
-      >
-        <RightPanelToolsGridSettings />
-      </o-tab-item>
-    </o-tabs>
+      <template #tabs>
+        <va-tab label="Image tools" />
+        <va-tab label="Grid settings" />
+      </template>
+      <div>
+        <template v-if="tabIndex === 0">
+          <RightPanelToolsImageSettings />
+          <RightPanelToolsAnimationSettings />
+        </template>
+        <template v-else>
+          <RightPanelToolsGridSettings />
+        </template>
+      </div>
+    </va-tabs>
   </section>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      tabIndex: 0,
+    };
+  },
+};
+</script>
+
 <style lang="scss" scoped>
+@use 'assets/global';
 .right-panel {
-  border: 2px solid #5b5bd0;
+  border: 2px solid global.$border-color;
   background-color: white;
   color: black;
 
@@ -32,8 +43,9 @@
     justify-content: space-evenly;
   }
 
-  :deep(.tab-header) {
-    width: 100%;
+  .tabs {
+    align-items: unset;
+    flex-direction: column;
   }
 }
 </style>

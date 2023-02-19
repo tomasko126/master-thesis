@@ -1,7 +1,7 @@
 <template>
-  <o-tooltip
-    label="Zoom out"
-    position="bottom"
+  <va-popover
+    message="Zoom out"
+    placement="bottom"
   >
     <BaseTool
       tool-name="ZoomMinusTool"
@@ -12,7 +12,7 @@
         <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
       </template>
     </BaseTool>
-  </o-tooltip>
+  </va-popover>
 </template>
 
 <script>

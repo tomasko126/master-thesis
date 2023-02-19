@@ -12,17 +12,21 @@ export default defineNuxtConfig({
         { src: 'https://cdn.jsdelivr.net/npm/dicom-parser@1.8.20/dist/dicomParser.js' },
         { src: 'https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.js' },
       ],
+      link: [
+        { href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap', rel: 'stylesheet'},
+      ],
     },
   },
   css: [
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   modules: [
     '@pinia/nuxt',
+    '@vuestic/nuxt',
   ],
   plugins: [
     {
-      src: '~/plugins/oruga.js',
+      src: '~/plugins/ui.js',
     },
   ],
   ssr: false,
