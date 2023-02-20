@@ -1,29 +1,36 @@
 <template>
   <section class="tools-panel">
     <OpenImagesTool />
+    <va-divider
+      class="divider"
+      vertical
+    />
     <PlayPauseTool />
     <ZoomPlusTool />
     <ZoomMinusTool />
+    <va-divider
+      class="divider"
+      vertical
+    />
     <PanTool />
     <GridTool />
   </section>
 </template>
 
 <script>
-import GridTool from './tools/GridTool.vue';
 import ZoomPlusTool from './tools/ZoomPlusTool.vue';
 import ZoomMinusTool from './tools/ZoomMinusTool.vue';
 import PanTool from './tools/PanTool.vue';
 import PlayPauseTool from './tools/PlayPauseTool.vue';
 import OpenImagesTool from './tools/OpenImagesTool.vue';
+import GridTool from './tools/GridTool.vue';
 
 export default {
-  name: 'TheToolsPanel',
   components: {
+    GridTool,
     OpenImagesTool,
     PlayPauseTool,
     PanTool,
-    GridTool,
     ZoomPlusTool,
     ZoomMinusTool,
   },
@@ -37,5 +44,9 @@ export default {
   align-items: center;
   justify-content: center;
   height: global.$top-panel-height;
+
+  .divider {
+    height: 25px;
+  }
 }
 </style>
