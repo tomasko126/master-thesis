@@ -1,18 +1,15 @@
 <template>
-  <va-popover
-    message="Move image"
-    placement="bottom"
+  <BaseTool
+    :active="store.activeTool === 'Pan'"
+    :disabled="!store.imageIds.length"
+    popover-message="Move image"
+    tool-name="Pan"
+    @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
   >
-    <BaseTool
-      tool-name="PanTool"
-      register-tool
-      @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
-    >
-      <template #icon>
-        <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
-      </template>
-    </BaseTool>
-  </va-popover>
+    <template #icon>
+      <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
+    </template>
+  </BaseTool>
 </template>
 
 <script>

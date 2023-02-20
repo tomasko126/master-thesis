@@ -1,22 +1,19 @@
 <template>
-  <va-popover
-    message="Create grid"
-    placement="bottom"
+  <BaseTool
+    :active="store.activeTool === 'Grid'"
+    :disabled="!store.hasImageDefinedGrid"
+    popover-message="Move grid/grid's point"
+    tool-name="Grid"
+    @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
   >
-    <BaseTool
-      tool-name="GridTool"
-      register-tool
-      @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
-    >
-      <template #icon>
-        <img
-          id="grid-icon"
-          alt="Grid"
-          src="/grid-icon.svg"
-        >
-      </template>
-    </BaseTool>
-  </va-popover>
+    <template #icon>
+      <img
+        id="grid-icon"
+        alt="Grid"
+        src="/grid-icon.svg"
+      >
+    </template>
+  </BaseTool>
 </template>
 
 <script>

@@ -1,17 +1,13 @@
 <template>
-  <va-popover
-    message="Open images"
-    placement="bottom"
+  <BaseTool
+    popover-message="Open images"
+    :disabled="store.isLoopingImages"
+    @click="openFileInput"
   >
-    <BaseTool
-      tool-name="Open images"
-      @click="openFileInput"
-    >
-      <template #icon>
-        <font-awesome-icon icon="fa-solid fa-folder" />
-      </template>
-    </BaseTool>
-  </va-popover>
+    <template #icon>
+      <font-awesome-icon icon="fa-solid fa-folder" />
+    </template>
+  </BaseTool>
   <input
     ref="fileInput"
     class="file-input"

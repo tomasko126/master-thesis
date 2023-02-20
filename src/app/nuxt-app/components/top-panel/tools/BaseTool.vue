@@ -1,10 +1,19 @@
 <template>
-  <div
-    class="tool-container"
-    @click="$emit('click')"
+  <va-popover
+    :message="popoverMessage"
+    placement="bottom"
   >
-    <slot name="icon" />
-  </div>
+    <va-popover placement="bottom">
+      <!-- hack: this fixes weird behaviour of popover display -->
+      <va-button
+        :class="{ 'tool-button': true, 'disabled': disabled, 'active': active }"
+        :inert="disabled"
+        @click="$emit('click')"
+      >
+        <slot name="icon" />
+      </va-button>
+    </va-popover>
+  </va-popover>
 </template>
 
 <script>
@@ -13,14 +22,22 @@ import { useGlobalStore } from '~/stores/index';
 export default {
   name: 'BaseTool',
   props: {
-    toolName: {
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    popoverMessage: {
       type: String,
       required: true,
     },
-    registerTool: {
-      type: Boolean,
-      default: false,
-    }
+    toolName: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['click'],
   setup() {
@@ -28,15 +45,15 @@ export default {
     return { store };
   },
   mounted() {
-    if (this.registerTool) {
-      this.store.toolNames.push(this.toolName);
+    if (this.toolName) {
+      this.store.tools.push(this.toolName);
     }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.tool-container {
+.tool-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,5 +63,18 @@ export default {
   border: 1px solid white;
   border-radius: 5px;
   cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    filter: opacity(0.25);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.active {
+    &::before {
+      background-color: #0A0CA4;
+    }
+  }
 }
 </style>

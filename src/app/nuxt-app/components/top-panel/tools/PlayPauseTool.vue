@@ -1,24 +1,20 @@
 <template>
-  <va-popover
-    :message="labelName"
-    placement="bottom"
+  <BaseTool
+    :disabled="store.imageIds.length < 2"
+    :popover-message="labelName"
+    @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
   >
-    <BaseTool
-      tool-name="PlayTool"
-      @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
-    >
-      <template #icon>
-        <font-awesome-icon
-          v-if="!store.isLoopingImages"
-          icon="fa-solid fa-play"
-        />
-        <font-awesome-icon
-          v-else
-          icon="fa-solid fa-stop"
-        />
-      </template>
-    </BaseTool>
-  </va-popover>
+    <template #icon>
+      <font-awesome-icon
+        v-if="!store.isLoopingImages"
+        icon="fa-solid fa-play"
+      />
+      <font-awesome-icon
+        v-else
+        icon="fa-solid fa-stop"
+      />
+    </template>
+  </BaseTool>
 </template>
 
 <script>
