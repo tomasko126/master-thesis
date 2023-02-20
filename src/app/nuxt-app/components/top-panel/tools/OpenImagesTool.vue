@@ -1,6 +1,6 @@
 <template>
   <BaseTool
-    popover-message="Open images"
+    popover-message="Add images"
     :disabled="store.isLoopingImages"
     @click="openFileInput"
   >

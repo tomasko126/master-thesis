@@ -93,8 +93,8 @@ export default {
       }
       return [
         (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || `This field is required and must be a number`,
-        (value) => parseInt(value) > this.fromIdx || `Value must be bigger than ${this.fromIdx}`,
-        (value) => parseInt(value) <= this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length}`,
+        (value) => parseInt(value) > this.fromIdx && parseInt(value) > 0 || `Value must be bigger than ${this.fromIdx}`,
+        (value) => parseInt(value) <= this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length + 1}`,
         (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
       ];
     },
