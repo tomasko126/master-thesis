@@ -22,6 +22,8 @@
             class="number-input"
             :disabled="!store.hasImageDefinedGrid"
             :model-value="angle"
+            min="0"
+            max="90"
             @update:model-value="setAngle"
           />
         </template>
@@ -43,6 +45,7 @@
           <va-input
             type="number"
             class="number-input"
+            min="0"
             :disabled="!store.hasImageDefinedGrid"
             :model-value="offsetX"
             @update:model-value="setXOffset"
@@ -54,6 +57,7 @@
           <va-input
             type="number"
             class="number-input"
+            min="0"
             :disabled="!store.hasImageDefinedGrid"
             :model-value="offsetY"
             @update:model-value="setYOffset"
