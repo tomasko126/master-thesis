@@ -6,12 +6,20 @@
       :class="{ 'is-hidden': imageSrc }"
       @cornerstoneimagerendered="onCanvasImageRendered"
     />
-    <img
-      class="thumbnail"
-      :src="imageSrc"
-      alt="thumbnail"
-      @click="store.displayImageInElement(store.mainImageContainer, imageId)"
-    >
+    <div class="thumbnail-wrapper">
+      <va-chip
+        class="chip"
+        size="small"
+      >
+        {{ imageIdx }}
+      </va-chip>
+      <img
+        class="thumbnail"
+        :src="imageSrc"
+        alt="thumbnail"
+        @click="store.displayImageInElement(store.mainImageContainer, imageId)"
+      >
+    </div>
   </article>
 </template>
 
@@ -22,6 +30,10 @@ export default {
   props: {
     imageId: {
       type: String,
+      required: true,
+    },
+    imageIdx: {
+      type: Number,
       required: true,
     },
   },
@@ -76,13 +88,22 @@ export default {
     display: none;
   }
 }
-.thumbnail {
-  margin: 0 20px;
-  border: 1px solid global.$border-color;
-  border-radius: 5px;
-  padding: 5px;
-  cursor: pointer;
-  height: 100px;
-  min-width: 80px;
+.thumbnail-wrapper {
+  position: relative;
+
+  .chip {
+    position: absolute;
+    left: 14px;
+  }
+
+  .thumbnail {
+    margin: 0 20px;
+    border: 1px solid global.$border-color;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    height: 130px;
+    min-width: 80px;
+  }
 }
 </style>

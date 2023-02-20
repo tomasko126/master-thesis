@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 #animation-speed {
-  width: 150px;
+  width: 130px;
   margin: 5px 10px 0 0;
 }
 .number-input {

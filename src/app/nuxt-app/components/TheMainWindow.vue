@@ -9,9 +9,10 @@
     />
     <section id="image-thumbnails">
       <MainWindowImageThumbnail
-        v-for="imageId in store.imageIds"
+        v-for="(imageId, idx) in store.imageIds"
         :key="imageId"
         :image-id="imageId"
+        :image-idx="idx + 1"
       />
     </section>
   </section>
@@ -89,6 +90,7 @@ export default {
     overflow: auto;
     max-width: 100%;
     height: global.$bottom-image-thumbnails-height;
+    background-color: #081021;
   }
 }
 </style>
