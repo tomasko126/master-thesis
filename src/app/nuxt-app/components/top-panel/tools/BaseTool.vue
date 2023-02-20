@@ -3,14 +3,17 @@
     :message="popoverMessage"
     placement="bottom"
   >
-    <va-popover placement="bottom">
+    <va-popover
+      :message="popoverMessage"
+      placement="bottom"
+    >
       <!-- hack: this fixes weird behaviour of popover display -->
       <va-button
         :class="{ 'tool-button': true, 'disabled': disabled, 'active': active }"
         :inert="disabled"
         @click="$emit('click')"
       >
-        <slot name="icon" />
+        <slot />
       </va-button>
     </va-popover>
   </va-popover>
@@ -65,7 +68,6 @@ export default {
   cursor: pointer;
 
   &.disabled {
-    cursor: not-allowed;
     filter: opacity(0.25);
     pointer-events: none;
     user-select: none;

@@ -6,13 +6,11 @@
     tool-name="Grid"
     @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
   >
-    <template #icon>
-      <img
-        id="grid-icon"
-        alt="Grid"
-        src="/grid-icon.svg"
-      >
-    </template>
+    <img
+      id="grid-icon"
+      alt="Grid"
+      src="/grid-icon.svg"
+    >
   </BaseTool>
 </template>
 

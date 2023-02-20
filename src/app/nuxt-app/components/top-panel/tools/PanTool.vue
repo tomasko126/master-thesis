@@ -6,9 +6,7 @@
     tool-name="Pan"
     @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
-    </template>
+    <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
   </BaseTool>
 </template>
 

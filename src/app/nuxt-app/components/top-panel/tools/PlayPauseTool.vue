@@ -4,16 +4,14 @@
     :popover-message="labelName"
     @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
   >
-    <template #icon>
-      <font-awesome-icon
-        v-if="!store.isLoopingImages"
-        icon="fa-solid fa-play"
-      />
-      <font-awesome-icon
-        v-else
-        icon="fa-solid fa-stop"
-      />
-    </template>
+    <font-awesome-icon
+      v-if="!store.isLoopingImages"
+      icon="fa-solid fa-play"
+    />
+    <font-awesome-icon
+      v-else
+      icon="fa-solid fa-stop"
+    />
   </BaseTool>
 </template>
 

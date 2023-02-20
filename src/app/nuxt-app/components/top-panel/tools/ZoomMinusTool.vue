@@ -5,9 +5,7 @@
     @mousedown="zoomStart"
     @mouseup="zoomEnd"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
-    </template>
+    <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
   </BaseTool>
 </template>
 

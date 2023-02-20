@@ -4,9 +4,7 @@
     :disabled="store.isLoopingImages"
     @click="openFileInput"
   >
-    <template #icon>
-      <font-awesome-icon icon="fa-solid fa-folder" />
-    </template>
+    <font-awesome-icon icon="fa-solid fa-folder" />
   </BaseTool>
   <input
     ref="fileInput"
