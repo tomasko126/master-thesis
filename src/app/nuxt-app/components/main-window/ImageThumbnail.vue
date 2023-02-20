@@ -65,6 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/global';
 .fake-thumbnail {
   width: 200px;
   height: 200px;
@@ -77,7 +78,7 @@ export default {
 }
 .thumbnail {
   margin: 0 20px;
-  border: 1px solid #2d47d2;
+  border: 1px solid global.$border-color;
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;

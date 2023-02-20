@@ -62,7 +62,7 @@ export default {
 @use 'assets/global';
 #main-window {
   display: grid;
-  border: 2px solid #5b5bd0;
+  border: 2px solid global.$border-color;
   height: calc(100vh - global.$top-panel-height);
 
   #dicom-image {
@@ -74,7 +74,7 @@ export default {
   #image-thumbnails {
     display: flex;
     align-items: center;
-    border-top: 2px solid #5b5bd0;
+    border-top: 2px solid global.$border-color;
     overflow: auto;
     max-width: 100%;
     height: global.$bottom-image-thumbnails-height;
