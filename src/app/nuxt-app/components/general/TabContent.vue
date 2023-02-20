@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="tab-content-wrapper">
     <h2>{{ title }}</h2>
     <div class="tab-content">
       <slot name="content" />
@@ -26,10 +26,16 @@ h2 {
     margin-top: 20px;
   }
 }
-.tab-content {
+.tab-content-wrapper {
   margin: 5px;
-  border: 2px solid #8080805e;
-  border-radius: 3px;
-  background-color: #80808014;
+  padding: 5px;
+
+  .tab-content {
+    margin: 5px;
+    border: 2px solid #8080805e;
+    border-radius: 3px;
+    background-color: #80808014;
+  }
 }
+
 </style>

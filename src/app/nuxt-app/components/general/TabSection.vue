@@ -12,6 +12,13 @@ export default {
       type: String,
       required: true,
     },
+    alignItems: {
+      type: String,
+      default: 'center',
+      validator(value) {
+        return ['baseline', 'center'].includes(value);
+      },
+    },
   },
 };
 </script>
@@ -20,11 +27,7 @@ export default {
 .tab-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 8px 0;
-
-  :deep(input[type="number"]) {
-    width: 80px;
-  }
+  align-items: v-bind(alignItems);
+  margin: 12px;
 }
 </style>

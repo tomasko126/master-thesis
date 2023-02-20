@@ -1,0 +1,193 @@
+<template>
+  <GeneralTabContent title="Grid">
+    <template #content>
+      <GeneralTabSection label-text="Move:">
+        <template #content>
+          <va-button-toggle
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="moveMode"
+            :options="[
+              { label: 'Grid', value: 'grid' },
+              { label: 'Point', value: 'point' },
+            ]"
+            @update:model-value="setMoveMode"
+          />
+        </template>
+      </GeneralTabSection>
+      <va-divider />
+      <GeneralTabSection label-text="Angle:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="angle"
+            @update:model-value="setAngle"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="Spacing:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            min="1"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="spacing"
+            @update:model-value="setSpacing"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="X offset:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="offsetX"
+            @update:model-value="setXOffset"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="Y offset:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="offsetY"
+            @update:model-value="setYOffset"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="Points by height:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            min="2"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="noOfPrimaryLines"
+            @update:model-value="setNoOfPrimaryLines"
+          />
+        </template>
+      </GeneralTabSection>
+      <GeneralTabSection label-text="Points by width:">
+        <template #content>
+          <va-input
+            type="number"
+            class="number-input"
+            min="2"
+            :disabled="!store.hasImageDefinedGrid"
+            :model-value="noOfSecondaryLines"
+            @update:model-value="setNoOfSecondaryLines"
+          />
+        </template>
+      </GeneralTabSection>
+      <div class="grid-button">
+        <RightPanelGridCallToActionButton />
+      </div>
+    </template>
+  </GeneralTabContent>
+</template>
+
+<script>
+/* global cornerstoneTools */
+import { useGlobalStore } from '~/stores';
+
+export default {
+  setup() {
+    const store = useGlobalStore();
+    return { store };
+  },
+  computed: {
+    moveMode() {
+      return this.store.measurementData?.getMoveMode() ?? null;
+    },
+    angle() {
+      return this.store.measurementData?.getAngle() ?? null;
+    },
+    spacing() {
+      return this.store.measurementData?.getGridSpacing() ?? null;
+    },
+    offsetX() {
+      return this.store.measurementData?.getGridOffsetX()?.toFixed(2) ?? null;
+    },
+    offsetY() {
+      return this.store.measurementData?.getGridOffsetY()?.toFixed(2) ?? null;
+    },
+    noOfPrimaryLines() {
+      return this.store.measurementData?.getNoOfGridPrimaryLines() ?? null;
+    },
+    noOfSecondaryLines() {
+      return this.store.measurementData?.getNoOfGridSecondaryLines() ?? null;
+    },
+  },
+  methods: {
+    getGridTool() {
+      return cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid') ?? null;
+    },
+    setMoveMode(input) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.moveOneHandleOnly = input === 'point';
+    },
+    setAngle(input) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.angle = parseInt(input);
+    },
+    setSpacing(input) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.spacing = parseInt(input);
+    },
+    setXOffset(input) {
+      this.setOffset({ x: parseFloat(input), y: parseFloat(this.offsetY) });
+    },
+    setYOffset(input) {
+      this.setOffset({ x: parseFloat(this.offsetX), y: parseFloat(input) });
+    },
+    setOffset(coordinates) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.setOffset(coordinates, false);
+    },
+    setNoOfPrimaryLines(input) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.noOfPrimaryLines = parseInt(input);
+    },
+    setNoOfSecondaryLines(input) {
+      const gridTool = this.getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.noOfSecondaryLines = parseInt(input);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.number-input {
+  max-width: 100px;
+  min-width: 100px;
+}
+.grid-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>

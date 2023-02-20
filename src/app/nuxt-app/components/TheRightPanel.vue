@@ -1,5 +1,5 @@
 <template>
-  <section class="right-panel">
+  <aside class="right-panel">
     <va-tabs
       v-model="tabIndex"
       class="tabs"
@@ -11,15 +11,15 @@
       </template>
       <div>
         <template v-if="tabIndex === 0">
-          <RightPanelToolsImageSettings />
-          <RightPanelToolsAnimationSettings />
+          <RightPanelImageSettings />
+          <RightPanelAnimationSettings />
         </template>
         <template v-else>
-          <RightPanelToolsGridSettings />
+          <RightPanelGridSettings />
         </template>
       </div>
     </va-tabs>
-  </section>
+  </aside>
 </template>
 
 <script>

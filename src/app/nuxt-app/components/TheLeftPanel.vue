@@ -1,5 +1,5 @@
 <template>
-  <section class="left-panel" />
+  <aside class="left-panel" />
 </template>
 
 <script>

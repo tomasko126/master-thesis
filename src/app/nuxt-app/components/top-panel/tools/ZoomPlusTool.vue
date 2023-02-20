@@ -1,19 +1,14 @@
 <template>
-  <va-popover
-    message="Zoom in"
-    placement="bottom"
+  <BaseTool
+    :disabled="!store.imageIds.length"
+    popover-message="Zoom in"
+    @mousedown="zoomStart"
+    @mouseup="zoomEnd"
   >
-    <BaseTool
-      label="Zoom in"
-      tool-name="ZoomPlusTool"
-      @mousedown="zoomStart"
-      @mouseup="zoomEnd"
-    >
-      <template #icon>
-        <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" />
-      </template>
-    </BaseTool>
-  </va-popover>
+    <template #icon>
+      <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" />
+    </template>
+  </BaseTool>
 </template>
 
 <script>
@@ -25,7 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 /* global cornerstone */
 
 export default {
-  name: 'ZoomTool',
+  name: 'ZoomPlusTool',
   components: {
     FontAwesomeIcon,
     BaseTool,

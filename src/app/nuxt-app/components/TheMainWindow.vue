@@ -5,6 +5,7 @@
       ref="dicomImage"
       @cornerstonenewimage="onImageShown"
       @cornerstonetoolsmeasurementcompleted="onMeasurementCompleted"
+      @cornerstonetoolsmeasurementremoved="onGridRemoved"
     />
     <section id="image-thumbnails">
       <MainWindowImageThumbnail
@@ -17,7 +18,10 @@
 </template>
 
 <script>
+/* global cornerstoneTools */
+
 import { useGlobalStore } from '~/stores/index';
+import MeasurementData from '~/functions/MeasurementData.js';
 
 export default {
   setup() {
@@ -41,20 +45,27 @@ export default {
     this.store.unregisterAllTools();
   },
   methods: {
-    onMeasurementCompleted(e) {
-      console.log('measurement completed');
-      console.log(e);
+    onGridRemoved() {
+      this.store.measurementData = null;
+    },
+    onImageShown(e) {
+      this.store.shownImageId = e.detail.image.imageId;
+      const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
+      if (tool) {
+        this.store.measurementData = new MeasurementData(tool);
+      }
+    },
+    onMeasurementCompleted() {
+      const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
+      if (tool) {
+        this.store.measurementData = new MeasurementData(tool);
+      }
     },
     onNewImages() {
       this.store.displayImageInElement(this.store.mainImageContainer, this.store.imageIds[0]);
       this.store.registerAllTools();
     },
-    onImageShown(e) {
-      console.log('on image shown');
-      console.log(e);
-      this.store.shownImageId = e.detail.image.imageId;
-    },
-  }
+  },
 };
 </script>
 

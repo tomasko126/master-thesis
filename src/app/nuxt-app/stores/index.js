@@ -22,10 +22,17 @@ export const useGlobalStore = defineStore({
             },
             isLoopingImages: false,
             mainImageContainer: null,
+            measurementData: null,
             imageIds: [],
             shownImageId: null,
-            toolNames: [],
+            activeTool: null,
+            tools: [],
         };
+    },
+    getters: {
+        hasImageDefinedGrid(state) {
+            return state.measurementData?.hasGrid() ?? false;
+        },
     },
     actions: {
         /**
@@ -84,24 +91,33 @@ export const useGlobalStore = defineStore({
             }
         },
         activateTool(toolName, toolOptions = {}) {
-            // todo: deactivate another tools
+            if (this.activeTool) {
+                // Deactivate another active tool
+                this.deactivateTool(toolName);
+            }
             cornerstoneTools.setToolActiveForElement(this.mainImageContainer, toolName, toolOptions);
+            this.activeTool = toolName;
+        },
+        deactivateTool(toolName) {
+            cornerstoneTools.setToolEnabledForElement(this.mainImageContainer, toolName);
+            this.activeTool = null;
         },
         registerTool(toolName) {
-            const tool = cornerstoneTools[`${toolName}`];
+            const tool = cornerstoneTools[`${toolName}Tool`];
             cornerstoneTools.addToolForElement(this.mainImageContainer, tool);
+            cornerstoneTools.setToolEnabledForElement(this.mainImageContainer, toolName);
         },
         unregisterTool(toolName) {
-            const tool = cornerstoneTools[`${toolName}`];
+            const tool = cornerstoneTools[`${toolName}Tool`];
             cornerstoneTools.removeTool(tool);
         },
         registerAllTools() {
-            for (const toolName of this.toolNames) {
+            for (const toolName of this.tools) {
                 this.registerTool(toolName);
             }
         },
         unregisterAllTools() {
-            for (const toolName of this.toolNames) {
+            for (const toolName of this.tools) {
                 this.unregisterTool(toolName);
             }
         },

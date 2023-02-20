@@ -1,11 +1,9 @@
 <template>
   <main>
-    <section class="grid-section">
-      <TheTopPanel class="top-panel" />
-      <TheLeftPanel class="left-panel" />
-      <TheMainWindow class="main-window" />
-      <TheRightPanel class="right-panel" />
-    </section>
+    <TheTopPanel class="top-panel" />
+    <TheLeftPanel class="left-panel" />
+    <TheMainWindow class="main-window" />
+    <TheRightPanel class="right-panel" />
   </main>
 </template>
 
@@ -63,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "assets/global";
-.grid-section {
+main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
