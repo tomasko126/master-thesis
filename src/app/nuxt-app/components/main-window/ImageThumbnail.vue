@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article>
     <div
       ref="fakeThumbnail"
       class="fake-thumbnail"
@@ -12,7 +12,7 @@
       alt="thumbnail"
       @click="store.displayImageInElement(store.mainImageContainer, imageId)"
     >
-  </div>
+  </article>
 </template>
 
 <script>
