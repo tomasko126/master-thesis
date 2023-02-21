@@ -99,12 +99,14 @@ export default {
   height: calc(100vh - global.$top-panel-height);
 
   #dicom-image {
+    background: black;
     height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height);
     max-width: 100%;
     overflow: hidden;
 
     .file-upload {
       height: 100%;
+      background-color: black !important;
 
       :deep(.va-file-upload__field) {
         height: inherit;
@@ -115,11 +117,10 @@ export default {
   #image-thumbnails {
     display: flex;
     align-items: center;
-    border-top: 2px solid global.$border-color;
+    background: black;
     overflow: auto;
     max-width: 100%;
     height: global.$bottom-image-thumbnails-height;
-    background-color: rgba(21, 79, 193, 0.08);
   }
 }
 </style>

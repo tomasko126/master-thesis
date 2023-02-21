@@ -36,8 +36,6 @@ export default {
 @use 'assets/global';
 .right-panel {
   border: 2px solid global.$border-color;
-  background-color: white;
-  color: black;
 
   :deep(nav) {
     justify-content: space-evenly;
