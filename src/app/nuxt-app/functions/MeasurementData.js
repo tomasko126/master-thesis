@@ -50,6 +50,9 @@ class MeasurementData {
     }
 
     getGridSpacing() {
+        if (!this.hasGrid()) {
+            return null;
+        }
         return this.tool.spacing;
     }
 }
