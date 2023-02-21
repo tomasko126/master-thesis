@@ -71,6 +71,12 @@ export const useGlobalStore = defineStore({
                 toIdx: Math.max( this.imageIds.length - 1, 0),
             }
         },
+        removeImages() {
+            this.imageIds = [];
+            this.shownImageId = null;
+            this.measurementData = null;
+            cornerstone.imageCache.purgeCache();
+        },
         /**
          * Register image container
          * @param {HTMLElement} element

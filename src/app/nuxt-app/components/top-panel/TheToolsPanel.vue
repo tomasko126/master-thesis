@@ -1,6 +1,7 @@
 <template>
   <section class="tools-panel">
     <OpenImagesTool />
+    <CloseImagesTool />
     <va-divider
       class="divider"
       vertical
@@ -24,9 +25,11 @@ import PanTool from './tools/PanTool.vue';
 import PlayPauseTool from './tools/PlayPauseTool.vue';
 import OpenImagesTool from './tools/OpenImagesTool.vue';
 import GridTool from './tools/GridTool.vue';
+import CloseImagesTool from './tools/CloseImagesTool.vue';
 
 export default {
   components: {
+    CloseImagesTool,
     GridTool,
     OpenImagesTool,
     PlayPauseTool,
