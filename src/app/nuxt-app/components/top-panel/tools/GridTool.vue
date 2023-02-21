@@ -1,7 +1,7 @@
 <template>
   <BaseTool
     :active="store.activeTool === 'Grid'"
-    :disabled="!store.hasImageDefinedGrid"
+    :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
     popover-message="Move grid/grid's point"
     tool-name="Grid"
     @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
