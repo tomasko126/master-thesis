@@ -4,13 +4,13 @@
       <GeneralTabSection label-text="Frame:">
         <template #content>
           <va-counter
-              v-model="counter"
-              class="counter"
-              :disabled="!store.imageIds.length || store.isLoopingImages"
-              :min="1"
-              :max="store.imageIds.length"
-              width="100px"
-              @update:model-value="onFrameNumberChange"
+            v-model="counter"
+            class="counter"
+            :disabled="!store.imageIds.length || store.isLoopingImages"
+            :min="1"
+            :max="store.imageIds.length"
+            width="100px"
+            @update:model-value="onFrameNumberChange"
           />
         </template>
       </GeneralTabSection>
@@ -77,16 +77,16 @@ export default {
       counter: 1,
     };
   },
+  computed: {
+    isButtonDisabled() {
+      return this.store.imageIds.length === 0;
+    },
+  },
   watch: {
     'store.shownImageId': {
       handler() {
         this.counter = this.store.imageIds.indexOf(this.store.shownImageId) + 1;
       },
-    },
-  },
-  computed: {
-    isButtonDisabled() {
-      return this.store.imageIds.length === 0;
     },
   },
   methods: {
