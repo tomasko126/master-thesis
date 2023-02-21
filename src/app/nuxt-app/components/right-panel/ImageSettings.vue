@@ -1,60 +1,52 @@
 <template>
   <GeneralTabContent title="Image">
-    <template #content>
-      <GeneralTabSection label-text="Frame:">
-        <template #content>
-          <va-counter
-            v-model="counter"
-            class="counter"
-            :disabled="!store.imageIds.length || store.isLoopingImages"
-            :min="1"
-            :max="store.imageIds.length"
-            width="100px"
-            @update:model-value="onFrameNumberChange"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Brightness:">
-        <template #content>
-          <div class="brightness-settings">
-            <va-button
-              size="small"
-              :disabled="isButtonDisabled"
-              @click="onBrightnessChange(10)"
-            >
-              <font-awesome-icon icon="fa-solid fa-plus" />
-            </va-button>
-            <va-button
-              size="small"
-              :disabled="isButtonDisabled"
-              @click="onBrightnessChange(-10)"
-            >
-              <font-awesome-icon icon="fa-solid fa-minus" />
-            </va-button>
-          </div>
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Contrast:">
-        <template #content>
-          <div class="contrast-settings">
-            <va-button
-              size="small"
-              :disabled="isButtonDisabled"
-              @click="onContrastChange(-10)"
-            >
-              <font-awesome-icon icon="fa-solid fa-plus" />
-            </va-button>
-            <va-button
-              size="small"
-              :disabled="isButtonDisabled"
-              @click="onContrastChange(10)"
-            >
-              <font-awesome-icon icon="fa-solid fa-minus" />
-            </va-button>
-          </div>
-        </template>
-      </GeneralTabSection>
-    </template>
+    <GeneralTabSection label-text="Frame:">
+      <va-counter
+        v-model="counter"
+        class="counter"
+        :disabled="!store.imageIds.length || store.isLoopingImages"
+        :min="1"
+        :max="store.imageIds.length"
+        width="100px"
+        @update:model-value="onFrameNumberChange"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Brightness:">
+      <div class="brightness-settings">
+        <va-button
+          size="small"
+          :disabled="isButtonDisabled"
+          @click="onBrightnessChange(10)"
+        >
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </va-button>
+        <va-button
+          size="small"
+          :disabled="isButtonDisabled"
+          @click="onBrightnessChange(-10)"
+        >
+          <font-awesome-icon icon="fa-solid fa-minus" />
+        </va-button>
+      </div>
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Contrast:">
+      <div class="contrast-settings">
+        <va-button
+          size="small"
+          :disabled="isButtonDisabled"
+          @click="onContrastChange(-10)"
+        >
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </va-button>
+        <va-button
+          size="small"
+          :disabled="isButtonDisabled"
+          @click="onContrastChange(10)"
+        >
+          <font-awesome-icon icon="fa-solid fa-minus" />
+        </va-button>
+      </div>
+    </GeneralTabSection>
   </GeneralTabContent>
 </template>
 

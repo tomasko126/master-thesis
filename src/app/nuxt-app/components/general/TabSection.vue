@@ -1,7 +1,7 @@
 <template>
   <div class="tab-section">
     <label>{{ labelText }}</label>
-    <slot name="content" />
+    <slot />
   </div>
 </template>
 

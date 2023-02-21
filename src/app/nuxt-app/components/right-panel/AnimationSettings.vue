@@ -1,55 +1,47 @@
 <template>
   <GeneralTabContent title="Animation">
-    <template #content>
-      <GeneralTabSection label-text="Speed:">
-        <template #content>
-          <va-slider
-            id="animation-speed"
-            v-model="speed"
-            :disabled="areInputsDisabled"
-            track-label-visible
-            :min="1"
-            :max="30"
-          >
-            <template #trackLabel="slotProps">
-              {{ `${slotProps.value} FPS` }}
-            </template>
-          </va-slider>
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection
-        label-text="From image:"
-        align-items="baseline"
+    <GeneralTabSection label-text="Speed:">
+      <va-slider
+        id="animation-speed"
+        v-model="speed"
+        :disabled="areInputsDisabled"
+        track-label-visible
+        :min="1"
+        :max="30"
       >
-        <template #content>
-          <va-input
-            v-model="fromIdx"
-            class="number-input"
-            type="number"
-            :disabled="areInputsDisabled || store.isLoopingImages"
-            :min="store.imageIds ? 1 : 0"
-            :max="store.imageIds ? store.imageIds.length - 1 : 1"
-            :rules="fromImageRules"
-          />
+        <template #trackLabel="slotProps">
+          {{ `${slotProps.value} FPS` }}
         </template>
-      </GeneralTabSection>
-      <GeneralTabSection
-        label-text="To image:"
-        align-items="baseline"
-      >
-        <template #content>
-          <va-input
-            v-model="toIdx"
-            class="number-input"
-            type="number"
-            :disabled="areInputsDisabled || store.isLoopingImages"
-            :min="store.imageIds ? 1 : 0"
-            :max="store.imageIds ? store.imageIds.length : 1"
-            :rules="toImageRules"
-          />
-        </template>
-      </GeneralTabSection>
-    </template>
+      </va-slider>
+    </GeneralTabSection>
+    <GeneralTabSection
+      label-text="From image:"
+      align-items="baseline"
+    >
+      <va-input
+        v-model="fromIdx"
+        class="number-input"
+        type="number"
+        :disabled="areInputsDisabled || store.isLoopingImages"
+        :min="store.imageIds ? 1 : 0"
+        :max="store.imageIds ? store.imageIds.length - 1 : 1"
+        :rules="fromImageRules"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection
+      label-text="To image:"
+      align-items="baseline"
+    >
+      <va-input
+        v-model="toIdx"
+        class="number-input"
+        type="number"
+        :disabled="areInputsDisabled || store.isLoopingImages"
+        :min="store.imageIds ? 1 : 0"
+        :max="store.imageIds ? store.imageIds.length : 1"
+        :rules="toImageRules"
+      />
+    </GeneralTabSection>
   </GeneralTabContent>
 </template>
 

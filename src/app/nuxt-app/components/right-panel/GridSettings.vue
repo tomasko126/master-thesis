@@ -1,97 +1,81 @@
 <template>
   <GeneralTabContent title="Grid">
-    <template #content>
-      <GeneralTabSection label-text="Move:">
-        <template #content>
-          <va-button-toggle
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="moveMode"
-            :options="[
-              { label: 'Grid', value: 'grid' },
-              { label: 'Point', value: 'point' },
-            ]"
-            @update:model-value="setMoveMode"
-          />
-        </template>
-      </GeneralTabSection>
-      <va-divider />
-      <GeneralTabSection label-text="Angle:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="angle"
-            min="0"
-            max="90"
-            @update:model-value="setAngle"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Spacing:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            min="1"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="spacing"
-            @update:model-value="setSpacing"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="X offset:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            min="0"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="offsetX"
-            @update:model-value="setXOffset"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Y offset:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            min="0"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="offsetY"
-            @update:model-value="setYOffset"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Points by height:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            min="2"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="noOfPrimaryLines"
-            @update:model-value="setNoOfPrimaryLines"
-          />
-        </template>
-      </GeneralTabSection>
-      <GeneralTabSection label-text="Points by width:">
-        <template #content>
-          <va-input
-            type="number"
-            class="number-input"
-            min="2"
-            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-            :model-value="noOfSecondaryLines"
-            @update:model-value="setNoOfSecondaryLines"
-          />
-        </template>
-      </GeneralTabSection>
-      <div class="grid-button">
-        <RightPanelGridCallToActionButton />
-      </div>
-    </template>
+    <GeneralTabSection label-text="Move:">
+      <va-button-toggle
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="moveMode"
+        :options="[
+          { label: 'Grid', value: 'grid' },
+          { label: 'Point', value: 'point' },
+        ]"
+        @update:model-value="setMoveMode"
+      />
+    </GeneralTabSection>
+    <va-divider />
+    <GeneralTabSection label-text="Angle:">
+      <va-input
+        type="number"
+        class="number-input"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="angle"
+        min="0"
+        max="90"
+        @update:model-value="setAngle"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Spacing:">
+      <va-input
+        type="number"
+        class="number-input"
+        min="1"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="spacing"
+        @update:model-value="setSpacing"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="X offset:">
+      <va-input
+        type="number"
+        class="number-input"
+        min="0"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="offsetX"
+        @update:model-value="setXOffset"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Y offset:">
+      <va-input
+        type="number"
+        class="number-input"
+        min="0"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="offsetY"
+        @update:model-value="setYOffset"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Points by height:">
+      <va-input
+        type="number"
+        class="number-input"
+        min="2"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="noOfPrimaryLines"
+        @update:model-value="setNoOfPrimaryLines"
+      />
+    </GeneralTabSection>
+    <GeneralTabSection label-text="Points by width:">
+      <va-input
+        type="number"
+        class="number-input"
+        min="2"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="noOfSecondaryLines"
+        @update:model-value="setNoOfSecondaryLines"
+      />
+    </GeneralTabSection>
+    <div class="grid-button">
+      <RightPanelGridCallToActionButton />
+    </div>
   </GeneralTabContent>
 </template>
 

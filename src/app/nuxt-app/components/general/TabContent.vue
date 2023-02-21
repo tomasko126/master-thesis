@@ -2,7 +2,7 @@
   <section class="tab-content-wrapper">
     <h2>{{ title }}</h2>
     <div class="tab-content">
-      <slot name="content" />
+      <slot />
     </div>
   </section>
 </template>
