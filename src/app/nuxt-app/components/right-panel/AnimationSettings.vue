@@ -79,9 +79,9 @@ export default {
         ];
       }
       return [
-        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || `This field is required and must be a number`,
-        (value) => parseInt(value) > 0 || `Value must be bigger than 0`,
-        (value) => parseInt(value) <= this.store.imageIds.length - 1 || `Value must be lower than ${this.store.imageIds.length - 1}`,
+        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !this.store.imageIds.length || `This field is required and must be a number`,
+        (value) => parseInt(value) > 0 || !this.store.imageIds.length || `Value must be bigger than 0`,
+        (value) => parseInt(value) <= this.store.imageIds.length - 1 || !this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length - 1}`,
         (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
       ];
     },
@@ -92,8 +92,8 @@ export default {
         ];
       }
       return [
-        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || `This field is required and must be a number`,
-        (value) => parseInt(value) > this.fromIdx && parseInt(value) > 0 || `Value must be bigger than ${this.fromIdx}`,
+        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !this.store.imageIds.length || `This field is required and must be a number`,
+        (value) => parseInt(value) > this.fromIdx && parseInt(value) > 0 || !this.store.imageIds.length || `Value must be bigger than ${this.fromIdx}`,
         (value) => parseInt(value) <= this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length + 1}`,
         (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
       ];
@@ -101,7 +101,7 @@ export default {
   },
   watch: {
     'store.imageIds'(newValue) {
-      this.fromIdx = 1;
+      this.fromIdx = newValue.length ? 1 : 0;
       this.toIdx = newValue.length;
     },
     fromIdx(newValue) {
