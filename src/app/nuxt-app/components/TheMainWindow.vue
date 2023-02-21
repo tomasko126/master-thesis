@@ -15,6 +15,8 @@
         hide-file-list
         drop-zone-text="Drag in or"
         upload-button-text="Upload images"
+        :disabled="store.imageIds.length > 0"
+        @file-added="onFileAdded"
       />
     </div>
     <section id="image-thumbnails">
@@ -45,12 +47,6 @@ export default {
     };
   },
   watch: {
-    files: {
-      deep: true,
-      async handler() {
-        await this.store.loadImagesFromFiles(this.files);
-      },
-    },
     'store.imageIds': {
       deep: true,
       handler() {
@@ -67,6 +63,10 @@ export default {
     this.store.unregisterAllTools();
   },
   methods: {
+    onFileAdded() {
+      this.store.loadImagesFromFiles(this.files);
+      this.files = [];
+    },
     onGridRemoved() {
       this.store.measurementData = null;
     },
@@ -119,7 +119,7 @@ export default {
     overflow: auto;
     max-width: 100%;
     height: global.$bottom-image-thumbnails-height;
-    background-color: #081021;
+    background-color: rgba(21, 79, 193, 0.08);
   }
 }
 </style>
