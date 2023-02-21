@@ -10,6 +10,7 @@
       <va-chip
         class="chip"
         size="small"
+        square
       >
         {{ imageIdx }}
       </va-chip>
@@ -93,7 +94,7 @@ export default {
 
   .chip {
     position: absolute;
-    left: 14px;
+    left: 15px;
   }
 
   .thumbnail {
