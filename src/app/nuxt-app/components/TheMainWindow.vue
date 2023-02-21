@@ -6,7 +6,17 @@
       @cornerstonenewimage="onImageShown"
       @cornerstonetoolsmeasurementcompleted="onMeasurementCompleted"
       @cornerstonetoolsmeasurementremoved="onGridRemoved"
-    />
+    >
+      <va-file-upload
+        v-if="!store.imageIds.length"
+        v-model="files"
+        class="file-upload"
+        dropzone
+        hide-file-list
+        drop-zone-text="Drag in or"
+        upload-button-text="Upload images"
+      />
+    </div>
     <section id="image-thumbnails">
       <MainWindowImageThumbnail
         v-for="(imageId, idx) in store.imageIds"
@@ -29,7 +39,18 @@ export default {
     const store = useGlobalStore();
     return { store };
   },
+  data() {
+    return {
+      files: [],
+    };
+  },
   watch: {
+    files: {
+      deep: true,
+      async handler() {
+        await this.store.loadImagesFromFiles(this.files);
+      },
+    },
     'store.imageIds': {
       deep: true,
       handler() {
@@ -81,6 +102,14 @@ export default {
     height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height);
     max-width: 100%;
     overflow: hidden;
+
+    .file-upload {
+      height: 100%;
+
+      :deep(.va-file-upload__field) {
+        height: inherit;
+      }
+    }
   }
 
   #image-thumbnails {
