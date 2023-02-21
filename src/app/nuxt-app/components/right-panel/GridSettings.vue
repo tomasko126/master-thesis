@@ -4,7 +4,7 @@
       <GeneralTabSection label-text="Move:">
         <template #content>
           <va-button-toggle
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="moveMode"
             :options="[
               { label: 'Grid', value: 'grid' },
@@ -20,7 +20,7 @@
           <va-input
             type="number"
             class="number-input"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="angle"
             min="0"
             max="90"
@@ -34,7 +34,7 @@
             type="number"
             class="number-input"
             min="1"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="spacing"
             @update:model-value="setSpacing"
           />
@@ -46,7 +46,7 @@
             type="number"
             class="number-input"
             min="0"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="offsetX"
             @update:model-value="setXOffset"
           />
@@ -58,7 +58,7 @@
             type="number"
             class="number-input"
             min="0"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="offsetY"
             @update:model-value="setYOffset"
           />
@@ -70,7 +70,7 @@
             type="number"
             class="number-input"
             min="2"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="noOfPrimaryLines"
             @update:model-value="setNoOfPrimaryLines"
           />
@@ -82,7 +82,7 @@
             type="number"
             class="number-input"
             min="2"
-            :disabled="!store.hasImageDefinedGrid"
+            :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
             :model-value="noOfSecondaryLines"
             @update:model-value="setNoOfSecondaryLines"
           />
