@@ -41,6 +41,9 @@ export const useGlobalStore = defineStore({
          * @returns {Promise<void>}
          */
         async loadImagesFromFiles(imageFiles) {
+            // Purge existing cache
+            cornerstone.imageCache.purgeCache();
+
             // Retrieve image IDs used for referencing images
             const imageIds = [];
             for (const imageFile of imageFiles) {
