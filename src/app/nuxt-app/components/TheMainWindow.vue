@@ -35,6 +35,7 @@
 
 import { useGlobalStore } from '~/stores/index';
 import MeasurementData from '~/functions/MeasurementData.js';
+import DicomHeaderParser from '~/functions/DicomHeaderParser.js';
 
 export default {
   setup() {
@@ -57,6 +58,8 @@ export default {
   mounted() {
     this.store.registerImageContainer(this.$refs['dicomImage'], true);
     this.store.registerAllTools();
+
+    this.store.dicomHeaderParser = new DicomHeaderParser();
   },
   unmounted() {
     this.store.unregisterImageContainer(this.$refs['dicomImage'], true);
@@ -76,6 +79,7 @@ export default {
       if (tool) {
         this.store.measurementData = new MeasurementData(tool);
       }
+      this.store.dicomHeaderParser = new DicomHeaderParser();
     },
     onMeasurementCompleted() {
       const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');

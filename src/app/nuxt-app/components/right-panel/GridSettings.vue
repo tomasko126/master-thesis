@@ -178,4 +178,7 @@ export default {
   justify-content: center;
   margin-bottom: 10px;
 }
+.va-divider {
+  --va-divider-border-top-color: rgba(128, 128, 128, 0.36);
+}
 </style>

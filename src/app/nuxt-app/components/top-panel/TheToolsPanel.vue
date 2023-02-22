@@ -2,17 +2,11 @@
   <section class="tools-panel">
     <OpenImagesTool />
     <CloseImagesTool />
-    <va-divider
-      class="divider"
-      vertical
-    />
+    <va-divider vertical />
     <PlayPauseTool />
     <ZoomPlusTool />
     <ZoomMinusTool />
-    <va-divider
-      class="divider"
-      vertical
-    />
+    <va-divider vertical />
     <PanTool />
     <GridTool />
   </section>
@@ -48,7 +42,7 @@ export default {
   justify-content: center;
   height: global.$top-panel-height;
 
-  .divider {
+  .va-divider {
     height: 25px;
   }
 }

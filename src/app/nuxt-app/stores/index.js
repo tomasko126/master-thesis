@@ -27,6 +27,7 @@ export const useGlobalStore = defineStore({
             shownImageId: null,
             activeTool: null,
             tools: [],
+            dicomHeaderParser: null,
         };
     },
     getters: {
@@ -75,6 +76,7 @@ export const useGlobalStore = defineStore({
             this.imageIds = [];
             this.shownImageId = null;
             this.measurementData = null;
+            this.dicomHeaderParser = null;
             cornerstone.imageCache.purgeCache();
         },
         /**
