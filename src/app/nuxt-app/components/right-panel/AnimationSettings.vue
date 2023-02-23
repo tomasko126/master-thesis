@@ -55,8 +55,8 @@ export default {
   },
   data() {
     return {
-      fromIdx: this.store.animation.fromIdx,
-      toIdx: this.store.animation.toIdx,
+      fromIdx: this.store.animation.fromIdx + 1,
+      toIdx: this.store.animation.toIdx + 1,
       speed: 30,
     };
   },
