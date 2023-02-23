@@ -1,5 +1,5 @@
 <template>
-  <GeneralTabContent>
+  <GeneralTabContent title="Image information">
     <GeneralTabSection label-text="Patient's name:">
       {{ patientName }}
     </GeneralTabSection>

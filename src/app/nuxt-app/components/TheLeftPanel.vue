@@ -10,7 +10,8 @@
       </template>
       <div>
         <template v-if="tabIndex === 0">
-          <LeftPanelGeneralInfo />
+          <LeftPanelGeneralInformation />
+          <LeftPanelGridAlgorithmSettings />
         </template>
       </div>
     </va-tabs>

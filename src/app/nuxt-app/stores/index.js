@@ -15,6 +15,11 @@ export const useGlobalStore = defineStore({
     id: 'globalStore',
     state: () => {
         return {
+            algorithm: {
+                curvature: 0.0015,
+                force: 0.5,
+                stopTime: 0.150,
+            },
             animation: {
                 speed: 30, // in fps
                 fromIdx: 0, // image idx
@@ -22,12 +27,12 @@ export const useGlobalStore = defineStore({
             },
             isLoopingImages: false,
             mainImageContainer: null,
-            measurementData: null,
+            measurementData: null, // { MeasurementData }
             imageIds: [],
             shownImageId: null,
             activeTool: null,
             tools: [],
-            dicomHeaderParser: null,
+            dicomHeaderParser: null, // { DicomHeaderParser }
         };
     },
     getters: {
