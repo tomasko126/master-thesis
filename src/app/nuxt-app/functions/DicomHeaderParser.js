@@ -3,7 +3,15 @@
 import { useGlobalStore } from '~/stores';
 const store = useGlobalStore();
 
+/**
+ * Class responsible for parsing various DICOM headers from shown image
+ * @hideconstructor
+ */
 class DicomHeaderParser {
+    /**
+     * Retrieve shown image
+     * @returns {Image|null}
+     */
     getImage() {
         try {
             return cornerstone.getImage(store.mainImageContainer);
@@ -12,6 +20,10 @@ class DicomHeaderParser {
         }
     }
 
+    /**
+     * Retrieve modality from image's DICOM header
+     * @returns {string|null}
+     */
     getModality() {
         const image = this.getImage();
         if (!image) {
@@ -20,6 +32,10 @@ class DicomHeaderParser {
         return image.data.string('x00080060');
     }
 
+    /**
+     * Retrieve patient's name from image's DICOM header
+     * @returns {string|null}
+     */
     getPatientName() {
         const image = this.getImage();
         if (!image) {
@@ -28,6 +44,10 @@ class DicomHeaderParser {
         return image.data.string('x00100010');
     }
 
+    /**
+     * Retrieve series number from image's DICOM header
+     * @returns {string|null}
+     */
     getSeriesNumber() {
         const image = this.getImage();
         if (!image) {
@@ -36,6 +56,10 @@ class DicomHeaderParser {
         return image.data.string('x00200011');
     }
 
+    /**
+     * Retrieve width from image's DICOM header
+     * @returns {number|null}
+     */
     getWindowWidth() {
         const image = this.getImage();
         if (!image) {
@@ -44,6 +68,10 @@ class DicomHeaderParser {
         return image.width;
     }
 
+    /**
+     * Retrieve height from image's DICOM header
+     * @returns {number|null}
+     */
     getWindowHeight() {
         const image = this.getImage();
         if (!image) {
