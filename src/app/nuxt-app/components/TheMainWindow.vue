@@ -99,7 +99,7 @@ export default {
 @use 'assets/global';
 #main-window {
   display: grid;
-  border: 2px solid global.$border-color;
+  border-top: 2px solid global.$border-color;
   height: calc(100vh - global.$top-panel-height);
 
   #dicom-image {
