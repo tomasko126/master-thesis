@@ -12,7 +12,7 @@ class DicomHeaderParser {
      * Retrieve shown image
      * @returns {Image|null}
      */
-    getImage() {
+    #getImage() {
         try {
             return cornerstone.getImage(store.mainImageContainer);
         } catch (e) {
@@ -25,7 +25,7 @@ class DicomHeaderParser {
      * @returns {string|null}
      */
     getModality() {
-        const image = this.getImage();
+        const image = this.#getImage();
         if (!image) {
             return null;
         }
@@ -37,7 +37,7 @@ class DicomHeaderParser {
      * @returns {string|null}
      */
     getPatientName() {
-        const image = this.getImage();
+        const image = this.#getImage();
         if (!image) {
             return null;
         }
@@ -49,7 +49,7 @@ class DicomHeaderParser {
      * @returns {string|null}
      */
     getSeriesNumber() {
-        const image = this.getImage();
+        const image = this.#getImage();
         if (!image) {
             return null;
         }
@@ -61,7 +61,7 @@ class DicomHeaderParser {
      * @returns {number|null}
      */
     getWindowWidth() {
-        const image = this.getImage();
+        const image = this.#getImage();
         if (!image) {
             return null;
         }
@@ -73,7 +73,7 @@ class DicomHeaderParser {
      * @returns {number|null}
      */
     getWindowHeight() {
-        const image = this.getImage();
+        const image = this.#getImage();
         if (!image) {
             return null;
         }
