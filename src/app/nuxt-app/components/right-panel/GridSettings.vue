@@ -5,8 +5,8 @@
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="moveMode"
         :options="[
-          { label: 'Grid', value: 'grid' },
-          { label: 'Point', value: 'point' },
+          { label: 'Grid', value: MOVING_MODE.GRID },
+          { label: 'Point', value: MOVING_MODE.POINT },
         ]"
         @update:model-value="setMoveMode"
       />
@@ -82,33 +82,39 @@
 <script>
 /* global cornerstoneTools */
 import { useGlobalStore } from '~/stores';
+import { MOVING_MODE } from '~/functions/enums/GridEnums.js';
 
 export default {
   setup() {
     const store = useGlobalStore();
     return { store };
   },
+  data() {
+    return {
+      MOVING_MODE,
+    };
+  },
   computed: {
     moveMode() {
-      return this.store.measurementData?.getMoveMode() ?? null;
+      return this.store.gridState?.getMovingMode() ?? null;
     },
     angle() {
-      return this.store.measurementData?.getAngle() ?? null;
+      return this.store.gridState?.getAngle() ?? null;
     },
     spacing() {
-      return this.store.measurementData?.getGridSpacing() ?? null;
+      return this.store.gridState?.getSpacing() ?? null;
     },
     offsetX() {
-      return this.store.measurementData?.getGridOffsetX()?.toFixed(2) ?? null;
+      return this.store.gridState?.getOffsetX()?.toFixed(2) ?? null;
     },
     offsetY() {
-      return this.store.measurementData?.getGridOffsetY()?.toFixed(2) ?? null;
+      return this.store.gridState?.getOffsetY()?.toFixed(2) ?? null;
     },
     noOfPrimaryLines() {
-      return this.store.measurementData?.getNoOfGridPrimaryLines() ?? null;
+      return this.store.gridState?.getNoOfPrimaryLines() ?? null;
     },
     noOfSecondaryLines() {
-      return this.store.measurementData?.getNoOfGridSecondaryLines() ?? null;
+      return this.store.gridState?.getNoOfSecondaryLines() ?? null;
     },
   },
   methods: {
@@ -120,7 +126,7 @@ export default {
       if (!gridTool) {
         return;
       }
-      gridTool.moveOneHandleOnly = input === 'point';
+      gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
     },
     setAngle(input) {
       const gridTool = this.getGridTool();

@@ -34,7 +34,7 @@
 /* global cornerstoneTools */
 
 import { useGlobalStore } from '~/stores/index';
-import MeasurementData from '~/functions/MeasurementData.js';
+import GridState from '~/functions/GridState.js';
 import DicomHeaderParser from '~/functions/DicomHeaderParser.js';
 
 export default {
@@ -71,20 +71,20 @@ export default {
       this.files = [];
     },
     onGridRemoved() {
-      this.store.measurementData = null;
+      this.store.gridState = null;
     },
     onImageShown(e) {
       this.store.shownImageId = e.detail.image.imageId;
       const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
       if (tool) {
-        this.store.measurementData = new MeasurementData(tool);
+        this.store.gridState = new GridState(tool);
       }
       this.store.dicomHeaderParser = new DicomHeaderParser();
     },
     onMeasurementCompleted() {
       const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
       if (tool) {
-        this.store.measurementData = new MeasurementData(tool);
+        this.store.gridState = new GridState(tool);
       }
     },
     onNewImages() {

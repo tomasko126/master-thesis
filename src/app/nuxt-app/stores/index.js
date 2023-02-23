@@ -27,7 +27,7 @@ export const useGlobalStore = defineStore({
             },
             isLoopingImages: false,
             mainImageContainer: null,
-            measurementData: null, // { MeasurementData }
+            gridState: null, // { GridState }
             imageIds: [],
             shownImageId: null,
             activeTool: null,
@@ -37,7 +37,7 @@ export const useGlobalStore = defineStore({
     },
     getters: {
         hasImageDefinedGrid(state) {
-            return state.measurementData?.hasGrid() ?? false;
+            return state.gridState?.hasGrid() ?? false;
         },
     },
     actions: {
@@ -80,7 +80,7 @@ export const useGlobalStore = defineStore({
         removeImages() {
             this.imageIds = [];
             this.shownImageId = null;
-            this.measurementData = null;
+            this.gridState = null;
             this.dicomHeaderParser = null;
             cornerstone.imageCache.purgeCache();
         },
