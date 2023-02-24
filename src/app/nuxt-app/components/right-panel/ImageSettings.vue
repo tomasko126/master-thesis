@@ -98,9 +98,8 @@ export default {
     margin: 0 2.5px 0 2.5px;
     width: 35px;
   }
-
-  .va-counter {
-    max-width: 140px;
-  }
+}
+.va-counter {
+  max-width: 140px;
 }
 </style>
