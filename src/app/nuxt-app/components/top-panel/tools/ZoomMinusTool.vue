@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     zoomStart() {
-      this.zoomIntervalId = setInterval(setZoom, this.zoomFactorChange, 25);
+      this.zoomIntervalId = setInterval(setZoom, 25, this.zoomFactorChange);
     },
 
     zoomEnd() {
