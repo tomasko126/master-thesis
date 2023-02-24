@@ -67,6 +67,12 @@
         @update:model-value="setNoOfSecondaryLines"
       />
     </GeneralTabSection>
+    <va-checkbox
+      label="Show refinement points"
+      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+      :model-value="isShowingRefinementPoints"
+      @update:model-value="setShowingRefinementPoints"
+    />
     <div class="grid-button">
       <RightPanelGridCallToActionButton />
     </div>
@@ -109,6 +115,9 @@ export default {
     },
     noOfSecondaryLines() {
       return this.store.gridState?.getNoOfSecondaryLines() ?? null;
+    },
+    isShowingRefinementPoints() {
+      return this.store.gridState?.isShowingRefinementPoints() ?? null;
     },
   },
   methods: {
@@ -160,6 +169,13 @@ export default {
       }
       gridTool.noOfSecondaryLines = parseInt(input);
     },
+    setShowingRefinementPoints(input) {
+      const gridTool = getGridTool();
+      if (!gridTool) {
+        return;
+      }
+      gridTool.showRefinementPoints = input;
+    }
   },
 };
 </script>
@@ -173,9 +189,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 .va-divider {
   --va-divider-border-top-color: rgba(128, 128, 128, 0.36);
+}
+.va-checkbox {
+  margin: 12px;
 }
 </style>

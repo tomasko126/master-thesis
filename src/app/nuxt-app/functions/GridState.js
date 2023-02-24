@@ -94,6 +94,17 @@ class GridState {
         }
         return this.tool.spacing;
     }
+
+    /**
+     * Find out, if we are showing refinement points or not
+     * @returns {boolean|null}
+     */
+    isShowingRefinementPoints() {
+        if (!this.hasGrid()) {
+            return null;
+        }
+        return this.config.showRefinementPoints;
+    }
 }
 
 export default GridState;
