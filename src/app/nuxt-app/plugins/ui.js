@@ -7,6 +7,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 import { createVuestic } from 'vuestic-ui'
 import 'vuestic-ui/css';
+import '@fontsource/source-sans-pro';
 
 // This is important, we are going to let Nuxt worry about the CSS
 config.autoAddCss = false;
