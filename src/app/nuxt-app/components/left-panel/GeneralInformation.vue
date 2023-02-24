@@ -1,7 +1,7 @@
 <template>
   <GeneralTabContent title="Image information">
     <GeneralTabSection label-text="Patient's name:">
-      {{ patientName }}
+      <span class="patient-name">{{ patientName }}</span>
     </GeneralTabSection>
     <GeneralTabSection label-text="Series number:">
       {{ seriesNumber }}
@@ -48,6 +48,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.patient-name {
+  text-align: right;
+}
 .va-divider {
   --va-divider-border-top-color: rgba(128, 128, 128, 0.36);
 }
