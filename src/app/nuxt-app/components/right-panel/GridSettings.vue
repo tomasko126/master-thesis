@@ -80,9 +80,9 @@
 </template>
 
 <script>
-/* global cornerstoneTools */
 import { useGlobalStore } from '~/stores';
 import { MOVING_MODE } from '~/functions/enums/GridEnums.js';
+import { getGridTool } from '~/functions/Cornerstone.js';
 
 export default {
   setup() {
@@ -118,25 +118,22 @@ export default {
     },
   },
   methods: {
-    getGridTool() {
-      return cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid') ?? null;
-    },
     setMoveMode(input) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
       gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
     },
     setAngle(input) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
       gridTool.angle = parseInt(input);
     },
     setSpacing(input) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
@@ -149,21 +146,21 @@ export default {
       this.setOffset({ x: parseFloat(this.offsetX), y: parseFloat(input) });
     },
     setOffset(coordinates) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
       gridTool.setOffset(coordinates, false);
     },
     setNoOfPrimaryLines(input) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
       gridTool.noOfPrimaryLines = parseInt(input);
     },
     setNoOfSecondaryLines(input) {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }

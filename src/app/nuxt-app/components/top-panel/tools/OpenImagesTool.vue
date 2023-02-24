@@ -20,6 +20,7 @@ import { useGlobalStore } from '~/stores/index';
 
 import BaseTool from './BaseTool.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { loadImagesFromFiles } from '~/functions/Cornerstone.js';
 
 export default {
   components: {
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     async handleFileInput() {
-      await this.store.loadImagesFromFiles(this.$refs['fileInput'].files);
+      await loadImagesFromFiles(this.$refs['fileInput'].files);
     },
     openFileInput() {
       this.$refs['fileInput'].click();

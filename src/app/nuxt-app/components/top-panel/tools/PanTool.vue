@@ -4,7 +4,7 @@
     :disabled="!store.imageIds.length"
     popover-message="Move image"
     tool-name="Pan"
-    @click="store.activateTool('Pan', { mouseButtonMask: 1 })"
+    @click="activateTool('Pan', { mouseButtonMask: 1 })"
   >
     <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
   </BaseTool>
@@ -15,6 +15,7 @@ import BaseTool from './BaseTool';
 
 import { useGlobalStore } from '~/stores/index';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { activateTool } from '~/functions/Cornerstone.js';
 
 export default {
   name: 'PanTool',
@@ -24,7 +25,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
+    return { store, activateTool };
   },
 };
 </script>

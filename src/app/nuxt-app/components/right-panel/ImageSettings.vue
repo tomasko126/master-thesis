@@ -16,14 +16,14 @@
         <va-button
           size="small"
           :disabled="isButtonDisabled"
-          @click="onBrightnessChange(10)"
+          @click="setBrightness(10)"
         >
           <font-awesome-icon icon="fa-solid fa-plus" />
         </va-button>
         <va-button
           size="small"
           :disabled="isButtonDisabled"
-          @click="onBrightnessChange(-10)"
+          @click="setBrightness(-10)"
         >
           <font-awesome-icon icon="fa-solid fa-minus" />
         </va-button>
@@ -34,14 +34,14 @@
         <va-button
           size="small"
           :disabled="isButtonDisabled"
-          @click="onContrastChange(-10)"
+          @click="setContrast(-10)"
         >
           <font-awesome-icon icon="fa-solid fa-plus" />
         </va-button>
         <va-button
           size="small"
           :disabled="isButtonDisabled"
-          @click="onContrastChange(10)"
+          @click="setContrast(10)"
         >
           <font-awesome-icon icon="fa-solid fa-minus" />
         </va-button>
@@ -51,10 +51,9 @@
 </template>
 
 <script>
-import { useGlobalStore } from '~/stores/index';
+import { useGlobalStore } from '~/stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
-/* global cornerstone */
+import { setContrast, setBrightness, displayImageInElement } from '~/functions/Cornerstone.js';
 
 export default {
   components: {
@@ -62,7 +61,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
+    return { store, setBrightness, setContrast };
   },
   data() {
     return {
@@ -82,23 +81,13 @@ export default {
     },
   },
   methods: {
-    onBrightnessChange(scalar) {
-      const viewport = cornerstone.getViewport(this.store.mainImageContainer);
-      viewport.voi.windowCenter -= scalar;
-      cornerstone.setViewport(this.store.mainImageContainer, viewport);
-    },
-    onContrastChange(scalar) {
-      const viewport = cornerstone.getViewport(this.store.mainImageContainer);
-      viewport.voi.windowWidth -= scalar;
-      cornerstone.setViewport(this.store.mainImageContainer, viewport);
-    },
     onFrameNumberChange(idx) {
       const number = parseInt(idx) - 1;
       if (isNaN(number) || number < 0 || number > this.store.imageIds.length) {
         return;
       }
 
-      this.store.displayImageInElement(this.store.mainImageContainer, this.store.imageIds[number]);
+      displayImageInElement(this.store.mainImageContainer, this.store.imageIds[number]);
     },
   },
 };

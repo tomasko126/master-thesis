@@ -14,8 +14,7 @@ import BaseTool from './BaseTool.vue';
 
 import { useGlobalStore } from '~/stores/index';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
-/* global cornerstone */
+import { setZoom } from '~/functions/Cornerstone.js';
 
 export default {
   name: 'ZoomMinusTool',
@@ -34,20 +33,8 @@ export default {
     };
   },
   methods: {
-    zoom() {
-      const viewport = cornerstone.getViewport(this.store.mainImageContainer);
-
-      const pow = 1.7;
-      const oldFactor = Math.log(viewport.scale) / Math.log(pow);
-      const factor = oldFactor + this.zoomFactorChange;
-
-      viewport.scale = Math.pow(pow, factor);
-
-      cornerstone.setViewport(this.store.mainImageContainer, viewport);
-    },
-
     zoomStart() {
-      this.zoomIntervalId = setInterval(this.zoom, 25);
+      this.zoomIntervalId = setInterval(setZoom, this.zoomFactorChange, 25);
     },
 
     zoomEnd() {

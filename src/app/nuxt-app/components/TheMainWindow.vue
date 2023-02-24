@@ -31,11 +31,10 @@
 </template>
 
 <script>
-/* global cornerstoneTools */
-
-import { useGlobalStore } from '~/stores/index';
+import { useGlobalStore } from '~/stores';
 import GridState from '~/functions/GridState.js';
 import DicomHeaderParser from '~/functions/DicomHeaderParser.js';
+import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '~/functions/Cornerstone.js';
 
 export default {
   setup() {
@@ -56,18 +55,18 @@ export default {
     },
   },
   mounted() {
-    this.store.registerImageContainer(this.$refs['dicomImage'], true);
-    this.store.registerAllTools();
+    registerImageContainer(this.$refs['dicomImage'], true);
+    registerAllTools();
 
     this.store.dicomHeaderParser = new DicomHeaderParser();
   },
   unmounted() {
-    this.store.unregisterImageContainer(this.$refs['dicomImage'], true);
-    this.store.unregisterAllTools();
+    unregisterImageContainer(this.$refs['dicomImage'], true);
+    unregisterAllTools();
   },
   methods: {
     onFileAdded() {
-      this.store.loadImagesFromFiles(this.files);
+      loadImagesFromFiles(this.files);
       this.files = [];
     },
     onGridRemoved() {
@@ -75,21 +74,21 @@ export default {
     },
     onImageShown(e) {
       this.store.shownImageId = e.detail.image.imageId;
-      const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
+      const tool = getGridTool();
       if (tool) {
         this.store.gridState = new GridState(tool);
       }
       this.store.dicomHeaderParser = new DicomHeaderParser();
     },
     onMeasurementCompleted() {
-      const tool = cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid');
+      const tool = getGridTool();
       if (tool) {
         this.store.gridState = new GridState(tool);
       }
     },
     onNewImages() {
-      this.store.displayImageInElement(this.store.mainImageContainer, this.store.imageIds[0]);
-      this.store.registerAllTools();
+      displayImageInElement(this.store.mainImageContainer, this.store.imageIds[0]);
+      registerAllTools();
     },
   },
 };

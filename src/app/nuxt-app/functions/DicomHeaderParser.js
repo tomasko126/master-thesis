@@ -1,31 +1,17 @@
-/* global cornerstone */
-
-import { useGlobalStore } from '~/stores';
-const store = useGlobalStore();
+import { getImage } from '~/functions/Cornerstone.js';
 
 /**
  * Class responsible for parsing various DICOM headers from shown image
  * @hideconstructor
  */
 class DicomHeaderParser {
-    /**
-     * Retrieve shown image
-     * @returns {Image|null}
-     */
-    getImage() {
-        try {
-            return cornerstone.getImage(store.mainImageContainer);
-        } catch (e) {
-            return null;
-        }
-    }
 
     /**
      * Retrieve modality from image's DICOM header
      * @returns {string|null}
      */
     getModality() {
-        const image = this.getImage();
+        const image = getImage();
         if (!image) {
             return null;
         }
@@ -37,7 +23,7 @@ class DicomHeaderParser {
      * @returns {string|null}
      */
     getPatientName() {
-        const image = this.getImage();
+        const image = getImage();
         if (!image) {
             return null;
         }
@@ -49,7 +35,7 @@ class DicomHeaderParser {
      * @returns {string|null}
      */
     getSeriesNumber() {
-        const image = this.getImage();
+        const image = getImage();
         if (!image) {
             return null;
         }
@@ -61,7 +47,7 @@ class DicomHeaderParser {
      * @returns {number|null}
      */
     getWindowWidth() {
-        const image = this.getImage();
+        const image = getImage();
         if (!image) {
             return null;
         }
@@ -73,7 +59,7 @@ class DicomHeaderParser {
      * @returns {number|null}
      */
     getWindowHeight() {
-        const image = this.getImage();
+        const image = getImage();
         if (!image) {
             return null;
         }

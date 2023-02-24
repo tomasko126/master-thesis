@@ -3,7 +3,7 @@
     v-if="!store.hasImageDefinedGrid"
     :disabled="store.isLoopingImages || !store.imageIds.length"
     icon="add"
-    @click="activateTool"
+    @click="createGrid"
   >
     Create grid
   </va-button>
@@ -21,7 +21,7 @@
 <script>
 import { useGlobalStore } from '~/stores';
 
-/* global cornerstoneTools */
+import { activateTool, getGridTool, deactivateTool } from '~/functions/Cornerstone.js';
 
 export default {
   setup() {
@@ -29,19 +29,16 @@ export default {
     return { store };
   },
   methods: {
-    activateTool() {
-      this.store.activateTool('Grid', { mouseButtonMask: 1 });
+    createGrid() {
+      activateTool('Grid', { mouseButtonMask: 1 });
       this.$vaToast.init({ message: 'Click on the image to create grid' });
     },
-    getGridTool() {
-      return cornerstoneTools.getToolForElement(this.store.mainImageContainer, 'Grid') ?? null;
-    },
     removeGrid() {
-      const gridTool = this.getGridTool();
+      const gridTool = getGridTool();
       if (!gridTool) {
         return;
       }
-      this.store.deactivateTool('Grid');
+      deactivateTool('Grid');
       gridTool.removeGrid();
     },
   },

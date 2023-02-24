@@ -9,8 +9,7 @@
 
 <script>
 import { useGlobalStore } from '~/stores/index';
-
-/* global cornerstone, cornerstoneTools, cornerstoneMath, cornerstoneWADOImageLoader, dicomParser, Hammer */
+import { initLibraries } from '~/functions/Cornerstone.js';
 
 export default {
   setup() {
@@ -18,44 +17,8 @@ export default {
     return { store };
   },
   async mounted() {
-    await this.initLibraries();
+    await initLibraries();
   },
-  methods: {
-    async initLibraries() {
-      // Setup all required cornerstone-tools dependencies
-      cornerstoneTools.external.cornerstone = cornerstone;
-      cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
-      cornerstoneTools.external.Hammer = Hammer;
-      cornerstoneTools.init({
-        mouseEnabled: true,
-        showSVGCursors: true,
-      });
-
-      // Setup all required cornerstone-wado-image-loader dependencies
-      cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
-      cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
-
-      cornerstoneWADOImageLoader.configure({
-        useWebWorkers: true,
-        decodeConfig: {
-          convertFloatPixelDataToInt: false,
-        },
-      });
-
-      const config = {
-        maxWebWorkers: navigator.hardwareConcurrency || 1,
-        startWebWorkersOnDemand: false,
-        taskConfiguration: {
-          decodeTask: {
-            initializeCodecsOnStartup: true,
-            strict: false,
-          },
-        },
-      };
-
-      cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
-    },
-  }
 }
 </script>
 

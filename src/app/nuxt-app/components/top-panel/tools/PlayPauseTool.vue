@@ -17,11 +17,11 @@
 
 <script>
 
-/* global cornerstoneTools */
 import BaseTool from './BaseTool.vue';
 
-import { useGlobalStore } from '~/stores/index';
+import { useGlobalStore } from '~/stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { startLoopingImages, stopLoopingImages } from '~/functions/Cornerstone.js';
 
 export default {
   name: 'PlayPauseTool',
@@ -31,7 +31,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
+    return { store, startLoopingImages, stopLoopingImages };
   },
   computed: {
     labelName() {
@@ -46,24 +46,12 @@ export default {
       deep: true,
       handler() {
         if (this.store.isLoopingImages) {
-          this.startLoopingImages(); // continue looping images with updated animation settings
+          startLoopingImages(); // continue looping images with updated animation settings
         }
       },
     },
   },
   methods: {
-    /**
-     * Start looping selected images in the main window
-     * @returns {Promise<void>}
-     */
-    async startLoopingImages() {
-      this.store.isLoopingImages = true;
-      cornerstoneTools.playClip(this.store.mainImageContainer, this.store.animation.speed, { fromIdx: this.store.animation.fromIdx, toIdx: this.store.animation.toIdx });
-    },
-    stopLoopingImages() {
-      cornerstoneTools.stopClip(this.store.mainImageContainer);
-      this.store.isLoopingImages = false;
-    },
   },
 };
 </script>

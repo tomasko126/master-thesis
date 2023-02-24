@@ -4,7 +4,7 @@
     :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
     popover-message="Move grid/grid's point"
     tool-name="Grid"
-    @click="store.activateTool('Grid', { mouseButtonMask: 1 })"
+    @click="activateTool('Grid', { mouseButtonMask: 1 })"
   >
     <img
       id="grid-icon"
@@ -18,6 +18,7 @@
 import BaseTool from './BaseTool.vue';
 
 import { useGlobalStore } from '~/stores/index';
+import { activateTool } from '~/functions/Cornerstone.js';
 
 export default {
   name: 'GridTool',
@@ -26,7 +27,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
+    return { store, activateTool };
   },
 };
 </script>

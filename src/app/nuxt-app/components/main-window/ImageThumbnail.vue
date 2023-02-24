@@ -18,14 +18,15 @@
         class="thumbnail"
         :src="imageSrc"
         alt="thumbnail"
-        @click="store.displayImageInElement(store.mainImageContainer, imageId)"
+        @click="displayImageInElement(store.mainImageContainer, imageId)"
       >
     </div>
   </article>
 </template>
 
 <script>
-import { useGlobalStore } from '~/stores/index';
+import { useGlobalStore } from '~/stores';
+import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '~/functions/Cornerstone.js';
 
 export default {
   props: {
@@ -40,7 +41,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
+    return { store, displayImageInElement };
   },
   data() {
     return {
@@ -49,10 +50,10 @@ export default {
   },
   async mounted() {
     // Register image container
-    await this.store.registerImageContainer(this.$refs['fakeThumbnail']);
+    await registerImageContainer(this.$refs['fakeThumbnail']);
 
     // Display image using cornerstone
-    await this.store.displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
+    await displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
   },
   unmounted() {
     URL.revokeObjectURL(this.imageSrc);
@@ -71,7 +72,7 @@ export default {
       this.imageSrc = await this.convertCanvasImageToSrc();
 
       // We do not need this container anymore
-      this.store.unregisterImageContainer(this.$refs['fakeThumbnail']);
+      unregisterImageContainer(this.$refs['fakeThumbnail']);
     },
   },
 };

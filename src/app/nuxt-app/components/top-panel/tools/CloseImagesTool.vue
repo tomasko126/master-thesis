@@ -11,6 +11,7 @@
 <script>
 import { useGlobalStore } from '~/stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { removeImages } from '~/functions/Cornerstone.js';
 import BaseTool from './BaseTool.vue';
 
 export default {
@@ -20,12 +21,7 @@ export default {
   },
   setup() {
     const store = useGlobalStore();
-    return { store };
-  },
-  methods: {
-    removeImages() {
-      this.store.removeImages();
-    },
+    return { store, removeImages };
   },
 };
 </script>
