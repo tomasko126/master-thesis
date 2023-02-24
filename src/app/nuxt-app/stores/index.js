@@ -14,11 +14,29 @@ export const useGlobalStore = defineStore({
                 fromIdx: 0, // image idx
                 toIdx: 0, // image idx
             },
+            /**
+             * @type {boolean}
+             */
             isLoopingImages: false,
+            /**
+             * @type {HTMLElement}
+             */
             mainImageContainer: null,
+            /**
+             * @type {Array<string>}
+             */
             imageIds: [],
+            /**
+             * @type {string|null}
+             */
             shownImageId: null,
+            /**
+             * @type {string|null}
+             */
             activeTool: null,
+            /**
+             * @type {Array<string>}
+             */
             tools: [],
             /**
              * @type {DicomHeaderParser}
