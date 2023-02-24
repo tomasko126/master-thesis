@@ -15,7 +15,6 @@
     <GeneralTabSection label-text="Angle:">
       <va-input
         type="number"
-        class="number-input"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="angle"
         min="0"
@@ -26,7 +25,6 @@
     <GeneralTabSection label-text="Spacing:">
       <va-input
         type="number"
-        class="number-input"
         min="1"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="spacing"
@@ -36,7 +34,6 @@
     <GeneralTabSection label-text="X offset:">
       <va-input
         type="number"
-        class="number-input"
         min="0"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="offsetX"
@@ -46,7 +43,6 @@
     <GeneralTabSection label-text="Y offset:">
       <va-input
         type="number"
-        class="number-input"
         min="0"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="offsetY"
@@ -56,7 +52,6 @@
     <GeneralTabSection label-text="Points by height:">
       <va-input
         type="number"
-        class="number-input"
         min="2"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="noOfPrimaryLines"
@@ -66,7 +61,6 @@
     <GeneralTabSection label-text="Points by width:">
       <va-input
         type="number"
-        class="number-input"
         min="2"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="noOfSecondaryLines"
@@ -171,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.number-input {
+.va-input {
   max-width: 100px;
   min-width: 100px;
 }

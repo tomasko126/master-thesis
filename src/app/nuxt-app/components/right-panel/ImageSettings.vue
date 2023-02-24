@@ -3,7 +3,6 @@
     <GeneralTabSection label-text="Frame:">
       <va-counter
         v-model="counter"
-        class="counter"
         :disabled="!store.imageIds.length || store.isLoopingImages"
         :min="1"
         :max="store.imageIds.length"
@@ -99,8 +98,9 @@ export default {
     margin: 0 2.5px 0 2.5px;
     width: 35px;
   }
-}
-.counter {
-  max-width: 140px;
+
+  .va-counter {
+    max-width: 140px;
+  }
 }
 </style>

@@ -10,7 +10,6 @@
       <va-file-upload
         v-if="!store.imageIds.length"
         v-model="files"
-        class="file-upload"
         dropzone
         hide-file-list
         drop-zone-text="Drag in or"
@@ -107,7 +106,7 @@ export default {
     max-width: 100%;
     overflow: hidden;
 
-    .file-upload {
+    .va-file-upload {
       height: 100%;
       background-color: black !important;
 

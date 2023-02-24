@@ -19,16 +19,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  margin-bottom: 10px;
-
-  &:not(:first-child) {
-    margin-top: 20px;
-  }
-}
 .tab-content-wrapper {
   margin: 5px;
   padding: 5px;
+
+  h2 {
+    margin-bottom: 10px;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
 
   .tab-content {
     margin: 5px;

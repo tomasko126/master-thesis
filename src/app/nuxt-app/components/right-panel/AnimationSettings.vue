@@ -20,7 +20,6 @@
     >
       <va-input
         v-model="fromIdx"
-        class="number-input"
         type="number"
         :disabled="areInputsDisabled || store.isLoopingImages"
         :min="store.imageIds ? 1 : 0"
@@ -34,7 +33,6 @@
     >
       <va-input
         v-model="toIdx"
-        class="number-input"
         type="number"
         :disabled="areInputsDisabled || store.isLoopingImages"
         :min="store.imageIds ? 1 : 0"
@@ -114,7 +112,7 @@ export default {
   width: 130px;
   margin: 5px 10px 0 0;
 }
-.number-input {
+.va-input {
   max-width: 100px;
   min-width: 100px;
 }

@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "assets/global";
 main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

@@ -7,7 +7,6 @@
       <va-input
         v-model="store.algorithm.curvature"
         type="number"
-        class="number-input"
         min="0"
         step="0.0005"
         :disabled="store.isLoopingImages || !store.imageIds.length"
@@ -21,7 +20,6 @@
       <va-input
         v-model="store.algorithm.force"
         type="number"
-        class="number-input"
         min="0"
         step="0.025"
         :disabled="store.isLoopingImages || !store.imageIds.length"
@@ -35,7 +33,6 @@
       <va-input
         v-model="store.algorithm.stopTime"
         type="number"
-        class="number-input"
         min="0"
         step="0.005"
         :disabled="store.isLoopingImages || !store.imageIds.length"
@@ -65,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.number-input {
+.va-input {
   max-width: 100px;
   min-width: 100px;
 }

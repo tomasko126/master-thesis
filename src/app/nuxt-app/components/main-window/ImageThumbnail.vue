@@ -8,7 +8,6 @@
     />
     <div class="thumbnail-wrapper">
       <va-chip
-        class="chip"
         size="small"
         square
       >
@@ -93,7 +92,7 @@ export default {
 .thumbnail-wrapper {
   position: relative;
 
-  .chip {
+  .va-chip {
     position: absolute;
     left: 15px;
   }

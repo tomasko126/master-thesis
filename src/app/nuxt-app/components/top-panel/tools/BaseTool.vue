@@ -3,13 +3,13 @@
     :message="popoverMessage"
     placement="bottom"
   >
+    <!-- hack: this fixes weird behaviour of popover display -->
     <va-popover
       :message="popoverMessage"
       placement="bottom"
     >
-      <!-- hack: this fixes weird behaviour of popover display -->
       <va-button
-        :class="{ 'tool-button': true, 'disabled': disabled, 'active': active }"
+        :class="{ 'disabled': disabled, 'active': active }"
         :inert="disabled"
         @click="$emit('click')"
       >
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tool-button {
+.va-button {
   display: flex;
   align-items: center;
   justify-content: center;

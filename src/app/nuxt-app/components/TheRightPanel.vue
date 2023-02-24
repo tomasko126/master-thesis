@@ -2,7 +2,6 @@
   <aside class="right-panel">
     <va-tabs
       v-model="tabIndex"
-      class="tabs"
       grow
     >
       <template #tabs>
@@ -41,7 +40,7 @@ export default {
     justify-content: space-evenly;
   }
 
-  .tabs {
+  .va-tabs {
     align-items: unset;
     flex-direction: column;
   }
