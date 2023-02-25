@@ -102,7 +102,7 @@ export default {
 
   #dicom-image {
     background: black;
-    height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height);
+    height: calc(100vh - global.$top-panel-height - global.$bottom-image-thumbnails-height - 2px);
     max-width: 100%;
     overflow: hidden;
 
@@ -124,6 +124,7 @@ export default {
     max-width: 100%;
     height: global.$bottom-image-thumbnails-height;
     border-top: 2px solid global.$border-color;
+    border-bottom: 2px solid global.$border-color;
   }
 }
 </style>
