@@ -26,6 +26,7 @@
       <va-input
         type="number"
         min="1"
+        step="0.1"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="spacing"
         @update:model-value="setSpacing"
@@ -140,7 +141,7 @@ export default {
       if (!gridTool) {
         return;
       }
-      gridTool.spacing = parseInt(input);
+      gridTool.spacing = parseFloat(input);
     },
     setXOffset(input) {
       this.setOffset({ x: parseFloat(input), y: parseFloat(this.offsetY) });
