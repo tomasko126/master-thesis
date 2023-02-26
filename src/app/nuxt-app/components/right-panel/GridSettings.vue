@@ -36,6 +36,7 @@
       <va-input
         type="number"
         min="0"
+        step="0.25"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="offsetX"
         @update:model-value="setXOffset"
@@ -45,6 +46,7 @@
       <va-input
         type="number"
         min="0"
+        step="0.25"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
         :model-value="offsetY"
         @update:model-value="setYOffset"
