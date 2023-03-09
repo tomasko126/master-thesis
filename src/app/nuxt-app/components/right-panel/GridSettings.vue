@@ -52,7 +52,7 @@
         @update:model-value="setYOffset"
       />
     </GeneralTabSection>
-    <GeneralTabSection label-text="Points by height:">
+    <GeneralTabSection label-text="Points by width:">
       <va-input
         type="number"
         min="2"
@@ -61,7 +61,7 @@
         @update:model-value="setNoOfPrimaryLines"
       />
     </GeneralTabSection>
-    <GeneralTabSection label-text="Points by width:">
+    <GeneralTabSection label-text="Points by height:">
       <va-input
         type="number"
         min="2"
