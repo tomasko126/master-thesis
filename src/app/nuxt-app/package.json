@@ -28,7 +28,7 @@
     "cornerstone-wado-image-loader": "^4.10.0",
     "dicom-parser": "^1.8.21",
     "hammerjs": "^2.0.8",
-    "pinia": "^2.0.32",
+    "pinia": "^2.0.33",
     "vue": "^3.2.47",
     "vuestic-ui": "^1.6.1"
   },
