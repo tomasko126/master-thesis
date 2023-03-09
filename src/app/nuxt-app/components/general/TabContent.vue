@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .tab-content-wrapper {
-  margin: 5px;
+  margin: 10px 5px 25px 5px;
   padding: 5px;
 
   h2 {
