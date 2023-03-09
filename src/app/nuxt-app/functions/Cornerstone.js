@@ -62,8 +62,8 @@ export const initLibraries = async() => {
  * @returns {Promise<void>}
  */
 export const loadImagesFromFiles = async (imageFiles) => {
-    // Purge existing cache
-    cornerstone.imageCache.purgeCache();
+    // Purge existing cached and stored data
+    removeImages();
 
     // Retrieve image IDs used for referencing images
     const imageIds = [];
@@ -129,6 +129,7 @@ export const removeImages = () => {
     store.gridState = null;
     store.dicomHeaderParser = null;
     cornerstone.imageCache.purgeCache();
+    cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid').clearAllStates();
 };
 
 /**
