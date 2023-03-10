@@ -15,30 +15,24 @@
   >
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores/index';
+<script setup lang="ts">
+import { useGlobalStore } from '../../../stores';
 
 import BaseTool from './BaseTool.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { loadImagesFromFiles } from '~/functions/Cornerstone.js';
+import { loadImagesFromFiles } from '../../../functions/Cornerstone';
+import { ref } from 'vue';
+import type Ref from 'vue';
 
-export default {
-  components: {
-    FontAwesomeIcon,
-    BaseTool,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  methods: {
-    async handleFileInput() {
-      await loadImagesFromFiles(this.$refs['fileInput'].files);
-    },
-    openFileInput() {
-      this.$refs['fileInput'].click();
-    },
-  },
+const store = useGlobalStore();
+const fileInput: Ref<HTMLElement> = ref(null);
+
+const handleFileInput = async() => {
+  await loadImagesFromFiles(fileInput.value.files);
+};
+
+const openFileInput = () => {
+  fileInput.value.click();
 };
 </script>
 

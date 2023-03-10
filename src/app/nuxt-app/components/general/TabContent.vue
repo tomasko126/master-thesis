@@ -7,15 +7,14 @@
   </section>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
+<script setup lang="ts">
+import { defineProps } from 'vue';
+defineProps({
+  title: {
+    type: String,
+    default: '',
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

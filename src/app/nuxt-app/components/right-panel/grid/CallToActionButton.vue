@@ -18,29 +18,26 @@
   </va-button>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
+<script setup lang="ts">
+import { useGlobalStore } from '../../../stores';
+import { useToast } from 'vuestic-ui';
+import { activateTool, getGridTool, deactivateTool } from '../../../functions/Cornerstone';
 
-import { activateTool, getGridTool, deactivateTool } from '~/functions/Cornerstone.js';
+const store = useGlobalStore();
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  methods: {
-    createGrid() {
-      activateTool('Grid', { mouseButtonMask: 1 });
-      this.$vaToast.init({ message: 'Click on the image to create grid' });
-    },
-    removeGrid() {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      deactivateTool('Grid');
-      gridTool.removeGrid();
-    },
-  },
+const createGrid = () => {
+  activateTool('Grid', { mouseButtonMask: 1 });
+
+  const { init } = useToast();
+  init({ message: 'Click on the image to create grid' });
+};
+
+const removeGrid = () => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  deactivateTool('Grid');
+  gridTool.removeGrid();
 };
 </script>

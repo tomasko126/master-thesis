@@ -5,12 +5,16 @@
     },
     "extends": [
         "eslint:recommended",
+        "@vue/typescript/recommended",
         "plugin:vue/vue3-recommended"
     ],
     "plugins": [
-        "vue"
+        "@typescript-eslint"
     ],
+    "parser": "vue-eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 13
-    }
+        "ecmaVersion": 13,
+        "parser": "@typescript-eslint/parser"
+    },
+    "root": true
 }

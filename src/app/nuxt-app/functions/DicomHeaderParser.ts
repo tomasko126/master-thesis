@@ -2,27 +2,24 @@ import { getImage } from '~/functions/Cornerstone.js';
 
 /**
  * Class responsible for parsing various DICOM headers from shown image
- * @hideconstructor
  */
 class DicomHeaderParser {
-
     /**
      * Retrieve modality from image's DICOM header
-     * @returns {string|null}
      */
-    getModality() {
+    getModality(): string|null {
         const image = getImage();
         if (!image) {
             return null;
         }
+
         return image.data.string('x00080060');
     }
 
     /**
      * Retrieve patient's name from image's DICOM header
-     * @returns {string|null}
      */
-    getPatientName() {
+    getPatientName(): string|null {
         const image = getImage();
         if (!image) {
             return null;
@@ -32,9 +29,8 @@ class DicomHeaderParser {
 
     /**
      * Retrieve series number from image's DICOM header
-     * @returns {string|null}
      */
-    getSeriesNumber() {
+    getSeriesNumber(): string|null {
         const image = getImage();
         if (!image) {
             return null;
@@ -44,9 +40,8 @@ class DicomHeaderParser {
 
     /**
      * Retrieve width from image's DICOM header
-     * @returns {number|null}
      */
-    getWindowWidth() {
+    getWindowWidth(): number|null {
         const image = getImage();
         if (!image) {
             return null;
@@ -56,9 +51,8 @@ class DicomHeaderParser {
 
     /**
      * Retrieve height from image's DICOM header
-     * @returns {number|null}
      */
-    getWindowHeight() {
+    getWindowHeight(): number|null {
         const image = getImage();
         if (!image) {
             return null;

@@ -1,8 +1,12 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "esnext"
+    "lib": ["dom", "ESNext"],
+    "module": "ES2022",
+    "target": "ES2022",
+    "esModuleInterop": true,
   },
 }

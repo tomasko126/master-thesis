@@ -10,22 +10,12 @@
   </BaseTool>
 </template>
 
-<script>
+<script setup lang="ts">
 import BaseTool from './BaseTool';
 
-import { useGlobalStore } from '~/stores/index';
+import { useGlobalStore } from '../../../stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { activateTool } from '~/functions/Cornerstone.js';
+import { activateTool } from '../../../functions/Cornerstone';
 
-export default {
-  name: 'PanTool',
-  components: {
-    FontAwesomeIcon,
-    BaseTool,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, activateTool };
-  },
-};
+const store = useGlobalStore();
 </script>

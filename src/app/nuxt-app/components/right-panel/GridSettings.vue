@@ -82,104 +82,108 @@
   </GeneralTabContent>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
-import { MOVING_MODE } from '~/functions/enums/GridEnums.js';
-import { getGridTool } from '~/functions/Cornerstone.js';
+<script setup lang="ts">
+import { useGlobalStore } from '../../stores';
+import { MOVING_MODE } from '../../functions/enums/GridEnums';
+import { getGridTool } from '../../functions/Cornerstone';
+import { computed } from 'vue';
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  data() {
-    return {
-      MOVING_MODE,
-    };
-  },
-  computed: {
-    moveMode() {
-      return this.store.gridState?.getMovingMode() ?? null;
-    },
-    angle() {
-      return this.store.gridState?.getAngle() ?? null;
-    },
-    spacing() {
-      return this.store.gridState?.getSpacing() ?? null;
-    },
-    offsetX() {
-      return this.store.gridState?.getOffsetX()?.toFixed(2) ?? null;
-    },
-    offsetY() {
-      return this.store.gridState?.getOffsetY()?.toFixed(2) ?? null;
-    },
-    noOfPrimaryLines() {
-      return this.store.gridState?.getNoOfPrimaryLines() ?? null;
-    },
-    noOfSecondaryLines() {
-      return this.store.gridState?.getNoOfSecondaryLines() ?? null;
-    },
-    isShowingRefinementPoints() {
-      return this.store.gridState?.isShowingRefinementPoints() ?? null;
-    },
-  },
-  methods: {
-    setMoveMode(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
-    },
-    setAngle(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.angle = parseInt(input);
-    },
-    setSpacing(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.spacing = parseFloat(input);
-    },
-    setXOffset(input) {
-      this.setOffset({ x: parseFloat(input), y: parseFloat(this.offsetY) });
-    },
-    setYOffset(input) {
-      this.setOffset({ x: parseFloat(this.offsetX), y: parseFloat(input) });
-    },
-    setOffset(coordinates) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.setOffset(coordinates, false);
-    },
-    setNoOfPrimaryLines(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.noOfPrimaryLines = parseInt(input);
-    },
-    setNoOfSecondaryLines(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.noOfSecondaryLines = parseInt(input);
-    },
-    setShowingRefinementPoints(input) {
-      const gridTool = getGridTool();
-      if (!gridTool) {
-        return;
-      }
-      gridTool.showRefinementPoints = input;
-    }
-  },
+const store = useGlobalStore();
+
+const moveMode = computed(() => {
+  return store.gridState?.getMovingMode() ?? null;
+});
+
+const angle = computed(() => {
+  return store.gridState?.getAngle() ?? null;
+});
+
+const spacing = computed(() => {
+  return store.gridState?.getSpacing() ?? null;
+});
+
+const offsetX = computed(() => {
+  return store.gridState?.getOffsetX()?.toFixed(2) ?? null;
+});
+
+const offsetY = computed(() => {
+  return store.gridState?.getOffsetY()?.toFixed(2) ?? null;
+});
+
+const noOfPrimaryLines = computed(() => {
+  return store.gridState?.getNoOfPrimaryLines() ?? null;
+});
+
+const noOfSecondaryLines = computed(() => {
+  return store.gridState?.getNoOfSecondaryLines() ?? null;
+});
+
+const isShowingRefinementPoints = computed(() => {
+  return store.gridState?.isShowingRefinementPoints() ?? null;
+});
+
+const setMoveMode = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
+};
+
+const setAngle = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.angle = parseInt(input);
+};
+
+const setSpacing = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.spacing = parseFloat(input);
+};
+
+const setOffset = (coordinates) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.setOffset(coordinates, false);
+};
+
+const setXOffset = (input) => {
+  setOffset({ x: parseFloat(input), y: parseFloat(offsetY.value) });
+};
+
+const setYOffset = (input) => {
+  setOffset({ x: parseFloat(offsetX.value), y: parseFloat(input) });
+};
+
+const setNoOfPrimaryLines = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.noOfPrimaryLines = parseInt(input);
+};
+
+const setNoOfSecondaryLines = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.noOfSecondaryLines = parseInt(input);
+};
+
+const setShowingRefinementPoints = (input) => {
+  const gridTool = getGridTool();
+  if (!gridTool) {
+    return;
+  }
+  gridTool.showRefinementPoints = input;
 };
 </script>
 

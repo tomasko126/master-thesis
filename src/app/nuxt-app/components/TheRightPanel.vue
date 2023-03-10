@@ -21,14 +21,9 @@
   </aside>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      tabIndex: 0,
-    };
-  },
-};
+<script setup lang="ts">
+import { ref } from 'vue';
+const tabIndex = ref(0);
 </script>
 
 <style lang="scss" scoped>

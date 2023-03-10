@@ -29,68 +29,64 @@
   </section>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
-import GridState from '~/functions/GridState.js';
-import DicomHeaderParser from '~/functions/DicomHeaderParser.js';
-import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '~/functions/Cornerstone.js';
+<script setup lang="ts">
+import { useGlobalStore } from '../stores';
+import GridState from '../functions/GridState';
+import DicomHeaderParser from '../functions/DicomHeaderParser';
+import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '../functions/Cornerstone';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import type Ref from 'vue';
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  data() {
-    return {
-      files: [],
-    };
-  },
-  watch: {
-    'store.imageIds': {
-      deep: true,
-      handler() {
-        this.onNewImages();
-      },
-    },
-  },
-  mounted() {
-    registerImageContainer(this.$refs['dicomImage'], true);
-    registerAllTools();
+const store = useGlobalStore();
 
-    this.store.dicomHeaderParser = new DicomHeaderParser();
-  },
-  unmounted() {
-    unregisterImageContainer(this.$refs['dicomImage'], true);
-    unregisterAllTools();
-  },
-  methods: {
-    onFileAdded() {
-      loadImagesFromFiles(this.files);
-      this.files = [];
-    },
-    onGridRemoved() {
-      this.store.gridState = null;
-    },
-    onImageShown(e) {
-      this.store.shownImageId = e.detail.image.imageId;
-      const tool = getGridTool();
-      if (tool) {
-        this.store.gridState = new GridState(tool);
-      }
-      this.store.dicomHeaderParser = new DicomHeaderParser();
-    },
-    onMeasurementCompleted() {
-      const tool = getGridTool();
-      if (tool) {
-        this.store.gridState = new GridState(tool);
-      }
-    },
-    onNewImages() {
-      displayImageInElement(this.store.mainImageContainer, this.store.imageIds[0]);
-      registerAllTools();
-    },
-  },
+const files = ref([]);
+const dicomImage: Ref<HTMLElement> = ref(null);
+
+const onFileAdded = () => {
+  loadImagesFromFiles(files.value);
+  files.value = [];
 };
+
+const onGridRemoved = () => {
+  store.gridState = null;
+};
+
+const onImageShown = (e) => {
+  store.shownImageId = e.detail.image.imageId;
+  const tool = getGridTool();
+  if (tool) {
+    store.gridState = new GridState(tool);
+  }
+  store.dicomHeaderParser = new DicomHeaderParser();
+};
+
+const onMeasurementCompleted = () => {
+  const tool = getGridTool();
+  if (tool) {
+    store.gridState = new GridState(tool);
+  }
+};
+
+const onNewImages = () => {
+  displayImageInElement(store.mainImageContainer, store.imageIds[0]);
+  registerAllTools();
+};
+
+watch(() => store.imageIds, () => {
+  onNewImages();
+});
+
+onMounted(() => {
+  registerImageContainer(dicomImage.value, true);
+  registerAllTools();
+
+  store.dicomHeaderParser = new DicomHeaderParser();
+});
+
+onUnmounted(() => {
+  unregisterImageContainer(dicomImage.value, true);
+  unregisterAllTools();
+});
 </script>
 
 <style lang="scss" scoped>

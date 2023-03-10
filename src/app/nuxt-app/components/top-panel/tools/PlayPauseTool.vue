@@ -15,43 +15,26 @@
   </BaseTool>
 </template>
 
-<script>
-
+<script setup lang="ts">
 import BaseTool from './BaseTool.vue';
 
-import { useGlobalStore } from '~/stores';
+import { useGlobalStore } from '../../../stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { startLoopingImages, stopLoopingImages } from '~/functions/Cornerstone.js';
+import { startLoopingImages, stopLoopingImages } from '../../../functions/Cornerstone';
+import { computed, watch } from 'vue';
 
-export default {
-  name: 'PlayPauseTool',
-  components: {
-    FontAwesomeIcon,
-    BaseTool,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, startLoopingImages, stopLoopingImages };
-  },
-  computed: {
-    labelName() {
-      if (this.store.isLoopingImages) {
-        return `Stop playing animation`;
-      }
-      return `Play animation`;
-    },
-  },
-  watch: {
-    'store.animation': {
-      deep: true,
-      handler() {
-        if (this.store.isLoopingImages) {
-          startLoopingImages(); // continue looping images with updated animation settings
-        }
-      },
-    },
-  },
-  methods: {
-  },
-};
+const store = useGlobalStore();
+
+const labelName = computed(() => {
+  if (store.isLoopingImages) {
+    return `Stop playing animation`;
+  }
+  return `Play animation`;
+});
+
+watch(() => store.animation, () => {
+  if (store.isLoopingImages) {
+    startLoopingImages(); // continue looping images with updated animation settings
+  }
+});
 </script>

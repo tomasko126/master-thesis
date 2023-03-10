@@ -49,46 +49,30 @@
   </GeneralTabContent>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
+<script setup lang="ts">
+import { useGlobalStore } from '../../stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { setContrast, setBrightness, displayImageInElement } from '~/functions/Cornerstone.js';
+import { setContrast, setBrightness, displayImageInElement } from '../../functions/Cornerstone';
+import { computed, ref, watch } from 'vue';
 
-export default {
-  components: {
-    FontAwesomeIcon,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, setBrightness, setContrast };
-  },
-  data() {
-    return {
-      counter: 1,
-    };
-  },
-  computed: {
-    isButtonDisabled() {
-      return this.store.imageIds.length === 0;
-    },
-  },
-  watch: {
-    'store.shownImageId': {
-      handler() {
-        this.counter = this.store.imageIds.indexOf(this.store.shownImageId) + 1;
-      },
-    },
-  },
-  methods: {
-    onFrameNumberChange(idx) {
-      const number = parseInt(idx) - 1;
-      if (isNaN(number) || number < 0 || number > this.store.imageIds.length) {
-        return;
-      }
+const store = useGlobalStore();
+const counter = ref(1);
 
-      displayImageInElement(this.store.mainImageContainer, this.store.imageIds[number]);
-    },
-  },
+const isButtonDisabled = computed(() => {
+  return store.imageIds.length === 0;
+});
+
+watch(() => store.shownImageId, () => {
+  counter.value = store.imageIds.indexOf(store.shownImageId) + 1;
+});
+
+const onFrameNumberChange = (idx) => {
+  const number = parseInt(idx) - 1;
+  if (isNaN(number) || number < 0 || number > store.imageIds.length) {
+    return;
+  }
+
+  displayImageInElement(store.mainImageContainer, store.imageIds[number]);
 };
 </script>
 

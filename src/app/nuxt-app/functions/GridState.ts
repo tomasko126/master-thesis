@@ -1,17 +1,15 @@
-import { MOVING_MODE } from './enums/GridEnums.js';
+import { MOVING_MODE } from './enums/GridEnums';
+import { GridTool } from '~/functions/types/GridTool';
 
 /**
  * Class responsible for grid's config/state retrieval
  */
 class GridState {
-    config = null;
-    state = null;
-    tool = null;
+    config;
+    state;
+    tool;
 
-    /**
-     * @param {GridTool} tool - GridTool instance defined in the cornerstoneTools lib
-     */
-    constructor(tool) {
+    constructor(tool: GridTool) {
         const { config, state } = tool.getToolsStateAndConfig();
         this.config = config;
         this.state = state;
@@ -20,17 +18,15 @@ class GridState {
 
     /**
      * Find out, whether grid has been defined for shown image
-     * @returns {boolean}
      */
-    hasGrid() {
+    hasGrid(): boolean {
         return !!this.state.length;
     }
 
     /**
      * Retrieve grid's moving mode
-     * @returns {string|null}
      */
-    getMovingMode() {
+    getMovingMode(): string|null {
         if (!this.hasGrid()) {
             return null;
         }
@@ -40,17 +36,15 @@ class GridState {
 
     /**
      * Retrieve grid's angle
-     * @returns {number}
      */
-    getAngle() {
+    getAngle(): number|null {
         return this.tool.angle;
     }
 
     /**
      * Retrieve grid's X offset
-     * @returns {number|null}
      */
-    getOffsetX() {
+    getOffsetX(): number|null {
         if (!this.hasGrid()) {
             return null;
         }
@@ -59,9 +53,8 @@ class GridState {
 
     /**
      * Retrieve grid's Y offset
-     * @returns {number|null}
      */
-    getOffsetY() {
+    getOffsetY(): number|null {
         if (!this.hasGrid()) {
             return null;
         }
@@ -70,25 +63,22 @@ class GridState {
 
     /**
      * Retrieve grid's number of primary lines
-     * @returns {number}
      */
-    getNoOfPrimaryLines() {
+    getNoOfPrimaryLines(): number|null {
         return this.tool.noOfPrimaryLines;
     }
 
     /**
      * Retrieve grid's number of secondary lines
-     * @returns {number}
      */
-    getNoOfSecondaryLines() {
+    getNoOfSecondaryLines(): number|null {
         return this.tool.noOfSecondaryLines;
     }
 
     /**
      * Retrieve grid's spacing between points
-     * @returns {number|null}
      */
-    getSpacing() {
+    getSpacing(): number|null {
         if (!this.hasGrid()) {
             return null;
         }
@@ -97,9 +87,8 @@ class GridState {
 
     /**
      * Find out, if we are showing refinement points or not
-     * @returns {boolean|null}
      */
-    isShowingRefinementPoints() {
+    isShowingRefinementPoints(): boolean|null {
         if (!this.hasGrid()) {
             return null;
         }

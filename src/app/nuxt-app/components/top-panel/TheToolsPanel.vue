@@ -12,7 +12,7 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
 import ZoomPlusTool from './tools/ZoomPlusTool.vue';
 import ZoomMinusTool from './tools/ZoomMinusTool.vue';
 import PanTool from './tools/PanTool.vue';
@@ -20,18 +20,6 @@ import PlayPauseTool from './tools/PlayPauseTool.vue';
 import OpenImagesTool from './tools/OpenImagesTool.vue';
 import GridTool from './tools/GridTool.vue';
 import CloseImagesTool from './tools/CloseImagesTool.vue';
-
-export default {
-  components: {
-    CloseImagesTool,
-    GridTool,
-    OpenImagesTool,
-    PlayPauseTool,
-    PanTool,
-    ZoomPlusTool,
-    ZoomMinusTool,
-  },
-};
 </script>
 
 <style lang="scss" scoped>

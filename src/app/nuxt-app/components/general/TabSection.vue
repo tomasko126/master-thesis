@@ -5,22 +5,22 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    labelText: {
-      type: String,
-      required: true,
-    },
-    alignItems: {
-      type: String,
-      default: 'center',
-      validator(value) {
-        return ['baseline', 'center'].includes(value);
-      },
+<script setup lang="ts">
+import { defineProps } from 'vue';
+
+defineProps({
+  alignItems: {
+    type: String,
+    default: 'center',
+    validator(value: string) {
+      return ['baseline', 'center'].indexOf(value) !== -1;
     },
   },
-};
+  labelText: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <style lang="scss" scoped>

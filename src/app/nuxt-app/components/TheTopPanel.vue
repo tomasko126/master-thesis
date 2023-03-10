@@ -4,14 +4,6 @@
   </header>
 </template>
 
-<script>
+<script setup lang="ts">
 import TheToolsPanel from './top-panel/TheToolsPanel.vue';
-export default {
-  components: {
-    TheToolsPanel,
-  },
-};
 </script>
-
-<style lang="scss" scoped>
-</style>

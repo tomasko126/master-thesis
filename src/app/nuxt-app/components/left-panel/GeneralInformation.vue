@@ -19,32 +19,31 @@
   </GeneralTabContent>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
+<script setup lang="ts">
+import { useGlobalStore } from '../../stores';
+import { computed } from 'vue';
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  computed: {
-    modality() {
-      return this.store?.dicomHeaderParser?.getModality() ?? 'N/A';
-    },
-    patientName() {
-      return this.store?.dicomHeaderParser?.getPatientName() ?? 'N/A';
-    },
-    seriesNumber() {
-      return this.store?.dicomHeaderParser?.getSeriesNumber() ?? 'N/A';
-    },
-    windowWidth() {
-      return this.store?.dicomHeaderParser?.getWindowWidth() ?? 'N/A';
-    },
-    windowHeight() {
-      return this.store?.dicomHeaderParser?.getWindowHeight() ?? 'N/A';
-    },
-  },
-};
+const store = useGlobalStore();
+
+const modality = computed(() => {
+  return store.dicomHeaderParser?.getModality() ?? 'N/A';
+});
+
+const patientName = computed(() => {
+  return store.dicomHeaderParser?.getPatientName() ?? 'N/A';
+});
+
+const seriesNumber = computed(() => {
+  return store.dicomHeaderParser?.getSeriesNumber() ?? 'N/A';
+});
+
+const windowWidth = computed(() => {
+  return store.dicomHeaderParser?.getWindowWidth() ?? 'N/A';
+});
+
+const windowHeight = computed(() => {
+  return store.dicomHeaderParser?.getWindowHeight() ?? 'N/A';
+});
 </script>
 
 <style lang="scss" scoped>

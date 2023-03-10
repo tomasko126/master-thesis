@@ -7,19 +7,13 @@
   </main>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores/index';
-import { initLibraries } from '~/functions/Cornerstone.js';
+<script setup lang="ts">
+import { initLibraries } from '../functions/Cornerstone';
+import { onMounted } from 'vue';
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  async mounted() {
-    await initLibraries();
-  },
-}
+onMounted(async () => {
+  await initLibraries();
+});
 </script>
 
 <style lang="scss" scoped>

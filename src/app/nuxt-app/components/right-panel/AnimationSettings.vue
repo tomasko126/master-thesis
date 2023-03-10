@@ -43,68 +43,64 @@
   </GeneralTabContent>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores/index';
+<script setup lang="ts">
+import { useGlobalStore } from '../../stores';
+import {computed, ref, watch} from 'vue';
 
-export default {
-  setup() {
-    const store = useGlobalStore();
-    return { store };
-  },
-  data() {
-    return {
-      fromIdx: this.store.animation.fromIdx + 1,
-      toIdx: this.store.animation.toIdx + 1,
-      speed: 30,
-    };
-  },
-  computed: {
-    areInputsDisabled() {
-      return this.store.imageIds.length < 2;
-    },
-    fromImageRules() {
-      if (this.store.imageIds.length === 1) {
-        return [
-          (value) => parseInt(value) === 1 || `Value must be set to 1`,
-        ];
-      }
-      return [
-        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !this.store.imageIds.length || `This field is required and must be a number`,
-        (value) => parseInt(value) > 0 || !this.store.imageIds.length || `Value must be bigger than 0`,
-        (value) => parseInt(value) <= this.store.imageIds.length - 1 || !this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length - 1}`,
-        (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
-      ];
-    },
-    toImageRules() {
-      if (this.store.imageIds.length === 1) {
-        return [
-          (value) => parseInt(value) === 1 || `Value must be set to 1`,
-        ];
-      }
-      return [
-        (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !this.store.imageIds.length || `This field is required and must be a number`,
-        (value) => parseInt(value) > this.fromIdx && parseInt(value) > 0 || !this.store.imageIds.length || `Value must be bigger than ${this.fromIdx}`,
-        (value) => parseInt(value) <= this.store.imageIds.length || `Value must be lower than ${this.store.imageIds.length + 1}`,
-        (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
-      ];
-    },
-  },
-  watch: {
-    'store.imageIds'(newValue) {
-      this.fromIdx = newValue.length ? 1 : 0;
-      this.toIdx = newValue.length;
-    },
-    fromIdx(newValue) {
-      this.store.animation.fromIdx = newValue - 1;
-    },
-    toIdx(newValue) {
-      this.store.animation.toIdx = newValue - 1;
-    },
-    speed(newValue) {
-      this.store.animation.speed = newValue;
-    },
-  },
+const store = useGlobalStore();
+
+const fromIdx = ref(store.animation.fromIdx + 1);
+const toIdx = ref(store.animation.toIdx + 1);
+const speed = ref(30);
+
+const areInputsDisabled = computed(() => {
+  return store.imageIds.length < 2;
+});
+
+const fromImageRules = computed(() => {
+  if (store.imageIds.length === 1) {
+    return [
+      (value) => parseInt(value) === 1 || `Value must be set to 1`,
+    ];
+  }
+  return [
+    (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
+    (value) => parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than 0`,
+    (value) => parseInt(value) <= store.imageIds.length - 1 || !store.imageIds.length || `Value must be lower than ${store.imageIds.length - 1}`,
+    (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
+  ];
+});
+
+const toImageRules = () => {
+  if (store.imageIds.length === 1) {
+    return [
+      (value) => parseInt(value) === 1 || `Value must be set to 1`,
+    ];
+  }
+  return [
+    (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
+    (value) => parseInt(value) > fromIdx.value && parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than ${fromIdx.value}`,
+    (value) => parseInt(value) <= store.imageIds.length || `Value must be lower than ${store.imageIds.length + 1}`,
+    (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
+  ];
 };
+
+watch(fromIdx, (value) => {
+  store.animation.fromIdx = value - 1;
+});
+
+watch(toIdx, (value) => {
+  store.animation.toIdx = value - 1;
+});
+
+watch(speed, (value) => {
+  store.animation.speed = value;
+});
+
+watch(() => store.imageIds, (value) => {
+  fromIdx.value = value.length ? 1 : 0;
+  toIdx.value = value.length;
+});
 </script>
 
 <style lang="scss" scoped>

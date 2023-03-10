@@ -19,40 +19,38 @@
   </va-popover>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores/index';
+<script setup lang="ts">
+import { useGlobalStore } from '../../../stores';
+import { defineProps, defineEmits, onMounted } from 'vue';
 
-export default {
-  name: 'BaseTool',
-  props: {
-    active: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    popoverMessage: {
-      type: String,
-      required: true,
-    },
-    toolName: {
-      type: String,
-      default: '',
-    },
+const store = useGlobalStore();
+
+const props = defineProps({
+  active: {
+    type: Boolean,
+    default: false,
   },
-  emits: ['click'],
-  setup() {
-    const store = useGlobalStore();
-    return { store };
+  disabled: {
+    type: Boolean,
+    default: false,
   },
-  mounted() {
-    if (this.toolName) {
-      this.store.tools.push(this.toolName);
-    }
+  popoverMessage: {
+    type: String,
+    required: true,
   },
-};
+  toolName: {
+    type: String,
+    default: '',
+  },
+});
+
+defineEmits(['click']);
+
+onMounted(() => {
+  if (props.toolName) {
+    store.tools.push(props.toolName);
+  }
+});
 </script>
 
 <style lang="scss" scoped>

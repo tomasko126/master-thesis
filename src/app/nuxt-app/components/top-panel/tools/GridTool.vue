@@ -14,22 +14,13 @@
   </BaseTool>
 </template>
 
-<script>
+<script setup lang="ts">
 import BaseTool from './BaseTool.vue';
 
-import { useGlobalStore } from '~/stores/index';
-import { activateTool } from '~/functions/Cornerstone.js';
+import { useGlobalStore } from '../../../stores';
+import { activateTool } from '../../../functions/Cornerstone';
 
-export default {
-  name: 'GridTool',
-  components: {
-    BaseTool,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, activateTool };
-  },
-};
+const store = useGlobalStore();
 </script>
 
 <style>

@@ -8,20 +8,11 @@
   </BaseTool>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
+<script setup lang="ts">
+import { useGlobalStore } from '../../../stores';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { removeImages } from '~/functions/Cornerstone.js';
+import { removeImages } from '../../../functions/Cornerstone';
 import BaseTool from './BaseTool.vue';
 
-export default {
-  components: {
-    BaseTool,
-    FontAwesomeIcon,
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, removeImages };
-  },
-};
+const store = useGlobalStore();
 </script>

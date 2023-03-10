@@ -18,9 +18,12 @@ export default defineNuxtConfig({
   ],
   plugins: [
     {
-      src: '~/plugins/ui.js',
+      src: '~/plugins/ui.ts',
     },
   ],
   ssr: false,
   telemetry: false,
+  typescript: {
+    typeCheck: true,
+  },
 });

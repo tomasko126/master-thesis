@@ -23,58 +23,56 @@
   </article>
 </template>
 
-<script>
-import { useGlobalStore } from '~/stores';
-import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '~/functions/Cornerstone.js';
+<script setup lang="ts">
+import { useGlobalStore } from '../../stores';
+import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '../../functions/Cornerstone';
+import { onMounted, onUnmounted, ref } from 'vue';
+import type Ref from 'vue';
 
-export default {
-  props: {
-    imageId: {
-      type: String,
-      required: true,
-    },
-    imageIdx: {
-      type: Number,
-      required: true,
-    },
-  },
-  setup() {
-    const store = useGlobalStore();
-    return { store, displayImageInElement };
-  },
-  data() {
-    return {
-      imageSrc: null,
-    };
-  },
-  async mounted() {
-    // Register image container
-    await registerImageContainer(this.$refs['fakeThumbnail']);
+const store = useGlobalStore();
 
-    // Display image using cornerstone
-    await displayImageInElement(this.$refs['fakeThumbnail'], this.imageId);
-  },
-  unmounted() {
-    URL.revokeObjectURL(this.imageSrc);
-  },
-  methods: {
-    convertCanvasImageToSrc() {
-      return new Promise((resolve) => {
-        const canvasElement = this.$refs['fakeThumbnail'].firstChild;
-        canvasElement.toBlob((blob) => {
-          resolve(URL.createObjectURL(blob));
-        });
-      });
-    },
-    async onCanvasImageRendered() {
-      // When canvas contains rendered image, convert it to src for later usage
-      this.imageSrc = await this.convertCanvasImageToSrc();
+const imageSrc: Ref<string> = ref('');
+const fakeThumbnail: Ref<HTMLElement> = ref(null);
 
-      // We do not need this container anymore
-      unregisterImageContainer(this.$refs['fakeThumbnail']);
-    },
+const props = defineProps({
+  imageId: {
+    type: String,
+    required: true,
   },
+  imageIdx: {
+    type: Number,
+    required: true,
+  },
+});
+
+const convertCanvasImageToSrc = () => {
+  return new Promise((resolve) => {
+    const canvasElement = fakeThumbnail.value.firstChild;
+    canvasElement.toBlob((blob) => {
+      resolve(URL.createObjectURL(blob));
+    });
+  });
 };
+
+const onCanvasImageRendered = async() => {
+  // When canvas contains rendered image, convert it to src for later usage
+  imageSrc.value = await convertCanvasImageToSrc();
+
+  // We do not need this container anymore
+  unregisterImageContainer(fakeThumbnail.value);
+};
+
+onMounted(async () => {
+  // Register image container
+  await registerImageContainer(fakeThumbnail.value);
+
+  // Display image using cornerstone
+  await displayImageInElement(fakeThumbnail.value, props.imageId);
+});
+
+onUnmounted(() => {
+  URL.revokeObjectURL(imageSrc.value);
+});
 </script>
 
 <style lang="scss" scoped>
