@@ -71,7 +71,7 @@ const fromImageRules = computed(() => {
   ];
 });
 
-const toImageRules = () => {
+const toImageRules = computed(() => {
   if (store.imageIds.length === 1) {
     return [
       (value) => parseInt(value) === 1 || `Value must be set to 1`,
@@ -83,7 +83,7 @@ const toImageRules = () => {
     (value) => parseInt(value) <= store.imageIds.length || `Value must be lower than ${store.imageIds.length + 1}`,
     (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
   ];
-};
+});
 
 watch(fromIdx, (value) => {
   store.animation.fromIdx = value - 1;
