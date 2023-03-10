@@ -61,6 +61,11 @@ export class GridTool {
    * Tell grid, whether to move with one handle or with whole grid at once
    */
   set moveOneHandleOnly(value: boolean): void;
+
+  /**
+   * Copy current grid to all remaining images
+   */
+  copyGridToAllImages(): void;
 }
 
 declare namespace GridToolOptions {

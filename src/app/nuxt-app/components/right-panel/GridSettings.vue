@@ -82,8 +82,9 @@
         @update:model-value="setNoOfSecondaryLines"
       />
     </GeneralTabSection>
-    <div class="grid-button">
+    <div class="grid-buttons">
       <RightPanelGridCallToActionButton />
+      <RightPanelGridCopyGridButton />
     </div>
   </GeneralTabContent>
 </template>
@@ -198,12 +199,16 @@ const setShowingRefinementPoints = (input) => {
   max-width: 100px;
   min-width: 100px;
 }
-.grid-button {
+.grid-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-top: 10px;
   margin-bottom: 10px;
+  flex-direction: column;
+
+  button:first-child {
+    margin-bottom: 15px;
+  }
 }
 .va-divider {
   --va-divider-border-top-color: rgba(128, 128, 128, 0.36);

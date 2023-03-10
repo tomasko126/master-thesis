@@ -202,7 +202,6 @@ export const unregisterImageContainer = (element: HTMLElement, isMainImageContai
 
 /**
  * Retrieve GridTool instance
- * @todo type
  */
 export const getGridTool = (): GridTool.GridTool|null => {
     return cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid') ?? null;
