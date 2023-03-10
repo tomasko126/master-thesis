@@ -1,5 +1,7 @@
 <template>
   <GeneralTabContent title="Grid">
+    <GeneralTabSection label-text="Global settings:" />
+    <va-divider />
     <GeneralTabSection label-text="Move:">
       <va-button-toggle
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
@@ -11,6 +13,16 @@
         @update:model-value="setMoveMode"
       />
     </GeneralTabSection>
+    <GeneralTabSection label-text="Show refinement points:">
+      <va-switch
+        size="small"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :model-value="isShowingRefinementPoints"
+        @update:model-value="setShowingRefinementPoints"
+      />
+    </GeneralTabSection>
+    <va-divider />
+    <GeneralTabSection label-text="Local settings:" />
     <va-divider />
     <GeneralTabSection label-text="Angle:">
       <va-input
@@ -70,12 +82,6 @@
         @update:model-value="setNoOfSecondaryLines"
       />
     </GeneralTabSection>
-    <va-checkbox
-      label="Show refinement points"
-      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
-      :model-value="isShowingRefinementPoints"
-      @update:model-value="setShowingRefinementPoints"
-    />
     <div class="grid-button">
       <RightPanelGridCallToActionButton />
     </div>
