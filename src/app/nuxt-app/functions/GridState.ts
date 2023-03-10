@@ -92,7 +92,7 @@ class GridState {
         if (!this.hasGrid()) {
             return null;
         }
-        return this.config.showRefinementPoints;
+        return this.config.showRefinementPoints.global;
     }
 }
 

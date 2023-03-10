@@ -83,7 +83,9 @@ declare namespace GridToolOptions {
       spacing: {
         default: number,
       },
-      showRefinementPoints: boolean,
+      showRefinementPoints: {
+        global: boolean,
+      },
     },
     state: primaryLine[],
   }
