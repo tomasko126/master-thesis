@@ -1,13 +1,13 @@
 import { MOVING_MODE } from './enums/GridEnums';
-import { GridTool } from '~/functions/types/GridTool';
+import type { GridTool, GridToolOptions } from '~/functions/types/GridTool';
 
 /**
  * Class responsible for grid's config/state retrieval
  */
 class GridState {
-    config;
-    state;
-    tool;
+    config: GridToolOptions.GridToolConfig;
+    state: GridToolOptions.primaryLine[];
+    tool: GridTool;
 
     constructor(tool: GridTool) {
         const { config, state } = tool.getToolsStateAndConfig();
@@ -21,6 +21,10 @@ class GridState {
      */
     hasGrid(): boolean {
         return !!this.state.length;
+    }
+
+    getNoOfGrids(): number {
+        return this.tool.getNoOfGrids();
     }
 
     /**

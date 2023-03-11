@@ -17,7 +17,6 @@
 </template>
 <script setup lang="ts">
 import { useGlobalStore } from '../../../stores';
-import { getGridTool } from '../../../functions/Cornerstone';
 import { ref } from 'vue';
 
 const store = useGlobalStore();
@@ -25,10 +24,7 @@ const store = useGlobalStore();
 const showModal = ref(false);
 
 const copyGrid = () => {
-  const gridTool = getGridTool();
-  if (!gridTool) {
-    return;
-  }
+  const gridTool = store?.gridState?.tool;
   gridTool.copyGridToAllImages();
 };
 </script>

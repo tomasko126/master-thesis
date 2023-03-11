@@ -92,7 +92,6 @@
 <script setup lang="ts">
 import { useGlobalStore } from '../../stores';
 import { MOVING_MODE } from '../../functions/enums/GridEnums';
-import { getGridTool } from '../../functions/Cornerstone';
 import { computed } from 'vue';
 
 const store = useGlobalStore();
@@ -130,7 +129,7 @@ const isShowingRefinementPoints = computed(() => {
 });
 
 const setMoveMode = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -138,7 +137,7 @@ const setMoveMode = (input) => {
 };
 
 const setAngle = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -146,7 +145,7 @@ const setAngle = (input) => {
 };
 
 const setSpacing = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -154,7 +153,7 @@ const setSpacing = (input) => {
 };
 
 const setOffset = (coordinates) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -170,7 +169,7 @@ const setYOffset = (input) => {
 };
 
 const setNoOfPrimaryLines = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -178,7 +177,7 @@ const setNoOfPrimaryLines = (input) => {
 };
 
 const setNoOfSecondaryLines = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
@@ -186,7 +185,7 @@ const setNoOfSecondaryLines = (input) => {
 };
 
 const setShowingRefinementPoints = (input) => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }

@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { useGlobalStore } from '../../../stores';
 import { useToast } from 'vuestic-ui';
-import { activateTool, getGridTool, deactivateTool } from '../../../functions/Cornerstone';
+import { activateTool, deactivateTool } from '../../../functions/Cornerstone';
 
 const store = useGlobalStore();
 
@@ -33,7 +33,7 @@ const createGrid = () => {
 };
 
 const removeGrid = () => {
-  const gridTool = getGridTool();
+  const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }

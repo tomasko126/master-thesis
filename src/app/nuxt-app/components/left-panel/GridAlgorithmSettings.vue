@@ -43,7 +43,7 @@
       <va-button
         :disabled="store.isLoopingImages || store.imageIds.length < 2"
       >
-        Compute grids
+        Compute grid positions
       </va-button>
     </div>
   </GeneralTabContent>

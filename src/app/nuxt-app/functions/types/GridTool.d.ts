@@ -70,29 +70,31 @@ export class GridTool {
 
 declare namespace GridToolOptions {
   export interface getToolsStateAndConfigOutput {
-    config: {
-      currentHandle: number,
-      currentTool: number,
-      handleRadius: number,
-      highlighting: {
-        primaryLineIdxInLoop: number,
-        secondaryLineIdx: undefined|number,
-      },
-      moveOneHandleOnly: boolean,
-      noOfPrimaryLines: {
-        default: number,
-      },
-      noOfSecondaryLines: {
-        default: number,
-      },
-      spacing: {
-        default: number,
-      },
-      showRefinementPoints: {
-        global: boolean,
-      },
-    },
+    config: GridToolConfig,
     state: primaryLine[],
+  }
+
+  export interface GridToolConfig {
+    currentHandle: number,
+    currentTool: number,
+    handleRadius: number,
+    highlighting: {
+      primaryLineIdxInLoop: number,
+      secondaryLineIdx: undefined|number,
+    },
+    moveOneHandleOnly: boolean,
+    noOfPrimaryLines: {
+      default: number,
+    },
+    noOfSecondaryLines: {
+      default: number,
+    },
+    spacing: {
+      default: number,
+    },
+    showRefinementPoints: {
+      global: boolean,
+    },
   }
 
   export interface primaryLine {
