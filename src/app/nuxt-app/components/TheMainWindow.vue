@@ -6,6 +6,7 @@
       @cornerstonenewimage="onImageShown"
       @cornerstonetoolsmeasurementcompleted="onMeasurementCompleted"
       @cornerstonetoolsmeasurementremoved="onGridRemoved"
+      @cornerstonetoolsclipstopped="onClipStopped"
     >
       <va-file-upload
         v-if="!store.imageIds.length"
@@ -49,6 +50,10 @@ const onFileAdded = () => {
 
 const onGridRemoved = () => {
   store.gridState = null;
+};
+
+const onClipStopped = () => {
+  store.isLoopingImages = false;
 };
 
 const onImageShown = (e) => {
