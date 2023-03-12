@@ -60,28 +60,28 @@ const areInputsDisabled = computed(() => {
 const fromImageRules = computed(() => {
   if (store.imageIds.length === 1) {
     return [
-      (value) => parseInt(value) === 1 || `Value must be set to 1`,
+      (value: string) => parseInt(value) === 1 || `Value must be set to 1`,
     ];
   }
   return [
-    (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
-    (value) => parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than 0`,
-    (value) => parseInt(value) <= store.imageIds.length - 1 || !store.imageIds.length || `Value must be lower than ${store.imageIds.length - 1}`,
-    (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
+    (value: string) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
+    (value: string) => parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than 0`,
+    (value: string) => parseInt(value) <= store.imageIds.length - 1 || !store.imageIds.length || `Value must be lower than ${store.imageIds.length - 1}`,
+    (value: string) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
   ];
 });
 
 const toImageRules = computed(() => {
   if (store.imageIds.length === 1) {
     return [
-      (value) => parseInt(value) === 1 || `Value must be set to 1`,
+      (value: string) => parseInt(value) === 1 || `Value must be set to 1`,
     ];
   }
   return [
-    (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
-    (value) => parseInt(value) > fromIdx.value && parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than ${fromIdx.value}`,
-    (value) => parseInt(value) <= store.imageIds.length || `Value must be lower than ${store.imageIds.length + 1}`,
-    (value) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
+    (value: string) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
+    (value: string) => parseInt(value) > fromIdx.value && parseInt(value) > 0 || !store.imageIds.length || `Value must be bigger than ${fromIdx.value}`,
+    (value: string) => parseInt(value) <= store.imageIds.length || `Value must be lower than ${store.imageIds.length + 1}`,
+    (value: string) => parseFloat(value) === parseInt(value) || `Value must not be a decimal number`,
   ];
 });
 
