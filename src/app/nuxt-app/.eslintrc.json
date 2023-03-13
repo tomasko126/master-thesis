@@ -1,20 +1,21 @@
 {
     "env": {
         "browser": true,
-        "es2022": true
+        "es2022": true,
+        "vue/setup-compiler-macros": true
     },
     "extends": [
-        "eslint:recommended",
-        "@vue/typescript/recommended",
-        "plugin:vue/vue3-recommended"
-    ],
-    "plugins": [
-        "@typescript-eslint"
+        "@nuxtjs/eslint-config-typescript"
     ],
     "parser": "vue-eslint-parser",
     "parserOptions": {
         "ecmaVersion": 13,
         "parser": "@typescript-eslint/parser"
     },
-    "root": true
+    "root": true,
+    "rules": {
+        "semi": "off",
+        "comma-dangle": "off",
+        "space-before-function-paren": "off"
+    }
 }
