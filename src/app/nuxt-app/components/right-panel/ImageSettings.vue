@@ -50,10 +50,11 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../stores';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { setContrast, setBrightness, displayImageInElement } from '../../functions/Cornerstone';
 import { computed, ref, watch } from 'vue';
+// eslint-disable-next-line import/named
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useGlobalStore } from '~/stores';
+import { setContrast, setBrightness, displayImageInElement } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 const counter = ref(1);
@@ -63,16 +64,20 @@ const isButtonDisabled = computed(() => {
 });
 
 watch(() => store.shownImageId, () => {
-  counter.value = store.imageIds.indexOf(store.shownImageId) + 1;
+  if (!store.shownImageId) {
+    counter.value = 0;
+  } else {
+    counter.value = store.imageIds.indexOf(store.shownImageId) + 1;
+  }
 });
 
-const onFrameNumberChange = (idx) => {
+const onFrameNumberChange = (idx: string) => {
   const number = parseInt(idx) - 1;
   if (isNaN(number) || number < 0 || number > store.imageIds.length) {
     return;
   }
 
-  displayImageInElement(store.mainImageContainer, store.imageIds[number]);
+  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[number]);
 };
 </script>
 

@@ -9,10 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { removeImages } from '../../../functions/Cornerstone';
 import BaseTool from './BaseTool.vue';
+import { removeImages } from '~/functions/Cornerstone';
+import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
 </script>

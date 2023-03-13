@@ -19,9 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../../stores';
 import { useToast } from 'vuestic-ui';
-import { activateTool, deactivateTool } from '../../../functions/Cornerstone';
+import { useGlobalStore } from '~/stores';
+import { activateTool, deactivateTool } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 

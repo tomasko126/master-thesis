@@ -11,11 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import BaseTool from './BaseTool';
-
-import { useGlobalStore } from '../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { activateTool } from '../../../functions/Cornerstone';
+import BaseTool from './BaseTool.vue';
+import { useGlobalStore } from '~/stores';
+import { activateTool } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 </script>

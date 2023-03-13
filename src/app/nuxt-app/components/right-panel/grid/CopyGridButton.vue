@@ -16,8 +16,8 @@
   />
 </template>
 <script setup lang="ts">
-import { useGlobalStore } from '../../../stores';
 import { ref } from 'vue';
+import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
 
@@ -25,6 +25,9 @@ const showModal = ref(false);
 
 const copyGrid = () => {
   const gridTool = store?.gridState?.tool;
+  if (!gridTool) {
+    return;
+  }
   gridTool.copyGridToAllImages();
 };
 </script>

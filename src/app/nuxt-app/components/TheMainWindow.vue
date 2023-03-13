@@ -31,21 +31,23 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../stores';
+import { ref, watch, onMounted, onUnmounted, Ref } from 'vue';
+import { VaFile } from 'vuestic-ui';
 import GridState from '../functions/GridState';
 import DicomHeaderParser from '../functions/DicomHeaderParser';
 import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '../functions/Cornerstone';
-import { ref, watch, onMounted, onUnmounted } from 'vue';
-import type Ref from 'vue';
+import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
 
-const files = ref([]);
-const dicomImage: Ref<HTMLElement> = ref(null);
+const files: Ref<VaFile[]> = ref([]);
+const dicomImage: Ref<HTMLElement|null> = ref(null);
 
 const onFileAdded = () => {
-  loadImagesFromFiles(files.value);
-  files.value = [];
+  if (files.value) {
+    loadImagesFromFiles(files.value);
+    files.value = [];
+  }
 };
 
 const onGridRemoved = () => {
@@ -56,7 +58,7 @@ const onClipStopped = () => {
   store.isLoopingImages = false;
 };
 
-const onImageShown = (e) => {
+const onImageShown = (e: CustomEvent) => {
   store.shownImageId = e.detail.image.imageId;
   const tool = getGridTool();
   if (tool) {
@@ -73,7 +75,7 @@ const onMeasurementCompleted = () => {
 };
 
 const onNewImages = () => {
-  displayImageInElement(store.mainImageContainer, store.imageIds[0]);
+  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[0]);
   registerAllTools();
 };
 
@@ -82,14 +84,14 @@ watch(() => store.imageIds, () => {
 });
 
 onMounted(() => {
-  registerImageContainer(dicomImage.value, true);
+  registerImageContainer(dicomImage.value as HTMLElement, true);
   registerAllTools();
 
   store.dicomHeaderParser = new DicomHeaderParser();
 });
 
 onUnmounted(() => {
-  unregisterImageContainer(dicomImage.value, true);
+  unregisterImageContainer(dicomImage.value as HTMLElement, true);
   unregisterAllTools();
 });
 </script>

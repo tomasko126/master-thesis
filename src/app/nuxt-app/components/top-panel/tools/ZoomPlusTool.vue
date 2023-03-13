@@ -10,25 +10,25 @@
 </template>
 
 <script setup lang="ts">
+import { ref, Ref } from 'vue';
 import BaseTool from './BaseTool.vue';
 
-import { useGlobalStore } from '../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { setZoom } from '../../../functions/Cornerstone';
-import { ref } from 'vue';
-import type Ref from 'vue';
+import { useGlobalStore } from '~/stores';
+import { setZoom } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
-const zoomIntervalId: ReturnType<typeof setInterval>|Ref<null> = ref(null);
+const zoomIntervalId: Ref<number|null> = ref(null);
 const zoomFactorChange = ref(0.025);
 
 const zoomStart = () => {
-  zoomIntervalId.value = setInterval(setZoom, 25, zoomFactorChange.value);
+  zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value);
 };
 
 const zoomEnd = () => {
-  clearInterval(zoomIntervalId.value);
-  zoomIntervalId.value = null;
+  if (zoomIntervalId.value) {
+    clearInterval(zoomIntervalId.value);
+    zoomIntervalId.value = null;
+  }
 };
 </script>

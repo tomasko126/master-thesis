@@ -17,22 +17,21 @@
         class="thumbnail"
         :src="imageSrc"
         alt="thumbnail"
-        @click="displayImageInElement(store.mainImageContainer, imageId)"
+        @click="onThumbnailClick"
       >
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../stores';
-import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '../../functions/Cornerstone';
-import { onMounted, onUnmounted, ref } from 'vue';
-import type Ref from 'vue';
+import { onMounted, onUnmounted, ref, Ref } from 'vue';
+import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '~/functions/Cornerstone';
+import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
 
 const imageSrc: Ref<string> = ref('');
-const fakeThumbnail: Ref<HTMLElement> = ref(null);
+const fakeThumbnail: Ref<HTMLElement|null> = ref(null);
 
 const props = defineProps({
   imageId: {
@@ -45,29 +44,42 @@ const props = defineProps({
   },
 });
 
-const convertCanvasImageToSrc = () => {
+const onThumbnailClick = () => {
+  displayImageInElement(store.mainImageContainer as HTMLElement, props.imageId);
+};
+
+const convertCanvasImageToSrc = (): Promise<string|null> => {
   return new Promise((resolve) => {
-    const canvasElement = fakeThumbnail.value.firstChild;
+    const canvasElement = fakeThumbnail?.value?.firstChild as HTMLCanvasElement;
     canvasElement.toBlob((blob) => {
-      resolve(URL.createObjectURL(blob));
+      if (blob) {
+        resolve(URL.createObjectURL(blob));
+      } else {
+        resolve(null);
+      }
     });
   });
 };
 
 const onCanvasImageRendered = async() => {
   // When canvas contains rendered image, convert it to src for later usage
-  imageSrc.value = await convertCanvasImageToSrc();
+  const imageSource = await convertCanvasImageToSrc();
+  if (!imageSource) {
+    console.error('Thumbnails could not have been created!');
+  } else {
+    imageSrc.value = imageSource;
+  }
 
   // We do not need this container anymore
-  unregisterImageContainer(fakeThumbnail.value);
+  unregisterImageContainer(fakeThumbnail.value as HTMLElement);
 };
 
 onMounted(async () => {
   // Register image container
-  await registerImageContainer(fakeThumbnail.value);
+  await registerImageContainer(fakeThumbnail.value as HTMLElement);
 
   // Display image using cornerstone
-  await displayImageInElement(fakeThumbnail.value, props.imageId);
+  await displayImageInElement(fakeThumbnail.value as HTMLElement, props.imageId);
 });
 
 onUnmounted(() => {

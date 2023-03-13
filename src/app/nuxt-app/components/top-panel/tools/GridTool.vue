@@ -16,9 +16,8 @@
 
 <script setup lang="ts">
 import BaseTool from './BaseTool.vue';
-
-import { useGlobalStore } from '../../../stores';
-import { activateTool } from '../../../functions/Cornerstone';
+import { useGlobalStore } from '~/stores';
+import { activateTool } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 </script>

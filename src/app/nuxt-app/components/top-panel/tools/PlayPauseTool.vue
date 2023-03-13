@@ -16,20 +16,18 @@
 </template>
 
 <script setup lang="ts">
-import BaseTool from './BaseTool.vue';
-
-import { useGlobalStore } from '../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { startLoopingImages, stopLoopingImages } from '../../../functions/Cornerstone';
 import { computed, watch } from 'vue';
+import BaseTool from './BaseTool.vue';
+import { useGlobalStore } from '~/stores';
+import { startLoopingImages, stopLoopingImages } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
 const labelName = computed(() => {
   if (store.isLoopingImages) {
-    return `Stop playing animation`;
+    return 'Stop playing animation';
   }
-  return `Play animation`;
+  return 'Play animation';
 });
 
 watch(() => store.animation, () => {

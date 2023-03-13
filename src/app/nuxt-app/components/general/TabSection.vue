@@ -13,7 +13,7 @@ defineProps({
     type: String,
     default: 'center',
     validator(value: string) {
-      return ['baseline', 'center'].indexOf(value) !== -1;
+      return ['baseline', 'center'].includes(value);
     },
   },
   labelText: {

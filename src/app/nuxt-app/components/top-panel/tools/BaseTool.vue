@@ -20,8 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../../stores';
 import { defineProps, defineEmits, onMounted } from 'vue';
+import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
 

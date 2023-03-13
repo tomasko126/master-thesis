@@ -1,4 +1,5 @@
 import getToolsStateAndConfigOutput = GridToolOptions.getToolsStateAndConfigOutput;
+import primaryLine = GridToolOptions.primaryLine;
 
 export class GridTool {
   getToolsStateAndConfig(): getToolsStateAndConfigOutput;
@@ -55,7 +56,7 @@ export class GridTool {
   /**
    * Tell grid, whether to show its refinement points or not.
    */
-  showRefinementPoints(value: boolean): void;
+  set showRefinementPoints(value: boolean): void;
 
   /**
    * Tell grid, whether to move with one handle or with whole grid at once
@@ -66,6 +67,21 @@ export class GridTool {
    * Copy current grid to all remaining images
    */
   copyGridToAllImages(): void;
+
+  /**
+   * Retrieve primary lines for a given image id
+   */
+  getStateForImageId(imageId: string): primaryLine[]|null;
+
+  /**
+   * Set given primary lines as grid's state for given image ids
+   */
+  setStateForImageIds(primaryLines: primaryLine[], imageIds: string[]): void;
+
+  /**
+   * Remove grid from current shown image
+   */
+  removeGrid(): void;
 }
 
 declare namespace GridToolOptions {
