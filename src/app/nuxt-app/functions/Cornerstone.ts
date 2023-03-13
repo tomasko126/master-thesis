@@ -14,7 +14,7 @@ import Hammer from 'hammerjs';
 
 import { VaFile } from 'vuestic-ui';
 import { useGlobalStore } from '~/stores';
-import type GridTool from '~/functions/types/GridTool';
+import { GridTool } from '~/functions/types/GridTool';
 
 const store = useGlobalStore();
 
@@ -204,7 +204,7 @@ export const unregisterImageContainer = (element: HTMLElement, isMainImageContai
 /**
  * Retrieve GridTool instance
  */
-export const getGridTool = (): GridTool.GridTool|null => {
+export const getGridTool = (): GridTool|null => {
   return cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid') ?? null;
 }
 
