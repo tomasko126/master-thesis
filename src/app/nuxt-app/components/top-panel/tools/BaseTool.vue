@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useGlobalStore } from '~/stores';
+import { ToolName } from '~/functions/cornerstoneTools';
 
 const store = useGlobalStore();
 
@@ -48,7 +49,8 @@ defineEmits(['click']);
 
 onMounted(() => {
   if (props.toolName) {
-    store.tools.push(props.toolName);
+    const toolName: ToolName = props.toolName as ToolName;
+    store.tools.push(toolName);
   }
 });
 </script>
