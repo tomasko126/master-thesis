@@ -13,6 +13,10 @@ import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import Hammer from 'hammerjs';
 
 import { VaFile } from 'vuestic-ui';
+// @ts-ignore
+import cornerstoneTools from '@tarotoma/cornerstone-tools/dist/cornerstoneTools.min';
+import type { FullToolName, ToolName } from './cornerstoneTools';
+
 import { useGlobalStore } from '~/stores';
 import { GridTool } from '~/functions/types/GridTool';
 
@@ -60,6 +64,10 @@ export const initLibraries = (): void => {
  * Load images from given |imageFiles| and show the first one in a main window
  */
 export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
+
   // Purge existing cached and stored data
   removeImages();
 
@@ -77,8 +85,9 @@ export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
   };
 
   // We have to reset enabled element
-  cornerstone.disable(store.mainImageContainer as HTMLElement);
-  cornerstone.enable(store.mainImageContainer as HTMLElement);
+
+  cornerstone.disable(store.mainImageContainer);
+  cornerstone.enable(store.mainImageContainer);
 
   // Add stack state manager for stack and playClip tools
   cornerstoneTools.addStackStateManager(store.mainImageContainer, ['stack', 'playClip']);
@@ -107,8 +116,11 @@ export const displayImageInElement = async (element: HTMLElement, imageId: strin
  * Retrieve shown image
  */
 export const getImage = (): cornerstone.Image|null => {
+  if (!store.mainImageContainer) {
+    return null;
+  }
   try {
-    return cornerstone.getImage(store.mainImageContainer as HTMLElement);
+    return cornerstone.getImage(store.mainImageContainer);
   } catch (e) {
     return null;
   }
@@ -123,13 +135,22 @@ export const removeImages = (): void => {
   store.gridState = null;
   store.dicomHeaderParser = null;
   cornerstone.imageCache.purgeCache();
-  cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid').clearAllStates();
+
+  if (!store.mainImageContainer) {
+    return;
+  }
+
+  const gridTool: GridTool = cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid') as GridTool;
+  gridTool.clearAllStates();
 };
 
 /**
  * Set cornerstone's tool to an active state
  */
 export const activateTool = (toolName: string, toolOptions: object): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
   if (store.activeTool) {
     // Deactivate another active tool
     deactivateTool(toolName);
@@ -142,6 +163,9 @@ export const activateTool = (toolName: string, toolOptions: object): void => {
  * Deactivate tool by setting its state to 'enabled'
  */
 export const deactivateTool = (toolName: string): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
   cornerstoneTools.setToolEnabledForElement(store.mainImageContainer, toolName);
   store.activeTool = null;
 };
@@ -149,8 +173,12 @@ export const deactivateTool = (toolName: string): void => {
 /**
  * Register and enable tool given by |toolName| param
  */
-export const registerTool = (toolName: string): void => {
-  const tool = cornerstoneTools[`${toolName}Tool`];
+export const registerTool = (toolName: ToolName): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
+  const fullToolName = toolName + 'Tool' as FullToolName;
+  const tool = cornerstoneTools[fullToolName];
   cornerstoneTools.addToolForElement(store.mainImageContainer, tool);
   cornerstoneTools.setToolEnabledForElement(store.mainImageContainer, toolName);
 };
@@ -168,8 +196,7 @@ export const registerAllTools = (): void => {
  * Unregister a tool
  */
 export const unregisterTool = (toolName: string): void => {
-  const tool = cornerstoneTools[`${toolName}Tool`];
-  cornerstoneTools.removeTool(tool);
+  cornerstoneTools.removeTool(toolName);
 };
 
 /**
@@ -205,13 +232,20 @@ export const unregisterImageContainer = (element: HTMLElement, isMainImageContai
  * Retrieve GridTool instance
  */
 export const getGridTool = (): GridTool|null => {
-  return cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid') ?? null;
+  if (!store.mainImageContainer) {
+    return null;
+  }
+  const gridTool = cornerstoneTools.getToolForElement(store.mainImageContainer, 'Grid') as GridTool;
+  return gridTool ?? null;
 }
 
 /**
  * Start looping images in the main container
  */
 export const startLoopingImages = ({ fromIdx = store.animation.fromIdx, toIdx = store.animation.toIdx, loop = true }: { fromIdx?: number, toIdx?: number, loop?: boolean } = {}): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
   store.isLoopingImages = true;
   cornerstoneTools.playClip(store.mainImageContainer, store.animation.speed, { fromIdx, toIdx, loop });
 };
@@ -220,6 +254,9 @@ export const startLoopingImages = ({ fromIdx = store.animation.fromIdx, toIdx = 
  * Stop looping images in the main container
  */
 export const stopLoopingImages = (): void => {
+  if (!store.mainImageContainer) {
+    return;
+  }
   cornerstoneTools.stopClip(store.mainImageContainer);
   store.isLoopingImages = false;
 };
@@ -228,10 +265,13 @@ export const stopLoopingImages = (): void => {
  * Set brightness of main image container
  */
 export const setBrightness = (scalar: number): void => {
-  const viewport = cornerstone.getViewport(store.mainImageContainer as HTMLElement);
+  if (!store.mainImageContainer) {
+    return;
+  }
+  const viewport = cornerstone.getViewport(store.mainImageContainer);
   if (viewport) {
     viewport.voi.windowCenter -= scalar;
-    cornerstone.setViewport(store.mainImageContainer as HTMLElement, viewport);
+    cornerstone.setViewport(store.mainImageContainer, viewport);
   }
 };
 
@@ -239,10 +279,13 @@ export const setBrightness = (scalar: number): void => {
  * Set contrast of main image container
  */
 export const setContrast = (scalar: number): void => {
-  const viewport = cornerstone.getViewport(store.mainImageContainer as HTMLElement);
+  if (!store.mainImageContainer) {
+    return;
+  }
+  const viewport = cornerstone.getViewport(store.mainImageContainer);
   if (viewport) {
     viewport.voi.windowWidth -= scalar;
-    cornerstone.setViewport(store.mainImageContainer as HTMLElement, viewport);
+    cornerstone.setViewport(store.mainImageContainer, viewport);
   }
 };
 
@@ -250,7 +293,10 @@ export const setContrast = (scalar: number): void => {
  * Set zoom of main image container by |zoomFactorChange|
  */
 export const setZoom = (zoomFactorChange: number): void => {
-  const viewport = cornerstone.getViewport(store.mainImageContainer as HTMLElement);
+  if (!store.mainImageContainer) {
+    return;
+  }
+  const viewport = cornerstone.getViewport(store.mainImageContainer);
 
   if (viewport) {
     const pow = 1.7;
@@ -259,7 +305,7 @@ export const setZoom = (zoomFactorChange: number): void => {
 
     viewport.scale = Math.pow(pow, factor);
 
-    cornerstone.setViewport(store.mainImageContainer as HTMLElement, viewport);
+    cornerstone.setViewport(store.mainImageContainer, viewport);
   }
 };
 
