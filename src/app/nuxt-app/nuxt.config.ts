@@ -4,9 +4,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   app: {
     head: {
-      script: [
-        { src: 'http://localhost:9000/dist/cornerstoneTools.js' },
-      ],
+      title: 'SPAMM web application'
     },
   },
   css: [
