@@ -3,8 +3,14 @@ import primaryLine = GridToolOptions.primaryLine;
 
 export class GridTool {
 
+  /**
+   * Clear all states for all images
+   */
   clearAllStates(): void;
 
+  /**
+   * Retrieve tool's config along with its state
+   */
   getToolsStateAndConfig(): getToolsStateAndConfigOutput;
 
   /**
@@ -85,6 +91,7 @@ export class GridTool {
    * Set showRefinementPoints setting for a given imageId
    */
   setShowRefinementPointsForImageId(imageId: string, value: boolean): void;
+
   /**
    * Remove grid from current shown image
    */

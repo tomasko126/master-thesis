@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import GridState from '~/functions/GridState';
 import DicomHeaderParser from '~/functions/DicomHeaderParser';
-import { ToolName } from '~/functions/cornerstoneTools';
+import { ToolName } from '~/functions/types/cornerstoneTools';
 
 interface AlgorithmSettings {
   curvature: number;

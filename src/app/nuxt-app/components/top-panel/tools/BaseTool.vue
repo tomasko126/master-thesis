@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useGlobalStore } from '~/stores';
-import { ToolName } from '~/functions/cornerstoneTools';
+import { ToolName } from '~/functions/types/cornerstoneTools';
 
 const store = useGlobalStore();
 
