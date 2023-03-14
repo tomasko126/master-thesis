@@ -1,6 +1,28 @@
 import { defineStore } from 'pinia';
 import GridState from '~/functions/GridState';
 import DicomHeaderParser from '~/functions/DicomHeaderParser';
+import { ToolName } from '~/functions/cornerstoneTools';
+
+interface AlgorithmSettings {
+  curvature: number;
+  force: number;
+  stopTime: number;
+}
+
+interface AnimationSettings {
+  /**
+   * Animation speed in FPS
+   */
+  speed: number;
+  /**
+   * Index of an image, from which an animation will start
+   */
+  fromIdx: number;
+  /**
+   * Index of an image, to which an animation will loop to
+   */
+  toIdx: number;
+}
 
 export const useGlobalStore = defineStore({
   id: 'globalStore',
@@ -21,7 +43,7 @@ export const useGlobalStore = defineStore({
       imageIds: [] as string[],
       shownImageId: null as string|null,
       activeTool: null as string|null,
-      tools: [] as string[],
+      tools: [] as ToolName[],
       dicomHeaderParser: null as DicomHeaderParser|null,
       gridState: null as GridState|null,
     };
@@ -32,24 +54,3 @@ export const useGlobalStore = defineStore({
     },
   },
 });
-
-interface AlgorithmSettings {
-    curvature: number;
-    force: number;
-    stopTime: number;
-}
-
-interface AnimationSettings {
-    /**
-     * Animation speed in FPS
-     */
-    speed: number;
-    /**
-     * Index of an image, from which an animation will start
-     */
-    fromIdx: number;
-    /**
-     * Index of an image, to which an animation will loop to
-     */
-    toIdx: number;
-}
