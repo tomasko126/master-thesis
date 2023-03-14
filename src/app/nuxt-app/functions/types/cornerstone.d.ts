@@ -1,7 +1,3 @@
-declare module 'hammerjs';
-declare module 'cornerstone-math';
-declare module 'cornerstone-wado-image-loader';
-
 /**
  * Extend Image interface
  */
