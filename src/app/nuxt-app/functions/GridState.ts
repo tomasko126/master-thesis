@@ -17,19 +17,22 @@ class GridState {
   }
 
   /**
-     * Find out, whether grid has been defined for shown image
-     */
+   * Find out, whether grid has been defined for shown image
+   */
   hasGrid(): boolean {
     return !!this.state.length;
   }
 
+  /**
+   * Retrieve tool's state for a given imageId
+   */
   getStateForImageId(imageId: string) {
     return this.tool.getStateForImageId(imageId);
   }
 
   /**
-     * Retrieve grid's moving mode
-     */
+   * Retrieve grid's moving mode
+   */
   getMovingMode(): string|null {
     if (!this.hasGrid()) {
       return null;
@@ -39,8 +42,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's angle
-     */
+   * Retrieve grid's angle
+   */
   getAngle(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -49,8 +52,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's X offset
-     */
+   * Retrieve grid's X offset
+   */
   getOffsetX(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -59,8 +62,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's Y offset
-     */
+   * Retrieve grid's Y offset
+   */
   getOffsetY(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -69,8 +72,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's number of primary lines
-     */
+   * Retrieve grid's number of primary lines
+   */
   getNoOfPrimaryLines(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -79,8 +82,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's number of secondary lines
-     */
+   * Retrieve grid's number of secondary lines
+   */
   getNoOfSecondaryLines(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -89,8 +92,8 @@ class GridState {
   }
 
   /**
-     * Retrieve grid's spacing between points
-     */
+   * Retrieve grid's spacing between points
+   */
   getSpacing(): number|null {
     if (!this.hasGrid()) {
       return null;
@@ -99,8 +102,8 @@ class GridState {
   }
 
   /**
-     * Find out, if we are showing refinement points or not
-     */
+   * Find out, if we are showing refinement points or not
+   */
   isShowingRefinementPoints(): boolean|null {
     if (!this.hasGrid()) {
       return null;
