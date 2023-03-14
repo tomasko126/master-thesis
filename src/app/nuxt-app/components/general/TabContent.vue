@@ -18,7 +18,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .tab-content-wrapper {
-  margin: 10px 5px 25px 5px;
+  margin: 5px 5px 0 5px;
   padding: 5px;
 
   h2 {

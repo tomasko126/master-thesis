@@ -1,5 +1,7 @@
 <template>
-  <GeneralTabContent title="Image information">
+  <GeneralTabContent>
+    <GeneralTabSection label-text="Image information" />
+    <va-divider />
     <GeneralTabSection label-text="Patient's name:">
       <span class="patient-name">{{ patientName }}</span>
     </GeneralTabSection>
@@ -47,10 +49,14 @@ const windowHeight = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/global';
 .patient-name {
   text-align: right;
 }
 .va-divider {
-  --va-divider-border-top-color: rgba(128, 128, 128, 0.36);
+  padding: 0 5px;
+  &:before, &:after {
+    border-top-color: global.$va-divider-color;
+  }
 }
 </style>

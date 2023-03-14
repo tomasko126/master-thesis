@@ -6,12 +6,11 @@
     >
       <template #tabs>
         <va-tab label="Image tools" />
-        <va-tab label="Grid settings" />
+        <va-tab label="Grid tools" />
       </template>
       <div>
         <template v-if="tabIndex === 0">
           <RightPanelImageSettings />
-          <RightPanelAnimationSettings />
         </template>
         <template v-else>
           <RightPanelGridSettings />

@@ -1,5 +1,7 @@
 <template>
-  <GeneralTabContent title="Grid algorithm settings">
+  <GeneralTabContent>
+    <GeneralTabSection label-text="Grid algorithm parameters" />
+    <va-divider />
     <GeneralTabSection
       label-text="Curvature coefficient:"
       align-items="baseline"
@@ -83,6 +85,7 @@ const computeGrids = async () => {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/global';
 .va-input {
   max-width: 100px;
   min-width: 100px;
@@ -94,5 +97,11 @@ const computeGrids = async () => {
   flex-direction: column;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.va-divider {
+  padding: 0 5px;
+  &:before, &:after {
+    border-top-color: global.$va-divider-color;
+  }
 }
 </style>

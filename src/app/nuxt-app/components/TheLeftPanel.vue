@@ -7,13 +7,11 @@
       <template #tabs>
         <va-tab label="General" />
       </template>
-      <div>
-        <template v-if="tabIndex === 0">
-          <LeftPanelGeneralInformation />
-          <LeftPanelGridAlgorithmSettings />
-        </template>
-      </div>
     </va-tabs>
+    <div class="left-panel-content">
+      <LeftPanelGeneralInformation />
+      <LeftPanelGridAlgorithmSettings />
+    </div>
   </aside>
 </template>
 
@@ -27,13 +25,11 @@ const tabIndex = ref(0);
 .left-panel {
   border: 2px solid global.$border-color;
 
-  :deep(nav) {
-    justify-content: space-evenly;
-  }
-
-  .va-tabs {
-    align-items: unset;
+  .left-panel-content {
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
   }
 }
 </style>

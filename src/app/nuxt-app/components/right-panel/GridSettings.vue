@@ -1,6 +1,6 @@
 <template>
-  <GeneralTabContent title="Grid">
-    <GeneralTabSection label-text="Global settings:" />
+  <GeneralTabContent>
+    <GeneralTabSection label-text="Global grid settings" />
     <va-divider />
     <GeneralTabSection label-text="Move:">
       <va-button-toggle
@@ -21,8 +21,11 @@
         @update:model-value="setShowingRefinementPoints"
       />
     </GeneralTabSection>
+    <GeneralTabSection>
+      <RightPanelGridCopyGridButton />
+    </GeneralTabSection>
     <va-divider />
-    <GeneralTabSection label-text="Local settings:" />
+    <GeneralTabSection label-text="Local grid settings" />
     <va-divider />
     <GeneralTabSection label-text="Angle:">
       <va-input
@@ -84,7 +87,6 @@
     </GeneralTabSection>
     <div class="grid-buttons">
       <RightPanelGridCallToActionButton />
-      <RightPanelGridCopyGridButton />
     </div>
   </GeneralTabContent>
 </template>
@@ -194,6 +196,7 @@ const setShowingRefinementPoints = (input: boolean) => {
 </script>
 
 <style lang="scss" scoped>
+@use 'assets/global';
 .va-input {
   max-width: 100px;
   min-width: 100px;
@@ -204,15 +207,14 @@ const setShowingRefinementPoints = (input: boolean) => {
   margin-top: 10px;
   margin-bottom: 10px;
   flex-direction: column;
-
-  button:first-child {
-    margin-bottom: 15px;
-  }
-}
-.va-divider {
-  --va-divider-border-top-color: rgba(128, 128, 128, 0.36);
 }
 .va-checkbox {
-  margin: 12px;
+  margin: 16px 12px;
+}
+.va-divider {
+  padding: 0 5px;
+  &:before, &:after {
+    border-top-color: global.$va-divider-color;
+  }
 }
 </style>

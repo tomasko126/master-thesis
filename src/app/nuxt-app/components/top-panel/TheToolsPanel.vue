@@ -32,6 +32,9 @@ import CloseImagesTool from './tools/CloseImagesTool.vue';
 
   .va-divider {
     height: 25px;
+    &:before, &:after {
+      border-top-color: global.$va-divider-color;
+    }
   }
 }
 </style>

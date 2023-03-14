@@ -8,7 +8,7 @@
   <va-modal
     v-model="showModal"
     title="Copy grid to other images"
-    message="Are you sure to copy grid to all other images? This will delete all existing grids declared on other images!"
+    message="Are you sure to copy grid to all other images? This will replace all existing grids on other images!"
     ok-text="Yes"
     cancel-text="No"
     blur

@@ -1,6 +1,6 @@
 <template>
   <div class="tab-section">
-    <label>{{ labelText }}</label>
+    <h3>{{ labelText }}</h3>
     <slot />
   </div>
 </template>
