@@ -2,6 +2,9 @@ import getToolsStateAndConfigOutput = GridToolOptions.getToolsStateAndConfigOutp
 import primaryLine = GridToolOptions.primaryLine;
 
 export class GridTool {
+
+  clearAllStates(): void;
+
   getToolsStateAndConfig(): getToolsStateAndConfigOutput;
 
   /**
@@ -78,6 +81,10 @@ export class GridTool {
    */
   setStateForImageIds(primaryLines: primaryLine[], imageIds: string[]): void;
 
+  /**
+   * Set showRefinementPoints setting for a given imageId
+   */
+  setShowRefinementPointsForImageId(imageId: string, value: boolean): void;
   /**
    * Remove grid from current shown image
    */
