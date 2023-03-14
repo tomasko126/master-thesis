@@ -42,25 +42,44 @@
     <div class="start-computation">
       <va-button
         :disabled="store.isLoopingImages || store.imageIds.length < 2"
+        @click="computeGrids"
       >
-        Compute grid positions
+        Compute
       </va-button>
     </div>
   </GeneralTabContent>
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '../../stores';
-import { computed } from 'vue';
+import { computed, toRaw, unref } from 'vue';
+import { useFetch } from 'nuxt/app';
+import Communication from '../../functions/Communication';
+import { useGlobalStore } from '~/stores';
+// eslint-disable-next-line import/named
+import { GridCommunication } from '~/functions/types/GridCommunication';
 
 const store = useGlobalStore();
 
 const inputRules = computed(() => {
   return [
-    (value) => value && value.length !== 0 && !isNaN(parseInt(value)) || !store.imageIds.length || `This field is required and must be a number`,
-    (value) => parseInt(value) >= 0 || !store.imageIds.length || `Value must be bigger or equal to 0`,
+    (value: string) => (value && value.length !== 0 && !isNaN(parseInt(value))) || !store.imageIds.length || 'This field is required and must be a number',
+    (value: string) => parseInt(value) >= 0 || !store.imageIds.length || 'Value must be bigger or equal to 0',
   ];
 });
+
+const computeGrids = async () => {
+  const comm = new Communication();
+  const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
+
+  const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
+  const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
+
+  for (const grid of responseBody.grids) {
+    store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
+    store.gridState?.tool.setShowRefinementPointsForImageId(grid.imageId, grid.includesRefinementPoints);
+    store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId]);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
