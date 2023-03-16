@@ -16,7 +16,7 @@ defineProps({
   },
   labelText: {
     type: String,
-    required: true,
+    default: '',
   },
 });
 </script>
