@@ -103,11 +103,11 @@ const moveMode = computed(() => {
 });
 
 const angle = computed(() => {
-  return store.gridState?.getAngle() ?? null;
+  return store.gridState?.tool.angle ?? null;
 });
 
 const spacing = computed(() => {
-  return store.gridState?.getSpacing() ?? null;
+  return store.gridState?.tool.spacing ?? null;
 });
 
 const offsetX = computed(() => {
@@ -119,11 +119,11 @@ const offsetY = computed(() => {
 });
 
 const noOfPrimaryLines = computed(() => {
-  return store.gridState?.getNoOfPrimaryLines() ?? null;
+  return store.gridState?.tool.noOfPrimaryLines ?? null;
 });
 
 const noOfSecondaryLines = computed(() => {
-  return store.gridState?.getNoOfSecondaryLines() ?? null;
+  return store.gridState?.tool.noOfSecondaryLines ?? null;
 });
 
 const isShowingRefinementPoints = computed(() => {

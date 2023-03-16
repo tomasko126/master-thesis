@@ -24,13 +24,6 @@ class GridState {
   }
 
   /**
-   * Retrieve tool's state for a given imageId
-   */
-  getStateForImageId(imageId: string) {
-    return this.tool.getStateForImageId(imageId);
-  }
-
-  /**
    * Retrieve grid's moving mode
    */
   getMovingMode(): string|null {
@@ -39,16 +32,6 @@ class GridState {
     }
 
     return this.config.moveOneHandleOnly ? MOVING_MODE.POINT : MOVING_MODE.GRID;
-  }
-
-  /**
-   * Retrieve grid's angle
-   */
-  getAngle(): number|null {
-    if (!this.hasGrid()) {
-      return null;
-    }
-    return this.tool.angle;
   }
 
   /**
@@ -69,36 +52,6 @@ class GridState {
       return null;
     }
     return this.state[0].handles.points[0].y;
-  }
-
-  /**
-   * Retrieve grid's number of primary lines
-   */
-  getNoOfPrimaryLines(): number|null {
-    if (!this.hasGrid()) {
-      return null;
-    }
-    return this.tool.noOfPrimaryLines;
-  }
-
-  /**
-   * Retrieve grid's number of secondary lines
-   */
-  getNoOfSecondaryLines(): number|null {
-    if (!this.hasGrid()) {
-      return null;
-    }
-    return this.tool.noOfSecondaryLines;
-  }
-
-  /**
-   * Retrieve grid's spacing between points
-   */
-  getSpacing(): number|null {
-    if (!this.hasGrid()) {
-      return null;
-    }
-    return this.tool.spacing;
   }
 
   /**

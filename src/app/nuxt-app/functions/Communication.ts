@@ -42,7 +42,7 @@ class Communication {
    */
   getGridData(imageIndex: number): GridCommunication.Request.Grid {
     const imageId = store.imageIds[imageIndex];
-    const primaryLines = store?.gridState?.getStateForImageId(imageId) || [];
+    const primaryLines = store?.gridState?.tool.getStateForImageId(imageId) || [];
 
     return {
       includesRefinementPoints: store?.gridState?.isShowingRefinementPoints() ?? false,

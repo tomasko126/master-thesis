@@ -14,6 +14,11 @@ export class GridTool {
   getToolsStateAndConfig(): getToolsStateAndConfigOutput;
 
   /**
+   * Find out, if we have grid placed on every image
+   */
+  hasGridForEveryImageId(imageIds: string[]): boolean;
+
+  /**
    * Retrieve grid's angle.
    * If not defined, returns null.
    */
