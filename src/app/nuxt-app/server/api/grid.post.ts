@@ -1,6 +1,5 @@
 import { defineEventHandler, readBody } from 'h3';
-// eslint-disable-next-line import/named
-import { GridCommunication } from '~/functions/types/GridCommunication';
+import type { GridCommunication } from '~/functions/types/GridCommunication';
 
 export default defineEventHandler(async (event) => {
   const requestBody: GridCommunication.Request.Body = await readBody(event);

@@ -1,6 +1,5 @@
 import { unref, watch } from 'vue';
-// eslint-disable-next-line import/named
-import { GridCommunication } from '~/functions/types/GridCommunication';
+import type { GridCommunication } from '~/functions/types/GridCommunication';
 import { displayImageInElement, getImageData, startLoopingImages } from '~/functions/Cornerstone';
 import DicomAnonymizer from '~/functions/DicomAnonymizer';
 import { useGlobalStore } from '~/stores';
