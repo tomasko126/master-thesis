@@ -1,4 +1,4 @@
-import getToolsStateAndConfigOutput = GridToolOptions.getToolsStateAndConfigOutput;
+import getStateAndConfigOutput = GridToolOptions.getStateAndConfigOutput;
 import primaryLine = GridToolOptions.primaryLine;
 
 export class GridTool {
@@ -11,12 +11,12 @@ export class GridTool {
   /**
    * Retrieve tool's config along with its state
    */
-  getToolsStateAndConfig(): getToolsStateAndConfigOutput;
+  getStateAndConfig(): getStateAndConfigOutput;
 
   /**
-   * Find out, if we have grid placed on every image
+   * Find out, if we have grid placed on every image id
    */
-  hasGridForEveryImageId(imageIds: string[]): boolean;
+  hasGridForImageIds(imageIds: string[]): boolean;
 
   /**
    * Retrieve grid's angle.
@@ -78,11 +78,6 @@ export class GridTool {
   set moveOneHandleOnly(value: boolean): void;
 
   /**
-   * Copy current grid to all remaining images
-   */
-  copyGridToAllImages(): void;
-
-  /**
    * Retrieve primary lines for a given image id
    */
   getStateForImageId(imageId: string): primaryLine[]|null;
@@ -90,12 +85,7 @@ export class GridTool {
   /**
    * Set given primary lines as grid's state for given image ids
    */
-  setStateForImageIds(primaryLines: primaryLine[], imageIds: string[]): void;
-
-  /**
-   * Set showRefinementPoints setting for a given imageId
-   */
-  setShowRefinementPointsForImageId(imageId: string, value: boolean): void;
+  setStateForImageIds(primaryLines: primaryLine[], imageIds: string[], hasRefinementPoints = false): void;
 
   /**
    * Remove grid from current shown image
@@ -104,7 +94,7 @@ export class GridTool {
 }
 
 declare namespace GridToolOptions {
-  export interface getToolsStateAndConfigOutput {
+  export interface getStateAndConfigOutput {
     config: GridToolConfig,
     state: primaryLine[],
   }

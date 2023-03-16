@@ -16,7 +16,7 @@
   />
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, toRaw } from 'vue';
 import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
@@ -25,9 +25,10 @@ const showModal = ref(false);
 
 const copyGrid = () => {
   const gridTool = store?.gridState?.tool;
-  if (!gridTool) {
+  const gridState = store?.gridState?.state;
+  if (!gridTool || !gridState) {
     return;
   }
-  gridTool.copyGridToAllImages();
+  gridTool.setStateForImageIds(toRaw(gridState), store.imageIds, store.gridState?.isShowingRefinementPoints() as boolean);
 };
 </script>

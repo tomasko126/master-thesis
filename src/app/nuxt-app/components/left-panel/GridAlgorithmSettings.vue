@@ -57,8 +57,7 @@ import { computed, toRaw, unref } from 'vue';
 import { useFetch } from 'nuxt/app';
 import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
-// eslint-disable-next-line import/named
-import { GridCommunication } from '~/functions/types/GridCommunication';
+import type { GridCommunication } from '~/functions/types/GridCommunication';
 
 const store = useGlobalStore();
 
@@ -70,7 +69,7 @@ const inputRules = computed(() => {
 });
 
 const isButtonDisabled = computed(() => {
-  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForEveryImageId(store.imageIds);
+  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds);
 });
 
 const computeGrids = async () => {
@@ -82,8 +81,7 @@ const computeGrids = async () => {
 
   for (const grid of responseBody.grids) {
     store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
-    store.gridState?.tool.setShowRefinementPointsForImageId(grid.imageId, grid.includesRefinementPoints);
-    store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId]);
+    store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
   }
 };
 </script>

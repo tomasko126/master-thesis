@@ -10,7 +10,7 @@ class GridState {
   tool: GridTool;
 
   constructor(tool: GridTool) {
-    const { config, state } = tool.getToolsStateAndConfig();
+    const { config, state } = tool.getStateAndConfig();
     this.config = config;
     this.state = state;
     this.tool = tool;
