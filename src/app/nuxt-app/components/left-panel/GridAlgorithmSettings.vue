@@ -11,7 +11,7 @@
         type="number"
         min="0"
         step="0.0005"
-        :disabled="store.isLoopingImages || store.imageIds.length < 2"
+        :disabled="store.isLoopingImages || !store.imageIds.length"
         :rules="inputRules"
       />
     </GeneralTabSection>
@@ -24,7 +24,7 @@
         type="number"
         min="0"
         step="0.025"
-        :disabled="store.isLoopingImages || store.imageIds.length < 2"
+        :disabled="store.isLoopingImages || !store.imageIds.length"
         :rules="inputRules"
       />
     </GeneralTabSection>
@@ -37,13 +37,13 @@
         type="number"
         min="0"
         step="0.005"
-        :disabled="store.isLoopingImages || store.imageIds.length < 2"
+        :disabled="store.isLoopingImages || !store.imageIds.length"
         :rules="inputRules"
       />
     </GeneralTabSection>
     <div class="start-computation">
       <va-button
-        :disabled="store.isLoopingImages || store.imageIds.length < 2"
+        :disabled="isButtonDisabled"
         @click="computeGrids"
       >
         Compute
@@ -67,6 +67,10 @@ const inputRules = computed(() => {
     (value: string) => (value && value.length !== 0 && !isNaN(parseInt(value))) || !store.imageIds.length || 'This field is required and must be a number',
     (value: string) => parseInt(value) >= 0 || !store.imageIds.length || 'Value must be bigger or equal to 0',
   ];
+});
+
+const isButtonDisabled = computed(() => {
+  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForEveryImageId(store.imageIds);
 });
 
 const computeGrids = async () => {
