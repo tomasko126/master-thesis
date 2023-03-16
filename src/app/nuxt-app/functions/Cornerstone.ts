@@ -14,7 +14,7 @@ import Hammer from 'hammerjs';
 
 import { VaFile } from 'vuestic-ui';
 // @ts-ignore
-import cornerstoneTools from '@tarotoma/cornerstone-tools/dist/cornerstoneTools.min';
+import cornerstoneTools from '@tarotoma/cornerstone-tools';
 import type { FullToolName, ToolName } from './types/cornerstoneTools';
 
 import { useGlobalStore } from '~/stores';
