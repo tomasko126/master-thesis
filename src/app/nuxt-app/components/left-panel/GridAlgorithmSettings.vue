@@ -42,12 +42,18 @@
       />
     </GeneralTabSection>
     <div class="start-computation">
-      <va-button
-        :disabled="isButtonDisabled"
-        @click="computeGrids"
+      <va-popover
+        :message="popoverMessage"
+        prevent-overflow
+        stick-to-edges
       >
-        Compute
-      </va-button>
+        <va-button
+          :disabled="isButtonDisabled"
+          @click="computeGrids"
+        >
+          Compute
+        </va-button>
+      </va-popover>
     </div>
   </GeneralTabContent>
 </template>
@@ -70,6 +76,13 @@ const inputRules = computed(() => {
 
 const isButtonDisabled = computed(() => {
   return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds);
+});
+
+const popoverMessage = computed(() => {
+  if (isButtonDisabled.value) {
+    return 'Grid must be created on every image in order to compute exact grid placements';
+  }
+  return 'Compute grid placements for every grid';
 });
 
 const computeGrids = async () => {

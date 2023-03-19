@@ -2,20 +2,15 @@
   <va-popover
     :message="popoverMessage"
     placement="bottom"
+    prevent-overflow
   >
-    <!-- hack: this fixes weird behaviour of popover display -->
-    <va-popover
-      :message="popoverMessage"
-      placement="bottom"
+    <va-button
+      :class="{ 'disabled': disabled, 'active': active }"
+      :inert="disabled"
+      @click="$emit('click')"
     >
-      <va-button
-        :class="{ 'disabled': disabled, 'active': active }"
-        :inert="disabled"
-        @click="$emit('click')"
-      >
-        <slot />
-      </va-button>
-    </va-popover>
+      <slot />
+    </va-button>
   </va-popover>
 </template>
 

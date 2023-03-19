@@ -14,7 +14,7 @@
         dropzone
         hide-file-list
         drop-zone-text="Drag in or"
-        upload-button-text="Upload images"
+        upload-button-text="Upload DICOM images"
         :disabled="store.imageIds.length > 0"
         @file-added="onFileAdded"
       />
