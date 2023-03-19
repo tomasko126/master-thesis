@@ -1,0 +1,40 @@
+<template>
+  <section class="tab-content-wrapper">
+    <h2>{{ title }}</h2>
+    <div class="tab-content">
+      <slot />
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+.tab-content-wrapper {
+  margin: 5px 5px 0 5px;
+  padding: 5px;
+
+  h2 {
+    margin-bottom: 10px;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+
+  .tab-content {
+    margin: 5px;
+    border: 2px solid #8080805e;
+    border-radius: 3px;
+    background-color: #80808014;
+  }
+}
+
+</style>

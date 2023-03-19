@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  spamm-app:
+    build: .
+    container_name: spamm-app
+    ports:
+      - "3000:3000"
+      - "24678:24678"
+    tty: true
+    volumes:
+      - ./:/home/node/app
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      NODE_ENV: production
