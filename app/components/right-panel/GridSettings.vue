@@ -13,7 +13,10 @@
         @update:model-value="setMoveMode"
       />
     </GeneralTabSection>
-    <GeneralTabSection label-text="Show refinement points:">
+    <GeneralTabSection
+      label-text="Show refinement points:"
+      popover-message="When this option is enabled, refinement points will get rendered on the grid. They are being used for better grid placement."
+    >
       <va-switch
         size="small"
         :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
