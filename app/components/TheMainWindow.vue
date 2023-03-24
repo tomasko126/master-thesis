@@ -31,8 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, Ref } from 'vue';
-import { VaFile } from 'vuestic-ui';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import type { Ref } from 'vue';
+import { useToast, VaFile } from 'vuestic-ui';
 import GridState from '../functions/GridState';
 import DicomHeaderParser from '../functions/DicomHeaderParser';
 import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '../functions/Cornerstone';
@@ -43,9 +44,15 @@ const store = useGlobalStore();
 const files: Ref<VaFile[]> = ref([]);
 const dicomImage: Ref<HTMLElement|null> = ref(null);
 
-const onFileAdded = () => {
+const onFileAdded = async () => {
   if (files.value) {
-    loadImagesFromFiles(files.value);
+    const loadedAllImages = await loadImagesFromFiles(files.value);
+
+    if (loadedAllImages === false) {
+      const { init } = useToast();
+      init({ message: 'Some images could not be imported!', color: 'warning' });
+    }
+
     files.value = [];
   }
 };

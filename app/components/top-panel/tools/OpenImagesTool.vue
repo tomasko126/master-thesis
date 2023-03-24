@@ -16,21 +16,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref } from 'vue';
+import { ref } from 'vue';
+import type { Ref } from 'vue';
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
 
 import { loadImagesFromFiles } from '~/functions/Cornerstone';
+import { useToast } from 'vuestic-ui';
 
 const store = useGlobalStore();
 const fileInput: Ref<HTMLInputElement|null> = ref(null);
 
-const handleFileInput = () => {
+const handleFileInput = async () => {
   if (!fileInput.value) {
     return;
   }
   const files = Array.from(fileInput.value.files || []);
-  loadImagesFromFiles(files);
+  const loadedAllImages = await loadImagesFromFiles(files);
+  if (loadedAllImages === false) {
+    const { init } = useToast();
+    init({ message: 'Some images could not be imported!', color: 'warning' });
+  }
 };
 
 const openFileInput = () => {
