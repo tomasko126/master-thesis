@@ -1,7 +1,7 @@
 w<template>
   <BaseTool
     popover-message="Remove images"
-    :disabled="store.isLoopingImages || !store.imageIds.length"
+    :disabled="store.isLoopingImages || !store.imageIds.length || store.animation.isComputingGrids"
     @click="removeImages"
   >
     <font-awesome-icon icon="fa-solid fa-trash-can" />
