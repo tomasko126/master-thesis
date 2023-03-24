@@ -50,7 +50,7 @@ const onFileAdded = async () => {
 
     if (loadedAllImages === false) {
       const { init } = useToast();
-      init({ message: 'Some images could not be loaded!', color: 'warning' });
+      init({ message: 'Some images could not be imported!', color: 'warning' });
     }
 
     files.value = [];
