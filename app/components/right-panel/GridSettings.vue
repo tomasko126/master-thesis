@@ -15,7 +15,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="Show refinement points:"
-      popover-message="When this option is enabled, refinement points will get rendered on the grid. They are being used for better grid placement."
+      popover-message="When this option is enabled, refinement points will get rendered on the grid. They are being used for better grid placement and can be moved independently"
     >
       <va-switch
         size="small"
