@@ -1,8 +1,8 @@
 <template>
   <BaseTool
     :active="store.activeTool === 'Pan'"
-    :disabled="!store.imageIds.length"
-    popover-message="Move image"
+    :disabled="!store.imageIds.length || store.animation.isComputingGrids"
+    popover-message="Move with image"
     tool-name="Pan"
     @click="activateTool('Pan', { mouseButtonMask: 1 })"
   >

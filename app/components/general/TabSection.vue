@@ -1,12 +1,25 @@
 <template>
   <div class="tab-section">
-    <h3>{{ labelText }}</h3>
+    <va-popover
+      v-if="props.popoverMessage"
+      :message="props.popoverMessage"
+      prevent-overflow
+      stick-to-edges
+    >
+      <template #body>
+        <p v-for="(sentence, idx) in popoverMessageSentences" :key="idx">{{ sentence }}</p>
+      </template>
+      <h3>{{ labelText }}</h3>
+    </va-popover>
+    <h3 v-else >{{ labelText }}</h3>
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   alignItems: {
     type: String,
     default: 'center',
@@ -18,6 +31,14 @@ defineProps({
     type: String,
     default: '',
   },
+  popoverMessage: {
+    type: String,
+    default: '',
+  },
+});
+
+const popoverMessageSentences = computed(() => {
+  return props.popoverMessage?.split('.');
 });
 </script>
 

@@ -14,14 +14,22 @@ interface AnimationSettings {
    * Animation speed in FPS
    */
   speed: number;
+
   /**
    * Index of an image, from which an animation will start
    */
   fromIdx: number;
+
   /**
    * Index of an image, to which an animation will loop to
    */
   toIdx: number;
+
+  /**
+   * Set to true, when the app is trying to determine right grid position
+   * using positioning algorithm on the backend
+   */
+  isComputingGrids: boolean;
 }
 
 export const useGlobalStore = defineStore({
@@ -37,6 +45,7 @@ export const useGlobalStore = defineStore({
         speed: 30, // in fps
         fromIdx: 0, // image idx
         toIdx: 0, // image idx
+        isComputingGrids: false as boolean,
       } as AnimationSettings,
       isLoopingImages: false as boolean,
       mainImageContainer: null as HTMLElement|null,

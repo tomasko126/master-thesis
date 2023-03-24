@@ -5,7 +5,7 @@
     stick-to-edges
   >
     <va-button
-      :disabled="!store.hasImageDefinedGrid"
+      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
       @click="showModal = !showModal"
     >
       Copy grid to all images
@@ -31,9 +31,9 @@ const showModal = ref(false);
 
 const popoverMessage = computed(() => {
   if (!store.hasImageDefinedGrid) {
-    return 'To copy grid to other images, a grid must be defined first';
+    return 'To copy grid to other images, it must be created first';
   }
-  return 'Copies grid on current image to all images';
+  return 'Copy grid from current image to all images';
 });
 
 const copyGrid = () => {

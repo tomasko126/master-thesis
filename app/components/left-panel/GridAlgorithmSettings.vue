@@ -4,7 +4,7 @@
     <va-divider />
     <GeneralTabSection
       label-text="Curvature coefficient:"
-      align-items="baseline"
+      popover-message="Describes the dependence of the grid evolution on the curvature. Higher number means higher dependence."
     >
       <va-input
         v-model="store.algorithm.curvature"
@@ -17,7 +17,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="Force coefficient:"
-      align-items="baseline"
+      popover-message="Grid forcing term dependence on the image gradient. Higher number means higher dependence."
     >
       <va-input
         v-model="store.algorithm.force"
@@ -30,7 +30,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="Stop time:"
-      align-items="baseline"
+      popover-message="Time interval of the numerical computation."
     >
       <va-input
         v-model="store.algorithm.stopTime"
@@ -82,19 +82,24 @@ const popoverMessage = computed(() => {
   if (isButtonDisabled.value) {
     return 'Grid must be created on every image in order to compute exact grid placements';
   }
-  return 'Compute grid placements for every grid';
+  return 'Compute grid placement for every grid';
 });
 
 const computeGrids = async () => {
+  store.animation.isComputingGrids = true;
   const comm = new Communication();
   const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
 
-  const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
-  const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
+  try {
+    const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
+    const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
 
-  for (const grid of responseBody.grids) {
-    store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
-    store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
+    for (const grid of responseBody.grids) {
+      store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
+      store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
+    }
+  } finally {
+    store.animation.isComputingGrids = false;
   }
 };
 </script>

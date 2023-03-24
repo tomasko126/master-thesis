@@ -1,7 +1,7 @@
 <template>
   <BaseTool
     popover-message="Zoom out"
-    :disabled="!store.imageIds.length"
+    :disabled="!store.imageIds.length || store.animation.isComputingGrids"
     @mousedown="zoomStart"
     @mouseup="zoomEnd"
   >
