@@ -62,10 +62,11 @@ export const initLibraries = (): void => {
 
 /**
  * Load images from given |imageFiles| and show the first one in a main window
+ * @returns {Promise<boolean>} - true, if all files have been successfully loaded
  */
-export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
+export const loadImagesFromFiles = async (imageFiles: VaFile[]|[]): Promise<boolean|null> => {
   if (!store.mainImageContainer) {
-    return;
+    return null;
   }
 
   // Purge existing cached and stored data
@@ -73,8 +74,20 @@ export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
 
   // Retrieve image IDs used for referencing images
   const imageIds = [];
+  let processedAllImages = true;
+
   for (const imageFile of imageFiles) {
-    imageIds.push(cornerstoneWADOImageLoader.wadouri.fileManager.add(imageFile));
+    const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(imageFile);
+    try {
+      await cornerstone.loadAndCacheImage(imageId);
+      imageIds.push(imageId);
+    } catch(e) {
+      // In most cases, method above fails when an image is either corrupted,
+      // invalid, or not in a DICOM format.
+      // Thus, we just skip processing this file at all.
+      console.warn(e);
+      processedAllImages = false;
+    }
   }
   store.imageIds = imageIds;
 
@@ -100,6 +113,8 @@ export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
     toIdx: Math.max(store.imageIds.length - 1, 0),
     isComputingGrids: false,
   }
+
+  return processedAllImages;
 };
 
 /**

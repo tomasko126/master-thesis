@@ -24,7 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, Ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+import type { Ref } from 'vue';
 import { registerImageContainer, unregisterImageContainer, displayImageInElement } from '~/functions/Cornerstone';
 import { useGlobalStore } from '~/stores';
 
