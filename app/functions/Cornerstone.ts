@@ -98,6 +98,7 @@ export const loadImagesFromFiles = (imageFiles: VaFile[]|[]): void => {
     speed: 30,
     fromIdx: 0,
     toIdx: Math.max(store.imageIds.length - 1, 0),
+    isComputingGrids: false,
   }
 };
 
