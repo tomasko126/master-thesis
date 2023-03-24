@@ -5,7 +5,7 @@
     stick-to-edges
   >
     <va-button
-      :disabled="!store.hasImageDefinedGrid"
+      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
       @click="showModal = !showModal"
     >
       Copy grid to all images

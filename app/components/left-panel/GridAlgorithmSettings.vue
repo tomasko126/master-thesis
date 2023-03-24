@@ -86,15 +86,20 @@ const popoverMessage = computed(() => {
 });
 
 const computeGrids = async () => {
+  store.animation.isComputingGrids = true;
   const comm = new Communication();
   const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
 
-  const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
-  const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
+  try {
+    const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
+    const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
 
-  for (const grid of responseBody.grids) {
-    store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
-    store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
+    for (const grid of responseBody.grids) {
+      store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
+      store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
+    }
+  } finally {
+    store.animation.isComputingGrids = false;
   }
 };
 </script>

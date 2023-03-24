@@ -109,7 +109,7 @@ const toIdx = ref(store.animation.toIdx + 1);
 const speed = ref(30);
 
 const isButtonDisabled = computed(() => {
-  return store.imageIds.length === 0;
+  return store.imageIds.length === 0 || store.animation.isComputingGrids;
 });
 
 watch(() => store.shownImageId, () => {
@@ -130,7 +130,7 @@ const onFrameNumberChange = (idx: string) => {
 };
 
 const areInputsDisabled = computed(() => {
-  return store.imageIds.length < 2;
+  return store.imageIds.length < 2 || store.animation.isComputingGrids;
 });
 
 const fromImageRules = computed(() => {

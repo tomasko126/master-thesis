@@ -1,7 +1,7 @@
 <template>
   <BaseTool
     popover-message="Upload images"
-    :disabled="store.isLoopingImages"
+    :disabled="store.isLoopingImages || store.animation.isComputingGrids"
     @click="openFileInput"
   >
     <font-awesome-icon icon="fa-solid fa-folder" />

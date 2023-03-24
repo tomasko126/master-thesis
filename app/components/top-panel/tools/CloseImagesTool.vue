@@ -1,4 +1,4 @@
-<template>
+w<template>
   <BaseTool
     popover-message="Remove images"
     :disabled="store.isLoopingImages || !store.imageIds.length"

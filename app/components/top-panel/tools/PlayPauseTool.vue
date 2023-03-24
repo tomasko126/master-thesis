@@ -1,6 +1,6 @@
 <template>
   <BaseTool
-    :disabled="store.imageIds.length < 2"
+    :disabled="store.imageIds.length < 2 || store.animation.isComputingGrids"
     :popover-message="labelName"
     @click="store.isLoopingImages ? stopLoopingImages() : startLoopingImages()"
   >
