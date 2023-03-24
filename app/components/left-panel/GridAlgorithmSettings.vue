@@ -4,7 +4,7 @@
     <va-divider />
     <GeneralTabSection
       label-text="Curvature coefficient:"
-      align-items="baseline"
+      popover-message="Describes the dependence of the grid evolution on the curvature. Higher number means higher dependence."
     >
       <va-input
         v-model="store.algorithm.curvature"
@@ -17,7 +17,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="Force coefficient:"
-      align-items="baseline"
+      popover-message="Grid forcing term dependence on the image gradient. Higher number means higher dependence."
     >
       <va-input
         v-model="store.algorithm.force"
@@ -30,7 +30,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="Stop time:"
-      align-items="baseline"
+      popover-message="Time interval of the numerical computation."
     >
       <va-input
         v-model="store.algorithm.stopTime"
@@ -82,7 +82,7 @@ const popoverMessage = computed(() => {
   if (isButtonDisabled.value) {
     return 'Grid must be created on every image in order to compute exact grid placements';
   }
-  return 'Compute grid placements for every grid';
+  return 'Compute grid placement for every grid';
 });
 
 const computeGrids = async () => {
