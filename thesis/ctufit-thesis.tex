@@ -30,19 +30,19 @@
 % thesis type: bachelor/master/dissertation
 % colour: bw for black&white OR no option for default colour scheme
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[czech,bachelor,unicode,bw]{ctufit-thesis}
+\documentclass[slovak,master,unicode,bw]{ctufit-thesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FILL IN THIS INFORMATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ctufittitle{Název příkladné závěrečné práce} % replace with the title of your thesis
-\ctufitauthorfull{Bc. Jiří Nebozíz} % replace with your full name (first name(s) and then family name(s) / surname(s)) including academic degrees
-\ctufitauthorsurnames{Nebozíz} % replace with your surname(s) / family name(s)
-\ctufitauthorgivennames{Jiří} % replace with your first name(s) / given name(s)
-\ctufitsupervisor{doc.\,Ing.\,Damien Zlo,\,Ph.D.} % replace with name of your supervisor/advisor (include academic degrees)
-\ctufitdepartment{Katedra teoretické informatiky} % replace with the department of your defence
-\ctufityear{2021} % replace with the year of your defence
-\ctufitdeclarationplace{Praze} % replace with the place where you sign the declaration
+\ctufittitle{Webové rozhranie pre spracovanie SPAMM tagovaných dát z magnetickej rezonancie} % replace with the title of your thesis
+\ctufitauthorfull{Bc. Tomáš Taro} % replace with your full name (first name(s) and then family name(s) / surname(s)) including academic degrees
+\ctufitauthorsurnames{Taro} % replace with your surname(s) / family name(s)
+\ctufitauthorgivennames{Tomáš} % replace with your first name(s) / given name(s)
+\ctufitsupervisor{Ing. Petr Pauš, Ph.D.} % replace with name of your supervisor/advisor (include academic degrees)
+\ctufitdepartment{Katedra softwarového inženýrství} % replace with the department of your defence
+\ctufityear{2023} % replace with the year of your defence
+\ctufitdeclarationplace{Prahe} % replace with the place where you sign the declaration
 \ctufitdeclarationdate{\today} % replace with the date of signature of the declaration
 \ctufitabstractCZE{Fill in abstract of this thesis in Czech language. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Suspendisse sagittis ultrices augue.}
 \ctufitabstractENG{Fill in abstract of this thesis in English language. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Suspendisse sagittis ultrices augue.}
@@ -68,7 +68,7 @@
 % hyperlinks
 \RequirePackage[pdfpagelayout=TwoPageRight,colorlinks=false,allcolors=decoration,pdfborder={0 0 0.1}]{hyperref}[2020-05-15]
 
-% uncomment the following to hide all hyperlinks
+% uncomment the following to hide all hyperlinks 
 % \RequirePackage[pdfpagelayout=TwoPageRight,hidelinks]{hyperref}[2020-05-15]
 
 \RequirePackage{pdfpages}[2020/01/28]
@@ -92,6 +92,10 @@
 \usepackage[style=iso-numeric]{biblatex}
 \addbibresource{text/bib-database.bib}
 \usepackage{listings} % typesetting of sources
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{float}
+% \usepackage{xevlna}
+\setlength{\marginparwidth}{2.5cm}
 % \usepackage{minted} % typesetting of sources
 
 %theorems, definitions, etc.
@@ -100,7 +104,7 @@
 \newtheorem{lemma}[theorem]{Tvrzení}
 \newtheorem{corollary}[theorem]{Důsledek}
 \newtheorem{proposition}[theorem]{Návrh}
-\newtheorem{definition}[theorem]{Definice}
+\newtheorem{definition}[theorem]{Definícia}
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Příklad}
 \theoremstyle{remark}
@@ -117,7 +121,7 @@
 \begin{document} 
 \frontmatter\frontmatterinit % do not remove these two commands
 
-\includepdf[pages={1-}]{assignment-include.pdf} % replace that file with your thesis assignment provided by study office
+\includepdf[pages={1-}]{media/zadanie_DP_Tomáš_Taro.pdf} % replace that file with your thesis assignment provided by study office
 
 \thispagestyle{empty}\cleardoublepage\maketitle % do not remove these three commands
 
@@ -176,27 +180,27 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sagittis hen
 % OR REMOVE ENTIRELY (upon agreement with your supervisor)
 % (appropriate to remove in most theses)
 %%%%%%%%%%%%%%%%%%%
-\begin{summarypage}
-\section*{Summary section}
+% \begin{summarypage}
+% \section*{Summary section}
 
-\lipsum[1][1-8]
+% \lipsum[1][1-8]
 
-\section*{Summary section}
+% \section*{Summary section}
 
-\lipsum[2][1-6]
+% \lipsum[2][1-6]
 
-\section*{Summary section}
+% \section*{Summary section}
 
-\lipsum[3]
+% \lipsum[3]
 
-\section*{Summary section}
+% \section*{Summary section}
 
-\lipsum[2]
+% \lipsum[2]
 
-\section*{Summary section}
+% \section*{Summary section}
 
-\lipsum[1][1-8] Lorem lorem lorem.
-\end{summarypage}
+% \lipsum[1][1-8] Lorem lorem lorem.
+% \end{summarypage}
 %%%%%%%%%%%%%%%%%%%
 % SUMMARY END
 %%%%%%%%%%%%%%%%%%%
@@ -207,18 +211,12 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sagittis hen
 % OR REMOVE ENTIRELY
 % List the abbreviations in lexicography order.
 %%%%%%%%%%%%%%%%%%%
-\chapter{Seznam zkratek}
+\chapter{Zoznam skratiek}
 	
 \begin{tabular}{rl}
-DFA & Deterministic Finite Automaton\\
-FA & Finite Automaton\\
-LPS & Labelled Prüfer Sequence\\
-NFA & Nondeterministic Finite Automaton\\
-NPS & Numbered Prüfer Sequence\\
-XML & Extensible Markup Language\\
-XPath & XML Path Language\\
-XSLT & eXtensible Stylesheet Language Transformations\\
-W3C & World Wide Web Consortium
+CT & Počítačová tomografia\\
+MR & Magnetická rezonancia\\
+SPAMM & Spatial Modulation of Magnetization
 \end{tabular}
 %%%%%%%%%%%%%%%%%%%
 % ABBREVIATIONS END
@@ -231,7 +229,15 @@ W3C & World Wide Web Consortium
 % MODIFY ANYTHING BELOW THIS LINE
 %%%%%%%%%%%%%%%%%%%
 
-\include{text/text} % include `text.tex' from `text/' subdirectory
+% \include{text/text} % include `text.tex' from `text/' subdirectory
+
+\include{text/analyza}
+
+\include{text/navrh}
+
+\include{text/implementacia}
+
+\include{text/testovanie}
 
 \appendix\appendixinit % do not remove these two commands
 
