@@ -9,9 +9,9 @@
       <template #body>
         <p v-for="(sentence, idx) in popoverMessageSentences" :key="idx">{{ sentence }}</p>
       </template>
-      <h3>{{ labelText }}</h3>
+      <h3 class="label">{{ labelText }}</h3>
     </va-popover>
-    <h3 v-else >{{ labelText }}</h3>
+    <h3 v-else class="label">{{ labelText }}</h3>
     <slot />
   </div>
 </template>
@@ -38,7 +38,10 @@ const props = defineProps({
 });
 
 const popoverMessageSentences = computed(() => {
-  return props.popoverMessage?.split('.');
+  if (!props.popoverMessage) {
+    return '';
+  }
+  return props.popoverMessage.split('.');
 });
 </script>
 
@@ -48,5 +51,9 @@ const popoverMessageSentences = computed(() => {
   justify-content: space-between;
   align-items: v-bind(alignItems);
   margin: 12px;
+
+  .label {
+    margin-right: 10px;
+  }
 }
 </style>

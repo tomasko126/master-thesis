@@ -31,7 +31,7 @@ const handleFileInput = async () => {
   if (!fileInput.value) {
     return;
   }
-  const files = Array.from(fileInput.value.files || []);
+  const files = Array.from(fileInput.value?.files || []);
   const loadedAllImages = await loadImagesFromFiles(files);
   if (loadedAllImages === false) {
     const { init } = useToast();
