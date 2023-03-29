@@ -98,7 +98,6 @@ export const loadImagesFromFiles = async (imageFiles: VaFile[]|[]): Promise<bool
   };
 
   // We have to reset enabled element
-
   cornerstone.disable(store.mainImageContainer);
   cornerstone.enable(store.mainImageContainer);
 

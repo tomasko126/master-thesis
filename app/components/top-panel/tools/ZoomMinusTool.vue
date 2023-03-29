@@ -19,13 +19,13 @@ import { setZoom } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
-const zoomIntervalId: Ref<number|null> = ref(null);
+const zoomIntervalId: Ref<number|undefined> = ref(undefined);
 const zoomFactorChange = ref(-0.025);
 
 const zoomEnd = () => {
   if (zoomIntervalId.value) {
     clearInterval(zoomIntervalId.value);
-    zoomIntervalId.value = null;
+    zoomIntervalId.value = undefined;
   }
 };
 

@@ -46,7 +46,7 @@ const props = defineProps({
 });
 
 const onThumbnailClick = () => {
-  displayImageInElement(store.mainImageContainer as HTMLElement, props.imageId);
+  displayImageInElement(store.mainImageContainer as HTMLElement, props.imageId as string);
 };
 
 const convertCanvasImageToSrc = (): Promise<string|null> => {
@@ -80,7 +80,7 @@ onMounted(async () => {
   await registerImageContainer(fakeThumbnail.value as HTMLElement);
 
   // Display image using cornerstone
-  await displayImageInElement(fakeThumbnail.value as HTMLElement, props.imageId);
+  await displayImageInElement(fakeThumbnail.value as HTMLElement, props.imageId as string);
 });
 
 onUnmounted(() => {
