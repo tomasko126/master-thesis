@@ -74,14 +74,21 @@ SPAMM -- z anglického (SPAtial Modulation of Magnetization) $\rightarrow$ \uv{p
 
 V súčasnej praxi sa SPAMM technika používa v situáciách, kde informácia o kontrakcii myokardu je kľúčová, ako napr. podozrenie na ischemickú chorobu srdca alebo abnormality týkajúcej sa neprirodzeného pohybu steny myokardu \cite{spamm_description} (vlastný preklad).
 
-Takto získané snímky sú následne uložené vo formáte, ktorý umožňuje uložiť sekvenciu týchto snímkov spolu s akvizičnými parametrami a inými doplnkovými dátami. V drvivej väčšine prípadov sa týmto formátom myslí formát DICOM, ktorý je popísaný v sekcii \ref{dicom}.
-
 \begin {center}
         \centering
         \includegraphics[width=6cm, height=6cm]{media/tagged_heart.png}
         \captionof{figure}[Tagovaný snímok myokardu pomocou techniky SPAMM]{Otagovaný snímok myokardu pomocou techniky SPAMM \cite{spamm_description}.}
 \end {center}
 
+Nevýhodou použitia tejto techniky je skutočnosť, že táto mriežka sa stráca s blížiacim sa koncom srdcového cyklu. Samotné čiary mriežky sa pri konci systoly (časť srdcového cyklu, počas ktorej sa komory srdca sťahujú po naplnení krvou) môžu zlúčiť alebo úplne vyblednúť, čo sťažuje následnú analýzu pohybu srdca \cite{spamm_description} (vlastný preklad).
+
+\begin {center}
+        \centering
+        \includegraphics[width=10cm, height=5cm]{media/early_late_systole.png}
+        \captionof{figure}[Ukážka vyblednutia SPAMM mriežky]{Ľavý obrázok zobrazuje začiatok systoly, pravý jej koniec.}
+\end {center}
+
+\pagebreak
 
 \section {Analýza súčasnej aplikácie}
 
@@ -100,26 +107,26 @@ Túto aplikáciu môžeme rozdeliť na x častí - potom popíšem každú čas�
 
 \subsubsection {DICOM}\label{dicom}
 
-V súčasnosti sú snímky získané pomocou zobrazovacích techník v medicíne zväčša ukladané v archivačnom a komunikačnom systéme snímkov. Tento systém ukladá nielen snímkové dáta ale aj iné relevantné dáta k týmto snímkam podľa štandardu známom ako DICOM (Digital Imaging and Communications in Medicine). Ten je medzinárodným štandardom pre komunikáciu a manažment informácií o medicínskych obrazových a k nim príslušných dátach. Definuje, ako majú byť takéto dáta spracovávané, ukladané, tlačené a prenášané medzi zariadeniami podporujúcimi príjem týchto dát.
+V súčasnosti sú snímky získané pomocou zobrazovacích techník v medicíne zväčša ukladané v archivačnom a komunikačnom systéme snímkov. Tento systém ukladá nielen snímkové dáta ale aj iné relevantné dáta k týmto snímkam podľa štandardu známom ako DICOM (Digital Imaging and Communications in Medicine) \cite{Varma_2012} (vlastný preklad). Ten je medzinárodným štandardom pre komunikáciu a manažment informácií o medicínskych obrazových a k nim príslušných dátach. Definuje, ako majú byť takéto dáta spracovávané, ukladané, tlačené a prenášané medzi zariadeniami podporujúcimi príjem týchto dát \cite{about_dicomlibrary} (vlastný preklad).
 
-DICOM štandard bol vyvíjaný na prelome 80. a 90. rokoch 20. storočia v spolupráci medzi American College of Radiology a National Electrical Manufacturers Association. Momentálne sa skladá z 22 nezávislých častí, z ktorých avšak nie všetky musia byť implementované daným zariadením podporujúcim tento štandard.
+DICOM štandard bol vyvíjaný na prelome 80. a 90. rokoch 20. storočia v spolupráci medzi American College of Radiology a National Electrical Manufacturers Association \cite{dicom_history} (vlastný preklad). Momentálne sa skladá z 22 nezávislých častí, z ktorých avšak nie všetky musia byť implementované daným zariadením podporujúcim tento štandard.
 
-Pre účely spracovania snímkových dát, DICOM štandard vo svojej 10. časti definuje dátovú štruktúru (formát) súboru, do ktorého sa tieto dáta ukladajú. Dátová štruktúra súboru, ktorý spĺňa podmienky 10. časti tohto štandaru, býva značená ako \uv{DICOM Part 10} súbor, inak známy ako DICOM súbor.
+Pre účely spracovania snímkových dát, DICOM štandard vo svojej 10. časti definuje dátovú štruktúru (formát) súboru, do ktorého sa tieto dáta ukladajú. Dátová štruktúra súboru, ktorý spĺňa podmienky 10. časti tohto štandaru, býva značená ako \uv{DICOM Part 10} súbor, inak známy ako DICOM súbor \cite{Varma_2012} (vlastný preklad).
 
 Štruktúra tohto (binárneho) súboru je nasledovná -- prvých 128 bajtov býva zväčša prázdnych (vyplnených 0). Ďalšie 4 bajty obsahujú uložený reťazec \uv{DICM}.  Na základe týchto bajtov sa dá určiť, či sa jedná alebo nejedná o DICOM súbor.
-Ďalej nasleduje hlavička, ktorá je rozdelená na viacero skupín zoskupujúcich súvisiace atribúty. Konkrétne atribúty sa adresujú tagom - ten sa skladá z 8 čísiel v hexadecimálnom formáte. Prvé 4 čísla reprezentujú skupinu, v ktorej sa daný atribút nachádza a posledné 4 čísla jednoznačne identifikujú konkrétny atribút v skupine.
+Ďalej nasleduje hlavička, ktorá je rozdelená na viacero skupín zoskupujúcich súvisiace atribúty. Konkrétne atribúty sa adresujú tagom - ten sa skladá z 8 čísiel v hexadecimálnom formáte. Prvé 4 čísla reprezentujú skupinu, v ktorej sa daný atribút nachádza a posledné 4 čísla jednoznačne identifikujú konkrétny atribút v skupine \cite{Varma_2012} (vlastný preklad).
 
-Ako príklad bude uvedené získanie informácie o pacientovom veku - všetky informácie o pacientovi sa nachádzajú v skupine 0010. Pacientov vek v tejto skupine sa nachádza na pozícii 1010, tým pádom výsledný tag pod ktorým nájdeme vek pacienta je (0010, 1010). Ku každému tagu je jednoznačne priradená reprezentácia jej hodnoty (VR), ktorý určuje dátový typ, formát a dĺžku hodnoty daného atribútu.
+Ako príklad bude uvedené získanie informácie o pacientovom veku - všetky informácie o pacientovi sa nachádzajú v skupine 0010. Pacientov vek v tejto skupine sa nachádza na pozícii 1010, tým pádom výsledný tag pod ktorým nájdeme vek pacienta je (0010, 1010). Ku každému tagu je jednoznačne priradená reprezentácia jej hodnoty (VR), ktorý určuje dátový typ, formát a dĺžku hodnoty daného atribútu  \cite{Varma_2012} (vlastný preklad).
 
-Po hlavičke nasleduje skupina 7FE0, ktorá už obsahuje dáta o samotných obrazových pixeloch. Typ kódovania týchto dát určuje Transfer Syntax -- ten udáva, akým spôsobom sú obrazové pixely zakódované. Transfer Syntax obsahuje taktiež informáciu, v akom poradí bajtov sú informácie zakódované (Little Endian vs Big Endian) a aká kompresia obrazových dát bola použitá.
-
-\todo{Pridať citácie}
+Po hlavičke nasleduje skupina 7FE0, ktorá už obsahuje dáta o samotných obrazových pixeloch \cite{Varma_2012} (vlastný preklad). Typ kódovania týchto dát určuje Transfer Syntax -- ten udáva, akým spôsobom sú obrazové pixely zakódované. Transfer Syntax obsahuje taktiež informáciu, v akom poradí bajtov sú informácie zakódované (Little Endian vs Big Endian) a aká kompresia obrazových dát bola použitá \cite{dicom_transfer_syntax} (vlastný preklad).
 
 \subsubsection {Qt}
 
-\quad Súčasná aplikácia bola vyvinutá pomocou Qt -- cross-platformového frameworku určeného pre vytváranie aplikácií najmä v jazyku C\texttt{++}. Aplikácie vyvinuté týmto frameworkom majú výhodu v tom, že sú spustiteľné na rôznych operačných systémoch s minimálnym počtom zmien v zdrojovom kóde.
+\quad Súčasná aplikácia bola vyvinutá pomocou Qt -- cross-platformového frameworku určeného pre vytváranie aplikácií najmä v jazyku C\texttt{++}. Aplikácie vyvinuté týmto frameworkom majú výhodu v tom, že sú spustiteľné na rôznych operačných systémoch s minimálnym počtom zmien v zdrojovom kóde \cite{qt_description} (vlastný preklad).
 
-Výsadou tohto frameworku je taktiež rozdelenie jeho funkcionality do jednotlivých modulov. Pri následom vytváraní aplikácie sa použijú len také moduly, ktoré sú v danej aplikácii potrebné. \linebreak V súčasnej aplikácii boli použité nasledovné moduly: 
+Výsadou tohto frameworku je taktiež rozdelenie jeho funkcionality do jednotlivých modulov. Pri následom vytváraní aplikácie sa použijú len také moduly, ktoré sú v danej aplikácii potrebné \cite{qt_description} (vlastný preklad).
+
+V súčasnej aplikácii boli použité nasledovné moduly: 
 
 \begin{itemize}
 \item {Qt Core}
@@ -128,27 +135,22 @@ Výsadou tohto frameworku je taktiež rozdelenie jeho funkcionality do jednotliv
 \item {Qt Test}
 \end{itemize}
 
-Qt Core modul obsahuje najpoužívanejšie triedy ako napr. \lstinline{QCoreApplication}, \lstinline{QObject}, \lstinline{QDebug} a iné. Nakoľko sú tieto triedy používané aj inými modulmi, je tento modul implicitne nalinkovaný Qt frameworkom pri budovaní aplikácie. \newline
+Qt Core modul obsahuje najpoužívanejšie triedy ako napr. \lstinline{QCoreApplication}, \lstinline{QObject}, \lstinline{QDebug} a iné. Nakoľko sú tieto triedy používané aj inými modulmi, je tento modul implicitne nalinkovaný Qt frameworkom pri budovaní aplikácie \cite{qtcore_description} (vlastný preklad). \newline
 
-Qt Widgets modul poskytuje UI elementy, ktoré sú určené pre vytváranie používateľského rozhrania. Tieto elementy môžu zobrazovať rozličné dáta, prijímať vstup z klávesnice, byť štylizované a zoskupované do rozličných usporiadaní. Existujúca aplikácia používa z modulu napr. triedu \lstinline{QMainWindow}, ktorá je zodpovedná za vykreslenie aplikačného okna a taktiež triedu \lstinline{QGraphicsScene}, ktorá je zodpovedná za vykreslenie obrázkov z magnetickej rezonancie v DICOM formáte. \newline
+Qt Widgets modul poskytuje UI elementy, ktoré sú určené pre vytváranie používateľského rozhrania. Tieto elementy môžu zobrazovať rozličné dáta, prijímať vstup z klávesnice, byť štylizované a zoskupované do rozličných usporiadaní \cite{qtwidgets_description} (vlastný preklad). Existujúca aplikácia používa z modulu napr. triedu \lstinline{QMainWindow}, ktorá je zodpovedná za vykreslenie aplikačného okna a taktiež triedu \lstinline{QGraphicsScene}, ktorá je zodpovedná za vykreslenie obrázkov z magnetickej rezonancie v DICOM formáte. \newline
 
-Qt GUI modul obsahuje triedy určené pre zobrazovanie aplikačného okna a iného grafického obsahu s následnou obsluhou eventov udalostí. Taktiež obsahuje triedy, ktoré sú zodpovedné za zobrazovanie 2D grafiky, fontov a typografie.
+Qt GUI modul obsahuje triedy určené pre zobrazovanie aplikačného okna a iného grafického obsahu s následnou obsluhou eventov udalostí. Taktiež obsahuje triedy, ktoré sú zodpovedné za zobrazovanie 2D grafiky, fontov a typografie \cite{qtgui_description} (vlastný preklad).
 Súčasná aplikácia z tohto modulu používa napr. triedu \lstinline{QImage}, ktorá obsahuje metódy pre priamy prístup k pixelom obrázkov a ich manipuláciu. \newline
 
-Qt Test modul je poskytuje rozličné triedy pre jednotkové testovanie Qt aplikácií a príslušných knižníc -- v súčasnej aplikácii bol tento modul využitý pri testovaní grafického používateľského rozhrania a funkcionalít súčasnej aplikácie, ako napr. testovanie zmien v nastaveniach vykreslenej mriežky na obrázku z magnetickej rezonancie.
-
-\todo {Pridať citácie}
+Qt Test modul je poskytuje rozličné triedy pre jednotkové testovanie Qt aplikácií a príslušných knižníc \cite{qttest_description} (vlastný preklad) -- v súčasnej aplikácii bol tento modul využitý pri testovaní grafického používateľského rozhrania a funkcionalít súčasnej aplikácie, ako napr. testovanie zmien v nastaveniach vykreslenej mriežky na obrázku z magnetickej rezonancie.
 
 \subsubsection {Qmake}
 
-Pre zjednodušenie písania Makefilov, ktoré definujú, ako má byť program skompilovaný, bol použitý nástroj Qmake. Ten umožňuje vývojárom definovať vytváranie rozličných Makefilov pre daný program pomocou syntaxu definovaného programom Qmake. Výsledkom tohto procesu je súbor s príponou \lstinline{.pro} obsahujúci inštrukcie, ako daný program skompilovať. Následne sa pomocou príkazu \lstinline{qmake} s argumentom cesty k \lstinline{.pro} súboru daný program skompiluje a jeho výsledkom je spustiteľný súbor aplikácie.
-
-\subsubsection {QT Creator}
-
+Pre zjednodušenie písania Makefilov, ktoré definujú, ako má byť program skompilovaný, bol použitý nástroj Qmake. Ten umožňuje vývojárom definovať vytváranie rozličných Makefilov pre daný program pomocou syntaxu definovaného programom Qmake \cite{qmake_description} (vlastný preklad). Výsledkom tohto procesu je súbor s príponou \lstinline{.pro} obsahujúci inštrukcie, ako daný program skompilovať. Následne sa pomocou príkazu \lstinline{qmake} s argumentom cesty k \lstinline{.pro} súboru daný program skompiluje a jeho výsledkom je spustiteľný súbor aplikácie.
 
 \subsubsection {DCMTK}
 
-DCMTK je kolekcia knižníc a aplikácií, ktoré implementujú veľkú časť štandardu DICOM v jazykoch C a C\texttt{++}. Úlohou týchto knižníc je okrem iného skúmanie, vytváranie a konverzia DICOM súborov, manipulácia s pamäťovými médiami a odosielanie a prijímanie obrazových súborov cez internetové pripojenie. Používa sa v nemocniciach a rôznych spoločnostiach po celom svete, kde sa používa ako softvérový základ pri rozličných výskumných projektoch, prototypoch a komerčných produktoch nevynímajúc. \newline
+DCMTK je kolekcia knižníc a aplikácií, ktoré implementujú veľkú časť štandardu DICOM v jazykoch C a C\texttt{++}. Úlohou týchto knižníc je okrem iného skúmanie, vytváranie a konverzia DICOM súborov, manipulácia s pamäťovými médiami a odosielanie a prijímanie obrazových súborov cez internetové pripojenie. Používa sa v nemocniciach a rôznych spoločnostiach po celom svete, kde sa používa ako softvérový základ pri rozličných výskumných projektoch, prototypoch a komerčných produktoch nevynímajúc \cite{dcmtk_description} (vlastný preklad). \newline
 
 V súčasnej aplikácií je DCMTK využitý pre získanie informácií z hlavičiek DICOM súborov, ako napr:
 
@@ -160,7 +162,7 @@ V súčasnej aplikácií je DCMTK využitý pre získanie informácií z hlavič
 
 \subsubsection {TNL}
 
-Template Numerical Library, v skratke TNL, je kolekcia metód, ktoré uľahčujú vývoj efektívnych numerických riešičov. Táto knižnica je implementovaná pomocou C\texttt{++} s cieľom poskytnúť flexibilné a užívateľsky prívetivé rozhranie. TNL poskytuje natívnu podporu pre moderné hardwarové architektúry ako sú viacjadrové CPU, GPU a distribuované systémy, ktoré je možné spravovať cez jednotné rozhranie.
+Template Numerical Library, v skratke TNL, je kolekcia metód, ktoré uľahčujú vývoj efektívnych numerických riešičov. Táto knižnica je implementovaná pomocou C\texttt{++} s cieľom poskytnúť flexibilné a užívateľsky prívetivé rozhranie. TNL poskytuje natívnu podporu pre moderné hardwarové architektúry ako sú viacjadrové CPU, GPU a distribuované systémy, ktoré je možné spravovať cez jednotné rozhranie \cite{tnl_description}.
 
 V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \lstinline{String} pre manipuláciu s reťazcami a \lstinline{Containers::Array}, \lstinline|Containers::{Vector,StaticVector,MultiVector}|, čo sú kontajnery reprezentujúce n-dimenzionálne polia, ktoré abstrahujú manažment dát a exekúciu bežných operácií na rozličných hardvérových architektúrach.
 
