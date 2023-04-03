@@ -243,7 +243,7 @@ Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj
 
 Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}.
 
-\subsection {Používateľské rozhranie}
+\subsection {Používateľské rozhranie}\label{stare_ui}
 
 Po úspešnom spustení aplikácie sa používateľovi zobrazí hlavné okno aplikácie.
 V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
@@ -341,14 +341,45 @@ Ostatné dve možnosti z menu \uv{Aditional [sic] Tools} nie je potrebné pre ú
 %Pre analýzu srdcového svalu je potrebné najprv do aplikácie nahrať sériu snímkov, ktoré sú otagované priestorovou moduláciou magnetizácie popísanou vyššie. Táto mriežka sa na každom snímku deformuje podľa pohybu tkaniva. Na počiatočných snímkoch je mriežka dobre viditeľná, avšak jej viditeľnosť sa každým ďalším snímkom zmenšuje. Tento efekt je spôsobený poklesom Nevýhodou  Pohyb myokardu je možný analyzovať vďaka 
 
 
-\section {Analýza webovej aplikácie}
+\section {Analýza požiadaviek}
+Táto sekcia sa venuje analýze požiadaviek, ktoré sa delia na dve hlavné kategórie. Týmito kategóriami sú funkčné a nefunkčné požiadavky.
+Na základe týchto požiadaviek bude možné implementovať novú aplikáciu pre potreby analýzy srdcového myokardu.
 
-\subsection {Analýza požiadaviek}
+\subsection {Funkčné požiadavky}
+Funkčné požiadavky sú požiadavky vymedzujúce rozsah funkcionality, ktorá by mala byť v danej aplikácii implementovaná.
 
-\subsubsection {Funkčné požiadavky}
+\subsubsection {Spracovanie a zobrazenie MR snímkov}
+Do aplikácie by malo byť možné nahrať snímky z magnetickej rezonancie vo formáte DICOM a tieto snímky taktiež zobraziť.
 
-\subsubsection {Nefunkčné požiadavky}
+\subsubsection {Animácia MR snímkov}
+Aplikácia by mala umožniť animovať nahrané snímky pre jednoduchšiu analýzu pohybu myokardu. Parametre animácie ako jej rýchlosť a výber fotky, od/do ktorej snímky má animácia prebiehať by mali byť upraviteľné.
 
-\subsection {Používateľské role}
+\subsubsection {Zobrazenie a interaktívna úprava mriežky}
+Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR. Táto mriežka by mala byť interaktívna, t.j. polohu jej bodov by bolo možné interaktívne upravovať. Parametre tejto mriežky (\ref{stare_ui}) by sa taktiež mali dať upraviť podľa želania používateľa.
 
-\subsection {Prípady použitia}
+\subsubsection {Zadanie parametrov pre \texttt{grid-tracker} podprogram}
+Pre korektné spustenie \texttt{grid-tracker} podprogramu je nutné tomuto podprogramu podsunúť rozličné parametre. Tieto parametre by sa mali dať definovať v aplikácií pre ich neskoršie použitie v \texttt{grid-tracker} podprograme. Výpis týchto parametrov je možné nájsť v \ref{podprogramy}.
+
+\subsubsection {Spustenie \texttt{grid-tracker} podprogramu a zobrazenie jeho výsledkov}
+Aplikácia by mala umožniť spustiť \texttt{grid-tracker} podprogram, ktorý zarovná mriežku definovanú používateľom s mriežkou, ktorá bola vygenerovaná pomocou techniky SPAMM. Po jej zarovnaní by mala byť aplikácia schopná zobraziť upravenú mriežku.
+
+\subsection {Nefunkčné požiadavky}
+Požiadavky tohto typu síce nevymedzujú rozsah funkcionality danej aplikácie, avšak umožňujú určiť isté obmedzenia pre novú aplikáciu, ako napr. dôraz na podobu výslednej architektúry aplikácie.
+
+\subsubsection {Webová aplikácia}
+
+Prvou nefunkčnou požiadavkou je vytvorenie webovej aplikácie, ktorá by mala byť prístupná zo všetkých moderných webových prehliadačov. Pre lekárov výber tejto architektúry zjednoduší jej prístupnosť, nakoľko k takejto aplikácii môže pristupovať z rôznych zariadení a platforiem bez nutnosti inštalácie aplikácie a jej následnej podpory na týchto zariadeniach.
+
+\subsubsection {Používateľské rozhranie}
+
+Pre interakciu s aplikáciou je nutné navrhnúť a implementovať používateľské rozhranie, pomocou ktorého lekári budú môcť s aplikáciou interagovať. Lekári by preferovali používateľské rozhranie podobné iným aplikáciám z tejto oblasti.
+
+\subsubsection {Ochrana pred únikom dát o pacientovi}
+
+Práca s osobnými dátami by mala byť do maximálnej možnej miere naprieč aplikáciou minimalizovaná, aby sa predišlo únikom citlivých údajov o pacientovi.
+
+\section {Používateľské role}
+
+V aplikácii sa bude nachádzať len jeden typ používateľa rovnako ako v súčasnej aplikácii. Tomuto používateľovi by mala teda byť aplikácia sprístupnená bez rôznych funkčných obmedzení.
+
+\section {Prípady použitia}
