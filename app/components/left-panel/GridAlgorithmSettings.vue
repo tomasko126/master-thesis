@@ -11,7 +11,7 @@
         type="number"
         min="0"
         step="0.0005"
-        :disabled="store.isLoopingImages || !store.imageIds.length"
+        :disabled="isButtonDisabled"
         :rules="inputRules"
       />
     </GeneralTabSection>
@@ -24,7 +24,7 @@
         type="number"
         min="0"
         step="0.025"
-        :disabled="store.isLoopingImages || !store.imageIds.length"
+        :disabled="isButtonDisabled"
         :rules="inputRules"
       />
     </GeneralTabSection>
@@ -37,7 +37,7 @@
         type="number"
         min="0"
         step="0.005"
-        :disabled="store.isLoopingImages || !store.imageIds.length"
+        :disabled="isButtonDisabled"
         :rules="inputRules"
       />
     </GeneralTabSection>
