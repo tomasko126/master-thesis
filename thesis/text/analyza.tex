@@ -94,9 +94,9 @@ Táto sekcia sa zaoberá účelom súčasnej aplikácie a analýzou použitých 
 
 \subsection {Účel aplikácie}
 
-Účelom súčasnej aplikácie -- DICOM Viewer -- je analýza pohybu srdcového svalu, pomocou ktorej by bolo možné zistiť anomálie v jeho pohybe. Aplikácia umožňuje nahrať súbory typu DICOM (popísaného v sekcii \ref{dicom}), ktoré sú otagované SPAMM mriežkou. Na nahraných snímkach je následne používateľom vytvorená mriežka. Štruktúra a parametre týchto mriežok sú potom poslané podprogramu \texttt{grid-tracker}, ktorého úlohou je zarovnanie používateľom vytvorených mriežok s mriežkami vytvorenými SPAMM technikou. Po ich zarovnaní mriežky je možné pomocou techniky grafových rezov odsegmentovať srdečné komory a tým pádom zúžiť analýzu pohybu srdcového svalu len na tieto komory.
+Účelom súčasnej aplikácie -- DICOM Viewer -- je analýza pohybu srdcového svalu, pomocou ktorej by bolo možné zistiť anomálie v jeho pohybe. Aplikácia umožňuje importovať súbory typu DICOM (popísaného v sekcii \ref{dicom}), ktoré sú otagované SPAMM mriežkou. Na importovaných snímkach je následne používateľom vytvorená mriežka. Štruktúra a parametre týchto mriežok sú potom poslané podprogramu \texttt{grid-tracker}, ktorého úlohou je zarovnanie používateľom vytvorených mriežok s mriežkami vytvorenými SPAMM technikou. Po ich zarovnaní mriežky je možné pomocou techniky grafových rezov odsegmentovať srdečné komory a tým pádom zúžiť analýzu pohybu srdcového svalu len na tieto komory.
 
-Táto diplomová práca sa zameriava na vytvorenie webovej verzie súčasnej aplikácie vrátane zarovnania mriežok pomocou \texttt{grid-tracker} podprogramu \ref{podprogramy}.
+Táto diplomová práca sa zameriava na vytvorenie webovej verzie súčasnej aplikácie vrátane zarovnania mriežok pomocou \texttt{grid-tracker} podprogramu \ref{helper_apps}.
 
 \subsection {Použité technológie}
 
@@ -180,7 +180,7 @@ Aplikácia z TNL knižnice taktiež používa \texttt{Solvers::ODE::Merson} -- j
 
 Bohužiaľ, súčasná aplikácia nie je kompatibilná s najnovšími zdrojovými kódmi TNL knižnice -- pre nájdenie posledného \uv{dobrého stavu} knižnice, t.j. stavu za ktorého bolo možné aplikáciu skompilovať, bol využitý nástroj \texttt{git bisect}. Tento nástroj našiel ako posledný \uv{dobrý stav} knižnice z 13.5.2021. Pri využití TNL knižnice zostavenej po tomto dátume nebolo možné súčasnú aplikáciu skompilovať.
 
-\subsection {Pomocné podprogramy}\label{podprogramy}
+\subsection {Pomocné podprogramy}\label{helper_apps}
 
 Súčasná aplikácia obsahuje a využíva nasledujúce 3 podprogramy:
 
@@ -243,7 +243,7 @@ Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj
 
 Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}.
 
-\subsection {Používateľské rozhranie}\label{stare_ui}
+\subsection {Používateľské rozhranie}\label{old_ui}
 
 Po úspešnom spustení aplikácie sa používateľovi zobrazí hlavné okno aplikácie.
 V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
@@ -251,7 +251,7 @@ V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
 \begin {enumerate}
 \item {File}
 	\begin {enumerate}
-		\item {Open -- otvorí systémové okno pre výber priečinku s DICOM snímkami, ktoré sa majú zobraziť v aplikácii}
+		\item {Open -- otvorí systémové okno pre výber priečinku s DICOM snímkami, ktoré sa majú importovať do aplikácie}
 		\item {Save Image}
 		\begin {enumerate}
 			\item {Save View -- uloží pohľad na aktuálnu snímku vo zvolenom formáte}
@@ -278,7 +278,7 @@ V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
 	\end {enumerate}
 \end {enumerate}
 
-Po spustení sa aplikácia nachádza v stave, v ktorom nie je možné s ňou interagovať -- inými slovami, je najprv potrebné do aplikácie nahrať snímky v DICOM formáte, ako je ukázané na obrázku nižšie.
+Po spustení sa aplikácia nachádza v stave, v ktorom nie je možné s ňou interagovať -- inými slovami, je najprv potrebné do aplikácie importovať snímky v DICOM formáte, ako je ukázané na obrázku nižšie.
 
 \begin {center}
         \centering
@@ -316,7 +316,7 @@ Narozdiel od predchádzajúcej karty, \uv{Tools} karta obsahuje interaktívne pr
 
 Na ďalšej karte \uv{Image Processing} sa nachádzajú tlačidlá ovládajúce manažéra štúdií. Tento \uv{manažér} zoskupuje rôzne štúdie, pod ktorými sa ukladajú rôzne parametre aplikácie. Po kliknutí na tlačidlo \uv{Open Study List} sa zobrazí nové okno so všetkými štúdiami a ich parametrami.
 Pre interakciu s ostatnými poliami na tejto karte je potrebné najprv vytvoriť novú štúdiu kliknutím na tlačidlo \uv{New Study}. Štúdiu je tiež možné ukončiť zvolením tlačidla \uv{Close Study}. Každá štúdia je reprezentovaná jedinečným ID, ktoré sa skladá z dátumu a času jej vytvorenia.
-Vytvorením novej štúdie sa aktivujú polia \uv{Image Processing Programs} sekcie. Táto sekcia ponúka tri hlavné začiarkavacie políčka -- prvé reprezentuje spustenie aplikovania filtra lokálnej variancie. Druhé z nich reprezentuje spustenie algoritmu pre zarovnanie vygenerovanej mriežky s mriežkou myokardu vytvorenou pomocou SPAMM techniky a tretie spustenie algoritmu segmentácie srdečných komôr pomocou grafových rezov. Zaškrtnutím daného políčka a kliknutím na tlačidlo \uv{Run} sa algoritmus príslušný danému políčku spustí. Pre \uv{Grid Tracking} algoritmus je v tejto sekcii možné definovať tri parametre, a to \uv{Curvature Coefficient}, \uv{Force Coefficient} a \uv{Stop Time} (viď \ref{podprogramy}).
+Vytvorením novej štúdie sa aktivujú polia \uv{Image Processing Programs} sekcie. Táto sekcia ponúka tri hlavné začiarkavacie políčka -- prvé reprezentuje spustenie aplikovania filtra lokálnej variancie. Druhé z nich reprezentuje spustenie algoritmu pre zarovnanie vygenerovanej mriežky s mriežkou myokardu vytvorenou pomocou SPAMM techniky a tretie spustenie algoritmu segmentácie srdečných komôr pomocou grafových rezov. Zaškrtnutím daného políčka a kliknutím na tlačidlo \uv{Run} sa algoritmus príslušný danému políčku spustí. Pre \uv{Grid Tracking} algoritmus je v tejto sekcii možné definovať tri parametre, a to \uv{Curvature Coefficient}, \uv{Force Coefficient} a \uv{Stop Time} (viď \ref{helper_apps}).
 
 Účelom poslednej karty \uv{History} je výpis rozličných záznamov pre informovanie používateľa o prebiehajúcich krokoch aplikácie. \newline
 
@@ -342,33 +342,34 @@ Ostatné dve možnosti z menu \uv{Aditional [sic] Tools} nie je potrebné pre ú
 
 
 \section {Analýza požiadaviek}
+\todo {Presunúť do návrhu po rozhodnutí o architektúre aplikácie?}
 Táto sekcia sa venuje analýze požiadaviek, ktoré sa delia na dve hlavné kategórie. Týmito kategóriami sú funkčné a nefunkčné požiadavky.
 Na základe týchto požiadaviek bude možné implementovať novú aplikáciu pre potreby analýzy srdcového myokardu.
 
 \subsection {Funkčné požiadavky}
 Funkčné požiadavky sú požiadavky vymedzujúce rozsah funkcionality, ktorá by mala byť v danej aplikácii implementovaná.
 
-\subsubsection {Spracovanie a zobrazenie MR snímkov}
-Do aplikácie by malo byť možné nahrať snímky z magnetickej rezonancie vo formáte DICOM a tieto snímky taktiež zobraziť.
+\subsubsection {Spracovanie a zobrazenie MR snímkov}\label{mr_images_processing}
+Do aplikácie by malo byť možné importovať snímky z magnetickej rezonancie vo formáte DICOM a tieto snímky taktiež zobraziť.
 
-\subsubsection {Animácia MR snímkov}
-Aplikácia by mala umožniť animovať nahrané snímky pre jednoduchšiu analýzu pohybu myokardu. Parametre animácie ako jej rýchlosť a výber fotky, od/do ktorej snímky má animácia prebiehať by mali byť upraviteľné.
+\subsubsection {Animácia MR snímkov}\label{animation}
+Aplikácia by mala umožniť animovať importované snímky pre jednoduchšiu analýzu pohybu myokardu. Parametre animácie ako jej rýchlosť a výber fotky, od/do ktorej snímky má animácia prebiehať by mali byť upraviteľné, napr. pomocou číselného vstupu.
 
-\subsubsection {Zobrazenie a interaktívna úprava mriežky}
-Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR. Táto mriežka by mala byť interaktívna, t.j. polohu jej bodov by bolo možné interaktívne upravovať. Parametre tejto mriežky (\ref{stare_ui}) by sa taktiež mali dať upraviť podľa želania používateľa.
+\subsubsection {Zobrazenie a interaktívna úprava mriežky}\label{grid_show}
+Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR, ktorá by sa mala dať vygenerovať tlačidlom v používateľskom rozhraní. Mriežka by taktiež mala byť interaktívna, t.j. polohu jej bodov by bolo možné interaktívne upravovať, najlepšie pomocou potiahnutím bodu myšou. Parametre tejto mriežky (\ref{old_ui}) by sa taktiež mali dať upraviť podľa želania používateľa a ich zmena by mala byť ihneď viditeľná.
 
-\subsubsection {Zadanie parametrov pre \texttt{grid-tracker} podprogram}
-Pre korektné spustenie \texttt{grid-tracker} podprogramu je nutné tomuto podprogramu podsunúť rozličné parametre. Tieto parametre by sa mali dať definovať v aplikácií pre ich neskoršie použitie v \texttt{grid-tracker} podprograme. Výpis týchto parametrov je možné nájsť v \ref{podprogramy}.
+\subsubsection {Zadanie parametrov pre \texttt{grid-tracker} podprogram}\label{grid_paremeters}
+Pre korektné spustenie \texttt{grid-tracker} podprogramu pre zarovnanie mriežky je nutné tomuto podprogramu podsunúť rozličné parametre. Tieto parametre by sa mali dať definovať v aplikácií pre ich neskoršie použitie v tomto podprograme. Výpis týchto parametrov je možné nájsť v \ref{helper_apps}.
 
-\subsubsection {Spustenie \texttt{grid-tracker} podprogramu a zobrazenie jeho výsledkov}
-Aplikácia by mala umožniť spustiť \texttt{grid-tracker} podprogram, ktorý zarovná mriežku definovanú používateľom s mriežkou, ktorá bola vygenerovaná pomocou techniky SPAMM. Po jej zarovnaní by mala byť aplikácia schopná zobraziť upravenú mriežku.
+\subsubsection {Spustenie \texttt{grid-tracker} podprogramu a zobrazenie jeho výsledkov}\label{grid_results}
+Aplikácia by mala umožniť spustiť \texttt{grid-tracker} podprogram, ktorý zarovná mriežku definovanú používateľom s mriežkou, ktorá bola vygenerovaná pomocou techniky SPAMM. Po jej zarovnaní by mala byť aplikácia schopná vykresliť upravenú mriežku.
 
 \subsection {Nefunkčné požiadavky}
 Požiadavky tohto typu síce nevymedzujú rozsah funkcionality danej aplikácie, avšak umožňujú určiť isté obmedzenia pre novú aplikáciu, ako napr. dôraz na podobu výslednej architektúry aplikácie.
 
 \subsubsection {Webová aplikácia}
 
-Prvou nefunkčnou požiadavkou je vytvorenie webovej aplikácie, ktorá by mala byť prístupná zo všetkých moderných webových prehliadačov. Pre lekárov výber tejto architektúry zjednoduší jej prístupnosť, nakoľko k takejto aplikácii môže pristupovať z rôznych zariadení a platforiem bez nutnosti inštalácie aplikácie a jej následnej podpory na týchto zariadeniach.
+Prvou nefunkčnou požiadavkou je vytvorenie webovej aplikácie, ktorá by mala byť prístupná zo všetkých moderných webových prehliadačov. Pre lekárov výber tejto architektúry zjednoduší jej prístupnosť, nakoľko k takejto aplikácii bude možné pristupovať z rôznych zariadení a platforiem bez nutnosti inštalácie aplikácie a jej následnej podpory na týchto zariadeniach.
 
 \subsubsection {Používateľské rozhranie}
 
@@ -376,10 +377,92 @@ Pre interakciu s aplikáciou je nutné navrhnúť a implementovať používateľ
 
 \subsubsection {Ochrana pred únikom dát o pacientovi}
 
-Práca s osobnými dátami by mala byť do maximálnej možnej miere naprieč aplikáciou minimalizovaná, aby sa predišlo únikom citlivých údajov o pacientovi.
+Práca s osobnými dátami by mala byť do maximálnej možnej miere naprieč aplikáciou minimalizovaná, aby sa predišlo únikom citlivých údajov o pacientovi. Týka sa to najmä práce s DICOM súbormi, nakoľko tie obsahujú citlivé dáta o pacientovi.
 
 \section {Používateľské role}
 
 V aplikácii sa bude nachádzať len jeden typ používateľa rovnako ako v súčasnej aplikácii. Tomuto používateľovi by mala teda byť aplikácia sprístupnená bez rôznych funkčných obmedzení.
 
 \section {Prípady použitia}
+Nasledujúce prípady použitia reprezentujú rôzne činnosti, ktoré môže používateľ s aplikáciou vykonávať. Tieto prípady použitia sú popísané pomocou scenárov, ktoré taktiež vychádzajú z funkčných požiadaviek kladených na novú aplikáciu.
+
+\subsection {UC1 -- Zobrazenie snímkov v aplikácii}\label{uc1}
+Zobrazenie snímkov magnetickej rezonancie v DICOM formáte je jedným z esenciálnych funkčných požiadaviek -- \uv{\nameref{mr_images_processing}}. Nasledovný scenár túto požiadavku realizuje.
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {Používateľ klikne na jedno z tlačidiel pre import DICOM snímkov do aplikácie.}
+\item {Prehliadač zobrazí systémové okno, v ktorom si používateľ vyberie snímky, ktoré by chcel mať zobrazené v aplikácii.}
+\item {Následne potvrdí import želaných snímkov kliknutím na tlačidlo \uv{Otvoriť}.}
+\item {Aplikácia automaticky vykreslí prvý importovaný snímok a taktiež zobrazí náhľady ostatných importovaných snímkov.}
+\item {V prípade, že sa medzi zvolenými snímkami nachádza súbor, ktorý nekorešponduje so štruktúrou DICOM súboru, aplikácia zobrazí notifikáciu o neúspešnom zobrazení snímky.}
+\end {enumerate}
+	
+\subsection {UC2 -- Animácia snímkov}
+Nasledovný scenár realizuje funkciu prehrania série snímkov ako animáciu, ako bolo popísané vo funkčnej požiadavke \uv{\nameref{animation}}.
+Okrem iného taktiež zahŕňa prípad \uv{\nameref{uc1}}. 
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {\nameref{uc1}.}
+\item {Kliknutím na tlačidlo reprezentujúce štart animácie sa spustí animácia importovaných snímkov.}
+\item {Kliknutím na tlačidlo reprezentujúce koniec animácie sa animácia skončí.}
+\end {enumerate}
+
+\subsubsection*{Alternatívny scenár:}
+\begin {enumerate}
+\item [\textbf{2.}] {Používateľ si nastaví rýchlosť animácie, index snímku, od ktorého má animácia začínať alebo index snímku, ktorým má animácia končiť.}
+\item  [\textbf{3.}] {Kliknutím na tlačidlo reprezentujúce štart animácie sa spustí animácia importovaných snímkov.}
+\item  [\textbf{4.}] {Kliknutím na tlačidlo reprezentujúce koniec animácie sa animácia skončí.}
+\end {enumerate}
+
+\subsection {UC3 -- Vytvorenie mriežky}\label{uc3}
+Vytvorenie mriežky nad snímkou z MR je potrebné pre účely analýzu pohybu myokardu. Nasledujúci scenár čiastočne realizuje túto funkčnú požiadavku definovanú v \ref{grid_show}. Taktiež zahŕňa prípad použitia \uv{\nameref{uc1}}.
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {\nameref{uc1}.}
+\item {Používateľ klikne na tlačidlo \uv{Create grid}.}
+\item {Aplikácia zobrazí výzvu pre kliknutie na oblasť snímky, kde má byť mriežka vytvorená.}
+\item {Používateľ klikne na oblasť snímky, kde chce vytvoriť mriežku.}
+\item {Aplikácia vygeneruje mriežku s predvolenými nastaveniami a zobrazí ju.}
+\end {enumerate}
+
+\subsection {UC4 -- Úprava parametrov mriežky}\label{uc4}
+Medzi prípady použitia patrí aj úprava parametrov mriežky určenej pre analýzu pohybu srdcového svalu. Nakoľko je najprv potrebné mať mriežku  pred jej úpravou vytvorenú, zahŕňa nasledovný scenár aj jej vytvorenie. Ten taktiež čiastočne realizuje funkčnú požiadavku \uv{\nameref{grid_show}}.
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {\nameref{uc3}.}
+\item {Používateľ upraví jeden alebo viacero parametrov uvedených v \ref{old_ui}.}
+\item {Aplikácia následne automaticky vykreslí mriežku na základe upravených parametrov.}
+\end {enumerate}
+
+\subsection {UC5 -- Zadanie parametrov pre \texttt{grid-tracker} podprogram}\label{uc5}
+Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používateľom voči mriežke vygenerovanej SPAMM technikou je potrebné tomuto algoritmu poslať tri parametre definované v \ref{old_ui}. Nasledujúci scenár tento prípad použitia realizuje spolu s funkčnou požiadavkou -- \uv{\nameref{grid_parameters}}.
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {\nameref{uc1}.}
+\item {Používateľ zadá číselné hodnoty parametrov \uv{Curvature coefficient}, \uv{Force coefficient} a \uv{Stop time}.}
+\end {enumerate}
+
+\subsection {UC6 -- Spustenie podprogramu a zobrazenie výsledku}
+Spustenie samotného algoritmu vyžaduje mať importované DICOM snímky v aplikácii, vytvorenú mriežku s upravenámi parametrami a zadaním parametrov pre \texttt{grid-tracker} podprogram. To je dôvodom, prečo tento scenár použitia zahŕňa prípady \uv{\nameref{uc1}}, \uv{\nameref{uc3}}, \uv{\nameref{uc4}} a \uv{\nameref{uc5}}. Samotný scenár realizuje funkčnú požiadavku \uv{\nameref{grid_results}}.
+
+\subsubsection*{Scenár:}
+\begin {enumerate}
+\item {\nameref{uc1}}.
+\item {\nameref{uc3}}.
+\item {\nameref{uc4}}.
+\item {\nameref{uc5}}.
+\item {Používateľ kliknutím na tlačidlo \uv{Compute} spustí výpočet pomocou \texttt{grid-tracker} podprogramu.}
+\item {Po dokončení výpočtu aplikácia zobrazí mriežky upravené horeuvedeným podprogramom.}
+\end {enumerate}
+
+
+\section {Analýza frameworkov pre tvorbu webového rozhrania}
+
+\section {Analýza spracovania MR snímkov vo webovej aplikácii}
+
+\section {Analýza možnostu prepojenia webového rozhrania s \texttt{grid-tracker} podprogramom}
