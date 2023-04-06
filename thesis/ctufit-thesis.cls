@@ -56,7 +56,7 @@
 
 % main declarations, loading files
 
-\LoadClass[a4paper]{book}[2020/04/10]
+\LoadClass[a4paper, 11pt]{book}[2020/04/10]
 \RequirePackage{babel}[2021/03/03]
 \RequirePackage[bottom=4cm,footskip=4em]{geometry}[2020/01/02] %page layout
 \RequirePackage{setspace}[2011/12/19] %line spacing in title page
