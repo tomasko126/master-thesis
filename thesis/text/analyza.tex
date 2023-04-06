@@ -1,6 +1,4 @@
-\chapter {Analýza}
-
-\section {Magnetická rezonancia}
+\chapter {Magnetická rezonancia}
 
 Magnetická rezonancia (MR) je jedna zo zobrazovacích techník, ktorá je používaná k zobrazeniu vnútorných orgánov tela.
 Narozdiel od röntgenového žiarenia a počítačovej tomografie (CT), magnetická rezonancia nepoužíva ionizujúce žiarenie. Avšak medzi spoločné znaky týchto troch zobrazovacích techník patrí ich neinvazívnosť a bezbolestné vyšetrenie \cite{basic_principles_of_mri} (vlastný preklad). \newline
@@ -18,7 +16,7 @@ Pred niektorými MR procedúrami sa pacientovi môže intravenózne podať kontr
 Bohužiaľ, existujú aj určité kontraindikácie, pri ktorých použitie MR pre daného človeka nie je možné.
 Jedným z kontraindikácií je implantovaný kardiostimulátor, v prípade že nie je kompatibilný s MR prístrojom. Všeobecne sa za kontraindikáciu považuje použitie akéhokoľvek magnetického materiálu v tele. Taktiež je MR vyšetrenie kontraindikované ženám v prvom trimestri tehotenstva \cite{mr_contraindications}.
 
-\subsection {Princíp magnetickej rezonancie}
+\section {Princíp magnetickej rezonancie}
 
 Princípom magnetickej rezonancie je smerové magnetické pole (moment - $\mathcal{B}_{0}$) spojené s pohybom voľných jadier vodíku v tele subjektu. Tieto jadrá majú charakteristický pohyb (spin) vytvárajúci malý magnetický moment s určitým smerom (ktorý je náhodný) a veľkosťou. Keď je subjekt umiestnený vo veľkom magnetickom poli (v tubuse MR prístroja), voľné vodíkové jadrá sa zarovnajú v smere $\mathcal{B}_{0}$ (smer $y$) a vytvoria magnetický moment $\mathcal{M}$ paralelne k $\mathcal{B}_{0}$. Vodíkové jadrá začnú náhle prechádzať okolo smeru magnetického poľa ako gyroskopy -- toto správanie sa nazýva Larmorova precesia \cite{basic_principles_of_mri} (vlastný preklad).
 
@@ -26,6 +24,7 @@ Princípom magnetickej rezonancie je smerové magnetické pole (moment - $\mathc
         \centering
         \includegraphics[width=6cm, height=6cm]{media/hydrogen/hydrogen_moving_freely.png}
         \includegraphics[width=6cm, height=6cm]{media/hydrogen/hydrogen_oscilating.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Voľný pohyb vodíkových jadier a ich zarovnanie v smere $\mathcal{B}_{0}$]{Na ľavom obrázku je možné vidieť voľný pohyb vodíkových jadier a na pravom ich zarovnanie v smere $\mathcal{B}_{0}$ \cite{basic_principles_of_mri}.}
 \end {center}
 
@@ -35,6 +34,7 @@ Tento impulz rovnajúci sa frekvencii Larmorovej precesie spôsobí posun $\math
 \begin {center}
         \centering
         \includegraphics[width=6cm, height=6cm]{media/hydrogen/hydrogen_reacting_to_rf.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Kolmá aplikácia RF impulzu $\mathcal{B}_{rf}$ na vodíkové jadrá]{Kolmá aplikácia RF impulzu $\mathcal{B}_{rf}$ na vodíkové jadrá \cite{basic_principles_of_mri}.}
 \end {center}
 
@@ -52,6 +52,7 @@ Akonáhle prestane pôsobiť rádiofrekvenčný impulz $\mathcal{B}_{rf}$, jadr�
 \begin {center}
         \centering
         \includegraphics[width=6cm, height=6cm]{media/hydrogen/hydrogen_emitting_rf.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Emitovanie FID signálu vodíkovými jadrami]{Emitovanie FID signálu vodíkovými jadrami \cite{basic_principles_of_mri}.}
 \end {center}
 
@@ -77,6 +78,7 @@ V súčasnej praxi sa SPAMM technika používa v situáciách, kde informácia o
 \begin {center}
         \centering
         \includegraphics[width=6cm, height=6cm]{media/heart/tagged_heart.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Tagovaný snímok myokardu pomocou techniky SPAMM]{Otagovaný snímok myokardu pomocou techniky SPAMM \cite{spamm_description}.}
 \end {center}
 
@@ -84,27 +86,28 @@ Nevýhodou použitia tejto techniky je skutočnosť, že táto mriežka sa strá
 
 \begin {center}
         \centering
-        \includegraphics[width=10cm, height=5cm]{media/heart/early_late_systole.png}
+        \includegraphics[width=11.5cm, height=6cm]{media/heart/early_late_systole.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Ukážka vyblednutia SPAMM mriežky]{Ľavý obrázok zobrazuje začiatok systoly, pravý jej koniec.}
 \end {center}
 
-\section {Analýza súčasnej aplikácie}
+\chapter {Analýza súčasnej aplikácie}
 
 Táto sekcia sa zaoberá účelom súčasnej aplikácie a analýzou použitých technológií, ktoré sú dôležité pre celkovú funkcionalitu aplikácie. Následne sú popísané podprogramy, ktoré riešia výpočtovo náročnejšie úlohy v rámci tejto aplikácie. Jednému z najdôležitejších podprogramov, \texttt{grid-tracker}, je venovaná väčšia pozornosť. Táto sekcia sa taktiež venuje následnému zostaveniu a spusteniu aplikácie, ktoré je dôležité pre následnú analýzu používateľského rozhrania aplikácie.
 
-\subsection {Účel aplikácie}
+\section {Účel aplikácie}
 
 Účelom súčasnej aplikácie -- DICOM Viewer -- je analýza pohybu srdcového svalu, pomocou ktorej by bolo možné zistiť anomálie v jeho pohybe. Aplikácia umožňuje importovať súbory typu DICOM (popísaného v sekcii \ref{dicom}), ktoré sú otagované SPAMM mriežkou. Na importovaných snímkach je následne používateľom vytvorená mriežka. Štruktúra a parametre týchto mriežok sú potom poslané podprogramu \texttt{grid-tracker}, ktorého úlohou je zarovnanie používateľom vytvorených mriežok s mriežkami vytvorenými SPAMM technikou. Po ich zarovnaní mriežky je možné pomocou techniky grafových rezov odsegmentovať srdečné komory a tým pádom zúžiť analýzu pohybu srdcového svalu len na tieto komory.
 
 Táto diplomová práca sa zameriava na vytvorenie webovej verzie súčasnej aplikácie vrátane zarovnania mriežok pomocou \texttt{grid-tracker} podprogramu \ref{helper_apps}.
 
-\subsection {Použité technológie}
+\section {Použité technológie}
 
-Popisu použitých technológií v súčasnej desktopovej aplikácii sa venuje táto podsekcia. Na základe zistenia, aké technológie a aplikačné závislosti aplikácia využíva, bude nakoniec možné aplikáciu zostaviť a vyskúšať. Nasledujúci prehľad použitých technológií je založený na dôslednom preštudovaní zdrojového kódu aplikácie, ktorý sa vyznačoval skoro neexistujúcou dokumentáciou. Bez tejto dokumentácie bola orientácia v zdrojovom kóde sťažená a tým pádom sa čas potrebný pre analýzu celkovej architektúry aplikácie značne predĺžil.
+Popisu použitých technológií v súčasnej desktopovej aplikácii sa venuje táto podsekcia. Na základe zistenia, aké technológie a aplikačné závislosti aplikácia využíva, bude nakoniec možné aplikáciu zostaviť a vyskúšať. Nasledujúci prehľad použitých technológií je založený na dôslednom preskúmaní zdrojového kódu aplikácie, ktorý sa vyznačoval skoro neexistujúcou dokumentáciou. Bez tejto dokumentácie bola orientácia v zdrojovom kóde náročnejšia, čoho dôsledkom bolo predĺženie času potrebného pre analýzu celkovej architektúry súčasnej aplikácie.
 
-\subsubsection {Qt}
+\subsection {Qt}
 
-\quad Súčasná aplikácia bola vyvinutá pomocou Qt -- cross-platformového frameworku určeného pre vytváranie aplikácií najmä v jazyku C\texttt{++}. Aplikácie vyvinuté týmto frameworkom majú výhodu v tom, že sú spustiteľné na rôznych operačných systémoch s minimálnym počtom zmien v zdrojovom kóde \cite{qt_description} (vlastný preklad). V súčasnosti (od roku 2014) zastrešuje vývoj tohto frameworku spoločnosť The Qt Company.
+Súčasná aplikácia bola vyvinutá pomocou Qt -- cross-platformového frameworku určeného pre vytváranie aplikácií najmä v jazyku C\texttt{++}. Aplikácie vyvinuté týmto frameworkom majú výhodu v tom, že sú spustiteľné na rôznych operačných systémoch s minimálnym počtom zmien v zdrojovom kóde \cite{qt_description} (vlastný preklad). V súčasnosti (od roku 2014) zastrešuje vývoj tohto frameworku spoločnosť The Qt Company.
 
 Výsadou Qt frameworku je taktiež rozdelenie jeho funkcionality do jednotlivých modulov. Pri následom vytváraní aplikácie sa použijú len také moduly, ktoré sú v danej aplikácii potrebné \cite{qt_description} (vlastný preklad).
 
@@ -128,13 +131,13 @@ Súčasná aplikácia z tohto modulu používa napr. triedu \texttt{QImage}, kto
 
 Qt Test modul poskytuje rozličné triedy pre jednotkové testovanie Qt aplikácií a príslušných knižníc \cite{qttest_description} (vlastný preklad) -- v súčasnej aplikácii bol tento modul využitý pri testovaní grafického používateľského rozhrania a funkcionalít súčasnej aplikácie, ako napr. testovanie zmien v nastaveniach vykreslenej mriežky na obrázku z magnetickej rezonancie.
 
-\subsubsection {Qmake}\label{qmake}
+\subsection {Qmake}\label{qmake}
 
 Pre zjednodušenie písania Makefilov, ktoré definujú, ako má byť program skompilovaný, bol použitý nástroj Qmake. Tento nástroj pochádza taktiež z dielne The Qt Company. Qmake umožňuje vývojárom definovať vytváranie rozličných Makefilov pre daný program pomocou syntaxu definovaného programom Qmake \cite{qmake_description} (vlastný preklad). Výsledkom tohto procesu je súbor s príponou \texttt{.pro} obsahujúci inštrukcie, ako daný Makefile vytvoriť. Následne sa pomocou príkazu \texttt{qmake} s argumentom cesty k \texttt{.pro} súboru vytvorí \texttt{Makefile} súbor, pomocou ktorého je možné daný program skompilovať, čoho výsledkom je spustiteľný súbor aplikácie.
 
 Pre súčasnú aplikáciu sa daný súbor volá \texttt{Cameo.pro} a nachádza sa v adresári \texttt{dicomViewer}.
 
-\subsubsection {DICOM}\label{dicom}
+\subsection {DICOM}\label{dicom}
 
 V súčasnosti sú snímky získané pomocou zobrazovacích techník v medicíne zväčša ukladané v archivačnom a komunikačnom systéme snímkov. Tento systém ukladá nielen snímkové dáta ale aj iné relevantné dáta k týmto snímkam podľa štandardu známom ako DICOM (Digital Imaging and Communications in Medicine) \cite{Varma_2012} (vlastný preklad). Ten je medzinárodným štandardom pre komunikáciu a manažment informácií o medicínskych obrazových a k nim príslušných dátach. Definuje, ako majú byť takéto dáta spracovávané, ukladané, tlačené a prenášané medzi zariadeniami podporujúcimi príjem týchto dát \cite{about_dicomlibrary} (vlastný preklad).
 
@@ -149,7 +152,7 @@ Ako príklad bude uvedené získanie informácie o pacientovom veku - všetky in
 
 Po hlavičke nasleduje skupina 7FE0, ktorá už obsahuje dáta o samotných obrazových pixeloch \cite{Varma_2012} (vlastný preklad). Typ kódovania týchto dát určuje Transfer Syntax -- ten udáva, akým spôsobom sú obrazové pixely zakódované. Transfer Syntax obsahuje taktiež informáciu, v akom poradí bajtov sú informácie zakódované (Little Endian vs Big Endian) a aká kompresia obrazových dát bola použitá \cite{dicom_transfer_syntax} (vlastný preklad).
 
-\subsubsection {DCMTK}\label{dcmtk}
+\subsection {DCMTK}\label{dcmtk}
 
 DCMTK je knižnica, ktorá implementujú veľkú časť DICOM štandardu v jazykoch C a C\texttt{++}. Úlohou tejto knižnice je okrem iného skúmanie, vytváranie a konverzia DICOM súborov, manipulácia s pamäťovými médiami a odosielanie, resp. prijímanie obrazových súborov cez internetové pripojenie. Za jej vývojom stojí nemecká firma OFFIS, ktorá túto knižnicu vyvíja nepretržite už od roku 1993. V súčasnosti sa používa v nemocniciach a rôznych spoločnostiach po celom svete, kde predstavuje softvérový základ pri rozličných výskumných projektoch, prototypoch a komerčných produktoch nevynímajúc \cite{dcmtk_description} (vlastný preklad). \newline
 
@@ -161,14 +164,14 @@ Súčasná aplikácia je kompatibilná s najnovšou verziou tejto knižnice, kto
 \item {údaje o sérií snímkov.}
 \end{itemize}
 
-\subsubsection {OpenMP}
+\subsection {OpenMP}
 
 OpenMP poskytuje rozhranie pre programovanie aplikácií (tzv. API), vďaka ktorému je možné vytvárať C, C\texttt{++} a Fortran aplikácie využívajúce viac vlákien nad zdieľanou pamäťou. Vývoj OpenMP v súčasnosti zastrešuje OpenMP Architecture Review Board.
 OpenMP funguje na báze direktív, pomocou ktorých sa jednotlivé časti programu dajú paralelizovať viacerými spôsobmi -- a to paralelizáciou prevádzania jednotlivých úloh (tzv. funkčný paralelizmus -- vhodný pre paralelizáciu rekurzívnych algoritmov, kde úloha = volanie funkcie) alebo paralelizáciou dátovo nezávislých for loop iterácií (tu sa jedná o tzv. iteračný dátový paralelizmus) \cite{openmp_description}.
 
 Existujúca aplikácia využíva direktívy OpenMP pre paralelizáciu výpočetne náročnejších algoritmov. Súčasná verzia OpenMP, verzia 5.2, je plne kompatibilná s aktuálnym zdrojovým kódom aplikácie.
 
-\subsubsection {TNL}\label{tnl}
+\subsection {TNL}\label{tnl}
 
 Template Numerical Library, v skratke TNL, je numerická knižnica, ktorá poskytuje rozličné dátové štruktúry, ktoré uľahčujú prácu s pamäťou a vývoj efektívnych numerických riešičov. Táto knižnica je implementovaná pomocou C\texttt{++} s cieľom poskytnúť flexibilné a užívateľsky prívetivé rozhranie. TNL poskytuje natívnu podporu pre moderné hardwarové architektúry ako sú viacjadrové CPU, GPU a distribuované systémy, ktoré je možné spravovať cez jednotné rozhranie \cite{tnl_description}.
 
@@ -180,7 +183,7 @@ Aplikácia z TNL knižnice taktiež používa \texttt{Solvers::ODE::Merson} -- j
 
 Bohužiaľ, súčasná aplikácia nie je kompatibilná s najnovšími zdrojovými kódmi TNL knižnice -- pre nájdenie posledného \uv{dobrého stavu} knižnice, t.j. stavu za ktorého bolo možné aplikáciu skompilovať, bol využitý nástroj \texttt{git bisect}. Tento nástroj našiel ako posledný \uv{dobrý stav} knižnice z 13.5.2021. Pri využití TNL knižnice zostavenej po tomto dátume nebolo možné súčasnú aplikáciu skompilovať.
 
-\subsection {Pomocné podprogramy}\label{helper_apps}
+\section {Pomocné podprogramy}\label{helper_apps}
 
 Súčasná aplikácia obsahuje a využíva nasledujúce 3 podprogramy:
 
@@ -210,7 +213,7 @@ Nasledujúce dva podprogramy nie sú dôležité pre túto diplomovú prácu, av
 
 Podprogram \texttt{graph-cuts} slúži pre segmentáciu srdcových komôr, ktorá vychádza z predpokladu, že hranica medzi objektom a jeho pozadím sa nachádza v miestach nekonzistencie susedných pixelov snímky. Implementovaná metóda, ktorá dosiahla dobré výsledky bola metóda grafových rezov, kombinujúca Fordov-Fulkersonovým algoritmom s Preflow-Push algoritmom \cite{master_thesis_app}.
 
-\subsection {Zostavenie aplikácie a jej spustenie}
+\section {Zostavenie aplikácie a jej spustenie}
 
 Pre potrebu popísania používateľského rozhrania je najprv žiaduce dosiahnuť zostavenie existujúcej aplikácie a jej následné spustenie. Po počiatočnej analýze zdrojového kódu, v ktorom bolo zistené, že aplikácia bola vyvíjaná pre Linuxové prostredie, bol vo virtuálnom prostredí nainštalovaný operačný systém Ubuntu 22.10.
 
@@ -241,9 +244,9 @@ Po nainštalovaní všetkých potrebných balíčkov nastal čas pre zostavenie 
 
 Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj \texttt{qmake} pomocou krokov popísaných v sekcii \ref{qmake}. Jeho výsledkom bude \texttt{Makefile} súbor, ktorý definuje kroky, ako zostaviť súčasnú aplikáciu. V tomto momente je už možné súčasnú aplikáciu skompilovať pomocou spustenia príkazu \texttt{make install}.
 
-Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}.
+Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}. \clearpage
 
-\subsection {Používateľské rozhranie}\label{old_ui}
+\section {Používateľské rozhranie}\label{old_ui}
 
 Po úspešnom spustení aplikácie sa používateľovi zobrazí hlavné okno aplikácie.
 V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
@@ -278,21 +281,27 @@ V aplikačnom okne sa taktiež zobrazí menu s nasledovnými možnosťami:
 	\end {enumerate}
 \end {enumerate}
 
-Po spustení sa aplikácia nachádza v stave, v ktorom nie je možné s ňou interagovať -- inými slovami, je najprv potrebné do aplikácie importovať snímky v DICOM formáte, ako je ukázané na obrázku nižšie.
+Po spustení sa aplikácia nachádza v stave, v ktorom nie je možné s ňou interagovať -- inými slovami, je najprv potrebné do aplikácie importovať snímky v DICOM formáte, ako je ukázané na nasledujúcom obrázku.
+
+\clearpage
 
 \begin {center}
         \centering
         \includegraphics[height=8cm]{media/existing_app/init.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Ukážka DICOM Viewer aplikácie po spustení]{Ukážka DICOM Viewer aplikácie po spustení}
 \end {center}
 
-To sa docieli pomocou zvolenia možnosti File \rightarrow{ Open} z aplikačného menu. Následne sa otvorí systémové okno pre výber priečinka s DICOM snímkami, ktoré sa majú zobraziť v aplikácii. Bohužiaľ, nie je možné zvoliť snímky jednotlivo z priečinku, čo zapríčiní načítanie všetkých snímok z daného priečinku do aplikácie. Po zvolení priečinku sa zobrazí prvý snímok v aplikácii. Po výbere ľubovolnej možnosti, ktoré ponúka Aditional [sic] Tools menu, sa taktiež zobrazí ľavý postranný panel v aplikácii, ako je možné vidieť na snímke aplikácie nižšie. V tomto prípade bola zvolená možnosť \uv{Grid Tools}, nakoľko sa analýza súčasnej aplikácie zameriava najmä na vykreslenie mriežky a nastavenie jej parametrov, ktoré sa zobrazia práve po zvolení tejto možnosti.
+To sa docieli pomocou zvolenia možnosti File \rightarrow{ Open} z aplikačného menu. Následne sa otvorí systémové okno pre výber priečinka s DICOM snímkami, ktoré sa majú zobraziť v aplikácii. Bohužiaľ, nie je možné zvoliť snímky jednotlivo z priečinku, čo zapríčiní načítanie všetkých snímok z daného priečinku do aplikácie. Po zvolení priečinku sa zobrazí prvý snímok v aplikácii. Po výbere ľubovolnej možnosti, ktoré ponúka Aditional [sic] Tools menu, sa taktiež zobrazí ľavý postranný panel v aplikácii, ako je možné vidieť na snímke aplikácie nižšie. V tomto prípade bola zvolená možnosť \uv{Grid Tools}.
 
 \begin {center}
         \centering
         \includegraphics[height=8cm]{media/existing_app/app_with_grids_panel.png}
+        \captionsetup{justification=centering}
         \captionof{figure}[Zobrazenie prvej snímky v DICOM Viewer aplikácii]{Zobrazenie prvej snímky v DICOM Viewer aplikácii}
 \end {center}
+
+\clearpage
 
 Po zobrazení ľavého postranného panelu sa odhalí celková štruktúra používateľského rozhrania aplikácie.
 Tú môžeme rozdeliť na ľavý a pravý postranný panel, medzi ktorými sa nachádza čierna plocha zobrazujúca vybranú snímku. Pod touto snímkou sú zobrazené náhľady všetkých snímok. \newline
@@ -307,6 +316,7 @@ Obsah pravého postranného panelu je rozdelený na nasledovné karty: \uv{View 
         \includegraphics[width=3.5cm, height=6.10cm]{media/existing_app/tabs/tools.png}
         \includegraphics[width=3.5cm, height=6.10cm]{media/existing_app/tabs/image_processing_inactive.png}
         \includegraphics[width=3.5cm, height=6.10cm]{media/existing_app/tabs/history.png}
+        \captionsetup{justification=centering}
         \captionof{figure}{Zobrazenie obsahu kariet na pravom postrannom paneli}
 \end {center}
 
@@ -315,7 +325,7 @@ Obsah pravého postranného panelu je rozdelený na nasledovné karty: \uv{View 
 Narozdiel od predchádzajúcej karty, \uv{Tools} karta obsahuje interaktívne prvky, ako napr. zobrazenie a zmena indexu zobrazeného snímku, či slider pre priblíženie snímku. Samotnému snímku je možné tiež zmeniť kontrast, jas a gammu pomocou sliderov. Nasleduje sekcia pre nastavenie  oblasti záujmu, pri ktorej je možné nastaviť jej zobrazenie alebo zmeniť jej výšku/šírku -- oblasť záujmu je na základe týchto nastavení vykreslená nad snímkou. Keďže aplikácia podporuje prehrávanie snímkov ako animáciu, aplikácia ponúka nastavenie jej rýchlosti v milisekundách (čo predstavuje čas, ktorý ubehne zobrazením jednej snímky), nastavenie počiatočnej snímky, od ktorej sa animácia spustí, a poslednej snímky, po ktorú animácia bude spustená. Okrem nastavenia parametrov animácie nesmú chýbať tlačidlá pre samotné spustenie a zastavenie animácie.
 
 Na ďalšej karte \uv{Image Processing} sa nachádzajú tlačidlá ovládajúce manažéra štúdií. Tento \uv{manažér} zoskupuje rôzne štúdie, pod ktorými sa ukladajú rôzne parametre aplikácie. Po kliknutí na tlačidlo \uv{Open Study List} sa zobrazí nové okno so všetkými štúdiami a ich parametrami.
-Pre interakciu s ostatnými poliami na tejto karte je potrebné najprv vytvoriť novú štúdiu kliknutím na tlačidlo \uv{New Study}. Štúdiu je tiež možné ukončiť zvolením tlačidla \uv{Close Study}. Každá štúdia je reprezentovaná jedinečným ID, ktoré sa skladá z dátumu a času jej vytvorenia.
+Pre interakciu s ostatnými poliami na tejto karte je potrebné najprv vytvoriť novú štúdiu kliknutím na tlačidlo \uv{New Study}. \newline Štúdiu je tiež možné ukončiť zvolením tlačidla \uv{Close Study}. Každá štúdia je reprezentovaná jedinečným ID, ktoré sa skladá z dátumu a času jej vytvorenia.
 Vytvorením novej štúdie sa aktivujú polia \uv{Image Processing Programs} sekcie. Táto sekcia ponúka tri hlavné začiarkavacie políčka -- prvé reprezentuje spustenie aplikovania filtra lokálnej variancie. Druhé z nich reprezentuje spustenie algoritmu pre zarovnanie vygenerovanej mriežky s mriežkou myokardu vytvorenou pomocou SPAMM techniky a tretie spustenie algoritmu segmentácie srdečných komôr pomocou grafových rezov. Zaškrtnutím daného políčka a kliknutím na tlačidlo \uv{Run} sa algoritmus príslušný danému políčku spustí. Pre \uv{Grid Tracking} algoritmus je v tejto sekcii možné definovať tri parametre, a to \uv{Curvature Coefficient}, \uv{Force Coefficient} a \uv{Stop Time} (viď \ref{helper_apps}).
 
 Účelom poslednej karty \uv{History} je výpis rozličných záznamov pre informovanie používateľa o prebiehajúcich krokoch aplikácie. \newline
@@ -340,11 +350,12 @@ Ostatné dve možnosti z menu \uv{Aditional [sic] Tools} nie je potrebné pre ú
 
 %Pre analýzu srdcového svalu je potrebné najprv do aplikácie nahrať sériu snímkov, ktoré sú otagované priestorovou moduláciou magnetizácie popísanou vyššie. Táto mriežka sa na každom snímku deformuje podľa pohybu tkaniva. Na počiatočných snímkoch je mriežka dobre viditeľná, avšak jej viditeľnosť sa každým ďalším snímkom zmenšuje. Tento efekt je spôsobený poklesom Nevýhodou  Pohyb myokardu je možný analyzovať vďaka 
 
+\chapter {Analýza a návrh webovej aplikácie}
+\todo {popísať, čo sa tu bude rozoberať}
 
 \section {Analýza požiadaviek}
-\todo {Presunúť do návrhu po rozhodnutí o architektúre aplikácie?}
 Táto sekcia sa venuje analýze požiadaviek, ktoré sa delia na dve hlavné kategórie. Týmito kategóriami sú funkčné a nefunkčné požiadavky.
-Na základe týchto požiadaviek bude možné implementovať novú aplikáciu pre potreby analýzy srdcového myokardu.
+Na základe týchto požiadaviek bude možné implementovať novú aplikáciu pre potrebu analýzy srdcového myokardu.
 
 \subsection {Funkčné požiadavky}
 Funkčné požiadavky sú požiadavky vymedzujúce rozsah funkcionality, ktorá by mala byť v danej aplikácii implementovaná.
@@ -460,9 +471,32 @@ Spustenie samotného algoritmu vyžaduje mať importované DICOM snímky v aplik
 \item {Po dokončení výpočtu aplikácia zobrazí mriežky upravené horeuvedeným podprogramom.}
 \end {enumerate}
 
+\section {Spracovanie MR snímkov vo webovej aplikácii}
 
-\section {Analýza frameworkov pre tvorbu webového rozhrania}
+Spracovávanie importovaných MR snímkov v aplikácii by malo prebiehať najmä na strane klienta, v tomto prípade v samotnom prehliadači. Takto zvolený prístup zamedzí prípadnému útočníkovi preniknúť k snímkom a dátam o pacientoch, ktoré by v opačnom prípade museli byť uchovávané na strane servera. Z uvedeného vyplýva, že pre implementáciu aplikácie bude potrebné nájsť knižnicu, ktorá vie spracovávať DICOM súbory v prehliadači.
 
-\section {Analýza spracovania MR snímkov vo webovej aplikácii}
+Pod pojmom \uv{spracovávať} je myslené: čítanie hlavičiek súborov typu DICOM, zobraziť snímky nachádzajúce sa v takýchto súboroch, či dané  súbory vedieť pomocou takejto knižnice modifikovať. Medzi ďalšie požiadavky kladené na takúto knižnicu patrí jej aktívny vývoj, zdokumentovaná funkcionalita a taktiež použiteľnosť knižnice pre produkčné nasadenie. Pretože bude nie len potrebné zobrazovať danú snímku, ale aj vykresliť mriežku nad takouto snímkou, ako bolo uvedené vo funkčnej požiadavke \ref{grid_show}, hľadaná knižnica by mala podporovať aj zobrazenie vlastných lomených čiar nad určitou oblasťou snímky.
 
-\section {Analýza možnostu prepojenia webového rozhrania s \texttt{grid-tracker} podprogramom}
+Horeuvedené požiadavky kladené na hľadanú knižnicu spĺňa nasledujúci výber knižníc, ktoré sú medzi sebou previazané.
+Jedná sa o knižnice \texttt{cornerstone-core}, \texttt{cornerstoneWADOImageLoader}, \texttt{cornerstone-tools}, \texttt{cornerstone-math}, a \texttt{dicomParser}.
+
+\texttt{cornerstone-core} je knižnica, ktorá má za úlohu zjednodušiť proces vývoja komplexnejších webových aplikácií, ktoré majú za úlohu zobrazovať snímky akéhokoľvek formátu, vrátane bežných medicínskych snímkových formátov. Taktiež poskytuje API, pomocou ktorého je možné meniť vlastnosti zobrazenia snímkov, ako napr. zvýšiť alebo znížiť jas, priblížiť snímku alebo ju oddialiť, a iné.
+Táto knižnica neimplementuje samotné importovanie DICOM súborov ani ich spracovanie -- túto funkcionalitu deleguje na tzv. ImageLoaders. Po spracovaní DICOM súborov posunú dáta cez spoločné rozhranie \texttt{cornerstone-core} knižnici, ktorá ich nakoniec vykreslí. Cieľom tohto prístupu \texttt{cornerstone-core} knižnice je jej dôraz na minimalizmus a poskytnutie flexibility pri spracovávaní rôznych typov obrazových dát.
+
+
+\todo {pridať diagram spracovania obrázku}
+
+
+\section {Analýza frameworkov pre tvorbu webovej aplikácie}
+
+Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného kódu, avšak takýto vývoj by bol zdĺhavejší a vývojár by sa musel sústrediť na veci, ktoré by nemuseli byť pri vývoji relevantné. Preto existujú frameworky, ktoré vývojára od takejto práce odbremenia.
+
+Pre vývoj webovej aplikácie bude potrebný fullstack framework, ktorý sa zameriava nie len na frontendovú časť, ale aj na backendovú časť aplikácie.
+Nakoľko 
+Výhodou fullstack frameworku oproti použitiu frameworkov zvlášť pre frontend a pre backend je potreba ovládania len jedného frameworku, spoločný základ pre frontend a backend a tým pádom jednoduchšie zostavenie aplikácie.
+
+V súčasnosti sú najviac používané fullstackové frameworky pre webové aplikácie nasledujúce:
+Next.js
+Nuxt.js
+
+\section {Analýza možnosti prepojenia webového rozhrania s \texttt{grid-tracker} podprogramom}
