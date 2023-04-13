@@ -30,6 +30,9 @@
       \list{institution}{1}{%
         {Simon Fraser University}%
       }
+      \list{location}{1}{%
+        {Burnaby}%
+      }
       \strng{namehash}{7c2a12f4fbb27ac408ba321ed7cb7f61}
       \strng{fullhash}{7c2a12f4fbb27ac408ba321ed7cb7f61}
       \strng{bibnamehash}{7c2a12f4fbb27ac408ba321ed7cb7f61}
@@ -40,12 +43,19 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{[cit. 2023-03-27]}
-      \field{title}{Intracranial Boundary Detection and Radio Frequency Correction in Magnetic Resonance Images}
+      \field{title}{Intracranial boundary detection and radio frequency correction in magnetic resonance images}
       \field{type}{Diplomová práca}
       \field{year}{1995}
+      \verb{urlraw}
+      \verb https://summit.sfu.ca/item/6770
+      \endverb
+      \verb{url}
+      \verb https://summit.sfu.ca/item/6770
+      \endverb
     \endentry
-    \entry{mr_usage}{misc}{}
+    \entry{mr_usage}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
       \name{author}{1}{}{%
         {{hash=26395210f3c5f4fbb500a1f70b4973d5}{%
            family={Lam},
@@ -53,21 +63,26 @@
            given={Peter},
            giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{26395210f3c5f4fbb500a1f70b4973d5}
-      \strng{fullhash}{26395210f3c5f4fbb500a1f70b4973d5}
-      \strng{bibnamehash}{26395210f3c5f4fbb500a1f70b4973d5}
-      \strng{authorbibnamehash}{26395210f3c5f4fbb500a1f70b4973d5}
-      \strng{authornamehash}{26395210f3c5f4fbb500a1f70b4973d5}
-      \strng{authorfullhash}{26395210f3c5f4fbb500a1f70b4973d5}
+      \strng{namehash}{86ffed898d13990dd521a5035e652504}
+      \strng{fullhash}{86ffed898d13990dd521a5035e652504}
+      \strng{bibnamehash}{86ffed898d13990dd521a5035e652504}
+      \strng{authorbibnamehash}{86ffed898d13990dd521a5035e652504}
+      \strng{authornamehash}{86ffed898d13990dd521a5035e652504}
+      \strng{authorfullhash}{86ffed898d13990dd521a5035e652504}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{month}{07}
-      \field{note}{[cit. 2023-03-24]}
-      \field{title}{What to know about MRI scans}
-      \field{year}{2018}
+      \field{journaltitle}{Medical News Today}
+      \field{title}{What to know about MRI scans. In: Healthline Media}
+      \field{year}{2018-07-24 [cit. 2023-03-24]}
+      \verb{urlraw}
+      \verb https://www.medicalnewstoday.com/articles/146309#what-is-an-mri-scan
+      \endverb
+      \verb{url}
+      \verb https://www.medicalnewstoday.com/articles/146309#what-is-an-mri-scan
+      \endverb
     \endentry
     \entry{contrast_agents}{thesis}{}
       \name{author}{1}{}{%
@@ -80,6 +95,9 @@
       \list{institution}{1}{%
         {Masarykova univerzita, Lekárska fakulta}%
       }
+      \list{location}{1}{%
+        {Brno}%
+      }
       \strng{namehash}{50b5a48472275fbd3b85c0f50e6543de}
       \strng{fullhash}{50b5a48472275fbd3b85c0f50e6543de}
       \strng{bibnamehash}{50b5a48472275fbd3b85c0f50e6543de}
@@ -90,8 +108,6 @@
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{04}
-      \field{note}{[cit. 2023-03-24]}
       \field{title}{Kontrastní látky a jejich nežádoucí účinky}
       \field{type}{Bakalárska práca}
       \field{year}{2011}
@@ -102,7 +118,7 @@
       \verb https://is.muni.cz/th/rsk3f/
       \endverb
     \endentry
-    \entry{mr_contraindications}{misc}{}
+    \entry{mr_contraindications}{thesis}{}
       \name{author}{1}{}{%
         {{hash=a54bdc267cdd624869bb225d53dcc752}{%
            family={Jíralová},
@@ -111,7 +127,10 @@
            giveni={T\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Jihočeská univerzita v Českých Budějovicích, Zdravotně sociální fakultaČeské Budějovice}%
+        {Jihočeská univerzita v Českých Budějovicích, Zdravotně sociální fakulta}%
+      }
+      \list{location}{1}{%
+        {České Budějovice}%
       }
       \strng{namehash}{a54bdc267cdd624869bb225d53dcc752}
       \strng{fullhash}{a54bdc267cdd624869bb225d53dcc752}
@@ -123,10 +142,8 @@
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-24]}
       \field{title}{MR - nové trendy a význam v moderní diagnostice}
-      \field{type}{Bakalářská práce}
+      \field{type}{Bakalárska práca}
       \field{year}{2021}
       \verb{urlraw}
       \verb http://wstag.jcu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-prace-search&studentSearchPrijmeni=jíralová
@@ -135,37 +152,85 @@
       \verb http://wstag.jcu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-prace-search&studentSearchPrijmeni=j%C3%ADralov%C3%A1
       \endverb
     \endentry
-    \entry{spamm_description}{misc}{}
+    \entry{spamm_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5b02c6dc0fa22589eb1739c62c63e907}{%
+           family={Elster},
+           familyi={E\bibinitperiod},
+           given={Allen\bibnamedelima D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b02c6dc0fa22589eb1739c62c63e907}
+      \strng{fullhash}{5b02c6dc0fa22589eb1739c62c63e907}
+      \strng{bibnamehash}{5b02c6dc0fa22589eb1739c62c63e907}
+      \strng{authorbibnamehash}{5b02c6dc0fa22589eb1739c62c63e907}
+      \strng{authornamehash}{5b02c6dc0fa22589eb1739c62c63e907}
+      \strng{authorfullhash}{5b02c6dc0fa22589eb1739c62c63e907}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-24]}
-      \field{title}{Myocardial tagging/SPAMM - Questions and Answers in MRI}
-    \endentry
-    \entry{qt_description}{misc}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{month}{07}
-      \field{note}{[cit. 2023-03-29]}
-      \field{title}{About Qt}
-      \field{year}{2022}
+      \field{journaltitle}{Myocardial tagging/SPAMM - Questions and Answers in MRI}
+      \field{title}{What is SPAMM?}
+      \field{year}{2023 [cit. 2023-03-24]}
       \verb{urlraw}
-      \verb https://wiki.qt.io/About_Qt
+      \verb https://mriquestions.com/taggingspamm.html
       \endverb
       \verb{url}
-      \verb https://wiki.qt.io/About_Qt
+      \verb https://mriquestions.com/taggingspamm.html
       \endverb
     \endentry
-    \entry{qtcore_description}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+    \entry{qt_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=17d844761cdec480fe5c1fcfca96979f}{%
+           family={Bryant},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{fullhash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{bibnamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authorbibnamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authornamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authorfullhash}{17d844761cdec480fe5c1fcfca96979f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{Main}
+      \field{title}{About Qt. In:}
+      \field{year}{2022-07-18 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://wiki.qt.io/index.php?title=About_Qt&action=info
+      \endverb
+      \verb{url}
+      \verb https://wiki.qt.io/index.php?title=About_Qt&action=info
+      \endverb
+    \endentry
+    \entry{qtcore_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
+           family={{THE QT COMPANY}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{doc.qt.io}
       \field{title}{Qt Core 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://doc.qt.io/qt-5/qtcore-index.html
       \endverb
@@ -173,13 +238,27 @@
       \verb https://doc.qt.io/qt-5/qtcore-index.html
       \endverb
     \endentry
-    \entry{qtwidgets_description}{misc}{}
+    \entry{qtwidgets_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
+           family={{THE QT COMPANY}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{doc.qt.io}
       \field{title}{Qt Widgets 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://doc.qt.io/qt-5/qtwidgets-index.html
       \endverb
@@ -187,13 +266,27 @@
       \verb https://doc.qt.io/qt-5/qtwidgets-index.html
       \endverb
     \endentry
-    \entry{qtgui_description}{misc}{}
+    \entry{qtgui_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
+           family={{THE QT COMPANY}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{doc.qt.io}
       \field{title}{Qt GUI 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://doc.qt.io/qt-5/qtgui-index.html
       \endverb
@@ -201,13 +294,27 @@
       \verb https://doc.qt.io/qt-5/qtgui-index.html
       \endverb
     \endentry
-    \entry{qttest_description}{misc}{}
+    \entry{qttest_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
+           family={{THE QT COMPANY}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \field{extraname}{4}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{doc.qt.io}
       \field{title}{Qt Test 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://doc.qt.io/qt-5/qttest-index.html
       \endverb
@@ -215,13 +322,27 @@
       \verb https://doc.qt.io/qt-5/qttest-index.html
       \endverb
     \endentry
-    \entry{qmake_description}{misc}{}
+    \entry{qmake_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
+           family={{THE QT COMPANY}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
+      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
+      \field{extraname}{5}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{doc.qt.io}
       \field{title}{qmake Manual}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://doc.qt.io/qt-5/qmake-manual.html
       \endverb
@@ -259,14 +380,27 @@
       \field{pages}{4\bibrangedash 13}
       \range{pages}{10}
     \endentry
-    \entry{about_dicomlibrary}{misc}{}
+    \entry{about_dicomlibrary}{article}{}
+      \name{author}{1}{}{%
+        {{hash=eae753c23a21f3bf81f4eed155b3cd35}{%
+           family={{DICOM Library}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{fullhash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{bibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authorbibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authornamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authorfullhash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
-      \field{title}{DICOM Library - About DICOM format}
-      \field{year}{2023}
+      \field{journaltitle}{DICOM Library}
+      \field{title}{About DICOM format}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://www.dicomlibrary.com/dicom/
       \endverb
@@ -274,13 +408,26 @@
       \verb https://www.dicomlibrary.com/dicom/
       \endverb
     \endentry
-    \entry{dicom_history}{misc}{}
+    \entry{dicom_history}{article}{}
+      \name{author}{1}{}{%
+        {{hash=06d408ce9053b7da44fc8450a26e4e96}{%
+           family={{The Medical Imaging Technology Association}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{06d408ce9053b7da44fc8450a26e4e96}
+      \strng{fullhash}{06d408ce9053b7da44fc8450a26e4e96}
+      \strng{bibnamehash}{06d408ce9053b7da44fc8450a26e4e96}
+      \strng{authorbibnamehash}{06d408ce9053b7da44fc8450a26e4e96}
+      \strng{authornamehash}{06d408ce9053b7da44fc8450a26e4e96}
+      \strng{authorfullhash}{06d408ce9053b7da44fc8450a26e4e96}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{dicomstandard.org}
       \field{title}{History}
+      \field{year}{[cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://www.dicomstandard.org/history
       \endverb
@@ -288,13 +435,27 @@
       \verb https://www.dicomstandard.org/history
       \endverb
     \endentry
-    \entry{dicom_transfer_syntax}{misc}{}
+    \entry{dicom_transfer_syntax}{article}{}
+      \name{author}{1}{}{%
+        {{hash=eae753c23a21f3bf81f4eed155b3cd35}{%
+           family={{DICOM Library}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{fullhash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{bibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authorbibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authornamehash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \strng{authorfullhash}{eae753c23a21f3bf81f4eed155b3cd35}
+      \field{extraname}{2}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
+      \field{journaltitle}{DICOM Library}
       \field{title}{Transfer Syntax}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://www.dicomlibrary.com/dicom/transfer-syntax/
       \endverb
@@ -302,13 +463,26 @@
       \verb https://www.dicomlibrary.com/dicom/transfer-syntax/
       \endverb
     \endentry
-    \entry{dcmtk_description}{misc}{}
+    \entry{dcmtk_description}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cdc3820dd38ca20097dcd2c8bd25e122}{%
+           family={{OFFIS e. V.}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \strng{fullhash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \strng{bibnamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \strng{authorbibnamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \strng{authornamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \strng{authorfullhash}{cdc3820dd38ca20097dcd2c8bd25e122}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
-      \field{title}{DCMTK - dicom.offis.de}
+      \field{journaltitle}{dicom.offis.de}
+      \field{title}{DCMTK}
+      \field{year}{[cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://dicom.offis.de/dcmtk.php.en
       \endverb
@@ -317,43 +491,36 @@
       \endverb
     \endentry
     \entry{openmp_description}{unpublished}{}
+      \true{moreauthor}
+      \true{morelabelname}
       \name{author}{1}{}{%
-        {{hash=d8414d27e7ea2ba8ebf434711998fd46}{%
-           family={Daniel\bibnamedelima Langr},
-           familyi={D\bibinitperiod\bibinitdelim L\bibinitperiod},
-           given={Pavel\bibnamedelima Tvrdík},
-           giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod},
-           suffix={Ivan\bibnamedelima Šimeček},
-           suffixi={I\bibinitperiod\bibinitdelim Š\bibinitperiod}}}%
+        {{hash=9923942560761d1ab84208b05c51d17e}{%
+           family={Langr},
+           familyi={L\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
       }
-      \strng{namehash}{d8414d27e7ea2ba8ebf434711998fd46}
-      \strng{fullhash}{d8414d27e7ea2ba8ebf434711998fd46}
-      \strng{bibnamehash}{d8414d27e7ea2ba8ebf434711998fd46}
-      \strng{authorbibnamehash}{d8414d27e7ea2ba8ebf434711998fd46}
-      \strng{authornamehash}{d8414d27e7ea2ba8ebf434711998fd46}
-      \strng{authorfullhash}{d8414d27e7ea2ba8ebf434711998fd46}
+      \strng{namehash}{b781e474fd1475960ab02134ea1125e0}
+      \strng{fullhash}{b781e474fd1475960ab02134ea1125e0}
+      \strng{bibnamehash}{b781e474fd1475960ab02134ea1125e0}
+      \strng{authorbibnamehash}{b781e474fd1475960ab02134ea1125e0}
+      \strng{authornamehash}{b781e474fd1475960ab02134ea1125e0}
+      \strng{authorfullhash}{b781e474fd1475960ab02134ea1125e0}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{03}
-      \field{note}{[cit. 2023-03-30]}
+      \field{howpublished}{prednáška}
+      \field{note}{Praha: ČVUT v Praze, Fakulta informačních technologií, 27.02.2023}
       \field{title}{Úvod do OpenMP}
-      \field{year}{2023}
-      \verb{urlraw}
-      \verb https://courses.fit.cvut.cz/NI-PDP/media/lectures/NI-PDP-Prednaska02-OpenMP.pdf
-      \endverb
-      \verb{url}
-      \verb https://courses.fit.cvut.cz/NI-PDP/media/lectures/NI-PDP-Prednaska02-OpenMP.pdf
-      \endverb
     \endentry
-    \entry{tnl_description}{misc}{}
+    \entry{tnl_description}{webpage}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{note}{[cit. 2023-03-29]}
       \field{title}{Homepage - TNL - Template Numerical Library}
+      \field{year}{[cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://tnl-project.org
       \endverb
@@ -363,26 +530,28 @@
     \endentry
     \entry{master_thesis_app}{thesis}{}
       \name{author}{1}{}{%
-        {{hash=6c062f36a655e29008c107ac5fa25711}{%
+        {{hash=e43a4826f05996566719cbe89dd84d43}{%
            family={Kafka},
            familyi={K\bibinitperiod},
-           given={Bc.\bibnamedelimi Jiří},
-           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+           given={Jiří},
+           giveni={J\bibinitperiod}}}%
       }
       \list{institution}{1}{%
         {České vysoké učení technické v Praze, Fakulta jaderná a fyzikálně inženýrská}%
       }
-      \strng{namehash}{6c062f36a655e29008c107ac5fa25711}
-      \strng{fullhash}{6c062f36a655e29008c107ac5fa25711}
-      \strng{bibnamehash}{6c062f36a655e29008c107ac5fa25711}
-      \strng{authorbibnamehash}{6c062f36a655e29008c107ac5fa25711}
-      \strng{authornamehash}{6c062f36a655e29008c107ac5fa25711}
-      \strng{authorfullhash}{6c062f36a655e29008c107ac5fa25711}
+      \list{location}{1}{%
+        {Praha}%
+      }
+      \strng{namehash}{e43a4826f05996566719cbe89dd84d43}
+      \strng{fullhash}{e43a4826f05996566719cbe89dd84d43}
+      \strng{bibnamehash}{e43a4826f05996566719cbe89dd84d43}
+      \strng{authorbibnamehash}{e43a4826f05996566719cbe89dd84d43}
+      \strng{authornamehash}{e43a4826f05996566719cbe89dd84d43}
+      \strng{authorfullhash}{e43a4826f05996566719cbe89dd84d43}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{[cit. 2023-04-02]}
       \field{title}{Vývoj aplikace pro analýzu pohybu srdečních komor}
       \field{type}{Diplomová práca}
       \field{year}{2015}
