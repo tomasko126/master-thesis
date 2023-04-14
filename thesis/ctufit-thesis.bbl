@@ -556,6 +556,134 @@
       \field{type}{Diplomová práca}
       \field{year}{2015}
     \endentry
+    \entry{cpp_addons}{article}{}
+      \name{author}{1}{}{%
+        {{hash=263642944f6c498301458458c276f5f3}{%
+           family={{OpenJS Foundation}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{263642944f6c498301458458c276f5f3}
+      \strng{fullhash}{263642944f6c498301458458c276f5f3}
+      \strng{bibnamehash}{263642944f6c498301458458c276f5f3}
+      \strng{authorbibnamehash}{263642944f6c498301458458c276f5f3}
+      \strng{authornamehash}{263642944f6c498301458458c276f5f3}
+      \strng{authorfullhash}{263642944f6c498301458458c276f5f3}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{Node.js v18.16.0 documentation}
+      \field{title}{C++ addons In:}
+      \field{year}{2023 [cit. 2023-04-13]}
+      \verb{urlraw}
+      \verb https://nodejs.org/docs/latest-v18.x/api/addons.html
+      \endverb
+      \verb{url}
+      \verb https://nodejs.org/docs/latest-v18.x/api/addons.html
+      \endverb
+    \endentry
+    \entry{webassembly_concepts}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
+           family={{MDN contributors}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \field{extraname}{1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{MDN Web Docs}
+      \field{title}{WebAssembly Concepts. In:}
+      \field{year}{2023 [cit. 2023-04-13]}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts
+      \endverb
+    \endentry
+    \entry{cpp_to_wasm}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
+           family={{MDN contributors}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \field{extraname}{2}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{MDN Web Docs}
+      \field{title}{Compiling a New C/C++ Module to WebAssembly. In:}
+      \field{year}{2023 [cit. 2023-04-13]}
+    \endentry
+    \entry{cpp_to_wasm_image}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
+           family={{MDN contributors}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \field{extraname}{3}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{MDN Web Docs}
+      \field{title}{Emscripten Diagram. In:}
+      \field{year}{2023 [cit. 2023-04-13]}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts/emscripten-diagram.png
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts/emscripten-diagram.png
+      \endverb
+    \endentry
+    \entry{webassembly_threads}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f402101ebf2deef4b72bdd8a22bca570}{%
+           family={Stepanyan},
+           familyi={S\bibinitperiod},
+           given={Ingvar},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{f402101ebf2deef4b72bdd8a22bca570}
+      \strng{fullhash}{f402101ebf2deef4b72bdd8a22bca570}
+      \strng{bibnamehash}{f402101ebf2deef4b72bdd8a22bca570}
+      \strng{authorbibnamehash}{f402101ebf2deef4b72bdd8a22bca570}
+      \strng{authornamehash}{f402101ebf2deef4b72bdd8a22bca570}
+      \strng{authorfullhash}{f402101ebf2deef4b72bdd8a22bca570}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{web.dev}
+      \field{title}{Using WebAssembly threads from C, C++ and Rust. In:}
+      \field{year}{2021-07-12 [cit. 2023-04-13]}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
