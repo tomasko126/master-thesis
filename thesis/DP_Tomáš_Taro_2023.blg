@@ -1,0 +1,33 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'DP_TomaÌsÌ_Taro_2023.blg'
+[31] biber-darwin:340> INFO - === ne  apr 16, 2023, 00:45:50
+[112] Biber.pm:419> INFO - Reading './DP_Tomáš_Taro_2023.bcf'
+[147] Biber.pm:979> INFO - Found 24 citekeys in bib section 0
+[154] Biber.pm:4419> INFO - Processing section 0
+[160] Biber.pm:4610> INFO - Looking for bibtex file 'bib-database.bib' for section 0
+[161] bibtex.pm:1713> INFO - LaTeX decoding ...
+[176] bibtex.pm:1519> INFO - Found BibTeX data source 'bib-database.bib'
+[229] UCollate.pm:68> INFO - Overriding locale 'sk-SK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[229] UCollate.pm:68> INFO - Overriding locale 'sk-SK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[229] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'sk-SK'
+[237] bbl.pm:660> INFO - Writing 'DP_TomaÌsÌ_Taro_2023.bbl' with encoding 'UTF-8'
+[242] bbl.pm:763> INFO - Output to DP_TomaÌsÌ_Taro_2023.bbl
+[242] Biber.pm:131> WARN - legacy year field '2018-07-24 [cit. 2023-03-24]' in entry 'mr_usage' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-24]' in entry 'spamm_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2022-07-18 [cit. 2023-03-29]' in entry 'qt_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'qtcore_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'qtwidgets_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'qtgui_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'qttest_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'qmake_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'about_dicomlibrary' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '[cit. 2023-03-29]' in entry 'dicom_history' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-03-29]' in entry 'dicom_transfer_syntax' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '[cit. 2023-03-29]' in entry 'dcmtk_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '[cit. 2023-03-29]' in entry 'tnl_description' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-04-13]' in entry 'cpp_addons' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-04-13]' in entry 'webassembly_concepts' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-04-13]' in entry 'cpp_to_wasm' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2023 [cit. 2023-04-13]' in entry 'cpp_to_wasm_image' is not an integer - this will probably not sort properly.
+[242] Biber.pm:131> WARN - legacy year field '2021-07-12 [cit. 2023-04-13]' in entry 'webassembly_threads' is not an integer - this will probably not sort properly.
+[242] Biber.pm:133> INFO - WARNINGS: 18

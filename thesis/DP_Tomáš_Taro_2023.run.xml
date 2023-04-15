@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -71,22 +71,22 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>ctufit-thesis</infile>
+      <infile>DP_Tomáš_Taro_2023</infile>
     </cmdline>
     <input>
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </input>
     <output>
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </requires>
     <requires type="editable">
-      <file>text/bib-database.bib</file>
+      <file>bib-database.bib</file>
     </requires>
   </external>
 </requests>
