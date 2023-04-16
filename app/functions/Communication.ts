@@ -4,14 +4,13 @@ import { displayImageInElement, getImageData, startLoopingImages } from '~/funct
 import DicomAnonymizer from '~/functions/DicomAnonymizer';
 import { useGlobalStore } from '~/stores';
 
-const store = useGlobalStore();
-
 class Communication {
   /**
    * Retrieve image data for given imageIndex
    */
   getImageData(imageIndex: number): GridCommunication.Image {
     const imageData = getImageData(imageIndex);
+    const store = useGlobalStore();
 
     return {
       imageId: store.imageIds[imageIndex],
@@ -24,6 +23,8 @@ class Communication {
    */
   refreshGridData(): Promise<void> {
     return new Promise((resolve) => {
+      const store = useGlobalStore();
+
       const shownCurrentImageId = unref(store.shownImageId);
       startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
       const unwatch = watch(() => store.isLoopingImages, async (value) => {
@@ -40,6 +41,8 @@ class Communication {
    * Retrieve grid data for a given imageIndex
    */
   getGridData(imageIndex: number): GridCommunication.Request.Grid {
+    const store = useGlobalStore();
+
     const imageId = store.imageIds[imageIndex];
     const primaryLines = store?.gridState?.tool.getStateForImageId(imageId) || [];
 
@@ -53,6 +56,8 @@ class Communication {
    * Retrieve algorithm settings
    */
   getAlgorithmOptions(): GridCommunication.Request.AlgorithmOptions {
+    const store = useGlobalStore();
+
     return {
       curvature: store.algorithm.curvature,
       force: store.algorithm.force,
@@ -72,6 +77,8 @@ class Communication {
       data: [],
       options: this.getAlgorithmOptions(),
     };
+
+    const store = useGlobalStore();
 
     for (let imageIdx = 0; imageIdx < store.imageIds.length; imageIdx++) {
       const serializedData: GridCommunication.Request.BodyData = {

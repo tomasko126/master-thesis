@@ -20,8 +20,6 @@ import type { FullToolName, ToolName } from './types/cornerstoneTools';
 import { useGlobalStore } from '~/stores';
 import { GridTool } from '~/functions/types/GridTool';
 
-const store = useGlobalStore();
-
 /**
  * Initialize cornerstone libraries
  */
@@ -65,6 +63,8 @@ export const initLibraries = (): void => {
  * @returns {Promise<boolean>} - true, if all files have been successfully loaded
  */
 export const loadImagesFromFiles = async (imageFiles: VaFile[]|[]): Promise<boolean|null> => {
+  const store = useGlobalStore();
+
   if (!store.mainImageContainer) {
     return null;
   }
@@ -131,6 +131,7 @@ export const displayImageInElement = async (element: HTMLElement, imageId: strin
  * Retrieve shown image
  */
 export const getImage = (): cornerstone.Image|null => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return null;
   }
@@ -145,6 +146,7 @@ export const getImage = (): cornerstone.Image|null => {
  * Remove all loaded images
  */
 export const removeImages = (): void => {
+  const store = useGlobalStore();
   store.imageIds = [];
   store.shownImageId = null;
   store.gridState = null;
@@ -163,6 +165,7 @@ export const removeImages = (): void => {
  * Set cornerstone's tool to an active state
  */
 export const activateTool = (toolName: string, toolOptions: object): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -178,6 +181,7 @@ export const activateTool = (toolName: string, toolOptions: object): void => {
  * Deactivate tool by setting its state to 'enabled'
  */
 export const deactivateTool = (toolName: string): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -189,6 +193,7 @@ export const deactivateTool = (toolName: string): void => {
  * Register and enable tool given by |toolName| param
  */
 export const registerTool = (toolName: ToolName): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -202,6 +207,7 @@ export const registerTool = (toolName: ToolName): void => {
  * Register all tools
  */
 export const registerAllTools = (): void => {
+  const store = useGlobalStore();
   for (const toolName of store.tools) {
     registerTool(toolName);
   }
@@ -218,6 +224,7 @@ export const unregisterTool = (toolName: string): void => {
  * Unregister all tools
  */
 export const unregisterAllTools = (): void => {
+  const store = useGlobalStore();
   for (const toolName of store.tools) {
     unregisterTool(toolName);
   }
@@ -229,6 +236,7 @@ export const unregisterAllTools = (): void => {
 export const registerImageContainer = (element: HTMLElement, isMainImageContainer = false): void => {
   cornerstone.enable(element);
   if (isMainImageContainer) {
+    const store = useGlobalStore();
     store.mainImageContainer = element;
   }
 };
@@ -239,6 +247,7 @@ export const registerImageContainer = (element: HTMLElement, isMainImageContaine
 export const unregisterImageContainer = (element: HTMLElement, isMainImageContainer = false): void => {
   cornerstone.disable(element);
   if (isMainImageContainer) {
+    const store = useGlobalStore();
     store.mainImageContainer = null;
   }
 };
@@ -247,6 +256,7 @@ export const unregisterImageContainer = (element: HTMLElement, isMainImageContai
  * Retrieve GridTool instance
  */
 export const getGridTool = (): GridTool|null => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return null;
   }
@@ -257,9 +267,16 @@ export const getGridTool = (): GridTool|null => {
 /**
  * Start looping images in the main container
  */
-export const startLoopingImages = ({ fromIdx = store.animation.fromIdx, toIdx = store.animation.toIdx, loop = true }: { fromIdx?: number, toIdx?: number, loop?: boolean } = {}): void => {
+export const startLoopingImages = ({ fromIdx = undefined, toIdx = undefined, loop = true }: { fromIdx?: number, toIdx?: number, loop?: boolean } = {}): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
+  }
+  if (fromIdx === null || fromIdx === undefined) {
+    fromIdx = store.animation.fromIdx;
+  }
+  if (toIdx === null || toIdx === undefined) {
+    toIdx = store.animation.toIdx;
   }
   store.isLoopingImages = true;
   cornerstoneTools.playClip(store.mainImageContainer, store.animation.speed, { fromIdx, toIdx, loop });
@@ -269,6 +286,7 @@ export const startLoopingImages = ({ fromIdx = store.animation.fromIdx, toIdx = 
  * Stop looping images in the main container
  */
 export const stopLoopingImages = (): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -280,6 +298,7 @@ export const stopLoopingImages = (): void => {
  * Set brightness of main image container
  */
 export const setBrightness = (scalar: number): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -294,6 +313,7 @@ export const setBrightness = (scalar: number): void => {
  * Set contrast of main image container
  */
 export const setContrast = (scalar: number): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
@@ -308,6 +328,7 @@ export const setContrast = (scalar: number): void => {
  * Set zoom of main image container by |zoomFactorChange|
  */
 export const setZoom = (zoomFactorChange: number): void => {
+  const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
