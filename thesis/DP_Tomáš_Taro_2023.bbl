@@ -76,7 +76,7 @@
       \field{howpublished}{online}
       \field{journaltitle}{Medical News Today}
       \field{title}{What to know about MRI scans. In: Healthline Media}
-      \field{year}{2018-07-24 [cit. 2023-03-24]}
+      \field{year}{Júl 24, 2018 [cit. 2023-03-24]}
       \verb{urlraw}
       \verb https://www.medicalnewstoday.com/articles/146309#what-is-an-mri-scan
       \endverb
@@ -202,12 +202,12 @@
       \field{howpublished}{online}
       \field{journaltitle}{Main}
       \field{title}{About Qt. In:}
-      \field{year}{2022-07-18 [cit. 2023-03-29]}
+      \field{year}{18. júla 2022 [cit. 2023-03-29]}
       \verb{urlraw}
-      \verb https://wiki.qt.io/index.php?title=About_Qt&action=info
+      \verb https://wiki.qt.io/index.php?title=About_Qt
       \endverb
       \verb{url}
-      \verb https://wiki.qt.io/index.php?title=About_Qt&action=info
+      \verb https://wiki.qt.io/index.php?title=About_Qt
       \endverb
     \endentry
     \entry{qtcore_description}{article}{}
@@ -427,7 +427,7 @@
       \field{howpublished}{online}
       \field{journaltitle}{dicomstandard.org}
       \field{title}{History}
-      \field{year}{[cit. 2023-03-29]}
+      \field{year}{[2023] [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://www.dicomstandard.org/history
       \endverb
@@ -482,7 +482,7 @@
       \field{howpublished}{online}
       \field{journaltitle}{dicom.offis.de}
       \field{title}{DCMTK}
-      \field{year}{[cit. 2023-03-29]}
+      \field{year}{[2023] [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://dicom.offis.de/dcmtk.php.en
       \endverb
@@ -513,6 +513,13 @@
       \field{howpublished}{prednáška}
       \field{note}{Praha: ČVUT v Praze, Fakulta informačních technologií, 27.02.2023}
       \field{title}{Úvod do OpenMP}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://courses.fit.cvut.cz/NI-PDP/media/lectures/NI-PDP-Prednaska02-OpenMP.pdf
+      \endverb
+      \verb{url}
+      \verb https://courses.fit.cvut.cz/NI-PDP/media/lectures/NI-PDP-Prednaska02-OpenMP.pdf
+      \endverb
     \endentry
     \entry{tnl_description}{webpage}{}
       \field{sortinit}{3}
@@ -520,7 +527,7 @@
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
       \field{title}{Homepage - TNL - Template Numerical Library}
-      \field{year}{[cit. 2023-03-29]}
+      \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://tnl-project.org
       \endverb
@@ -603,7 +610,7 @@
       \field{howpublished}{online}
       \field{journaltitle}{MDN Web Docs}
       \field{title}{WebAssembly Concepts. In:}
-      \field{year}{2023 [cit. 2023-04-13]}
+      \field{year}{Mar 23, 2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts
       \endverb
@@ -631,7 +638,13 @@
       \field{howpublished}{online}
       \field{journaltitle}{MDN Web Docs}
       \field{title}{Compiling a New C/C++ Module to WebAssembly. In:}
-      \field{year}{2023 [cit. 2023-04-13]}
+      \field{year}{Mar 24, 2023 [cit. 2023-04-13]}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm
+      \endverb
     \endentry
     \entry{cpp_to_wasm_image}{article}{}
       \name{author}{1}{}{%
@@ -653,7 +666,7 @@
       \field{howpublished}{online}
       \field{journaltitle}{MDN Web Docs}
       \field{title}{Emscripten Diagram. In:}
-      \field{year}{2023 [cit. 2023-04-13]}
+      \field{year}{Mar 23, 2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts/emscripten-diagram.png
       \endverb
@@ -682,7 +695,41 @@
       \field{howpublished}{online}
       \field{journaltitle}{web.dev}
       \field{title}{Using WebAssembly threads from C, C++ and Rust. In:}
-      \field{year}{2021-07-12 [cit. 2023-04-13]}
+      \field{year}{Júl 12, 2021 [cit. 2023-04-13]}
+      \verb{urlraw}
+      \verb https://web.dev/webassembly-threads/
+      \endverb
+      \verb{url}
+      \verb https://web.dev/webassembly-threads/
+      \endverb
+    \endentry
+    \entry{using_web_workers}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
+           family={{MDN contributors}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \field{extraname}{4}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{MDN Web Docs}
+      \field{title}{Using Web Workers. In:}
+      \field{year}{Mar 16, 2023 [cit. 2023-04-16]}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

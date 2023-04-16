@@ -67,7 +67,7 @@ Súčasná aplikácia je kompatibilná s najnovšou verziou tejto knižnice, kto
 \end{itemize}
 
 \subsection {OpenMP}\label{openmp}
-OpenMP\footnote{https://www.openmp.org} poskytuje rozhranie pre programovanie aplikácií (tzv. API), vďaka ktorému je možné vytvárať C\footnote{https://www.open-std.org/jtc1/sc22/wg14/}, C\texttt{++} a Fortran\footnote{https://fortran-lang.org/en/} aplikácie využívajúce viac vlákien nad zdieľanou pamäťou. Vývoj OpenMP v súčasnosti zastrešuje OpenMP Architecture Review Board.
+OpenMP\footnote{https://www.openmp.org} poskytuje rozhranie pre programovanie aplikácií (tzv. API), vďaka ktorému je možné vytvárať C\footnote{https://www.open-std.org/jtc1/sc22/wg14/}, C\texttt{++} a Fortran\footnote{https://fortran-lang.org/en/} aplikácie využívajúce viac vlákien nad zdieľanou pamäťou. Vývoj OpenMP v súčasnosti zastrešuje \newline OpenMP Architecture Review Board.
 OpenMP funguje na báze direktív, pomocou ktorých sa jednotlivé časti programu dajú paralelizovať viacerými spôsobmi -- a to paralelizáciou prevádzania jednotlivých úloh (tzv. funkčný paralelizmus -- vhodný pre paralelizáciu rekurzívnych algoritmov, kde úloha = volanie funkcie) alebo paralelizáciou dátovo nezávislých for loop iterácií (tu sa jedná o tzv. iteračný dátový paralelizmus) \cite{openmp_description}.
 
 Existujúca aplikácia využíva direktívy OpenMP pre paralelizáciu výpočetne náročnejších algoritmov. Súčasná verzia OpenMP, verzia 5.2, je plne kompatibilná s aktuálnym zdrojovým kódom aplikácie.
@@ -77,7 +77,7 @@ Template Numerical Library\footnote{https://tnl-project.org} je numerická kniž
 
 Vývoj TNL knižnice od jej počiatku riadi Tomáš Oberhuber z Katedry matematiky na FJFI ČVUT v spolupráci s Jakubom Klinkovským a Alešom Wodeckim.
 
-V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \texttt{String} pre manipuláciu s reťazcami a \texttt{Containers::Array}, \texttt{Containers::\{Vector,StaticVector,MultiVector\}}, čo sú šablóny pre reprezentáciu n-dimenzionálnych polí, ktoré abstrahujú manažment dát a exekúciu bežných operácií na rozličných hardvérových architektúrach.
+V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \texttt{String} pre manipuláciu s reťazcami a \texttt{Containers::Array}, \texttt{Containers::\{Vector,\newline StaticVector,MultiVector\}}, čo sú šablóny pre reprezentáciu \newline n-dimenzionálnych polí, ktoré abstrahujú manažment dát a exekúciu bežných operácií na rozličných hardvérových architektúrach.
 
 Aplikácia z TNL knižnice taktiež používa \texttt{Solvers::ODE::Merson} -- jedná sa o Runge-Kutta-Merson metódu štvrtého rádu s adaptívnym výberom časového kroku, pomocou ktorej vieme získať približné riešenie diferenciálnych rovníc.
 
@@ -125,7 +125,7 @@ Qt Creator je aplikácia, ktorá poskytuje prostredie pre integrovaný vývoj ap
 
 Okrem balíčku \texttt{qt5-default} je taktiež potrebné nainštalovať balíčky \texttt{cmake}\footnote{sudo apt install cmake} a \texttt{build-essential}\footnote{sudo apt install build-essential}, čo sú balíčky poskytujúce ďalšie nástroje potrebné pre úspešné zostavenie aplikácie. Tieto balíčky v niektorých prípadoch už môžu byť súčasťou použitej linuxovej distribúcie, čo ale neplatilo v prípade použitia Ubuntu 22.10 ako operačného systému.
 
-Pretože súčasná aplikácia využíva DCMTK knižnicu, ako bolo popísané v sekcii \ref{dcmtk}, je tiež nutné nainštalovať nasledujúce balíčky: \texttt{dcmtk}\footnote{sudo apt install dcmtk} a {\texttt{libdcmtk-dev}\footnote{sudo apt install libdcmtk-dev}.
+Pretože súčasná aplikácia využíva DCMTK knižnicu, ako bolo popísané v sekcii \ref{dcmtk}, je tiež nutné nainštalovať nasledujúce balíčky: \texttt{dcmtk}\footnote{sudo apt install dcmtk} \newline a {\texttt{libdcmtk-dev}\footnote{sudo apt install libdcmtk-dev}.
 
 Prvý z uvedených balíčkov nainštaluje samotnú DCMTK knižnicu, druhý obsahuje knižnice a hlavičkové súbory pre vývoj aplikácií používajúce túto knižnicu. Nakoľko v \texttt{Dicom.pro} súbore (ktorý je určený pre výsledné zostavenie aplikácie) sa nachádzajú cesty ku knižniciam z balíčku \texttt{libdcmtk-dev}, je aj tento balíček nutný nainštalovať pre neskoršie korektné spustenie súčasnej aplikácie.
 
@@ -142,7 +142,7 @@ Po nainštalovaní všetkých potrebných balíčkov nastal čas pre zostavenie 
 
 Ďalším krokom pre úspešné zostavenie aplikácie je definovanie cesty k hlavičkovým súborom TNL knižnice v samotnom \texttt{Cameo.pro} súbore, určenom pre zostavenie aplikácie pomocou programu \texttt{qmake}. Po otvorení súboru \texttt{Cameo.pro} je teda potrebné nastaviť hodnotu premennej \lstinline{DCMTK_LIBS} -- v tomto prípade ju bolo potrebné nastaviť na \texttt{/usr/lib/aarch64-linux-gnu} a následne daný súbor uložiť.
 
-Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj \texttt{qmake} pomocou krokov popísaných v sekcii \ref{qmake}. Jeho výsledkom bude \texttt{Makefile} súbor, ktorý definuje kroky, ako zostaviť súčasnú aplikáciu. V tomto momente je už možné súčasnú aplikáciu skompilovať pomocou spustenia príkazu \texttt{make install}.
+Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj \texttt{qmake} pomocou krokov popísaných v sekcii \ref{qmake}. Jeho výsledkom bude \newline \texttt{Makefile} súbor, ktorý definuje kroky, ako zostaviť súčasnú aplikáciu. V tomto momente je už možné súčasnú aplikáciu skompilovať pomocou spustenia príkazu \texttt{make install}.
 
 Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}. \clearpage
 

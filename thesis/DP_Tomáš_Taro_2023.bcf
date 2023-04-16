@@ -2431,6 +2431,7 @@
     <bcf:citekey order="48" intorder="1">cpp_to_wasm</bcf:citekey>
     <bcf:citekey order="49" intorder="1">cpp_to_wasm_image</bcf:citekey>
     <bcf:citekey order="50" intorder="1">webassembly_threads</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">using_web_workers</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
