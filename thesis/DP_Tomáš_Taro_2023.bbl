@@ -799,18 +799,16 @@
     \endentry
     \entry{about_docker}{article}{}
       \name{author}{1}{}{%
-        {{hash=0a6e82dfd0df55343233c1768adf738c}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Docker},
-           giveni={D\bibinitperiod}}}%
+        {{hash=4bd3b392874c74fba4ed57a24eae0ac1}{%
+           family={{Docker Inc.}},
+           familyi={D\bibinitperiod}}}%
       }
-      \strng{namehash}{0a6e82dfd0df55343233c1768adf738c}
-      \strng{fullhash}{0a6e82dfd0df55343233c1768adf738c}
-      \strng{bibnamehash}{0a6e82dfd0df55343233c1768adf738c}
-      \strng{authorbibnamehash}{0a6e82dfd0df55343233c1768adf738c}
-      \strng{authornamehash}{0a6e82dfd0df55343233c1768adf738c}
-      \strng{authorfullhash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{namehash}{4bd3b392874c74fba4ed57a24eae0ac1}
+      \strng{fullhash}{4bd3b392874c74fba4ed57a24eae0ac1}
+      \strng{bibnamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
+      \strng{authorbibnamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
+      \strng{authornamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
+      \strng{authorfullhash}{4bd3b392874c74fba4ed57a24eae0ac1}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
@@ -819,6 +817,194 @@
       \field{journaltitle}{docs.docker.com}
       \field{title}{Docker overview. In:}
       \field{year}{2023 [cit. 2023-04-17]}
+    \endentry
+    \entry{nuxt_introduction}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f31b43928451a63b478c28f5ab8ea421}{%
+           family={{Nuxt.js contributors}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{f31b43928451a63b478c28f5ab8ea421}
+      \strng{fullhash}{f31b43928451a63b478c28f5ab8ea421}
+      \strng{bibnamehash}{f31b43928451a63b478c28f5ab8ea421}
+      \strng{authorbibnamehash}{f31b43928451a63b478c28f5ab8ea421}
+      \strng{authornamehash}{f31b43928451a63b478c28f5ab8ea421}
+      \strng{authorfullhash}{f31b43928451a63b478c28f5ab8ea421}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{nuxt.com}
+      \field{title}{Introduction. In:}
+      \field{year}{2023 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://nuxt.com/docs/getting-started/introduction
+      \endverb
+      \verb{url}
+      \verb https://nuxt.com/docs/getting-started/introduction
+      \endverb
+    \endentry
+    \entry{vuejs_introduction}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a174180d465ff21cefd74b787ad255d4}{%
+           family={{Vue.js contributors}},
+           familyi={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{fullhash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{bibnamehash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{authorbibnamehash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{authornamehash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{authorfullhash}{a174180d465ff21cefd74b787ad255d4}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{vuejs.org}
+      \field{title}{Introduction. In:}
+      \field{year}{2023 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://vuejs.org/guide/introduction.html
+      \endverb
+      \verb{url}
+      \verb https://vuejs.org/guide/introduction.html
+      \endverb
+    \endentry
+    \entry{nextjs_introduction}{article}{}
+      \name{author}{1}{}{%
+        {{hash=a3228e7b06434cb80b81a8511f0b3ccc}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Vercel},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \strng{fullhash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \strng{bibnamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \strng{authorbibnamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \strng{authornamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \strng{authorfullhash}{a3228e7b06434cb80b81a8511f0b3ccc}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{nextjs.org}
+      \field{title}{What is Next.js? In:}
+      \field{year}{2023 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs
+      \endverb
+      \verb{url}
+      \verb https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs
+      \endverb
+    \endentry
+    \entry{jsx_rules}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6c56f762d9ebe73063cd2d157e97351f}{%
+           family={{Meta Open Source}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{fullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{bibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorbibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authornamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorfullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{react.dev}
+      \field{title}{Writing Markup with JSX. In:}
+      \field{year}{2023 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://react.dev/learn/writing-markup-with-jsx
+      \endverb
+      \verb{url}
+      \verb https://react.dev/learn/writing-markup-with-jsx
+      \endverb
+    \endentry
+    \entry{reactjs_stylesheet}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1a0d8da8f6d9596714f6cf9ec34c1849}{%
+           family={Llobera},
+           familyi={L\bibinitperiod},
+           given={Lewis},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \strng{fullhash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \strng{bibnamehash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \strng{authorbibnamehash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \strng{authornamehash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \strng{authorfullhash}{1a0d8da8f6d9596714f6cf9ec34c1849}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{create-react-app.dev}
+      \field{title}{Adding a Stylesheet. In:}
+      \field{year}{2/13/2020 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://create-react-app.dev/docs/adding-a-stylesheet
+      \endverb
+      \verb{url}
+      \verb https://create-react-app.dev/docs/adding-a-stylesheet
+      \endverb
+    \endentry
+    \entry{reactjs_stylesheet_module}{article}{}
+      \name{author}{1}{}{%
+        {{hash=8ded1012b29d58cd9aea3e946dc8d188}{%
+           family={Hardo},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \strng{fullhash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \strng{bibnamehash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \strng{authorbibnamehash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \strng{authornamehash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \strng{authorfullhash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{create-react-app.dev}
+      \field{title}{Adding a CSS Modules Stylesheet. In:}
+      \field{year}{1/4/2019 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://create-react-app.dev/docs/adding-a-css-modules-stylesheet
+      \endverb
+      \verb{url}
+      \verb https://create-react-app.dev/docs/adding-a-css-modules-stylesheet
+      \endverb
+    \endentry
+    \entry{react_state}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6c56f762d9ebe73063cd2d157e97351f}{%
+           family={{Meta Open Source}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{fullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{bibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorbibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authornamehash}{6c56f762d9ebe73063cd2d157e97351f}
+      \strng{authorfullhash}{6c56f762d9ebe73063cd2d157e97351f}
+      \field{extraname}{2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{react.dev}
+      \field{title}{State: A Component's Memory. In:}
+      \field{year}{2023 [cit. 2023-04-18]}
+      \verb{urlraw}
+      \verb https://react.dev/learn/state-a-components-memory
+      \endverb
+      \verb{url}
+      \verb https://react.dev/learn/state-a-components-memory
+      \endverb
     \endentry
     \entry{using_web_workers}{article}{}
       \name{author}{1}{}{%
@@ -833,8 +1019,8 @@
       \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
       \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
       \field{extraname}{4}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}

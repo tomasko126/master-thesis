@@ -123,21 +123,21 @@ Spustenie podprogramu a zobrazenie jeho výsledku (súradnice bodov mriežok) vy
 \end {enumerate}
 
 \section {Návrh architektúry webovej aplikácie}
-Medzi prvými krokmi pred vývojom webovej aplikácie je nutné zanalyzovať všetky prípustné možností architektúry navrhovanej aplikácie. V tomto prípade návrh architektúry závisí najmä na prepojení webového rozhrania so súčasnou aplikáciou, a preto je potrebné najprv zanalyzovať všetky dostupné možnosti tohto prepojenia. Po porovnaní dostupných možností prepojenia je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
+Medzi prvými krokmi pred vývojom webovej aplikácie patrí analýza všetkých prípustných možností architektúry navrhovanej aplikácie. V tomto prípade návrh architektúry závisí najmä na prepojení webového rozhrania so súčasnou aplikáciou, a preto je potrebné najprv zanalyzovať všetky dostupné možnosti tohto prepojenia. Po porovnaní dostupných možností je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
 
 Čo sa týka prepojenia súčasnej aplikácie, resp. výpočetného podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako môže daná integrácia prebehnúť. Prvou možnosťou je využitie tzv. C\texttt{++} addons\footnote{https://nodejs.org/docs/latest-v18.x/api/addons.html} technológie, druhou možnosťou sa naskytuje využiť relatívne novú technológiu -- WebAssembly\footnote{https://webassembly.org}.
 
 \subsection {C\texttt{++} addons}
 C\texttt{++} addons je technológia, ktorá poskytuje rozhranie medzi C/C\texttt{++} knižnicami a JavaScriptom\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript}. Táto technológia je implementovaná v rámci Node.js\footnote{https://nodejs.org/en}, čo je runtime prostredie JavaScriptu, ktoré bude popísané v samostatnej sekcii.
-C\texttt{++} addons umožňuje pristupovať k natívnym API operačného systému a taktiež pomáha integrovať C/C\texttt{++} knižnice tretích strán pre ich priame použitie v Node.js. Doporučeným spôsobom písania takýchto addonov je pomocou technológie Node-API\footnote{https://nodejs.org/docs/latest-v18.x/api/n-api.html}, pomocou ktorej je možné vytvoriť Node-API addon v jazyku C. Pre písanie Node-API addonov v C\texttt{++} je ale potrebné použiť modul \texttt{node-addon-api}\footnote{https://github.com/nodejs/node-addon-api}, nakoľko ten obsahuje hlavičkové súbory v C\texttt{++} \cite{cpp_addons} (vlastný preklad).
+C\texttt{++} addons umožňuje pristupovať k natívnym API operačného systému a taktiež pomáha integrovať C/C\texttt{++} knižnice tretích strán pre ich priame použitie v Node.js. Doporučeným spôsobom písania takýchto addonov je pomocou technológie Node-API\footnote{https://nodejs.org/docs/latest-v18.x/api/n-api.html}, vďaka ktorej je možné vytvoriť Node-API addon v jazyku C. Pre písanie Node-API addonov v C\texttt{++} je ale potrebné použiť modul \texttt{node-addon-api}\footnote{https://github.com/nodejs/node-addon-api}, nakoľko ten obsahuje hlavičkové súbory v C\texttt{++} \cite{cpp_addons} (vlastný preklad).
 
-Výhodou použitia Node-API technológie je jej nemennosť v rámci rôznych verzií Node.js, čo zaručuje použitie skompilovaného addonu v rôznych verziách Node.js bez nutnosti prekompilovania samotného addonu \cite{cpp_addons} (vlastný preklad).
+Výhodou použitia Node-API technológie je jej nemennosť v rámci rôznych verzií Node.js, čo zaručuje použitie skompilovaného addonu v rôznych verziách Node.js bez nutnosti jeho prekompilovania pre rozličné verzie Node.js \cite{cpp_addons} (vlastný preklad).
 
-Nástrojom pre zostavenie takéhoto modulu je build systém \texttt{node-gyp}\footnote{https://github.com/nodejs/node-gyp}. Ten používa \texttt{binding.gyp} súbor, ktorý špecifikuje konfigurácie zostavenia modulu. Táto konfigurácia zahŕňa okrem iného aj cestu k zdrojovým \texttt{.cpp} a \texttt{.h} súborom. Tie musia byť pred zostavením upravené tak, aby používali Node-API rozhranie \cite{cpp_addons} (vlastný preklad).
+Nástrojom pre zostavenie takéhoto modulu je build systém \texttt{node-gyp}\footnote{https://github.com/nodejs/node-gyp}. Ten používa \texttt{binding.gyp} súbor, ktorý špecifikuje konfiguráciu zostavenia modulu. Táto konfigurácia zahŕňa okrem iného aj cestu k zdrojovým \texttt{.cpp} a \texttt{.h} súborom. Tie musia byť pred zostavením upravené tak, aby používali Node-API rozhranie \cite{cpp_addons} (vlastný preklad).
 
-To zahŕňa vytvorenie metód, ktoré budú prijímať vstupné a výstupné argumenty pretypované na typy pochádzajúce z Node-API.
+Tento krok zahŕňa vytvorenie metód, ktoré budú prijímať vstupné a vracať výstupné argumenty pretypované na Node-API typy.
 
-Pred zostavením addonu je potrebné vygenerovať Makefile pre cieľový operačný systém pomocou príkazu \texttt{node-gyp configure}. Pre samotné zostavenie addonu je následne potrebné exekuovať príkaz \texttt{node-gyp build}. Ten skompiluje želané súbory špecifikované v \texttt{binding.gype} do jediného súboru s príponou \texttt{.node}. Ten je následne možné importovať ako modul do iného JavaScript modulu pomocou kľúčového slova \texttt{import}\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}. Po importovaní daného modulu je možné volať jeho metódy rovnakým spôsobom ako iné JS metódy \cite{cpp_addons} (vlastný preklad).
+Pred zostavením addonu je potrebné vygenerovať Makefile pre cieľový operačný systém pomocou príkazu \texttt{node-gyp configure}. Pre zostavenie addonu je následne potrebné exekuovať príkaz \texttt{node-gyp build}. Ten skompiluje želané súbory špecifikované v \texttt{binding.gyp} do jediného súboru s príponou \texttt{.node}. Ten je následne možné importovať ako modul do iného JavaScript modulu pomocou kľúčového slova \texttt{import}\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}. Po jeho importovaní je možné volať jeho metódy rovnakým spôsobom ako iné JS metódy \cite{cpp_addons} (vlastný preklad).
 
 \subsection {WebAssembly}
 WebAssembly je nový typ jazyku, ktorý je možné exekuovať vo všetkých moderných webových prehliadačoch. Jeho hlavnou výsadou je zvýšenie rýchlosti exekuovania kódu oproti JavaScriptu blížiaci sa k skoro natívnej exekúcii kódu naprogramovaného v jazykoch C, C\texttt{++} alebo Rust\footnote{https://www.rust-lang.org} a iné. Je navrhnutý tak, aby mohol fungovať spoločne s JavaScriptom \cite{webassembly_concepts} (vlastný preklad).
@@ -148,23 +148,22 @@ Webová platforma sa dá vo všeobecnosti rozdeliť na dve časti:
 \item {webové API, ktoré je poskytnuté vývojárom pre kontrolu rozličných funkcionalít webového prehliadača, resp. zariadenia  \cite{webassembly_concepts} (vlastný preklad).}
 \end{itemize}
 
-Historicky, VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú dosahovať väčší výpočetný výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
-WebAssembly bolo navrhnutý tak, aby tieto problémy vyriešil a priniesol prostriedky pre vývoj takýchto aplikácií. 
+Historicky, VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú väčší výpočetný výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
+WebAssembly bolo navrhnutý tak, aby tieto problémy vyriešilo a prinieslo prostriedky pre vývoj takýchto aplikácií. 
+
 Pomocou WebAssembly JS API\footnote{https://developer.mozilla.org/en-US/docs/WebAssembly/Using\textunderscore the\textunderscore JavaScript\textunderscore API} je možné načítať WebAssembly moduly -- čo sú moduly v binárnom formáte -- do JavaScript aplikácie a zdieľať s touto aplikáciou funkcionalitu poskytovanú týmito modulmi \cite{webassembly_concepts} (vlastný preklad).
 
 Možností, ako daný modul vytvoriť, je viacero:
 \begin {itemize}
-\item {portovať C/C\texttt{++} aplikáciu pomocou technológie Emscripten\footnote{https://emscripten.org},}
+\item {portovať C/C\texttt{++} aplikáciu pomocou Emscripten\footnote{https://emscripten.org} technológie,}
 \item {písať priamo vo WebAssembly,}
 \item {napísať aplikáciu v inom jazyku a kompilovať ju pomocou kompilátora podporujúci WebAssembly výstup, alebo}
-\item {použiť AssemblyScript\footnote{https://www.assemblyscript.org}, ktorý je podobný TypeScript\footnote{https://www.typescriptlang.org} jazyku a dá sa priamo skompilovať do WebAssembly  \cite{webassembly_concepts} (vlastný preklad).}
+\item {použiť AssemblyScript\footnote{https://www.assemblyscript.org}, ktorý je podobný TypeScript\footnote{https://www.typescriptlang.org} jazyku a dá sa priamo skompilovať do WebAssembly \cite{webassembly_concepts} (vlastný preklad).}
 \end {itemize}
 
-Nakoľko sa v tomto prípade jedná o C\texttt{++} aplikáciu -- konkrétne \texttt{grid-tracker} podprogram -- bude bližšie analyzovaná prvá možnosť z dostupných možností.
+Nakoľko sa v tomto prípade jedná o C\texttt{++} aplikáciu, bude bližšie analyzovaná prvá možnosť zo všetkých dostupných možností.
 
-V rámci nej je potrebné stiahnuť a nainštalovať si Emscripten kompilátor. Ten umožňuje skompilovať program v C/C\texttt{++} do modulu vo formáte \texttt{.wasm} \cite{cpp_to_wasm} (vlastný preklad).
-
-Následne je možné daný C\texttt{++} program skompilovať pomocou príkazu \texttt{em++ sample.cpp -o sample.html}. Výstupom tohto príkazu sú tri súbory -- \newline \texttt{a.out.js}, \texttt{a.out.wasm} a \texttt{sample.html}. Prvý zo súborov tvorí JS kód, ktorého úloha je prepojiť daný WASM modul (druhý súbor) s JS prostredím. Následne je možné tento modul spolu s JS kódom importovať do HTML\footnote{https://developer.mozilla.org/en-US/docs/Web/HTML} stránky, na ktorej daný modul pobeží. Takto importovaný kód v HTML stránke je možné vidieť v súbore \texttt{sample.html} \cite{cpp_to_wasm} (vlastný preklad).
+Najprv je potrebné stiahnuť a nainštalovať Emscripten kompilátor. Ten umožňuje skompilovať program v C/C\texttt{++} do modulu vo formáte \texttt{.wasm}. Následne je možné daný C\texttt{++} program skompilovať pomocou príkazu \newline \texttt{em++ sample.cpp -o sample.html}. Výstupom tohto príkazu sú tri súbory -- \newline \texttt{a.out.js}, \texttt{a.out.wasm} a \texttt{sample.html}. Prvý zo súborov tvorí JS kód, ktorého úloha je prepojiť daný WASM modul (druhý súbor) s JS prostredím. Následne je možné tento modul spolu s JS kódom importovať do HTML\footnote{https://developer.mozilla.org/en-US/docs/Web/HTML} stránky, na ktorej daný modul pobeží. Takto importovaný kód v HTML stránke je možné vidieť v súbore \texttt{sample.html} \cite{cpp_to_wasm} (vlastný preklad).
 
 Celý proces je pre ilustráciu zobrazený na obrázku nižšie:
 \begin {center}
@@ -175,21 +174,23 @@ Celý proces je pre ilustráciu zobrazený na obrázku nižšie:
 \end {center}
 
 \subsection {Výsledná voľba prepojenia}
-C\texttt{++} addons technológia je, ako bolo uvedené, implementovaná v Node.js, čo by v prípade zvolenia tejto technológie znamenalo zvolenie architektúry klient-server. Klientom by bol v tomto prípade webový prehliadač, ktorý by posielal HTTP požiadavku serveru s potrebnými dátami pre \texttt{grid-tracker} podprogram. Po výpočte by server v odpovedi na danú požiadavku poslal klientovi informácie o bodoch a úsečkách, ktoré by mali byť vykreslené na všetkých importovaných snímkoch magnetickej rezonancie.
+C\texttt{++} addons technológia je implementovaná v Node.js, čo by v prípade zvolenia tejto technológie znamenalo zvolenie architektúry klient-server. Klientom by bol v tomto prípade webový prehliadač, ktorý by posielal HTTP požiadavku serveru s potrebnými dátami pre \texttt{grid-tracker} podprogram. Po výpočte na strane servera by server poslal odpoveď s informáciami o bodoch a úsečkách, ktoré by mali byť vykreslené na všetkých importovaných snímkoch magnetickej rezonancie.
 
 V prípade použitia technológie WebAssembly by všetky výpočetné operácie mohli byť implementované na úrovni klienta. Tým pádom by nebolo nutné posielať žiadne dáta serveru, čo hrá v prospech bezpečnosti. Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-tracker} a knižnica TNL pre zrýchlenie výpočetných algoritmov používajú OpenMP technológiu.
-Bohužiaľ, WebAssembly túto technológiu nepodporuje, čo by v tomto prípade znamenalo, že by celý výpočet musel prebiehať jednovláknovo alebo byť refaktorovaný, aby používal viacero vlákien pomocou technológie WebAssembly threads \cite{webassembly_threads}.
+Bohužiaľ, WebAssembly túto technológiu nepodporuje, čo by v tomto prípade znamenalo, že by celý výpočet musel prebiehať jednovláknovo alebo byť refaktorovaný, aby používal viacero vlákien pomocou technológie WebAssembly threads \cite{webassembly_threads} (vlastný preklad).
 
-Čo sa týka použitia C\texttt{++} addons, ten OpenMP technológiu podporuje. Taktiež by bol v rámci tejto technológie nutný menší zásah do zdrojového kódu \texttt{grid-tracker} podprogramu, nakoľko by stačilo vytvoriť jednu wrapper funkciu v C\texttt{++}, ktorá by bola zodpovedná za konverziu dát do potrebného formátu a taktiež za vrátenie výsledku. Doterajší kód by mohol zostať prakticky nezmenený, resp. s minimálnymi zmenami.
+Čo sa týka C\texttt{++} addons, tá OpenMP technológiu podporuje. Taktiež by bol v rámci tejto technológie nutný menší zásah do zdrojového kódu \newline \texttt{grid-tracker} podprogramu, nakoľko by stačilo vytvoriť jednu wrapper funkciu v C\texttt{++}, ktorá by bola zodpovedná za konverziu dát do potrebného formátu a taktiež za vrátenie výsledku. Doterajší kód by mohol zostať prakticky nezmenený, resp. s minimálnymi zmenami.
 Taktiež nie je možné spoľahnúť sa na to, že by webové prehliadače, na ktorých by bežala nová webová aplikácia, podporovala WebAssembly technológiu. Rovnakým spôsobom je možné argumentovať ohľadom výkonu zariadení, na ktorých by daný výpočetný algoritmus bežal, v prípade WebAssembly.
 
-Na základe týchto dôvodov je praktickejšie vybrať si technológiu C\texttt{++}, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie nielen rýchlejšia, ale s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta, ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram. 
+Na základe týchto dôvodov bude lepšou voľbou vybrať technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie nielen rýchlejšia, ale aj s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram. 
 
 \section {Technológie pre vývoj webovej aplikácie}
-Po analýze, ako bude webová aplikácia prepojená s \texttt{grid-tracker} podprogramom, je nutné zvoliť potrebné technológie, ktoré budú použité pri vývoji webovej aplikácie. V rámci tejto sekcii nebudú popísané žiadne konkrétne balíčky a iné závislosti.
+Po analýze, ako bude webová aplikácia prepojená s \texttt{grid-tracker} podprogramom, je nutné zvoliť si potrebné technológie, ktoré budú použité pri vývoji webovej aplikácie. V rámci tejto sekcii nebudú popísané žiadne konkrétne balíčky a iné závislosti.
 
 \subsection {HTML5}
-Pre definovanie štruktúry webového dokumentu a jeho významu bude potrebné použiť značkovací jazyk HTML. Tento jazyk pozostáva zo série značiek (elementov) a k nim príslušných atribútov, pomocou ktorých je možné vytvorený obsah anotovať a významovo ho definovať. Týmto spôsobom je možné vytvoriť nadpisy, odstavce textu, číselné i nečíselné zoznamy, či importovať obrázky alebo sprostredkovať audio/video, atď. Takto štruktúrovaný obsah definovaný pomocou jazyka HTML je možné zobraziť v ľubovoľnom webovom prehliadači podporujúcom tento jazyk. Webový prehliadač takýto dokument zanalyzuje a na základe použitých značiek vykreslí. Každá značka má definovaný predvolený štýl zobrazenia, ktorý sa môže líšiť od prehliadača k prehliadaču. \clearpage
+Pre definovanie štruktúry webového dokumentu a jeho významu bude potrebné použiť značkovací jazyk HTML. Tento jazyk pozostáva zo série značiek (elementov) a k nim príslušných atribútov, pomocou ktorých je možné vytvorený obsah anotovať a významovo ho definovať. Týmto spôsobom je možné vytvoriť nadpisy, odstavce textu, číselné i nečíselné zoznamy, či importovať obrázky alebo sprostredkovať audio/video, atď.
+
+Takto štruktúrovaný obsah definovaný pomocou jazyka HTML je možné zobraziť v ľubovoľnom webovom prehliadači podporujúcom tento jazyk. Webový prehliadač takýto dokument zanalyzuje a na základe použitých značiek vykreslí. Každá značka má definovaný predvolený štýl zobrazenia, ktorý sa môže líšiť od prehliadača k prehliadaču.
 
 Nižšie je uvedený príklad základnej štruktúry HTML5 webového dokumentu:
 \begin{minted}{html}
@@ -204,7 +205,7 @@ Nižšie je uvedený príklad základnej štruktúry HTML5 webového dokumentu:
 
 Značka \texttt{<!doctype>} definuje verziu použitého HTML dokumentu, čo je v tomto prípade HTML5. Ďalej nasleduje značka \texttt{<html>}, ktorej úloha je zoskupiť elementy \texttt{<head>} a \texttt{<body>}. V elemente \texttt{<head>} sa zvyčajne nachádzajú metadáta ako názov dokumentu, špecifikácia ďalších zdrojov pre načítanie v dokumente a iné. Na druhú stranu, element \texttt{<body>} zoskupuje obsah dokumentu, ktorý je zobrazený prehliadačom.
 
-Prvá verzia tohto jazyka bola definovaná v roku 1993 samotným vynálezcom WWW, Timom Berners-Leeom. Momentálne najnovšou verziou HTML jazyka je tzv. HTML5 Living Standard\footnote{https://html.spec.whatwg.org}, vyvíjaný pracovnou skupinou WHATWG\footnote{https://whatwg.org/}. Najnovší štandard priniesol viacero nových značiek ako napr. značku \texttt{<audio>} pre prehrávanie audia, \texttt{<video>} pre prehrávanie videa, či \texttt{<picture>}, ktorá je určená pre definovanie viacero zdrojov pre zobrazený obrázok. HTML5 štandard okrem značiek poskytuje niekoľko API, ktoré sú implementované vo webových prehliadačoch. Pomocou týchto API je možné napr. geolokalizovať používateľa pomocou HTML5 Geolocation API alebo vykreslovať grafiku použitím HTML5 Canvas API, a iné.
+Prvá verzia tohto jazyka bola definovaná v roku 1993 samotným vynálezcom WWW, Timom Berners-Leeom. Momentálne najnovšou verziou HTML jazyka je tzv. HTML5 Living Standard\footnote{https://html.spec.whatwg.org}, vyvíjaný pracovnou skupinou \newline WHATWG\footnote{https://whatwg.org/}. Najnovší štandard priniesol viacero nových značiek ako napr. značku \texttt{<audio>} pre prehrávanie audia, \texttt{<video>} pre prehrávanie videa, či \texttt{<picture>}, ktorá je určená pre definovanie viacero zdrojov pre zobrazený obrázok. HTML5 štandard okrem značiek poskytuje niekoľko API, ktoré sú implementované vo webových prehliadačoch. Pomocou týchto API je možné napr. geolokalizovať používateľa pomocou HTML5 Geolocation API alebo vykreslovať grafiku použitím HTML5 Canvas API, a iné.
 
 \subsection {CSS 3}
 CSS\footnote{https://developer.mozilla.org/en-US/docs/Web/CSS} -- z anglického Cascading Style Sheets -- je jazyk popisujúci vzhľad použitých HTML5 elementov vo webovom dokumente. Tento jazyk definuje súbor pravidiel, ktoré môžu byť aplikované na jednotlivé elementy webového dokumentu, na základe ktorých sa mení vzhľad pravidlami ovplyvnených elementov.
@@ -262,7 +263,7 @@ Pre horeuvedené výhody tohto jazyka bude TypeScript použitý pri vývoji webo
 \subsection {Node.js}
 Node.js je asynchrónne cross-platform runtime prostredie JavaScriptu, ktoré umožňuje vývojárom exekuovať JavaScript kód mimo prehliadača. Pomocou neho je možné vyvíjať nielen konzolové aplikácie, ale aj budovať škálovateľné webové služby. Node.js je open-source projektom a jeho vývoj zastrešuje nadácia OpenJS Foundation \cite{about_nodejs} (vlastný preklad). Podobne ako JavaScript v prehliadači, Node.js používa jedno hlavné vlákno pre exekúciu kódu. Súčasne je nad Node.js vyvíjaných mnoho backendových frameworkov, z ktorých najznámejšie sú napr. koa\footnote{https://koajs.com/} alebo express\footnote{https://expressjs.com/}. Pomocou týchto frameworkov je možné vytvoriť API endpointy, pomocou ktorých vie klient komunikovať so serverom.
 
-Tieto frameworky (a iné aplikácie postavené nad Node.js) sú poskytované formou balíčkov. Tieto balíčky zvyknú byť dostupné v oficiálnom manažérovi balíčkov pre Node.js -- npm. Pomocou npm je možné nainštalovať (globálne i lokálne) rôzne balíčky, ktoré môžu byť použité pri vývoji aplikácií. Pre inštaláciu balíčka stačí exekuovať príkaz \texttt{npm install packagename}. Okrem inštalácií balíčkov je možné tieto balíčky spravovať, aktualizovať na novšie verzie či odinštalovať, a iné. Počas inštalácie Node.js je automaticky nainštalovaný aj tento manažér balíčkov.
+Tieto frameworky (a iné aplikácie postavené nad Node.js) sú poskytované formou balíčkov. Tieto balíčky zvyknú byť dostupné v registri balíčkov pre Node.js -- npm. Pomocou rovnomenného terminálového programu je možné (globálne i lokálne) nainštalovať rôzne balíčky, ktoré môžu byť použité pri vývoji aplikácií. Pre inštaláciu balíčka stačí exekuovať príkaz \texttt{npm install packagename}. Okrem inštalácií balíčkov je možné tieto balíčky spravovať, aktualizovať na novšie verzie či odinštalovať, a iné. Počas inštalácie Node.js je automaticky nainštalovaný aj tento balíčkový manažér.
 
 Okrem iného je vďaka Node.js možné používať len jeden programovací jazyk na vývoj oboch častí webových aplikácii -- frontendu a backendu. Tento fakt predstavuje odpadnutie nutnosti ovládať ďalší programovací jazyk pre vývoj webových aplikácií.
 
@@ -283,20 +284,20 @@ Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného
 Pre vývoj webovej aplikácie by bolo vhodné využiť framework, ktorý je postavený nad Node.js technológiou, nakoľko by sa klientská a taktiež serverová časť aplikácie dala naprogramovať v jednom jazyku -- JavaScripte. Plusom by v tomto prípade bolo, ak by daný framework natívne podporoval TypeScript, čo by mohlo zredukovať prípadné množstvo chýb v implementácii webovej aplikácie.
 Medzi ďalšími výhodami by patrilo použitie fullstack frameworku, vďaka ktorému by bolo potrebné orientovať sa len v jednom frameworku určenom pre obe časti webovej aplikácie -- frontend aj backend.
 
-V súčasnosti medzi najviac používané fullstackové frameworky, ktoré spĺňajú požiadavky uvedené vyššie, patria Nuxt.js\footnote{https://nuxt.com} a Next.js\footnote{https://nextjs.org}.
+V súčasnosti medzi najviac používané fullstackové frameworky, ktoré \newline spĺňajú požiadavky uvedené vyššie, patria Nuxt.js\footnote{https://nuxt.com} a Next.js\footnote{https://nextjs.org}.
 
 \subsection {Nuxt.js}
-Nuxt.js je voľne dostupný open-source framework, pomocou ktorého je možné vytvárať full-stack webové aplikácie a stránky pomocou Vue.js\footnote{https://vuejs.org}. Vue.js technológia bude popísaná v samostatnej podsekcii nižšie.
+Nuxt.js je voľne dostupný open-source framework, pomocou ktorého je možné vytvárať fullstack webové aplikácie a stránky pomocou Vue.js\footnote{https://vuejs.org}. Vue.js technológia bude popísaná v samostatnej podsekcii nižšie.
 
-Nuxt.js ponúka automatický routing na základe štruktúry súborov v \texttt{/pages} zložke. Taktiež automaticky delí kód na menšie celky, čo môže pomôcť s prvým načítaním webovej aplikácie. Okrem renderovania obsahu až na klientovi, je možné renderovať obsah už na serveri a takýto obsah poslať naspäť webovému prehliadaču. Pomocou automatických importov Vue.js komponentov nie je potrebné explicitne importovať použité Vue.js komponenty. Okrem toho nie len podporuje, ale aj celý framework je naprogramovaný v TypeScripte, čo znamená že je možné využívať type-hinty čo sa týka funkcionality Nuxt.js pri programovaní webovej aplikácie i bez nutnosti použitia TypeScriptu.
+Nuxt.js ponúka automatický routing na základe štruktúry súborov v \newline \texttt{/pages} zložke. Taktiež automaticky delí kód na menšie celky, čo môže pomôcť s prvým načítaním webovej aplikácie. Okrem renderovania obsahu až na klientovi je možné renderovať obsah už na serveri a takýto obsah poslať naspäť webovému prehliadaču. Pomocou automatických importov Vue.js komponentov nie je potrebné explicitne importovať použité Vue.js komponenty. Samotný framework je naprogramovaný v TypeScripte, čo znamená že je možné využívať type-hinty čo sa týka funkcionality Nuxt.js pri programovaní webovej aplikácie i bez nutnosti použitia TypeScriptu \cite{nuxt_introduction} (vlastný preklad).
 
-Na pozadí používa Nuxt.js Nitro\footnote{https://nitro.unjs.io/} server, ktorý generuje API endpointy na základe štruktúry súborov nachádzajúcich sa v zložke \texttt{server/api}. Nitro je taktiež zodpovedné za zostavenie full-stack aplikácie -- výstupom zostavenia je \texttt{.output} zložka obsahujúca minifikované súbory zbavené všetkých nepoužitých závislostí. Spustenie takto zostavenej full-stack aplikácie je možné následne jediným príkazom: \texttt{node .output/index.mjs}. \texttt{.output} zložku je následne možné nasadiť na server podporujúci Node.js.
+Na pozadí používa Nuxt.js Nitro\footnote{https://nitro.unjs.io/} server, ktorý generuje API endpointy na základe štruktúry súborov nachádzajúcich sa v zložke \texttt{server/api} \cite{nuxt_introduction} (vlastný preklad). Nitro je taktiež zodpovedné za zostavenie  aplikácie, pomocou príkazu \uv{nuxt build} -- jeho výstupom je \texttt{.output} zložka obsahujúca minifikované súbory zbavené všetkých nepoužitých závislostí. Túto zložku je následne možné nasadiť na server podporujúci Node.js a zostavenú aplikáciu spustiť pomocou príkazu \texttt{node .output/index.mjs} .
 
 \subsubsection {Vue.js}
 Vue.js je JavaScript framework určený pre budovanie používateľského rozhrania postavený na štandardných technológiach ako HTML, CSS a JavaScript. Tento framework poskytuje deklaratívny programovací model založený na znovupoužiteľných komponentoch, ktoré je možné použiť v rámci iných komponentov, čím pomáha zefektívniť proces vývoja znížením nutnosti použitia duplicitného kódu. Pod pojmom \uv{komponent} je možné predstaviť si samostatnú jednotku používateľského rozhrania (v HTML) s definovanými štýlmi (pomocou CSS) a stavom, ktorý je riadený pomocou JavaScriptu.
 
-Nižšie je uvedený príklad využitia Vue.js frameworku -- pomocou vytvorenia tzv. Single File Componentu (SFC), ktorý v rámci jedného súboru kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie.
-\begin{minted}[linenos]{html}
+Nasleduje príklad využitia Vue.js frameworku -- pomocou vytvorenia tzv. Single File Componentu (SFC), ktorý v rámci jedného súboru kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie. \clearpage
+\begin{minted}{html}
 ParagraphComponent.vue
 
 <template>
@@ -328,12 +329,13 @@ p {
 Horeuvedený príklad demonštruje dve hlavné funkcie Vue.js frameworku:
 \begin {itemize}
 \item {deklaratívne vykreslovanie a}
-\item {reaktivitu.}
+\item {reaktivitu \cite{vuejs_introduction} (vlastný preklad).}
 \end {itemize}
 
-V prvom prípade sa jedná o rozšírenie štandardného HTML o template syntax -- \{\{ \}\}, ktorý umožňuje dynamicky vykresliť obsah na základe JavaScript stavu. V uvedenom príklade sa jedná o zobrazenie paragrafu, kde zobrazený text pochádza z premennej \texttt{paragraphText}. Táto premenná obsahuje \texttt{computed} funkciu, ktorá vracia hodnotu \texttt{props.text}. Táto hodnota pochádza zo šablóny iného komponentu, kde bol tento komponent (\texttt{ParagraphComponent.vue}) importovaný, ako napr. v nasledujúcom príklade:
+V prvom prípade sa jedná o rozšírenie štandardného HTML o template syntax -- \{\{ \}\}, ktorý umožňuje dynamicky vykresliť obsah na základe JavaScript stavu. V uvedenom príklade sa jedná o zobrazenie paragrafu, kde zobrazený text pochádza z premennej \texttt{paragraphText}. Táto premenná obsahuje \texttt{computed} funkciu, ktorá vracia hodnotu \texttt{props.text}. Táto hodnota pochádza zo šablóny iného komponentu, kde bol tento komponent \newline (\texttt{ParagraphComponent.vue}) importovaný. 
+Nasledujúci príklad ukazuje práve tento prípad. \clearpage
 
-\begin{minted}[linenos]{html}
+\begin{minted}{html}
 ArticleComponent.vue
 
 <template>
@@ -345,17 +347,61 @@ import { ParagraphComponent } from './ParagraphComponent.vue';
 </script>
 \end{minted}
 
-V súbore \texttt{ArticleComponent.vue} bol importovaný \texttt{ParagraphComponent.vue} komponent, ktorý definuje atribút \texttt{text} a nastavuje ho na hodnotu \uv{Example text}. Hodnota tejto premennej sa tým pádom spropaguje do \texttt{ParagraphComponent.vue} komponentu do premennej \texttt{props.text}. \texttt{props} je vlastne objekt, v ktorom je možné nájsť všetky takto definované \uv{properties}. Ak by sa namiesto fixného textu v atribúte \uv{text} nachádzala premenná, ktorá by zmenila hodnotu, funkcia \texttt{computed} zaistí, že sa jej vrátená hodnota (\texttt{paragraphText}) zmení na základe detekovanej zmeny jej hodnoty.
+V súbore \texttt{ArticleComponent.vue} bol importovaný \newline \texttt{ParagraphComponent.vue} komponent, ktorý definuje atribút \texttt{text} a nastavuje ho na hodnotu \uv{Example text}. Hodnota tejto premennej sa tým pádom spropaguje do \newline
+\texttt{ParagraphComponent.vue} komponentu do premennej \texttt{props.text}. \texttt{props} je vlastne objekt, v ktorom je možné nájsť všetky takto definované \uv{properties}. Ak by sa namiesto fixného textu v atribúte \uv{text} nachádzala premenná, ktorá by zmenila hodnotu, funkcia \texttt{computed} zaistí, že sa jej vrátená hodnota (\texttt{paragraphText}) zmení na základe detekovanej zmeny jej hodnoty.
 Na základe tohto príkladu bola ukázaná sila reaktivity Vue.js frameworku.
 
-Horeuvedeným spôsobom je možné modulárne vytvárať a zobrazovať rozličné komponenty podľa potreby.
+Horeuvedeným spôsobom je možné modulárne vytvárať a zobrazovať rozličné komponenty podľa potreby. Taktiež je možné reagovať na rozličné eventy emitované prehliadačom, ako napr. na kliknutie myši na určitý element, posun po webovej stránke, atď.
+
 Nakoľko webový prehliadač neumožňuje priamo importovať Vue.js komponenty, je nutné ich zostavením skonvertovať do JavaScriptu, napr. pomocou nástroja Vite\footnote{https://vitejs.dev}. Ten je nutné nainštalovať ako závislosť, napr. pomocou nástroja npm. Následne stačí vytvoriť konfiguračný súbor, v ktorom sa definuje zostavovanie Vue.js komponentov a následne pomocou príkazu \texttt{vite build} je možné zostaviť Vue.js komponenty do \texttt{.js} súborov, ktoré môžu byť následne importované do HTML šablóny.
 
 \subsection {Next.js}
-Next.js je podobným frameworkom ako Nuxt.js s tým rozdielom, že nepoužíva Vue.js pre vytváranie znovupoužiteľných UI komponentov, ale iný framework -- React.
+Next.js je voľne dostupným, a taktiež open-source fullstack frameworkom podobne ako Nuxt.js. Narozdiel od Nuxt.js nepoužíva Vue.js pre vytváranie znovupoužiteľných UI komponentov, ale React.js \footnote{https://react.dev/} framework.
 
-\todo{dokončiť}
+Ponúka nástroje pre vytváranie API endpointov, ktoré musia byť vytvorené v zložke \texttt{pages/api}. Čo sa týka samotnej funkcionality, taktiež podporuje kompilovanie UI komponentov do spustiteľného JS kódu, jeho minifikovanie pre rýchlejší prenos dát medzi serverom a webovým prehliadačom, code-splitting (rozdelenie kódu pre zlepšenie výkonu aplikácie) až po server-side rendering (SSR, vykreslovaný obsah na serveri sa pošle klientovi). Samotný framework je naprogramovaný pomocou TypeScriptu, takže je možné využívať nápovedu pri programovaní webovej aplikácie pomocou tohto frameworku \cite{nextjs_introduction} (vlastný preklad).
 
+Zostavenie aplikácie je možné príkazom \texttt{next build}. Tento príkaz vytvorí \texttt{.next} zložku obsahujúcu skompilovaný obsah aplikácie. Takto skompilovanú aplikáciu je následne možné spustiť príkazom \texttt{next start} \cite{nextjs_introduction} (vlastný preklad). 
+
+\subsubsection {React.js}
+React.js je taktiež JavaScript framework, ktorý poskytuje možnosti pre budovanie používateľského rozhrania. Svojim účelom je podobný Vue.js frameworku a taktiež patrí medzi open-source nástroj, ktorý je avšak spravovaný firmou Meta\footnote{https://about.meta.com/}.
+
+React.js sa od Vue.js líši spôsobom definovania komponentu -- nepoužíva SFC pre definovanie štruktúry komponentu, jeho štýlu a stavu. Pre definovanie štruktúry komponentu používa React.js tzv. JSX, ktorý umožňuje písať HTML v JavaScripte.
+
+JSX je oproti HTML striktnejší v tom, že:
+\begin{itemize}
+\item {samotný komponent musí byť uzatvorený v značke,}
+\item {všetky značky musia mať uzatváraciu značku a}
+\item {atribúty značiek je potrebné písať v camelCase forme \cite{jsx_rules} (vlastný preklad).}
+\end{itemize}
+
+Použitie CSS je v komponente možné pomocou importovania CSS stylesheetu napísaného pre daný komponent \cite{reactjs_stylesheet} (vlastný preklad), alebo importovania tzv. CSS modulu, ktorý je možné prepoužiť viacerými komponentmi \cite{reactjs_stylesheet_module} (vlastný preklad). Taktiež je možné CSS definovať priamo v JS a ten naviazať priamo na element v komponente. CSS naviazané týmto spôsobom je možné dynamicky meniť v závislosti od vnútorného stavu komponentu.
+
+Takto definovanému komponentu zostáva už len definovať jeho stav. Ten sa definuje pomocou funkcie \texttt{useState}, ktorého argumentom je inicializačná hodnota. Táto funkcia vracia pole, kde na nultom indexe sa nachádza aktuálna hodnota daného stavu a na prvom indexe sa nachádza funkcia, ktorú je možné exekuovať pre aktualizáciu stavu \cite{react_state} (vlastný preklad). Nasledujúci príklad zobrazuje použitie tejto funkcie:
+\begin{minted}{typescript}
+import { useState } from 'react';
+
+const [answer, setAnswer] = useState('');
+console.log(answer); // výstupom na konzole bude prázdny reťazec
+setAnswer('foo');
+console.log(answer); // výstupom na konzole bude reťazec 'foo'
+\end{minted}
+
+Pre predstavu je na nasledujúcom príklade ukázaný rovnaký komponent ako v príklade pre Vue.js, avšak upravený pre React.js framework:
+\begin{minted}{html}
+import 'paragraph.css';
+
+export default function Paragraph({ paragraphText = '' }) {
+  return (
+    <>
+      <p> {paragraphText} </p>
+    </>
+  );
+}
+\end{minted}
+
+V porovnaní s kódom pre Vue.js je horeuvedený kód kratší, nakoľko neobsahuje \uv{boilerplate} pre definovanie prijímaných properties ako vo Vue.js. Taktiež je automaticky zaistené prepojenie hodnoty \uv{paragraphText} s vyrenderovaním jeho obsahu v \texttt{<p>} tagu. Pre fungovanie importovania horeuvedeného komponentu je potrebné funkciu, ktorá obsahuje definíciu React.js komponentu, exportovať. Táto povinnosť vo Vue.js odpadá.
+
+Samozrejme je rozsah rozdielov väčší než tie uvedené v tejto práci. Účelom ukážky je informovať o základných rozdieloch vytvárania komponentov v oboch frameworkoch.
 
 \subsection {Výsledná voľba frameworku}
 Na základe doterajších skúseností s Vue.js frameworkom by mal byť vývoj aplikácie pomocou Nuxt.js frameworku pre autora plynulejší a menej problematický, keďže autor nemá skúsenosti nie len s React.js frameworkom ale ani s Nuxt.js frameworkom.
@@ -397,7 +443,7 @@ Dicom Parser je knižnica implementujúca parsovanie všetkých známych validn�
 
 Alternatívou Dicom Parser knižnice by mohla byť knižnica dcm.js\footnote{https://github.com/dcmjs-org/dcmjs}, avšak vývoj tejto knižnice nie je stále dokončený (nebola zatiaľ vydaná jej stabilná verzia) a sami vývojári varujú pred použitím tejto knižnice v produkčnom prostredí\footnote{https://github.com/dcmjs-org/dcmjs}.
 
-Pre zhrnutie informácií v tejto sekcii -- knižnica Cornerstone WADO Image Loader využíva Web Workers pre vytvorenie nových pracovných vlákien, ktorých úloha je parsovanie DICOM súborov pomocou metódy \texttt{parseDicom} objektu \texttt{dicomParser} pochádzajúceho z Dicom Parser knižnice uvedenej vyššie. Metódou vrátený \texttt{DataSet} objekt je následne poslaný knižnici Cornerstone Core, ktorá sa postará o vykreslenie vyparsovaného DICOM snímku z tohto objektu.
+Pre zhrnutie informácií v tejto sekcii -- knižnica Cornerstone WADO Image Loader využíva Web Workers pre vytvorenie nových pracovných vlákien, ktorých úloha je parsovanie DICOM súborov pomocou metódy \newline \texttt{parseDicom} objektu \texttt{dicomParser} pochádzajúceho z Dicom Parser knižnice uvedenej vyššie. Metódou vrátený \texttt{DataSet} objekt je následne poslaný knižnici Cornerstone Core, ktorá sa postará o vykreslenie vyparsovaného DICOM snímku z tohto objektu.
 
 Nasledujúca sekcia sa bude zaoberať analýzou a návrhom, ako vykresliť mriežku na zobrazenú DICOM snímku pomocou knižnice Cornerstone Tools.
 
