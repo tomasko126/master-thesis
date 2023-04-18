@@ -703,6 +703,123 @@
       \verb https://web.dev/webassembly-threads/
       \endverb
     \endentry
+    \entry{about_css}{article}{}
+      \name{author}{1}{}{%
+        {{hash=46c3eff113f4f664b056d9a268c4a1c4}{%
+           family={Tab\bibnamedelimb Atkins\bibnamedelima Jr.},
+           familyi={T\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={Florian\bibnamedelima Rivoal},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod},
+           suffix={Elika\bibnamedelimb J.\bibnamedelimi Etemad},
+           suffixi={E\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{fullhash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{bibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authorbibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authornamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authorfullhash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{w3.org}
+      \field{title}{CSS Snapshot 2022. In:}
+      \field{year}{22. November 2022 [cit. 2023-04-17]}
+    \endentry
+    \entry{ecmascript_specification}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=375612598612a0070b870941aee8e174}{%
+           family={Shu-yu\bibnamedelima Guo},
+           familyi={S\bibinithyphendelim y\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={Kevin\bibnamedelima Gibbons},
+           giveni={K\bibinitperiod\bibinitdelim G\bibinitperiod},
+           suffix={Michael\bibnamedelima Ficarra},
+           suffixi={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{8e7bca15550cda1520372b7553c6e0e5}
+      \strng{fullhash}{8e7bca15550cda1520372b7553c6e0e5}
+      \strng{bibnamehash}{8e7bca15550cda1520372b7553c6e0e5}
+      \strng{authorbibnamehash}{8e7bca15550cda1520372b7553c6e0e5}
+      \strng{authornamehash}{8e7bca15550cda1520372b7553c6e0e5}
+      \strng{authorfullhash}{8e7bca15550cda1520372b7553c6e0e5}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{tc39.es}
+      \field{title}{ECMAScript{®} 2024 Language Specification. In:}
+      \field{year}{2023 [cit. 2023-04-16]}
+    \endentry
+    \entry{about_typescript}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fc128f81a9c36c61099f0e4e2331b655}{%
+           family={{TypeScript Docs Contributors}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{fc128f81a9c36c61099f0e4e2331b655}
+      \strng{fullhash}{fc128f81a9c36c61099f0e4e2331b655}
+      \strng{bibnamehash}{fc128f81a9c36c61099f0e4e2331b655}
+      \strng{authorbibnamehash}{fc128f81a9c36c61099f0e4e2331b655}
+      \strng{authornamehash}{fc128f81a9c36c61099f0e4e2331b655}
+      \strng{authorfullhash}{fc128f81a9c36c61099f0e4e2331b655}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{typescriptlang.org}
+      \field{title}{TypeScript for the New Programmer. In:}
+      \field{year}{Apr 12, 2023 [cit. 2023-04-16]}
+    \endentry
+    \entry{about_nodejs}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5d756c26a22af4df67c34bcf78ecc573}{%
+           family={{OpenJS Foundation and Node.js contributors}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d756c26a22af4df67c34bcf78ecc573}
+      \strng{fullhash}{5d756c26a22af4df67c34bcf78ecc573}
+      \strng{bibnamehash}{5d756c26a22af4df67c34bcf78ecc573}
+      \strng{authorbibnamehash}{5d756c26a22af4df67c34bcf78ecc573}
+      \strng{authornamehash}{5d756c26a22af4df67c34bcf78ecc573}
+      \strng{authorfullhash}{5d756c26a22af4df67c34bcf78ecc573}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{node.js}
+      \field{title}{About Node.js{®}}
+      \field{year}{2023 [cit. 2023-04-17]}
+    \endentry
+    \entry{about_docker}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0a6e82dfd0df55343233c1768adf738c}{%
+           family={Inc.},
+           familyi={I\bibinitperiod},
+           given={Docker},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{fullhash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{bibnamehash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{authorbibnamehash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{authornamehash}{0a6e82dfd0df55343233c1768adf738c}
+      \strng{authorfullhash}{0a6e82dfd0df55343233c1768adf738c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{online}
+      \field{journaltitle}{docs.docker.com}
+      \field{title}{Docker overview. In:}
+      \field{year}{2023 [cit. 2023-04-17]}
+    \endentry
     \entry{using_web_workers}{article}{}
       \name{author}{1}{}{%
         {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%

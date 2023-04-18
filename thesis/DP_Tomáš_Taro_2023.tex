@@ -16,18 +16,19 @@
 \usepackage{fnpct}
 \usepackage{float}
 \usepackage{listings} % typesetting of sources
+\usepackage{csquotes}
+\usepackage{bookmark}
 
 \usepackage[style=iso-numeric]{biblatex}
 \addbibresource{bib-database.bib}
 
 \RequirePackage[labelsep=space,singlelinecheck=false,font={up,small},labelfont={sf,bf}]{caption}[2020/05/30]
 
-
-% \usepackage{minted}
-% \setminted{autogobble=true,tabsize=4}
+\usepackage{minted}
+\setminted{autogobble=true, tabsize=4}
 
 % empty lines between paragraphs
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{0.75cm}
 \abnormalparskip{\baselineskip}
 
 \usepackage{enumitem}
@@ -41,6 +42,7 @@
 	\input{text/magneticka_rezonancia.tex}
 	\input{text/analyza_sucasnej_aplikacie.tex}
 	\input{text/analyza_a_navrh_webovej_aplikacie.tex}
+	\input{text/implementacia.tex}
 	\input{text/testovanie.tex}
 	\input{text/zhodnotenie.tex}
 	\input{text/zaver.tex}

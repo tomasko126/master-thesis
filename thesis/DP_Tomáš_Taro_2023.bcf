@@ -2431,7 +2431,15 @@
     <bcf:citekey order="48" intorder="1">cpp_to_wasm</bcf:citekey>
     <bcf:citekey order="49" intorder="1">cpp_to_wasm_image</bcf:citekey>
     <bcf:citekey order="50" intorder="1">webassembly_threads</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">using_web_workers</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">about_css</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">ecmascript_specification</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">ecmascript_specification</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">about_nodejs</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">about_docker</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">using_web_workers</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

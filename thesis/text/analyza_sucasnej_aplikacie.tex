@@ -27,12 +27,12 @@ Existujúca aplikácia využíva tento framework vo verzii 5.15, ktorá sa vyzna
 \item {Qt Test}
 \end{itemize}
 
-Qt Core\footnote{https://doc.qt.io/qt-5/qtcore-index.html} modul obsahuje najpoužívanejšie triedy ako napr. \texttt{QCoreApplication}, \texttt{QObject}, \texttt{QDebug} a iné. Nakoľko sú tieto triedy používané aj inými modulmi, je tento modul implicitne nalinkovaný Qt frameworkom pri budovaní aplikácie \cite{qtcore_description} (vlastný preklad). \newline
+Qt Core\footnote{https://doc.qt.io/qt-5/qtcore-index.html} modul obsahuje najpoužívanejšie triedy ako napr. \texttt{QCoreApplication}, \texttt{QObject}, \texttt{QDebug} a iné. Nakoľko sú tieto triedy používané aj inými modulmi, je tento modul implicitne nalinkovaný Qt frameworkom pri budovaní aplikácie \cite{qtcore_description} (vlastný preklad).
 
-Qt Widgets\footnote{https://doc.qt.io/qt-5/qtwidgets-index.html} modul poskytuje UI elementy, ktoré sú určené pre vytváranie používateľského rozhrania. Tieto elementy môžu zobrazovať rozličné dáta, prijímať vstup z klávesnice, byť štylizované a zoskupované do rozličných usporiadaní \cite{qtwidgets_description} (vlastný preklad). Existujúca aplikácia používa z modulu napr. triedu \texttt{QMainWindow}, ktorá je zodpovedná za vykreslenie aplikačného okna a taktiež triedu \texttt{QGraphicsScene}, ktorá je zodpovedná za vykreslenie snímkov z magnetickej rezonancie v DICOM formáte. \newline
+Qt Widgets\footnote{https://doc.qt.io/qt-5/qtwidgets-index.html} modul poskytuje UI elementy, ktoré sú určené pre vytváranie používateľského rozhrania. Tieto elementy môžu zobrazovať rozličné dáta, prijímať vstup z klávesnice, byť štylizované a zoskupované do rozličných usporiadaní \cite{qtwidgets_description} (vlastný preklad). Existujúca aplikácia používa z modulu napr. triedu \texttt{QMainWindow}, ktorá je zodpovedná za vykreslenie aplikačného okna a taktiež triedu \texttt{QGraphicsScene}, ktorá je zodpovedná za vykreslenie snímkov z magnetickej rezonancie v DICOM formáte.
 
 Qt GUI\footnote{https://doc.qt.io/qt-5/qtgui-index.html} modul obsahuje triedy určené pre zobrazovanie aplikačného okna a iného grafického obsahu s následnou obsluhou udalostí. Taktiež obsahuje triedy, ktoré sú zodpovedné za zobrazovanie 2D grafiky, fontov a typografie \cite{qtgui_description} (vlastný preklad).
-Súčasná aplikácia z tohto modulu používa napr. triedu \texttt{QImage}, ktorá obsahuje metódy pre priamy prístup k pixelom snímkov a ich manipuláciu. \newline
+Súčasná aplikácia z tohto modulu používa napr. triedu \texttt{QImage}, ktorá obsahuje metódy pre priamy prístup k pixelom snímkov a ich manipuláciu.
 
 Qt Test\footnote{https://doc.qt.io/qt-5/qttest-index.html} modul poskytuje rozličné triedy pre jednotkové testovanie Qt aplikácií a príslušných knižníc \cite{qttest_description} (vlastný preklad) -- v súčasnej aplikácii bol tento modul využitý pri testovaní grafického používateľského rozhrania a funkcionalít súčasnej aplikácie, ako napr. testovanie zmien v nastaveniach vykreslenej mriežky na obrázku z magnetickej rezonancie.
 
@@ -56,7 +56,9 @@ Ako príklad bude uvedené získanie informácie o pacientovom veku - všetky in
 Po hlavičke nasleduje skupina 7FE0, ktorá už obsahuje dáta o samotných obrazových pixeloch \cite{Varma_2012} (vlastný preklad). Typ kódovania týchto dát určuje Transfer Syntax -- ten udáva, akým spôsobom sú obrazové pixely zakódované. Transfer Syntax obsahuje taktiež informáciu, v akom poradí bajtov sú informácie zakódované (Little Endian vs Big Endian) a aká kompresia obrazových dát bola použitá \cite{dicom_transfer_syntax} (vlastný preklad).
 
 \subsection {DCMTK}\label{dcmtk}
-DCMTK\footnote{https://dicom.offis.de/en/dcmtk/dcmtk-tools/} je knižnica, ktorá implementujú veľkú časť DICOM štandardu v jazykoch C a C\texttt{++}. Úlohou tejto knižnice je okrem iného skúmanie, vytváranie a konverzia DICOM súborov, manipulácia s pamäťovými médiami a odosielanie, resp. prijímanie obrazových súborov cez internetové pripojenie. Za jej vývojom stojí nemecká firma OFFIS, ktorá túto knižnicu vyvíja nepretržite už od roku 1993. V súčasnosti sa používa v nemocniciach a rôznych spoločnostiach po celom svete, kde predstavuje softvérový základ pri rozličných výskumných projektoch, prototypoch a komerčných produktoch nevynímajúc \cite{dcmtk_description} (vlastný preklad). \newline
+DCMTK\footnote{https://dicom.offis.de/en/dcmtk/dcmtk-tools/} je knižnica, ktorá implementujú veľkú časť DICOM štandardu v jazykoch C a C\texttt{++}. Úlohou tejto knižnice je okrem iného skúmanie, vytváranie a konverzia DICOM súborov, manipulácia s pamäťovými médiami a odosielanie, resp. prijímanie obrazových súborov cez internetové pripojenie.
+
+Za jej vývojom stojí nemecká firma OFFIS, ktorá túto knižnicu vyvíja nepretržite už od roku 1993. V súčasnosti sa používa v nemocniciach a rôznych spoločnostiach po celom svete, kde predstavuje softvérový základ pri rozličných výskumných projektoch, prototypoch a komerčných produktoch nevynímajúc \cite{dcmtk_description} (vlastný preklad).
 
 Súčasná aplikácia je kompatibilná s najnovšou verziou tejto knižnice, ktorou je verzia 3.6.7. DCMTK knižnica je v tejto aplikácii použitá pre získanie informácií z hlavičiek DICOM súborov, ako napr:
 
@@ -68,6 +70,7 @@ Súčasná aplikácia je kompatibilná s najnovšou verziou tejto knižnice, kto
 
 \subsection {OpenMP}\label{openmp}
 OpenMP\footnote{https://www.openmp.org} poskytuje rozhranie pre programovanie aplikácií (tzv. API), vďaka ktorému je možné vytvárať C\footnote{https://www.open-std.org/jtc1/sc22/wg14/}, C\texttt{++} a Fortran\footnote{https://fortran-lang.org/en/} aplikácie využívajúce viac vlákien nad zdieľanou pamäťou. Vývoj OpenMP v súčasnosti zastrešuje \newline OpenMP Architecture Review Board.
+
 OpenMP funguje na báze direktív, pomocou ktorých sa jednotlivé časti programu dajú paralelizovať viacerými spôsobmi -- a to paralelizáciou prevádzania jednotlivých úloh (tzv. funkčný paralelizmus -- vhodný pre paralelizáciu rekurzívnych algoritmov, kde úloha = volanie funkcie) alebo paralelizáciou dátovo nezávislých for loop iterácií (tu sa jedná o tzv. iteračný dátový paralelizmus) \cite{openmp_description}.
 
 Existujúca aplikácia využíva direktívy OpenMP pre paralelizáciu výpočetne náročnejších algoritmov. Súčasná verzia OpenMP, verzia 5.2, je plne kompatibilná s aktuálnym zdrojovým kódom aplikácie.
@@ -92,7 +95,7 @@ Súčasná aplikácia obsahuje a využíva nasledujúce 3 podprogramy:
 \item {graph-cuts}
 \end {itemize}
 
-\texttt{grid-tracker} C\texttt{++} podprogram určený pre sledovanie pohybu myokardu pomocou detekcie SPAMM mriežky z DICOM snímku a mriežky vytvorenej používateľom. Mriežku vytvorenú používateľom sa snaží zarovnať so SPAMM mriežkou pre každú snímku zo sekvencie snímkov. Výstupom sú upravené koordináty bodov mriežky vytvorenej používateľom -- tie sa následne aplikujú namiesto doterajšej mriežky, čoho výsledkom je zobrazenie mriežky s upravenými koordinátmi bodov. \newline
+\texttt{grid-tracker} C\texttt{++} podprogram určený pre sledovanie pohybu myokardu pomocou detekcie SPAMM mriežky z DICOM snímku a mriežky vytvorenej používateľom. Mriežku vytvorenú používateľom sa snaží zarovnať so SPAMM mriežkou pre každú snímku zo sekvencie snímkov. Výstupom sú upravené koordináty bodov mriežky vytvorenej používateľom -- tie sa následne aplikujú namiesto doterajšej mriežky, čoho výsledkom je zobrazenie mriežky s upravenými koordinátmi bodov.
 
 Vstupom tohto programu sú nasledujúce parametre:
 \begin {itemize}
@@ -106,9 +109,9 @@ Vstupom tohto programu sú nasledujúce parametre:
 
 Pre daný výpočet \texttt{grid-tracker} využíva technológie \nameref{tnl} a \nameref{openmp}.
 
-Jeho výstupom sú predchádzajúce používateľom definované mriežky v textovom TNL multivectore upravené algoritmom tak, aby mriežky zodpovedali mriežkam definovanými SPAMM metódou. \newline
+Jeho výstupom sú predchádzajúce používateľom definované mriežky v textovom TNL multivectore upravené algoritmom tak, aby mriežky zodpovedali mriežkam definovanými SPAMM metódou.
 
-Nasledujúce dva C\texttt{++} podprogramy nie sú dôležité pre túto diplomovú prácu, avšak pre úplnosť je ich účel vysvetlený. \newline
+Nasledujúce dva C\texttt{++} podprogramy nie sú dôležité pre túto diplomovú prácu, avšak pre úplnosť je ich účel vysvetlený.
 
 Úlohou \texttt{local-variance} podprogramu je aplikovanie filtra lokálnej variancie pre danú snímku za účelom neskoršej lepšej segmentácie srdcových komôr. Tento filter je implentovaný pomocou jednoduchého rozptylového filtru, ktorý vypočíta priemernú intenzitu pixelov vo štvorcovom okolí každého pixelu a túto hodnotu dosadí do výberového rozptylu, ktorý sa bude rovnať novej hodnote intenzity pixelu \cite{master_thesis_app}.
 
@@ -123,7 +126,7 @@ Pre inštaláciu Qmake nástroja je potrebné nainštalovať balíček \texttt{q
 
 Qt Creator je aplikácia, ktorá poskytuje prostredie pre integrovaný vývoj aplikácií postavených nad Qt frameworkom. Pomocou tejto aplikácie je možné vyvíjať, testovať, zostavovať, spúšťať a debugovať aplikácie postavené na tomto frameworku. Táto aplikácia bude neskôr využitá pre neskorší debugging súčasnej aplikácie.
 
-Okrem balíčku \texttt{qt5-default} je taktiež potrebné nainštalovať balíčky \texttt{cmake}\footnote{sudo apt install cmake} a \texttt{build-essential}\footnote{sudo apt install build-essential}, čo sú balíčky poskytujúce ďalšie nástroje potrebné pre úspešné zostavenie aplikácie. Tieto balíčky v niektorých prípadoch už môžu byť súčasťou použitej linuxovej distribúcie, čo ale neplatilo v prípade použitia Ubuntu 22.10 ako operačného systému.
+Okrem balíčku \texttt{qt5-default} je taktiež potrebné nainštalovať balíčky \texttt{cmake}\footnote{sudo apt install cmake} a \texttt{build-essential}\footnote{sudo apt install build-essential}, čo sú balíčky poskytujúce ďalšie nástroje potrebné pre úspešné zostavenie aplikácie. Tieto balíčky už môžu byť v niektorých prípadoch súčasťou použitej linuxovej distribúcie, čo ale neplatilo v prípade použitia Ubuntu 22.10 ako operačného systému.
 
 Pretože súčasná aplikácia využíva DCMTK knižnicu, ako bolo popísané v sekcii \ref{dcmtk}, je tiež nutné nainštalovať nasledujúce balíčky: \texttt{dcmtk}\footnote{sudo apt install dcmtk} \newline a {\texttt{libdcmtk-dev}\footnote{sudo apt install libdcmtk-dev}.
 
@@ -211,10 +214,10 @@ Obsah pravého postranného panelu je rozdelený na nasledovné karty: \uv{View 
 
 \begin {center}
         \centering
-        \includegraphics[height=7cm]{media/existing_app/tabs/view_properties.png}
-        \includegraphics[height=7cm]{media/existing_app/tabs/tools.png}
-        \includegraphics[height=7cm]{media/existing_app/tabs/image_processing_inactive.png}
-        \includegraphics[height=7cm]{media/existing_app/tabs/history.png}
+        \includegraphics[height=6cm]{media/existing_app/tabs/view_properties.png}
+        \includegraphics[height=6cm]{media/existing_app/tabs/tools.png}
+        \includegraphics[height=6cm]{media/existing_app/tabs/image_processing_inactive.png}
+        \includegraphics[height=6cm]{media/existing_app/tabs/history.png}
         \captionsetup{justification=centering}
         \captionof{figure}{Zobrazenie obsahu kariet na pravom postrannom paneli}
 \end {center}
