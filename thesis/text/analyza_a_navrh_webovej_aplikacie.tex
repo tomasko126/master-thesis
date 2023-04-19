@@ -468,14 +468,108 @@ Na druhú stranu, ak by mala byť mriežka implementovaná priamo v Cornerstone 
 
 Nakoľko v tomto momente nie je jasné, či bude výsledná implementácia mriežky potrebovať zmenu niektorého zo súborov Cornerstone Tools knižnice, je vhodnejšie začať implementovať mriežku priamo v knižnici. Keď bude implementácia tejto mriežky dokončená, bude nutné posúdiť, či je možné celú funkcionalitu mriežky migrovať do riešenia využívajúceho iba dedikované API pre svoju funkcionalitu.  \todo {v implementácii zhodnotiť že to nie je možné, nakoľko boli potrebné zmeny v samotných súboroch cornerstone tools}.
 
-Ako pri Cornerstone Core, tak aj Cornerstone Tools knižnica bude mať čoskoro svojho nástupcu, knižnicu Cornerstone Tools v2\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/tools}, ktorá bude určená pre Cornerstone3D. Táto nová knižnica je momentálne v aktívnom vývoji a jej stabilná verzia ako v prípade Cornerstone3D nebola stále vydaná. To je dôvodom, prečo bude pri implementácii aplikácie použitá doterajšia verzia Cornerstone Tools knižnice.
+Ako pri Cornerstone Core, tak aj Cornerstone Tools knižnica bude mať čoskoro svojho nástupcu\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/tools}, ktorá bude určená pre Cornerstone3D. Táto nová knižnica je momentálne v aktívnom vývoji a jej stabilná verzia rovnako ako v prípade Cornerstone3D nebola doteraz vydaná. To je dôvodom, prečo bude pri implementácii aplikácie použitá doterajšia verzia Cornerstone Tools knižnice.
 
-\section {Návrh komunikácie webového rozhrania so serverom}
+\section {Návrh komunikácie webového rozhrania so serverom}\label{api_endpoint}
+Keďže bude nutné posielať serveru potrebné dáta pre výpočet súradníc bodov mriežok pre každú snímku MR, je nutné navrhnúť túto komunikáciu medzi klientom a serverom. V tomto prípade postačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď klientovi pošle vo formáte potrebnom pre vykreslenie aktualizovaných bodov mriežok.
+
+Detaily o tomto API endpointe sú nasledovné:
+\begin {itemize}
+\item {pre komunikáciu s endpointom bude využitý HTTP protokol,}
+\item {endpoint bude dostupný na adrese <hostname>/api/grid, kde <hostname> predstavuje doménu servera a}
+\item {endpoint bude prijímať dáta vtedy, ak daná požiadavka bude poslaná metódou POST.}
+\end {itemize}
+
+Telo požiadavky bude mať nasledovný formát:
+\begin{minted}{json}
+{
+
+}
+\end{minted}
+
+Následne server spracuje prijaté dáta tak, že ich pošle \texttt{grid-tracker} podprogramu, ktorý prevedie výpočet nad prijatými MR snímkami a mriežkami. Výstup z \texttt{grid-tracker} podprogramu bude nutné serializovať do takej podoby, ktorá by bola vhodná pre odoslanie odpovede klientovi za účelom zobrazenia aktualizovaných mriežok pomocou vytvoreného Grid toolu, ktorý sa bude nachádzať v upravenej Cornerstone Tools knižnici.
+
+Telo odpovede bude obsahovať dáta v nasledujúcom formáte:
+\begin{minted}{json}
+{
+  grids: {
+    {
+      
+    },
+    ...
+  }
+}
+\end{minted}
+
 
 \todo {pridať diagram komunikácie}
 
 \subsection {Anonymizácia DICOM dát}
+Horeuvedené dáta pochádzajúce z DICOM snímkov je potrebné pred ich poslaním anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách 0008 a 0010. Skupina 0008 obsahuje dáta ohľadom štúdie a skupina 0010 obsahuje dáta o pacientovi.
+
+Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte. Táto trieda nahradí obsah tagov z daných skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach.
 
 \section {Návrh používateľského rozhrania}
+Pri návrhu používateľského rozhrania som sa inšpiroval UI doterajšej aplikácie, avšak s pár zmenami týkajúcimi sa štruktúry budúceho UI. Návrh samotného rozhrania, ktorý bude slúžiť ako predloha pri vytváraní používateľského rozhrania webovej aplikácie, je priložený nižšie. 
 
-\todo {pridať wireframe}
+Tento návrh používateľského rozhrania som rozdelil na 4 hlavné časti:
+\begin {itemize}
+\item {horný panel,}
+\item {ľavý postranný panel,}
+\item {centrálnu časť a}
+\item {pravý postranný panel.}
+\end {itemize}
+
+Nižšie zobrazený návrh používateľského rozhrania sa skladá z dvoch snímkov, nakoľko sa obsah pravého postranného panelu môže meniť na základe zvolenej karty v pravom postrannom paneli.
+
+\begin {center}
+\centering
+\includegraphics[height=10cm]{media/wireframes/1.png}
+\captionsetup{justification=centering}
+\captionof{figure}{Návrh používateľského rozhrania - prvá časť}
+\end {center}
+
+\begin {center}
+\centering
+\includegraphics[height=10cm]{media/wireframes/2.png}
+\captionsetup{justification=centering}
+\captionof{figure}{Návrh používateľského rozhrania - druhá časť}
+\end {center}
+
+Nasledujúce podsekcie sa budú venovať popisu jednotlivých častí s popisom jednotlivých možností zobrazených v daných častiachl
+
+\subsection {Horný panel}
+V hornom paneli sa nachádzajú tlačidlá, na ktoré bude možné kliknúť.
+
+Prvé tlačidlo zľava slúži pre načítanie DICOM snímkov. Po kliknutí na toto tlačidlo sa zobrazí systémové okno, kde si bude môcť používateľ vybrať DICOM snímky, ktoré sa majú načítať do aplikácie. Pri každej tejto akcii sa vymažú predchádzajúce načítané snímky (ak existujú) a nahradia sa práve zvolenými snímkami.
+
+Akonáhle používateľ aplikácie klikne na druhé tlačidlo, vymažú sa všetky načítané snímky a aplikácia sa prepne do stavu pred načítaním snímkov do aplikácie.
+
+Tretie tlačidlo bude určené pre spustenie animácie snímkov. Po kliknutí naň sa ikona zmení na \uv{stop} ikonu a tlačidlo zmení svoju funkciu -- po opätovnom kliknutí sa animácia zastaví.
+
+Pomocou štvrtého tlačidla bude možné priblížiť aktuálne zobrazenú DICOM snímku -- piate tlačidlo ju oddiali.
+
+Šieste tlačidlo umožní posunúť DICOM snímku v ľubovoľnom smere a siedmym tlačidlom bude možné presúvať vykreslenú mriežku alebo jej body v závislosti na aktuálnom nastavení tohto tlačidla.
+
+\subsection {Ľavy postranný panel}
+Ľavý postranný panel obsahuje dve sekcie -- Image information a Grid algorithm parameters.
+
+Image information sekcia informuje používateľa o mene pacienta, ktorému aktuálne zobrazená snímka patrí. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná. Pod týmito informáciami sa nachádzajú informácie o výške a šírke zobrazenej snímky.
+
+Grid algorithm parameters slúži pre nastavenie parametrov pre \texttt{grid-tracker} podprogram. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkoch. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok.
+
+\subsection {Centrálna časť}
+V centrálnej časti aplikácie bude zobrazená aktuálne vybraná DICOM snímka. Pod touto snímkou budú zobrazené náhľady na všetky importované snímky, na ktoré bude možné kliknúť. Po kliknutí na náhľad snímky sa daná snímka zobrazí. Okrem zobrazenia snímky bude možné vykresliť používateľom definovanú mriežku, s ktorou sa bude dať interagovať pomocou myši.
+
+\subsection {Pravý postranný panel}
+Pravý postranný panel je rozdelený na dve karty -- Image tools a Grid tools. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
+
+Na Image tools karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímok naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímkov, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej animovanej snímky po nastavenie koncovej animovanej snímky, po ktorú bude animácia prehrávaná.
+
+Grid tools karta bude obsahovať rozličné nastavenia mriežky. Tie sa delia na globálne a lokálne. Globálne nastavenia budú mať efekt pre všetky vytvorené mriežky, lokálne sa budú aplikovať len na mriežku, ktorá je aktuálne zobrazená.
+
+V globálnych nastaveniach bude možné nastaviť možnosť interakcie s mriežkou pomocou myši (Move nastavenie). Ak bude zapnutá možnosť \uv{Grid}, potiahnutím bodu mriežky sa celá mriežka posunie o vektor posunu. V prípade zvolenej možnosti \uv{Point} sa nebude posúvať celá mriežka, ale iba myšou zvolený bod.
+Ďalšie nastavenie -- \uv{Show refinement points} -- bude slúžiť na dynamické pridanie, resp. odobranie všetkých refinement bodov, pomocou ktorých bude možné lepšie zarovať používateľom vygenerovanú mriežku so SPAMM mriežkou vygenerovanou MR prístrojom.
+Tlačidlo \uv{Copy grid to all images} bude slúžiť pre skopírovanie zobrazenej mriežky do všetkých importovaných mriežok. Po klliknutí na toto tlačidlo sa zobrazí modálne okno, ktoré upozorní používateľa o tejto akcii s nemožnosťou prípadného vrátenia tohto kroku. Toto tlačidlo bude aktívne iba v prípade, že na aktuálnom snímku bude zobrazená mriežka.
+
+V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky, ako uhol, offset a iné. Okrem toho bude možné pomocou tlačidla \uv{Create grid} vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí na tlačidlo sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude po kliknutí naň vymazať mriežku na zobrazenej snímke.
