@@ -48,10 +48,18 @@
         stick-to-edges
       >
         <va-button
+          v-if="!isButtonDisabled || !isWaitingForData"
           :disabled="isButtonDisabled"
           @click="computeGrids"
         >
           Compute
+        </va-button>
+        <va-button v-else-if="isWaitingForData"
+          color="danger"
+          icon="close"
+          @click="abortRequest"
+        >
+          Cancel computation
         </va-button>
       </va-popover>
     </div>
@@ -59,13 +67,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, toRaw, unref } from 'vue';
-import { useFetch } from 'nuxt/app';
+import { computed, type Ref, ref } from 'vue';
 import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
 import type { GridCommunication } from '~/functions/types/GridCommunication';
+import {$fetch, FetchError} from 'ofetch';
 
 const store = useGlobalStore();
+const isWaitingForData: Ref<boolean> = ref(false);
+const abortController: Ref<AbortController|null> = ref(null);
 
 const inputRules = computed(() => {
   return [
@@ -75,7 +85,7 @@ const inputRules = computed(() => {
 });
 
 const isButtonDisabled = computed(() => {
-  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds);
+  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds) || isWaitingForData.value;
 });
 
 const popoverMessage = computed(() => {
@@ -91,16 +101,28 @@ const computeGrids = async () => {
   const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
 
   try {
-    const { data } = await useFetch('/api/grid', { method: 'post', body: requestBody });
-    const responseBody = toRaw(unref(data)) as GridCommunication.Response.BodyData;
+    isWaitingForData.value = true;
+    abortController.value = typeof AbortController !== 'undefined' ? new AbortController() : {} as AbortController;
 
-    for (const grid of responseBody.grids) {
+    const responseData: GridCommunication.Response.BodyData = await $fetch('/api/grid', { method: 'post', body: requestBody, signal: abortController.value?.signal });
+
+    for (const grid of responseData.grids) {
       store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
       store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
     }
+  } catch (e) {
+    if (!(e instanceof FetchError)) {
+      throw e;
+    }
   } finally {
     store.animation.isComputingGrids = false;
+    isWaitingForData.value = false;
+    abortController.value = null;
   }
+};
+
+const abortRequest = () => {
+  abortController.value?.abort();
 };
 </script>
 
