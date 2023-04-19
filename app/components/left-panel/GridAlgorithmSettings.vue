@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, toRaw, unref, type Ref } from 'vue';
+import { computed, type Ref, ref } from 'vue';
 import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
 import type { GridCommunication } from '~/functions/types/GridCommunication';
