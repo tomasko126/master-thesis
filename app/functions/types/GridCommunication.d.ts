@@ -4,7 +4,7 @@ import primaryLine = GridToolOptions.primaryLine;
 declare namespace GridCommunication {
   interface Image {
     imageId: string;
-    imageData: Uint8Array;
+    imageData: string;
   }
 
   declare namespace Request {

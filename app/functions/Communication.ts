@@ -3,18 +3,19 @@ import type { GridCommunication } from '~/functions/types/GridCommunication';
 import { displayImageInElement, getImageData, startLoopingImages } from '~/functions/Cornerstone';
 import DicomAnonymizer from '~/functions/DicomAnonymizer';
 import { useGlobalStore } from '~/stores';
+import { Encode } from 'arraybuffer-encoding/base64/standard';
 
 class Communication {
   /**
    * Retrieve image data for given imageIndex
    */
-  getImageData(imageIndex: number): GridCommunication.Image {
+  async getImageData(imageIndex: number): Promise<GridCommunication.Image> {
     const imageData = getImageData(imageIndex);
     const store = useGlobalStore();
 
     return {
       imageId: store.imageIds[imageIndex],
-      imageData: DicomAnonymizer.anonymize(imageData),
+      imageData: Encode(DicomAnonymizer.anonymize(imageData)),
     };
   }
 
@@ -82,7 +83,7 @@ class Communication {
 
     for (let imageIdx = 0; imageIdx < store.imageIds.length; imageIdx++) {
       const serializedData: GridCommunication.Request.BodyData = {
-        image: this.getImageData(imageIdx),
+        image: await this.getImageData(imageIdx),
         grid: await this.getGridData(imageIdx),
       };
 
