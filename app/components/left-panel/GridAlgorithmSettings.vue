@@ -102,7 +102,7 @@ const computeGrids = async () => {
 
   try {
     isWaitingForData.value = true;
-    abortController.value = new AbortController();
+    abortController.value = typeof AbortController !== 'undefined' ? new AbortController() : {} as AbortController;
 
     const responseData: GridCommunication.Response.BodyData = await $fetch('/api/grid', { method: 'post', body: requestBody, signal: abortController.value?.signal });
 
