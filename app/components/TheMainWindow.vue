@@ -31,8 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue';
-import type { Ref } from 'vue';
+import { ref, watch, onMounted, onUnmounted, type Ref } from 'vue';
 import { useToast, VaFile } from 'vuestic-ui';
 import GridState from '../functions/GridState';
 import DicomHeaderParser from '../functions/DicomHeaderParser';

@@ -71,7 +71,7 @@ import { computed, type Ref, ref } from 'vue';
 import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
 import type { GridCommunication } from '~/functions/types/GridCommunication';
-import {$fetch, FetchError} from 'ofetch';
+import { $fetch, FetchError } from 'ofetch';
 
 const store = useGlobalStore();
 const isWaitingForData: Ref<boolean> = ref(false);

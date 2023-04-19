@@ -16,8 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Ref } from 'vue';
+import { ref, type Ref } from 'vue';
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
 
