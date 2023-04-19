@@ -5,11 +5,11 @@ import cryptoRandomString from 'crypto-random-string';
  * This class shall be used before any DICOM data is being sent to the server.
  */
 class DicomAnonymizer {
-  /**
-   * Tags we want to anonymize.
-   * For more info, take a look at https://www.dicomlibrary.com/dicom/dicom-tags/
-   */
-  static fieldsToAnonymize = new Set(['x00100010', 'x00100020', 'x00100030', 'x00081030']);
+  dicomImage: Dicom.Image;
+
+  constructor(dicomImage: Dicom.Image) {
+    this.dicomImage = dicomImage;
+  }
 
   /**
    * Generates a crypto-safe string with specified length
@@ -19,14 +19,22 @@ class DicomAnonymizer {
   }
 
   /**
+   * Tags we want to anonymize.
+   * For more info, take a look at https://www.dicomlibrary.com/dicom/dicom-tags/
+   */
+  getTagsToAnonymize(): Set<string> {
+    return new Set(Object.keys(this.dicomImage.elements).filter((val) => val.startsWith('x0008') || val.startsWith('x0010')));
+  }
+
+  /**
    * Anonymize tags of given DICOM image.
    * Returns copy of DICOM image.
    */
-  static anonymize(dicomImage: Dicom.Image): Uint8Array {
-    const byteArrayCopy = structuredClone(dicomImage.byteArray);
+  getAnonymizedImage(): Uint8Array {
+    const byteArrayCopy = structuredClone(this.dicomImage.byteArray);
 
-    for (const key of DicomAnonymizer.fieldsToAnonymize.keys()) {
-      const element = dicomImage.elements[key];
+    for (const tagName of this.getTagsToAnonymize().keys()) {
+      const element = this.dicomImage.elements[tagName];
       if (element === undefined) {
         continue;
       }

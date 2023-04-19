@@ -13,9 +13,11 @@ class Communication {
     const imageData = getImageData(imageIndex);
     const store = useGlobalStore();
 
+    const dicomAnonymizer = new DicomAnonymizer(imageData);
+
     return {
       imageId: store.imageIds[imageIndex],
-      imageData: Encode(DicomAnonymizer.anonymize(imageData)),
+      imageData: Encode(dicomAnonymizer.getAnonymizedImage()),
     };
   }
 
