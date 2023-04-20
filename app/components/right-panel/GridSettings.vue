@@ -91,16 +91,28 @@
     <div class="grid-buttons">
       <RightPanelGridCallToActionButton />
     </div>
+      <va-modal
+        v-model="showModal"
+        blur
+        hide-default-actions
+      >
+        <template #default>
+          <p>Please wait...</p>
+        </template>
+      </va-modal>
   </GeneralTabContent>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useGlobalStore } from '~/stores';
 import { MOVING_MODE } from '~/functions/enums/GridEnums';
 import { activateTool } from '~/functions/Cornerstone';
+import { refreshGridData } from '~/functions/General';
 
 const store = useGlobalStore();
+
+const showModal = ref(false);
 
 const moveMode = computed(() => {
   return store.gridState?.getMovingMode() ?? null;
@@ -133,6 +145,12 @@ const noOfSecondaryLines = computed(() => {
 const isShowingRefinementPoints = computed(() => {
   return store.gridState?.isShowingRefinementPoints() ?? null;
 });
+
+const handleModal = async () => {
+  showModal.value = true;
+  await refreshGridData();
+  showModal.value = false;
+};
 
 const setMoveMode = (input: string): void => {
   const gridTool = store.gridState?.tool;
@@ -193,12 +211,13 @@ const setNoOfSecondaryLines = (input: string): void => {
   gridTool.noOfSecondaryLines = parseInt(input);
 };
 
-const setShowingRefinementPoints = (input: boolean): void => {
+const setShowingRefinementPoints = async (input: boolean): Promise<void> => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
   }
   gridTool.showRefinementPoints = input;
+  await handleModal();
 };
 </script>
 

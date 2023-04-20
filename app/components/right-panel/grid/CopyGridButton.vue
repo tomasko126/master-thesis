@@ -29,9 +29,9 @@
   </va-modal>
 </template>
 <script setup lang="ts">
-import { ref, toRaw, computed, unref, watch } from 'vue';
+import { ref, toRaw, computed } from 'vue';
 import { useGlobalStore } from '~/stores';
-import { displayImageInElement, startLoopingImages } from '~/functions/Cornerstone';
+import { refreshGridData } from "~/functions/General";
 
 const store = useGlobalStore();
 
@@ -44,24 +44,6 @@ const popoverMessage = computed(() => {
   }
   return 'Copy grid from current image to all images';
 });
-
-/**
- * Refresh grid data for each image by starting an animation.
- */
-const refreshGridData = (): Promise<void> => {
-  return new Promise((resolve) => {
-    const shownCurrentImageId = unref(store.shownImageId);
-    startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
-
-    const unwatch = watch(() => store.isLoopingImages, async (value) => {
-      if (!value) {
-        await displayImageInElement(store.mainImageContainer as HTMLElement, shownCurrentImageId as string);
-        unwatch();
-        resolve();
-      }
-    });
-  });
-};
 
 const copyGrid = async (): Promise<void> => {
   const gridTool = store?.gridState?.tool;
