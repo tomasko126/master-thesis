@@ -114,11 +114,11 @@ const spacing = computed(() => {
 });
 
 const offsetX = computed(() => {
-  return store.gridState?.getOffsetX()?.toFixed(2) ?? null;
+  return store.gridState?.getOffsetX() ?? null;
 });
 
 const offsetY = computed(() => {
-  return store.gridState?.getOffsetY()?.toFixed(2) ?? null;
+  return store.gridState?.getOffsetY() ?? null;
 });
 
 const noOfPrimaryLines = computed(() => {
