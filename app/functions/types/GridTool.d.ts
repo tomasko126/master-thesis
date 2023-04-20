@@ -65,7 +65,7 @@ export class GridTool {
   /**
    * Set grid's offset.
    */
-  setOffset(newLocation: { x: number, y: number } = { x: 0, y: 0 }, usingMouseInput: boolean = false): void;
+  setOffset(newLocation: { x: number|null, y: number|null } = { x: 0, y: 0 }, usingMouseInput: boolean = false): void;
 
   /**
    * Tell grid, whether to show its refinement points or not.

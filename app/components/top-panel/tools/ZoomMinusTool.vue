@@ -29,7 +29,7 @@ const zoomEnd = () => {
 
 const zoomStart = () => {
   zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value);
-  
+
   document.addEventListener('mouseup', () => {
     zoomEnd();
   }, { once: true });
