@@ -2,7 +2,7 @@
   <BaseTool
     :active="isToolActive"
     :disabled="!store.imageIds.length || store.isLoopingImages || store.animation.isComputingGrids"
-    popover-message="Move with image"
+    popover-message="Move image"
     :tool-name="toolName"
     @click="onClick"
   >
