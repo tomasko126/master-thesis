@@ -22,25 +22,6 @@ class Communication {
   }
 
   /**
-   * Refresh grid data for each image by starting an animation.
-   */
-  refreshGridData(): Promise<void> {
-    return new Promise((resolve) => {
-      const store = useGlobalStore();
-
-      const shownCurrentImageId = unref(store.shownImageId);
-      startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
-      const unwatch = watch(() => store.isLoopingImages, async (value) => {
-        if (!value) {
-          await displayImageInElement(store.mainImageContainer as HTMLElement, shownCurrentImageId as string);
-          unwatch();
-          resolve();
-        }
-      });
-    });
-  }
-
-  /**
    * Retrieve grid data for a given imageIndex
    */
   getGridData(imageIndex: number): GridCommunication.Request.Grid {
@@ -74,8 +55,6 @@ class Communication {
    * image's DICOM data and related grid.
    */
   async buildRequestBody(): Promise<GridCommunication.Request.Body> {
-    await this.refreshGridData();
-
     const body: GridCommunication.Request.Body = {
       data: [],
       options: this.getAlgorithmOptions(),
