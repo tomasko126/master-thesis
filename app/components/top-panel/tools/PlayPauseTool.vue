@@ -34,5 +34,5 @@ watch(() => store.animation, () => {
   if (store.isLoopingImages) {
     startLoopingImages(); // continue looping images with updated animation settings
   }
-});
+}, { deep: true });
 </script>
