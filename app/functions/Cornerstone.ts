@@ -178,6 +178,17 @@ export const activateTool = (toolName: string, toolOptions: object): void => {
 };
 
 /**
+ * Activates wheel tool used for scrolling between different images
+ */
+export const activateWheelTool = () => {
+  const store = useGlobalStore();
+  if (!store.mainImageContainer) {
+    return;
+  }
+  cornerstoneTools.setToolActiveForElement(store.mainImageContainer, 'StackScrollMouseWheel', {});
+}
+
+/**
  * Deactivate tool by setting its state to 'enabled'
  */
 export const deactivateTool = (toolName: string): void => {
@@ -208,7 +219,7 @@ export const registerTool = (toolName: ToolName): void => {
  */
 export const registerAllTools = (): void => {
   const store = useGlobalStore();
-  for (const toolName of store.tools) {
+  for (const toolName of [...store.tools, 'StackScrollMouseWheel' as ToolName]) {
     registerTool(toolName);
   }
 };

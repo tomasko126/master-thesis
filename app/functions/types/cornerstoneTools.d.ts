@@ -8,12 +8,12 @@ export declare interface ApiTool {}
 /**
  * Used cornerstone tools in the app
  */
-export declare type ToolName = 'Grid' | 'Pan';
+export declare type ToolName = 'Grid' | 'Pan' | 'StackScrollMouseWheel';
 
 /**
  * Full names of cornerstone tool in the app
  */
-export declare type FullToolName = 'GridTool' | 'PanTool';
+export declare type FullToolName = 'GridTool' | 'PanTool' | 'StackScrollMouseWheelTool';
 
 export declare module '@tarotoma/cornerstone-tools' {
   export class cornerstoneTools {
