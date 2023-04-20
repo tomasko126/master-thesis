@@ -26,7 +26,7 @@ import { useToast } from 'vuestic-ui';
 const store = useGlobalStore();
 const fileInput: Ref<HTMLInputElement|null> = ref(null);
 
-const handleFileInput = async (): void => {
+const handleFileInput = async (): Promise<void> => {
   if (!fileInput.value) {
     return;
   }

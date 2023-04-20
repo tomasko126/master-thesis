@@ -52,7 +52,7 @@ const store = useGlobalStore();
 const files: Ref<VaFile[]> = ref([]);
 const dicomImage: Ref<HTMLElement|null> = ref(null);
 
-const onFileAdded = async (): void => {
+const onFileAdded = async (): Promise<void> => {
   if (files.value) {
     const loadedAllImages = await loadImagesFromFiles(files.value);
 
