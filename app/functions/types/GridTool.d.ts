@@ -1,7 +1,3 @@
-import getStateAndConfigOutput = GridToolOptions.getStateAndConfigOutput;
-import primaryLine = GridToolOptions.primaryLine;
-import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
-
 export class GridTool {
 
   /**

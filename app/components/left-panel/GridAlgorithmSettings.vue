@@ -72,12 +72,7 @@ import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
 import type { GridCommunication } from '~/functions/types/GridCommunication';
 import { $fetch, FetchError } from 'ofetch';
-import { type GridToolOptions } from '~/functions/types/GridTool';
-
-import primaryLine = GridToolOptions.primaryLine;
-import compactGridPoint = GridToolOptions.compactGridPoint;
-import gridPoint = GridToolOptions.gridPoint;
-import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
+import { GridToolOptions } from '~/functions/types/GridTool';
 
 const store = useGlobalStore();
 const isWaitingForData: Ref<boolean> = ref(false);
@@ -101,12 +96,12 @@ const popoverMessage = computed(() => {
   return 'Compute grid placement for every grid';
 });
 
-const addAdditionalDataToPrimaryLine = (primaryLine: compactPrimaryLine): primaryLine => {
+const addAdditionalDataToPrimaryLine = (primaryLine: GridToolOptions.compactPrimaryLine): GridToolOptions.primaryLine => {
   return {
     active: false,
     color: undefined,
     handles: {
-      points: primaryLine.points.map((point: compactGridPoint): gridPoint => {
+      points: primaryLine.points.map((point: GridToolOptions.compactGridPoint): GridToolOptions.gridPoint => {
         return {
           x: point.x,
           y: point.y,
