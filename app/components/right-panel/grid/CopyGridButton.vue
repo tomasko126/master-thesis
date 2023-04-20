@@ -5,7 +5,7 @@
     stick-to-edges
   >
     <va-button
-      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
       @click="showModal = !showModal"
     >
       Copy grid to all images
@@ -50,7 +50,6 @@ const popoverMessage = computed(() => {
  */
 const refreshGridData = (): Promise<void> => {
   return new Promise((resolve) => {
-    store.isLoopingImages = true;
     const shownCurrentImageId = unref(store.shownImageId);
     startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
 
@@ -58,7 +57,6 @@ const refreshGridData = (): Promise<void> => {
       if (!value) {
         await displayImageInElement(store.mainImageContainer as HTMLElement, shownCurrentImageId as string);
         unwatch();
-        store.isLoopingImages = false;
         resolve();
       }
     });

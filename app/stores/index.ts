@@ -24,12 +24,6 @@ interface AnimationSettings {
    * Index of an image, to which an animation will loop to
    */
   toIdx: number;
-
-  /**
-   * Set to true, when the app is trying to determine right grid position
-   * using positioning algorithm on the backend
-   */
-  isComputingGrids: boolean;
 }
 
 export const useGlobalStore = defineStore({
@@ -50,6 +44,7 @@ export const useGlobalStore = defineStore({
       isLoopingImages: false as boolean,
       mainImageContainer: null as HTMLElement|null,
       imageIds: [] as string[],
+      isComputingGrids: false as boolean,
       shownImageId: null as string|null,
       activeTool: null as string|null,
       tools: [] as ToolName[],
