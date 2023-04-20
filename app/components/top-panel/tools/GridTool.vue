@@ -2,7 +2,7 @@
   <BaseTool
     :active="isToolActive"
     :disabled="!store.imageIds.length || store.isLoopingImages || store.animation.isComputingGrids || !store.hasImageDefinedGrid"
-    popover-message="Move grid/grid's point"
+    popover-message="Move grid"
     :tool-name="toolName"
     @click="onClick"
   >
@@ -19,6 +19,8 @@ import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
 import { activateTool, deactivateTool } from '~/functions/Cornerstone';
 import { unref, computed } from 'vue';
+import {MOVING_MODE} from "~/functions/enums/GridEnums";
+import { GridTool } from '~/functions/types/GridTool';
 
 const store = useGlobalStore();
 const toolName = 'Grid';
@@ -28,7 +30,14 @@ const isToolActive = computed(() => {
 });
 
 const onClick = () => {
-  unref(isToolActive) ? deactivateTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
+  if (unref(isToolActive)) {
+    deactivateTool(toolName);
+    return;
+  }
+
+  activateTool(toolName, { mouseButtonMask: 1 });
+  const gridTool = store.gridState?.tool as GridTool;
+  gridTool.moveOneHandleOnly = false;
 };
 </script>
 
