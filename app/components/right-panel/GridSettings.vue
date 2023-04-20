@@ -98,6 +98,7 @@
 import { computed } from 'vue';
 import { useGlobalStore } from '~/stores';
 import { MOVING_MODE } from '~/functions/enums/GridEnums';
+import { activateTool } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
@@ -139,6 +140,9 @@ const setMoveMode = (input: string) => {
     return;
   }
   gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
+
+  // Automatically activate Grid tool
+  activateTool('Grid', { mouseButtonMask: 1 });
 };
 
 const setAngle = (input: string) => {
