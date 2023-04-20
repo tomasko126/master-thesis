@@ -82,7 +82,7 @@ export declare module '@tarotoma/cornerstone-tools' {
      * A negative framesPerSecond will play the clip in reverse.
      * The element must be a stack of images.
      */
-    static playClip(element: HTMLElement, framesPerSecond?: 30, options: { fromIdx: number, toIdx: number, loop: boolean }): void;
+    static playClip(element: HTMLElement, framesPerSecond = 30, options: { fromIdx: number, toIdx: number, loop: boolean }): void;
 
     /**
      * Stops an already playing clip.
