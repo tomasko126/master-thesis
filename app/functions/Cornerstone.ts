@@ -185,7 +185,7 @@ export const activateWheelTool = () => {
   if (!store.mainImageContainer) {
     return;
   }
-  cornerstoneTools.setToolActiveForElement(store.mainImageContainer, 'StackScrollMouseWheel');
+  cornerstoneTools.setToolActiveForElement(store.mainImageContainer, 'StackScrollMouseWheel', {});
 }
 
 /**
