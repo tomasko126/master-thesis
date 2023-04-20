@@ -14,20 +14,29 @@
   <va-modal
     v-model="showModal"
     title="Copy grid to other images"
-    message="Are you sure to copy grid to all other images? This will replace all existing grids on other images!"
-    ok-text="Yes"
-    cancel-text="No"
     blur
-    @ok="copyGrid"
-  />
+    hide-default-actions
+  >
+    <template #default>
+      <p>Are you sure to copy grid to all other images?</p>
+      <p>This will replace all existing grids on other images!</p>
+
+      <div class="modal-buttons">
+        <va-button @click="copyGrid" :loading="showLoadingState">Yes</va-button>
+        <va-button @click="hideModal">No</va-button>
+      </div>
+    </template>
+  </va-modal>
 </template>
 <script setup lang="ts">
-import { ref, toRaw, computed } from 'vue';
+import { ref, toRaw, computed, unref, watch } from 'vue';
 import { useGlobalStore } from '~/stores';
+import { displayImageInElement, startLoopingImages } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
 const showModal = ref(false);
+const showLoadingState = ref(false);
 
 const popoverMessage = computed(() => {
   if (!store.hasImageDefinedGrid) {
@@ -36,12 +45,54 @@ const popoverMessage = computed(() => {
   return 'Copy grid from current image to all images';
 });
 
-const copyGrid = () => {
+/**
+ * Refresh grid data for each image by starting an animation.
+ */
+const refreshGridData = () => {
+  return new Promise((resolve) => {
+    const shownCurrentImageId = unref(store.shownImageId);
+    startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
+
+    const unwatch = watch(() => store.isLoopingImages, async (value) => {
+      if (!value) {
+        await displayImageInElement(store.mainImageContainer as HTMLElement, shownCurrentImageId as string);
+        unwatch();
+        resolve();
+      }
+    });
+  });
+};
+
+const copyGrid = async () => {
   const gridTool = store?.gridState?.tool;
   const gridState = store?.gridState?.state;
+
   if (!gridTool || !gridState) {
+    showModal.value = false;
     return;
   }
+
+  showLoadingState.value = true;
+
   gridTool.setStateForImageIds(toRaw(gridState), store.imageIds, store.gridState?.isShowingRefinementPoints() as boolean);
+  await refreshGridData();
+
+  showModal.value = false;
+  showLoadingState.value = false;
 };
+
+const hideModal = () => {
+  showModal.value = false;
+}
 </script>
+
+<style lang="scss" scoped>
+.modal-buttons {
+  display: flex;
+  margin-top: 20px;
+
+  button {
+    margin: 0 10px 0 0;
+  }
+}
+</style>
