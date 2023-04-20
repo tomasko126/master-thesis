@@ -67,7 +67,7 @@
     </GeneralTabSection>
     <GeneralTabSection
       label-text="From image:"
-      align-items="baseline"
+      align-items="center"
     >
       <va-input
         v-model="fromIdx"
