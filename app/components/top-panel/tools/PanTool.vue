@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
-import { activateTool, deactivateTool } from '~/functions/Cornerstone';
+import { activateTool, disableTool } from '~/functions/Cornerstone';
 import { unref, computed } from 'vue';
 
 const store = useGlobalStore();
@@ -24,6 +24,6 @@ const isToolActive = computed(() => {
 });
 
 const onClick = () => {
-  unref(isToolActive) ? deactivateTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
+  unref(isToolActive) ? disableTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
 };
 </script>

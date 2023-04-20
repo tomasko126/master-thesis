@@ -49,6 +49,12 @@ export declare module '@tarotoma/cornerstone-tools' {
     static setToolActiveForElement(element: HTMLElement, toolName: string, toolOptions: object): void;
 
     /**
+     * Sets a tool's state, with the provided toolName and element, to 'passive'.
+     * Passive tools are rendered and respond to user input, but do not create new measurements or annotations.
+     */
+    static setToolPassiveForElement(element: HTMLElement, toolName: string): void;
+
+    /**
      * Sets a tool's state, with the provided toolName and element, to 'enabled' state.
      * Enabled tools are rendered, but do not respond to user input.
      */

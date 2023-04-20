@@ -189,16 +189,28 @@ export const activateWheelTool = () => {
 }
 
 /**
- * Deactivate tool by setting its state to 'enabled'
+ * Deactivate tool by setting its state to 'passive'
  */
 export const deactivateTool = (toolName: string): void => {
   const store = useGlobalStore();
   if (!store.mainImageContainer) {
     return;
   }
-  cornerstoneTools.setToolDisabledForElement(store.mainImageContainer, toolName);
+  cornerstoneTools.setToolPassiveForElement(store.mainImageContainer, toolName);
   store.activeTool = null;
 };
+
+/**
+ * Disable tool by setting its state to 'disabled'
+ */
+export const disableTool = (toolName: string): void => {
+  const store = useGlobalStore();
+  if (!store.mainImageContainer) {
+    return;
+  }
+  cornerstoneTools.setToolDisabledForElement(store.mainImageContainer, toolName);
+  store.activeTool = null;
+}
 
 /**
  * Register and enable tool given by |toolName| param
