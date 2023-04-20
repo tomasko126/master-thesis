@@ -44,7 +44,7 @@ const props = defineProps({
   },
 });
 
-const onThumbnailClick = () => {
+const onThumbnailClick = (): void => {
   displayImageInElement(store.mainImageContainer as HTMLElement, props.imageId as string);
 };
 
@@ -61,7 +61,7 @@ const convertCanvasImageToSrc = (): Promise<string|null> => {
   });
 };
 
-const onCanvasImageRendered = async() => {
+const onCanvasImageRendered = async(): Promise<void> => {
   // When canvas contains rendered image, convert it to src for later usage
   const imageSource = await convertCanvasImageToSrc();
   if (!imageSource) {

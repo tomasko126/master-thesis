@@ -48,7 +48,7 @@ const popoverMessage = computed(() => {
 /**
  * Refresh grid data for each image by starting an animation.
  */
-const refreshGridData = () => {
+const refreshGridData = (): Promise<void> => {
   return new Promise((resolve) => {
     const shownCurrentImageId = unref(store.shownImageId);
     startLoopingImages({ fromIdx: 0, toIdx: store.imageIds.length - 1, loop: false });
@@ -63,7 +63,7 @@ const refreshGridData = () => {
   });
 };
 
-const copyGrid = async () => {
+const copyGrid = async (): Promise<void> => {
   const gridTool = store?.gridState?.tool;
   const gridState = store?.gridState?.state;
 
@@ -81,7 +81,7 @@ const copyGrid = async () => {
   showLoadingState.value = false;
 };
 
-const hideModal = () => {
+const hideModal = (): void => {
   showModal.value = false;
 }
 </script>

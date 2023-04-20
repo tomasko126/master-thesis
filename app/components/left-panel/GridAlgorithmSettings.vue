@@ -95,7 +95,7 @@ const popoverMessage = computed(() => {
   return 'Compute grid placement for every grid';
 });
 
-const computeGrids = async () => {
+const computeGrids = async (): Promise<void> => {
   store.animation.isComputingGrids = true;
   const comm = new Communication();
   const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
@@ -121,7 +121,7 @@ const computeGrids = async () => {
   }
 };
 
-const abortRequest = () => {
+const abortRequest = (): void => {
   abortController.value?.abort();
 };
 </script>

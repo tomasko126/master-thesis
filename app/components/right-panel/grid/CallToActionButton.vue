@@ -25,14 +25,14 @@ import { activateTool, deactivateTool } from '~/functions/Cornerstone';
 
 const store = useGlobalStore();
 
-const createGrid = () => {
+const createGrid = (): void => {
   activateTool('Grid', { mouseButtonMask: 1 });
 
   const { init } = useToast();
   init({ message: 'Click on the image to create grid' });
 };
 
-const removeGrid = () => {
+const removeGrid = (): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
