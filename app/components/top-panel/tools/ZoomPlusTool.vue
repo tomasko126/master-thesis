@@ -3,7 +3,6 @@
     :disabled="!store.imageIds.length || store.animation.isComputingGrids"
     popover-message="Zoom in"
     @mousedown="zoomStart"
-    @mouseup="zoomEnd"
   >
     <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" />
   </BaseTool>
@@ -21,8 +20,13 @@ const store = useGlobalStore();
 const zoomIntervalId: Ref<number|undefined> = ref(undefined);
 const zoomFactorChange = ref(0.025);
 
+
 const zoomStart = () => {
   zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value);
+
+  document.addEventListener('mouseup', () => {
+    zoomEnd();
+  }, { once: true });
 };
 
 const zoomEnd = () => {
