@@ -18,7 +18,7 @@
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
 import { activateTool, deactivateTool } from '~/functions/Cornerstone';
-import { unref } from 'vue';
+import { unref, computed } from 'vue';
 
 const store = useGlobalStore();
 const toolName = 'Grid';
