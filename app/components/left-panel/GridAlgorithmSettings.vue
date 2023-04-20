@@ -72,6 +72,12 @@ import Communication from '../../functions/Communication';
 import { useGlobalStore } from '~/stores';
 import type { GridCommunication } from '~/functions/types/GridCommunication';
 import { $fetch, FetchError } from 'ofetch';
+import { type GridToolOptions } from '~/functions/types/GridTool';
+
+import primaryLine = GridToolOptions.primaryLine;
+import compactGridPoint = GridToolOptions.compactGridPoint;
+import gridPoint = GridToolOptions.gridPoint;
+import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
 
 const store = useGlobalStore();
 const isWaitingForData: Ref<boolean> = ref(false);
@@ -95,6 +101,29 @@ const popoverMessage = computed(() => {
   return 'Compute grid placement for every grid';
 });
 
+const addAdditionalDataToPrimaryLine = (primaryLine: compactPrimaryLine): primaryLine => {
+  return {
+    active: false,
+    color: undefined,
+    handles: {
+      points: primaryLine.points.map((point: compactGridPoint): gridPoint => {
+        return {
+          x: point.x,
+          y: point.y,
+          isCommonPoint: point.isCommonPoint,
+          highlight: false,
+          active: false,
+          lines: [],
+        }
+      }),
+    },
+    invalidated: false,
+    uuid: primaryLine.uuid,
+    visible: true,
+  };
+
+};
+
 const computeGrids = async (): Promise<void> => {
   store.animation.isComputingGrids = true;
   const comm = new Communication();
@@ -108,7 +137,9 @@ const computeGrids = async (): Promise<void> => {
 
     for (const grid of responseData.grids) {
       store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
-      store.gridState?.tool.setStateForImageIds(grid.primaryLines, [grid.imageId], grid.includesRefinementPoints);
+
+      const primaryLines = grid.primaryLines.map((primaryLine) => addAdditionalDataToPrimaryLine(primaryLine));
+      store.gridState?.tool.setStateForImageIds(primaryLines, [grid.imageId], grid.includesRefinementPoints);
     }
   } catch (e) {
     if (!(e instanceof FetchError)) {

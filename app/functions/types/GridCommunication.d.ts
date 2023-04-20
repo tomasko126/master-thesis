@@ -1,5 +1,4 @@
-import type GridToolOptions from '~/functions/types/GridTool';
-import primaryLine = GridToolOptions.primaryLine;
+import { GridToolOptions } from '~/functions/types/GridTool';
 
 declare namespace GridCommunication {
   interface Image {
@@ -8,6 +7,8 @@ declare namespace GridCommunication {
   }
 
   declare namespace Request {
+    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
+
     interface AlgorithmOptions {
       curvature: number;
       force: number;
@@ -16,7 +17,7 @@ declare namespace GridCommunication {
 
     interface Grid {
       includesRefinementPoints: boolean;
-      primaryLines: primaryLine[]|[];
+      primaryLines: compactPrimaryLine[]|[];
     }
 
     interface BodyData {
@@ -31,10 +32,12 @@ declare namespace GridCommunication {
   }
 
   declare namespace Response {
+    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
+
     interface Grid {
       imageId: string;
       includesRefinementPoints: boolean;
-      primaryLines: primaryLine[];
+      primaryLines: compactPrimaryLine[];
     }
 
     export interface BodyData {

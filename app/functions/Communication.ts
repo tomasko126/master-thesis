@@ -28,7 +28,7 @@ class Communication {
     const store = useGlobalStore();
 
     const imageId = store.imageIds[imageIndex];
-    const primaryLines = store?.gridState?.tool.getStateForImageId(imageId) || [];
+    const primaryLines = store?.gridState?.tool.getStateForImageId(imageId, true) || [];
 
     return {
       includesRefinementPoints: store?.gridState?.isShowingRefinementPoints() ?? false,

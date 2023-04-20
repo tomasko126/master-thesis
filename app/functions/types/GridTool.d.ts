@@ -1,5 +1,6 @@
 import getStateAndConfigOutput = GridToolOptions.getStateAndConfigOutput;
 import primaryLine = GridToolOptions.primaryLine;
+import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
 
 export class GridTool {
 
@@ -80,7 +81,7 @@ export class GridTool {
   /**
    * Retrieve primary lines for a given image id
    */
-  getStateForImageId(imageId: string): primaryLine[]|null;
+  getStateForImageId(imageId: string, compact = false): compactPrimaryLine[]|null;
 
   /**
    * Set given primary lines as grid's state for given image ids
@@ -131,6 +132,17 @@ declare namespace GridToolOptions {
     invalidated: boolean;
     uuid: string;
     visible: boolean;
+  }
+
+  export interface compactGridPoint {
+    x: number;
+    y: number;
+    isCommonPoint: boolean;
+  }
+
+  export interface compactPrimaryLine {
+    points: compactGridPoint[];
+    uuid: string;
   }
 
   export interface gridPoint {
