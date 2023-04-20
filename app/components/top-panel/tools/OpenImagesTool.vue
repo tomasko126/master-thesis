@@ -26,7 +26,7 @@ import { useToast } from 'vuestic-ui';
 const store = useGlobalStore();
 const fileInput: Ref<HTMLInputElement|null> = ref(null);
 
-const handleFileInput = async () => {
+const handleFileInput = async (): void => {
   if (!fileInput.value) {
     return;
   }
@@ -38,7 +38,7 @@ const handleFileInput = async () => {
   }
 };
 
-const openFileInput = () => {
+const openFileInput = (): void => {
   fileInput.value?.click();
 };
 </script>

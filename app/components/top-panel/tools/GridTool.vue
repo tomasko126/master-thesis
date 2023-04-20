@@ -29,7 +29,7 @@ const isToolActive = computed(() => {
   return store.activeTool === toolName;
 });
 
-const onClick = () => {
+const onClick = (): void => {
   if (unref(isToolActive)) {
     deactivateTool(toolName);
     return;

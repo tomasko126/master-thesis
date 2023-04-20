@@ -134,7 +134,7 @@ const isShowingRefinementPoints = computed(() => {
   return store.gridState?.isShowingRefinementPoints() ?? null;
 });
 
-const setMoveMode = (input: string) => {
+const setMoveMode = (input: string): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -145,7 +145,7 @@ const setMoveMode = (input: string) => {
   activateTool('Grid', { mouseButtonMask: 1 });
 };
 
-const setAngle = (input: string) => {
+const setAngle = (input: string): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -153,7 +153,7 @@ const setAngle = (input: string) => {
   gridTool.angle = parseInt(input);
 };
 
-const setSpacing = (input: string) => {
+const setSpacing = (input: string): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -161,7 +161,7 @@ const setSpacing = (input: string) => {
   gridTool.spacing = parseFloat(input);
 };
 
-const setOffset = (coordinates:{ x: number|null, y: number|null }) => {
+const setOffset = (coordinates:{ x: number|null, y: number|null }): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -169,15 +169,15 @@ const setOffset = (coordinates:{ x: number|null, y: number|null }) => {
   gridTool.setOffset(coordinates, false);
 };
 
-const setXOffset = (input: string) => {
+const setXOffset = (input: string): void => {
   setOffset({ x: parseFloat(input), y: offsetY.value });
 };
 
-const setYOffset = (input: string) => {
+const setYOffset = (input: string): void => {
   setOffset({ x: offsetX.value, y: parseFloat(input) });
 };
 
-const setNoOfPrimaryLines = (input: string) => {
+const setNoOfPrimaryLines = (input: string): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -185,7 +185,7 @@ const setNoOfPrimaryLines = (input: string) => {
   gridTool.noOfPrimaryLines = parseInt(input);
 };
 
-const setNoOfSecondaryLines = (input: string) => {
+const setNoOfSecondaryLines = (input: string): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -193,7 +193,7 @@ const setNoOfSecondaryLines = (input: string) => {
   gridTool.noOfSecondaryLines = parseInt(input);
 };
 
-const setShowingRefinementPoints = (input: boolean) => {
+const setShowingRefinementPoints = (input: boolean): void => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;

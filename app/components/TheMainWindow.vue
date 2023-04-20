@@ -52,7 +52,7 @@ const store = useGlobalStore();
 const files: Ref<VaFile[]> = ref([]);
 const dicomImage: Ref<HTMLElement|null> = ref(null);
 
-const onFileAdded = async () => {
+const onFileAdded = async (): void => {
   if (files.value) {
     const loadedAllImages = await loadImagesFromFiles(files.value);
 
@@ -65,15 +65,15 @@ const onFileAdded = async () => {
   }
 };
 
-const onGridRemoved = () => {
+const onGridRemoved = (): void => {
   store.gridState = null;
 };
 
-const onClipStopped = () => {
+const onClipStopped = (): void => {
   store.isLoopingImages = false;
 };
 
-const onImageShown = (e: CustomEvent) => {
+const onImageShown = (e: CustomEvent): void => {
   store.shownImageId = e.detail.image.imageId;
   const tool = getGridTool();
   if (tool) {
@@ -82,14 +82,14 @@ const onImageShown = (e: CustomEvent) => {
   store.dicomHeaderParser = new DicomHeaderParser();
 };
 
-const onMeasurementCompleted = () => {
+const onMeasurementCompleted = (): void => {
   const tool = getGridTool();
   if (tool) {
     store.gridState = new GridState(tool);
   }
 };
 
-const onNewImages = () => {
+const onNewImages = (): void => {
   displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[0]);
   registerAllTools();
   activateWheelTool();

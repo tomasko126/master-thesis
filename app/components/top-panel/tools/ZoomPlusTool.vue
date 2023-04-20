@@ -20,8 +20,7 @@ const store = useGlobalStore();
 const zoomIntervalId: Ref<number|undefined> = ref(undefined);
 const zoomFactorChange = ref(0.025);
 
-
-const zoomStart = () => {
+const zoomStart = (): void => {
   zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value);
 
   document.addEventListener('mouseup', () => {
@@ -29,7 +28,7 @@ const zoomStart = () => {
   }, { once: true });
 };
 
-const zoomEnd = () => {
+const zoomEnd = (): void => {
   if (zoomIntervalId.value) {
     clearInterval(zoomIntervalId.value);
     zoomIntervalId.value = undefined;

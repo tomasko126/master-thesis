@@ -120,7 +120,7 @@ watch(() => store.shownImageId, () => {
   }
 });
 
-const onFrameNumberChange = (idx: string) => {
+const onFrameNumberChange = (idx: string): void => {
   const number = parseInt(idx) - 1;
   if (isNaN(number) || number < 0 || number > store.imageIds.length) {
     return;
