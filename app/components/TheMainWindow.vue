@@ -35,7 +35,16 @@ import { ref, watch, onMounted, onUnmounted, type Ref } from 'vue';
 import { useToast, VaFile } from 'vuestic-ui';
 import GridState from '../functions/GridState';
 import DicomHeaderParser from '../functions/DicomHeaderParser';
-import { registerImageContainer, registerAllTools, unregisterImageContainer, unregisterAllTools, loadImagesFromFiles, getGridTool, displayImageInElement } from '../functions/Cornerstone';
+import {
+  registerImageContainer,
+  registerAllTools,
+  unregisterImageContainer,
+  unregisterAllTools,
+  loadImagesFromFiles,
+  getGridTool,
+  displayImageInElement,
+  activateWheelTool,
+} from '~/functions/Cornerstone';
 import { useGlobalStore } from '~/stores';
 
 const store = useGlobalStore();
@@ -83,6 +92,7 @@ const onMeasurementCompleted = () => {
 const onNewImages = () => {
   displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[0]);
   registerAllTools();
+  activateWheelTool();
 };
 
 watch(() => store.imageIds, () => {
@@ -92,6 +102,7 @@ watch(() => store.imageIds, () => {
 onMounted(() => {
   registerImageContainer(dicomImage.value as HTMLElement, true);
   registerAllTools();
+  activateWheelTool();
 
   store.dicomHeaderParser = new DicomHeaderParser();
 });
