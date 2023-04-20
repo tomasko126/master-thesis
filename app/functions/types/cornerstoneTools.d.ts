@@ -55,6 +55,12 @@ export declare module '@tarotoma/cornerstone-tools' {
     static setToolEnabledForElement(element: HTMLElement, toolName: string, options?: Object|number): void;
 
     /**
+     * Sets a tool's state, with the provided toolName and element, to 'disabled'.
+     * Disabled tools are not rendered, and do not respond to user input
+     */
+    static setToolDisabledForElement(element: HTMLElement, toolName: string): void;
+
+    /**
      * Removes all tools from all enabled elements with the provided name.
      */
     static removeTool(toolName: string): void;

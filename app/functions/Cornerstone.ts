@@ -30,7 +30,7 @@ export const initLibraries = (): void => {
   cornerstoneTools.external.Hammer = Hammer;
   cornerstoneTools.init({
     mouseEnabled: true,
-    showSVGCursors: true,
+    showSVGCursors: false,
   });
 
   // Setup all required cornerstone-wado-image-loader dependencies
@@ -185,7 +185,7 @@ export const deactivateTool = (toolName: string): void => {
   if (!store.mainImageContainer) {
     return;
   }
-  cornerstoneTools.setToolEnabledForElement(store.mainImageContainer, toolName);
+  cornerstoneTools.setToolDisabledForElement(store.mainImageContainer, toolName);
   store.activeTool = null;
 };
 

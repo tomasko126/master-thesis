@@ -1,10 +1,10 @@
 <template>
   <BaseTool
-    :active="store.activeTool === 'Pan'"
-    :disabled="!store.imageIds.length || store.animation.isComputingGrids"
+    :active="isToolActive"
+    :disabled="!store.imageIds.length || store.isLoopingImages || store.animation.isComputingGrids"
     popover-message="Move with image"
-    tool-name="Pan"
-    @click="activateTool('Pan', { mouseButtonMask: 1 })"
+    :tool-name="toolName"
+    @click="onClick"
   >
     <font-awesome-icon icon="fa-solid fa-up-down-left-right" />
   </BaseTool>
@@ -13,7 +13,17 @@
 <script setup lang="ts">
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
-import { activateTool } from '~/functions/Cornerstone';
+import { activateTool, deactivateTool } from '~/functions/Cornerstone';
+import { unref } from 'vue';
 
 const store = useGlobalStore();
+const toolName = 'Pan';
+
+const isToolActive = computed(() => {
+  return store.activeTool === toolName;
+});
+
+const onClick = () => {
+  unref(isToolActive) ? deactivateTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
+};
 </script>

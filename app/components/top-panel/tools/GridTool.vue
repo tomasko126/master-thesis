@@ -1,10 +1,10 @@
 <template>
   <BaseTool
-    :active="store.activeTool === 'Grid'"
-    :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.animation.isComputingGrids"
+    :active="isToolActive"
+    :disabled="!store.imageIds.length || store.isLoopingImages || store.animation.isComputingGrids || !store.hasImageDefinedGrid"
     popover-message="Move with grid/grid's point"
-    tool-name="Grid"
-    @click="activateTool('Grid', { mouseButtonMask: 1 })"
+    :tool-name="toolName"
+    @click="onClick"
   >
     <img
       id="grid-icon"
@@ -17,9 +17,19 @@
 <script setup lang="ts">
 import BaseTool from './BaseTool.vue';
 import { useGlobalStore } from '~/stores';
-import { activateTool } from '~/functions/Cornerstone';
+import {activateTool, deactivateTool} from '~/functions/Cornerstone';
+import {unref} from "vue";
 
 const store = useGlobalStore();
+const toolName = 'Grid';
+
+const isToolActive = computed(() => {
+  return store.activeTool === toolName;
+});
+
+const onClick = () => {
+  unref(isToolActive) ? deactivateTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
+};
 </script>
 
 <style>
