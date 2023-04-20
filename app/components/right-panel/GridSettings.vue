@@ -157,7 +157,7 @@ const setSpacing = (input: string) => {
   gridTool.spacing = parseFloat(input);
 };
 
-const setOffset = (coordinates:{ x: number, y: number }) => {
+const setOffset = (coordinates:{ x: number|null, y: number|null }) => {
   const gridTool = store.gridState?.tool;
   if (!gridTool) {
     return;
@@ -166,11 +166,11 @@ const setOffset = (coordinates:{ x: number, y: number }) => {
 };
 
 const setXOffset = (input: string) => {
-  setOffset({ x: parseFloat(input), y: parseFloat(offsetY.value as string) });
+  setOffset({ x: parseFloat(input), y: offsetY.value });
 };
 
 const setYOffset = (input: string) => {
-  setOffset({ x: parseFloat(offsetX.value as string), y: parseFloat(input) });
+  setOffset({ x: offsetX.value, y: parseFloat(input) });
 };
 
 const setNoOfPrimaryLines = (input: string) => {
