@@ -4,7 +4,7 @@
     <va-divider />
     <GeneralTabSection label-text="Move:">
       <va-button-toggle
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="moveMode"
         :options="[
           { label: 'Grid', value: MOVING_MODE.GRID },
@@ -19,7 +19,7 @@
     >
       <va-switch
         size="small"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="isShowingRefinementPoints"
         @update:model-value="setShowingRefinementPoints"
       />
@@ -33,7 +33,7 @@
     <GeneralTabSection label-text="Angle:">
       <va-input
         type="number"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="angle"
         min="0"
         max="90"
@@ -45,7 +45,7 @@
         type="number"
         min="1"
         step="0.1"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="spacing"
         @update:model-value="setSpacing"
       />
@@ -55,7 +55,7 @@
         type="number"
         min="0"
         step="0.25"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="offsetX"
         @update:model-value="setXOffset"
       />
@@ -65,7 +65,7 @@
         type="number"
         min="0"
         step="0.25"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="offsetY"
         @update:model-value="setYOffset"
       />
@@ -74,7 +74,7 @@
       <va-input
         type="number"
         min="2"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="noOfPrimaryLines"
         @update:model-value="setNoOfPrimaryLines"
       />
@@ -83,7 +83,7 @@
       <va-input
         type="number"
         min="2"
-        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages"
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
         :model-value="noOfSecondaryLines"
         @update:model-value="setNoOfSecondaryLines"
       />

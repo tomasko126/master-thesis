@@ -110,7 +110,6 @@ export const loadImagesFromFiles = async (imageFiles: VaFile[]|[]): Promise<bool
     speed: 30,
     fromIdx: 0,
     toIdx: Math.max(store.imageIds.length - 1, 0),
-    isComputingGrids: false,
   }
 
   return processedAllImages;

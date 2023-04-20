@@ -48,13 +48,13 @@
         stick-to-edges
       >
         <va-button
-          v-if="!isButtonDisabled || !isWaitingForData"
+          v-if="!isButtonDisabled || !store.isComputingGrids"
           :disabled="isButtonDisabled"
           @click="computeGrids"
         >
           Compute
         </va-button>
-        <va-button v-else-if="isWaitingForData"
+        <va-button v-else-if="store.isComputingGrids"
           color="danger"
           icon="close"
           @click="abortRequest"
@@ -75,7 +75,6 @@ import { $fetch, FetchError } from 'ofetch';
 import { GridToolOptions } from '~/functions/types/GridTool';
 
 const store = useGlobalStore();
-const isWaitingForData: Ref<boolean> = ref(false);
 const abortController: Ref<AbortController|null> = ref(null);
 
 const inputRules = computed(() => {
@@ -86,7 +85,7 @@ const inputRules = computed(() => {
 });
 
 const isButtonDisabled = computed(() => {
-  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds) || isWaitingForData.value;
+  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds) || store.isComputingGrids;
 });
 
 const popoverMessage = computed(() => {
@@ -120,12 +119,11 @@ const addAdditionalDataToPrimaryLine = (primaryLine: GridToolOptions.compactPrim
 };
 
 const computeGrids = async (): Promise<void> => {
-  store.animation.isComputingGrids = true;
+  store.isComputingGrids = true;
   const comm = new Communication();
   const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
 
   try {
-    isWaitingForData.value = true;
     abortController.value = typeof AbortController !== 'undefined' ? new AbortController() : {} as AbortController;
 
     const responseData: GridCommunication.Response.BodyData = await $fetch('/api/grid', { method: 'post', body: requestBody, signal: abortController.value?.signal });
@@ -141,8 +139,7 @@ const computeGrids = async (): Promise<void> => {
       throw e;
     }
   } finally {
-    store.animation.isComputingGrids = false;
-    isWaitingForData.value = false;
+    store.isComputingGrids = false;
     abortController.value = null;
   }
 };

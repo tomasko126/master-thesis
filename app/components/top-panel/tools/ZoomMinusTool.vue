@@ -1,7 +1,7 @@
 <template>
   <BaseTool
     popover-message="Zoom out"
-    :disabled="!store.imageIds.length || store.animation.isComputingGrids"
+    :disabled="!store.imageIds.length || store.isComputingGrids"
     @mousedown="zoomStart"
   >
     <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />

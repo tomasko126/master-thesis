@@ -1,7 +1,7 @@
 <template>
   <va-button
     v-if="!store.hasImageDefinedGrid"
-    :disabled="store.isLoopingImages || !store.imageIds.length"
+    :disabled="store.isLoopingImages || store.isComputingGrids || !store.imageIds.length"
     icon="add"
     @click="createGrid"
   >
@@ -9,7 +9,7 @@
   </va-button>
   <va-button
     v-else
-    :disabled="store.isLoopingImages"
+    :disabled="store.isLoopingImages || store.isComputingGrids"
     color="danger"
     icon="clear"
     @click="removeGrid"

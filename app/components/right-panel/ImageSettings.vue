@@ -5,7 +5,7 @@
     <GeneralTabSection label-text="Frame:">
       <va-counter
         v-model="counter"
-        :disabled="!store.imageIds.length || store.isLoopingImages"
+        :disabled="!store.imageIds.length || store.isLoopingImages || store.isComputingGrids"
         :min="1"
         :max="store.imageIds.length"
         width="100px"
@@ -72,7 +72,7 @@
       <va-input
         v-model="fromIdx"
         type="number"
-        :disabled="areInputsDisabled || store.isLoopingImages"
+        :disabled="areInputsDisabled || store.isLoopingImages || store.isComputingGrids"
         :min="store.imageIds ? 1 : 0"
         :max="store.imageIds ? store.imageIds.length - 1 : 1"
         :rules="fromImageRules"
@@ -85,7 +85,7 @@
       <va-input
         v-model="toIdx"
         type="number"
-        :disabled="areInputsDisabled || store.isLoopingImages"
+        :disabled="areInputsDisabled || store.isLoopingImages || store.isComputingGrids"
         :min="store.imageIds ? 1 : 0"
         :max="store.imageIds ? store.imageIds.length : 1"
         :rules="toImageRules"
@@ -109,7 +109,7 @@ const toIdx = ref(store.animation.toIdx + 1);
 const speed = ref(30);
 
 const isButtonDisabled = computed(() => {
-  return store.imageIds.length === 0 || store.animation.isComputingGrids;
+  return store.imageIds.length === 0 || store.isComputingGrids;
 });
 
 watch(() => store.shownImageId, () => {
@@ -130,7 +130,7 @@ const onFrameNumberChange = (idx: string): void => {
 };
 
 const areInputsDisabled = computed(() => {
-  return store.imageIds.length < 2 || store.animation.isComputingGrids;
+  return store.imageIds.length < 2 || store.isComputingGrids;
 });
 
 const fromImageRules = computed(() => {

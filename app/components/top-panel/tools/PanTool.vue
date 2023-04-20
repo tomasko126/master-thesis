@@ -1,7 +1,7 @@
 <template>
   <BaseTool
     :active="isToolActive"
-    :disabled="!store.imageIds.length || store.isLoopingImages || store.animation.isComputingGrids"
+    :disabled="!store.imageIds.length || store.isLoopingImages || store.isComputingGrids"
     popover-message="Move image"
     :tool-name="toolName"
     @click="onClick"
