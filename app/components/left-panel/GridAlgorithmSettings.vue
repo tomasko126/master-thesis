@@ -47,20 +47,22 @@
         prevent-overflow
         stick-to-edges
       >
-        <va-button
-          v-if="!isButtonDisabled || !store.isComputingGrids"
-          :disabled="isButtonDisabled"
-          @click="computeGrids"
-        >
-          Compute
-        </va-button>
-        <va-button v-else-if="store.isComputingGrids"
-          color="danger"
-          icon="close"
-          @click="abortRequest"
-        >
-          Cancel computation
-        </va-button>
+        <span>
+          <va-button
+            v-if="!isButtonDisabled || !store.isComputingGrids"
+            :disabled="isButtonDisabled"
+            @click="computeGrids"
+          >
+            Compute
+          </va-button>
+          <va-button v-else-if="store.isComputingGrids"
+            color="danger"
+            icon="close"
+            @click="abortRequest"
+          >
+            Cancel computation
+          </va-button>
+        </span>
       </va-popover>
     </div>
   </GeneralTabContent>
