@@ -2,6 +2,7 @@
   <BaseTool
     :disabled="!store.imageIds.length || store.isComputingGrids"
     popover-message="Zoom in"
+    @click="onClick"
     @mousedown="zoomStart"
   >
     <font-awesome-icon icon="fa-solid fa-magnifying-glass-plus" />
@@ -33,5 +34,9 @@ const zoomEnd = (): void => {
     clearInterval(zoomIntervalId.value);
     zoomIntervalId.value = undefined;
   }
+};
+
+const onClick = () => {
+  setZoom(zoomFactorChange.value);
 };
 </script>
