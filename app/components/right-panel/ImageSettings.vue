@@ -3,14 +3,23 @@
     <GeneralTabSection label-text="Image" />
     <va-divider />
     <GeneralTabSection label-text="Frame:">
-      <va-counter
-        v-model="counter"
-        :disabled="!store.imageIds.length || store.isLoopingImages || store.isComputingGrids"
-        :min="1"
-        :max="store.imageIds.length"
-        width="100px"
-        @update:model-value="onFrameNumberChange"
-      />
+      <div class="frame-settings">
+        <va-button
+          size="small"
+          :disabled="!store.imageIds.length || store.isLoopingImages || store.isComputingGrids || counter === 1"
+          @click="onFrameNumberChange(-1)"
+        >
+          <font-awesome-icon icon="fa-solid fa-minus" />
+        </va-button>
+        <p>{{ counter }}</p>
+        <va-button
+          size="small"
+          :disabled="!store.imageIds.length || store.isLoopingImages || store.isComputingGrids || counter === store.imageIds.length"
+          @click="onFrameNumberChange(1)"
+        >
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </va-button>
+      </div>
     </GeneralTabSection>
     <GeneralTabSection label-text="Brightness:">
       <div class="brightness-settings">
@@ -120,8 +129,8 @@ watch(() => store.shownImageId, () => {
   }
 });
 
-const onFrameNumberChange = (idx: string): void => {
-  const number = parseInt(idx) - 1;
+const onFrameNumberChange = (change: number): void => {
+  const number = counter.value + change - 1;
   if (isNaN(number) || number < 0 || number > store.imageIds.length) {
     return;
   }
@@ -181,11 +190,18 @@ watch(() => store.imageIds, (value) => {
 
 <style lang="scss" scoped>
 @use 'assets/global';
-.brightness-settings, .contrast-settings {
+.brightness-settings, .contrast-settings, .frame-settings {
   button {
     margin: 0 2.5px 0 2.5px;
     width: 35px;
   }
+}
+.frame-settings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 110px;
 }
 .va-counter {
   max-width: 140px;
