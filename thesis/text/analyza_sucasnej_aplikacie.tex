@@ -1,10 +1,10 @@
 \chapter {Analýza súčasnej aplikácie}
-Táto kapitola sa zaoberá účelom súčasnej aplikácie a analýzou použitých technológií, ktoré sú dôležité pre celkovú funkcionalitu aplikácie. Následne sú popísané technológie, ktoré boli použité pri vývoji súčasnej aplikácie až po podprogramy, ktoré riešia výpočtovo náročnejšie úlohy v rámci tejto aplikácie. Jednému z najdôležitejších podprogramov, \texttt{grid-tracker}, je venovaná väčšia pozornosť. Táto kapitola sa taktiež venuje následnému zostaveniu a spusteniu aplikácie, ktoré je dôležité pre nasledujúcu sekciu, ktorá analyzuje používateľské rozhranie aplikácie.
+Táto kapitola sa zaoberá účelom súčasnej aplikácie a analýzou použitých technológií, ktoré sú dôležité pre celkovú funkcionalitu aplikácie. Následne sú popísané technológie, ktoré boli použité pri vývoji súčasnej aplikácie až po podprogramy, ktoré riešia výpočtovo náročnejšie úlohy v rámci tejto aplikácie. Jednému z najdôležitejších podprogramov, \texttt{grid-tracker}, je venovaná väčšia pozornosť. Táto kapitola sa taktiež venuje následnému zostaveniu a spusteniu aplikácie, ktoré je dôležité pre nasledujúcu sekciu, ktorá analyzuje používateľské rozhranie aplikácie. Posledná sekcia tejto kapitoly prináša postrehy z testovania aplikácie a problémov s ním spojených.
 
 \section {Účel aplikácie}
 Účelom súčasnej aplikácie -- DICOM Viewer -- je analýza pohybu srdcového svalu, pomocou ktorej by bolo možné zistiť anomálie v jeho pohybe. Aplikácia umožňuje importovať súbory typu DICOM (popísaného v sekcii \ref{dicom}), ktoré sú otagované SPAMM mriežkou.
 
-Na importovaných snímkach je následne používateľom vytvorená mriežka, ktorej parametre môžu byť následne používateľom upravené. Štruktúra a parametre týchto mriežok sú neskôr poslané podprogramu \texttt{grid-tracker}, ktorého úlohou je zarovnanie používateľom vytvorených mriežok s mriežkami vytvorenými SPAMM technikou. Po ich zarovnaní je možné pomocou techniky grafových rezov odsegmentovať srdečné komory a tým pádom zúžiť analýzu pohybu srdcového svalu len na tieto komory.
+Na importovaných snímkach je následne používateľom vytvorená mriežka, ktorej parametre môžu byť následne používateľom upravené. Štruktúra a parametre týchto mriežok sú neskôr poslané podprogramu \texttt{grid-tracker}, ktorého úlohou je zarovnanie používateľom vytvorených mriežok s mriežkami vytvorenými SPAMM technikou. Po ich zarovnaní by malo byť možné pomocou techniky grafových rezov odsegmentovať srdečné komory a tým pádom zúžiť analýzu pohybu srdcového svalu len na tieto komory.
 
 Cieľom tejto diplomovej práce je vytvorenie webovej verzie súčasnej aplikácie vrátane zarovnania mriežok pomocou \texttt{grid-tracker} podprogramu (\ref{helper_apps}).
 
@@ -84,24 +84,24 @@ V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \texttt
 
 Aplikácia z TNL knižnice taktiež používa \texttt{Solvers::ODE::Merson} -- jedná sa o Runge-Kutta-Merson metódu štvrtého rádu s adaptívnym výberom časového kroku, pomocou ktorej vieme získať približné riešenie diferenciálnych rovníc.
 
-Bohužiaľ, súčasná aplikácia nie je kompatibilná s najnovšími zdrojovými kódmi TNL knižnice -- pre nájdenie posledného \uv{dobrého stavu} knižnice, t.j. stavu za ktorého bolo možné aplikáciu skompilovať, bol využitý nástroj \texttt{git bisect}. Tento nástroj našiel ako posledný \uv{dobrý stav} knižnice z 13.5.2021. Pri využití TNL knižnice zostavenej po tomto dátume nebolo možné súčasnú aplikáciu skompilovať.
+Bohužiaľ, súčasná aplikácia nie je kompatibilná s najnovšími zdrojovými kódmi TNL knižnice -- pre nájdenie posledného \uv{dobrého stavu} knižnice, t.j. stavu za ktorého bolo možné aplikáciu skompilovať, bol využitý nástroj \texttt{git bisect}. Tento nástroj našiel ako posledný \uv{dobrý stav} knižnice z 13.5.2021. Pri využití TNL knižnice zostavenej po tomto dátume nebolo možné súčasnú aplikáciu skompilovať. \clearpage
 
 \section {Pomocné podprogramy}\label{helper_apps}
 Súčasná aplikácia obsahuje a využíva nasledujúce 3 podprogramy:
 
 \begin {itemize}
-\item {grid-tracker}
-\item {local-variance}
-\item {graph-cuts}
+\item {grid-tracker,}
+\item {local-variance a}
+\item {graph-cuts.}
 \end {itemize}
 
-\texttt{grid-tracker} C\texttt{++} podprogram určený pre sledovanie pohybu myokardu pomocou detekcie SPAMM mriežky z DICOM snímku a mriežky vytvorenej používateľom. Mriežku vytvorenú používateľom sa snaží zarovnať so SPAMM mriežkou pre každú snímku zo sekvencie snímkov. Výstupom sú upravené koordináty bodov mriežky vytvorenej používateľom -- tie sa následne aplikujú namiesto doterajšej mriežky, čoho výsledkom je zobrazenie mriežky s upravenými koordinátmi bodov.
+Prvý z týchto podprogramov, \texttt{grid-tracker}, je C\texttt{++} podprogram určeným pre sledovanie pohybu myokardu pomocou detekcie SPAMM mriežky z DICOM snímku, mriežky vytvorenej používateľom. Mriežku vytvorenú používateľom sa snaží zarovnať so SPAMM mriežkou pre každú snímku zo sekvencie snímkov. Výstupom sú upravené koordináty bodov mriežky vytvorenej používateľom -- tie sa následne aplikujú namiesto doterajšej mriežky, čoho výsledkom je zobrazenie mriežky s upravenými koordinátmi bodov.
 
 Vstupom tohto programu sú nasledujúce parametre:
 \begin {itemize}
-\item {\texttt{inputImageFileNames} -- vektor reťazcov reprezentujúce cesty k súborom multivektorov (definované TNL knižnicou), ktoré obsahujú enkódované DICOM snímky,}
-\item {\texttt{inputGridFileNames} -- vektor reťazcov reprezentujúce cesty k súborom používateľom definovaných mriežok uložených ako TNL textový multivektor,}
-\item {\texttt{outputGridFileNames} (nepovinné)-- vektor reťazcov reprezentujúce cesty k súborom spracovaných mriežok, ktoré budú uložené ako textový TNL multivektor,}
+\item {\texttt{inputImageFileNames} -- vektor reťazcov reprezentujúce cesty k súborom multivectorov (definované TNL knižnicou), ktoré obsahujú enkódované DICOM snímky,}
+\item {\texttt{inputGridFileNames} -- vektor reťazcov reprezentujúce cesty k súborom používateľom definovaných mriežok uložených ako TNL textový multivector,}
+\item {\texttt{outputGridFileNames} (nepovinné)-- vektor reťazcov reprezentujúce cesty k súborom spracovaných mriežok, ktoré budú uložené ako textový TNL multivector,}
 \item {\texttt{curvatureCoefficient} -- závislosť vývoja mriežky od zakrivenia, vyššie číslo znamená vyššiu závislosť,}
 \item {\texttt{forceCoefficient} -- závislosť mriežky od gradientu obrazu, vyššie číslo znamená vyššiu závislosť,}
 \item {a \texttt{stopTime} -- časový interval algoritmického výpočtu.}
@@ -109,7 +109,7 @@ Vstupom tohto programu sú nasledujúce parametre:
 
 Pre daný výpočet \texttt{grid-tracker} využíva technológie \nameref{tnl} a \nameref{openmp}.
 
-Jeho výstupom sú predchádzajúce používateľom definované mriežky v textovom TNL multivectore upravené algoritmom tak, aby mriežky zodpovedali mriežkam definovanými SPAMM metódou.
+Jeho výstupom sú predchádzajúce používateľom definované mriežky v textovom TNL multivektore upravené algoritmom tak, aby mriežky zodpovedali mriežkam definovanými SPAMM metódou.
 
 Nasledujúce dva C\texttt{++} podprogramy nie sú dôležité pre túto diplomovú prácu, avšak pre úplnosť je ich účel vysvetlený.
 
@@ -249,3 +249,22 @@ Obsah ľavého postranného panelu sa mení v závislosti na zvolenej možnosti 
 \end {itemize}
 
 Ostatné dve možnosti z menu \uv{Aditional [sic] Tools} nie je potrebné pre účely tejto práce popisovať.
+
+\section {Testovanie a návrhy pre webovú aplikáciu}
+Cieľom testovania súčasnej aplikácie je nie len za účelom zoznámenia sa s aplikáciou a jej procesmi, ale aj za účelom overenia jej funkcionality a používateľského zážitku.
+
+Počas samotného testovania bolo možné úspešne importovať DICOM súbory zobraziť ich snímky na ploche im určenej. Snímky bolo možné tiež animovať na základe nastavenia animácie, zmeniť im kontrast a jas, či ich priblížiť alebo oddialiť.
+
+Následne bola odtestovaná funkcionalita týkajúca sa vykreslenia mriežky a jej úprav. Vykreslenie mriežky prebehlo bezchybne -- avšak jej počiatočná poloha bola vždy fixne určená v ľavom hornom okraji snímky.
+Toto správanie by sa dalo navrhnúť tak, aby bolo možné určiť počiatočné koordináty vytváranej mriežky jednoduchým kliknutím myši na miesto, kde by mala byť mriežka vykreslená.
+
+Pri priblížení vykreslenej mriežky absentuje posun snímky samotným potiahnutím myši -- posun snímky na ploche bolo možné len pomocou scrollbarov, ktoré boli ťažkopádnejšie na ovládanie.
+
+Taktiež úprava polohy mriežky bola možná len pomocou stlačenia klávesy \texttt{Shift} a potiahnutím myši. Tento spôsob posunu avšak nie je používateľovi nikde odprezentovaný. Návrh používateľského rozhrania webovej aplikácie by mal preto uľahčiť prípadnú zmenu polohy snímky na ploche.
+
+\subsection {Problémy s \texttt{grid-tracker} podprogramom}\label{grid_tracker_issues}
+Po úprave polohy mriežky nasledovalo spustenie samotného výpočtu zodpovedného za určenie súradníc bodov mriežok tak, aby zodpovedali vytvorenej mriežke pomocou SPAMM technológie. Pri spustení tohto algoritmu avšak aplikácia spadla. Nasledoval debugging aplikácie, ktorý potvrdil, že daný algoritmus nebol dokončený a prepojený so súčasnou aplikáciou.
+
+Školiteľ bol následne s týmto problémom oboznámený. Po vzájomnej diskusii vzišlo k nasledujúcej dohode -- možnosti prepojenia \texttt{grid-tracker} podprogramu s webovou aplikáciou budú zanalyzované a výsledné prepojenie navrhnuté, avšak následná implementácia prepojenia s týmto podprogramom sa neuskutoční, nakoľko jeho algoritmus bude potrebné upraviť tak aby nielen správne fungoval, ale navyše bol kompatibilný s najnovšou verziou \nameref{tnl} knižnice.
+
+Webová aplikácia bude dáta potrebné pre samotný výpočet naďalej prijímať a výstup v štruktúrovanej podobe odosielať, avšak výstup bude do určitej podoby reflektovať prijaté dáta, keďže dané prepojenie s \texttt{grid-tracker} podprogramom nebude implementované. Tento proces prijatia dát, výpočtu a ich odoslanie bude v nasledujúcich častiach spomínaný pod pojmom \uv{SPAMM algoritmus}.

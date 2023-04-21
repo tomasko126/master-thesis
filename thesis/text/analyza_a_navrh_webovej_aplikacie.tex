@@ -17,11 +17,11 @@ Aplikácia by mala umožniť animovať importované snímky pre jednoduchšiu an
 \subsubsection {FR3 -- Zobrazenie a interaktívna úprava mriežky}\label{fr3}
 Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR, ktorá by sa mala dať vygenerovať tlačidlom v používateľskom rozhraní. Mriežka by taktiež mala byť interaktívna, t.j. polohu jej bodov by malo byť možné interaktívne upravovať, najlepšie pomocou potiahnutím bodu myšou. Parametre mriežky (\ref{old_ui}) by sa taktiež mali dať upraviť podľa želania používateľa a ich zmena by mala byť ihneď viditeľná.
 
-\subsubsection {FR4 -- Zadanie parametrov pre \texttt{grid-tracker} podprogram}\label{fr4}
-Pre korektné spustenie \texttt{grid-tracker} podprogramu pre zarovnanie mriežky je nutné tomuto podprogramu podsunúť rozličné parametre. Tieto parametre by sa mali dať definovať v aplikácií pre ich neskoršie použitie v tomto podprograme. Výpis týchto parametrov je možné nájsť v \ref{helper_apps}.
+\subsubsection {FR4 -- Zadanie parametrov pre SPAMM algoritmus}\label{fr4}
+Pre korektný výpočet súradníc bodov mriežok je nutné SPAMM algoritmu podsunúť rozličné parametre. Ich hodnoty by sa mali dať určiť v aplikácií pre ich neskoršie použitie v tomto algoritme. Výpis týchto parametrov je možné nájsť v \ref{helper_apps}.
 
-\subsubsection {FR5 -- Spustenie \texttt{grid-tracker} podprogramu a zobrazenie jeho výsledkov}\label{fr5}
-Aplikácia by mala umožniť spustiť \texttt{grid-tracker} podprogram, ktorý zarovná mriežku definovanú používateľom s mriežkou, ktorá bola vygenerovaná pomocou techniky SPAMM. Po jej zarovnaní by mala byť aplikácia schopná vykresliť upravenú mriežku.
+\subsubsection {FR5 -- Spustenie SPAMM algoritmu a zobrazenie jeho výsledkov}\label{fr5}
+SPAMM algoritmus prijme potrebné dáta o všetkých importovaných snímkach a na nich definovaných mriežkach. Výstupom tohto algoritmu bude štruktúra dát, ktorá bude zodpovedať mriežkam s popisom súradníc bodov. Tento výstup bude následne nutné zobraziť v aplikácii.
 
 \subsection {Nefunkčné požiadavky}
 Požiadavky tohto typu síce nevymedzujú rozsah funkcionality danej aplikácie, avšak umožňujú určiť isté obmedzenia pre novú aplikáciu, ako napr. dôraz na podobu výslednej architektúry aplikácie.
@@ -47,6 +47,8 @@ Nasledujúce prípady použitia reprezentujú rôzne činnosti, ktoré môže po
         \captionsetup{justification=centering}
         \captionof{figure}[Use case diagram]{Use case diagram}
 \end {center}
+
+\clearpage
 
 \subsection {UC1 -- Zobrazenie snímkov v aplikácii}\label{uc1}
 Zobrazenie snímkov magnetickej rezonancie v DICOM formáte je jedným z esenciálnych funkčných požiadaviek -- \uv{\nameref{fr1}}. Nasledovný scenár túto požiadavku realizuje.
@@ -100,7 +102,9 @@ Medzi prípady použitia patrí aj úprava parametrov mriežky určenej pre anal
 \item {Aplikácia následne automaticky vykreslí mriežku na základe upravených parametrov.}
 \end {enumerate}
 
-\subsection {UC5 -- Zadanie parametrov pre \texttt{grid-tracker} podprogram}\label{uc5}
+\clearpage
+
+\subsection {UC5 -- Zadanie parametrov pre SPAMM algoritmus}\label{uc5}
 Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používateľom voči mriežke vygenerovanej SPAMM technikou je potrebné tomuto algoritmu poslať tri parametre definované v \ref{old_ui}. Nasledujúci scenár tento prípad použitia realizuje spolu s funkčnou požiadavkou -- \uv{\nameref{fr4}}.
 
 \subsubsection*{Scenár:}
@@ -109,8 +113,8 @@ Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používate�
 \item {Používateľ zadá číselné hodnoty parametrov \uv{Curvature coefficient}, \newline \uv{Force coefficient} a \uv{Stop time}.}
 \end {enumerate}
 
-\subsection {UC6 -- Spustenie \texttt{grid-tracker} podprogramu a zobrazenie jeho výsledku}
-Spustenie podprogramu a zobrazenie jeho výsledku (súradnice bodov mriežok) vyžaduje nielen mať importované DICOM snímky v aplikácii, ale aj vytvorenú mriežku s upravenými parametrami a zadanými parametrami pre \texttt{grid-tracker} podprogram. To je dôvodom, prečo tento scenár použitia zahŕňa prípady \uv{\nameref{uc1}}, \uv{\nameref{uc3}}, \uv{\nameref{uc4}} a \uv{\nameref{uc5}}. Samotný scenár realizuje funkčnú požiadavku \uv{\nameref{fr5}}.
+\subsection {UC6 -- Spustenie SPAMM algoritmu a zobrazenie jeho výsledkov}
+Spustenie algoritmu a zobrazenie jeho výsledku vyžaduje mať importované DICOM snímiek spolu s používateľom vytvorenými mriežkami a ich modifikáciami. To je dôvodom, prečo tento scenár použitia zahŕňa prípady \uv{\nameref{uc1}}, \uv{\nameref{uc3}}, \uv{\nameref{uc4}} a \uv{\nameref{uc5}}. Samotný scenár realizuje funkčnú požiadavku \uv{\nameref{fr5}}.
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -118,14 +122,18 @@ Spustenie podprogramu a zobrazenie jeho výsledku (súradnice bodov mriežok) vy
 \item {\nameref{uc3}}.
 \item {\nameref{uc4}}.
 \item {\nameref{uc5}}.
-\item {Používateľ kliknutím na tlačidlo \uv{Compute} spustí výpočet pomocou \texttt{grid-tracker} podprogramu.}
+\item {Používateľ kliknutím na tlačidlo \uv{Compute} spustí výpočet pomocou SPAMM algoritmu.}
 \item {Po dokončení výpočtu aplikácia zobrazí mriežky upravené horeuvedeným podprogramom.}
 \end {enumerate}
+
+\clearpage
 
 \section {Návrh architektúry webovej aplikácie}
 Medzi prvými krokmi pred vývojom webovej aplikácie patrí analýza všetkých prípustných možností architektúry navrhovanej aplikácie. V tomto prípade návrh architektúry závisí najmä na prepojení webového rozhrania so súčasnou aplikáciou, a preto je potrebné najprv zanalyzovať všetky dostupné možnosti tohto prepojenia. Po porovnaní dostupných možností je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
 
-Čo sa týka prepojenia súčasnej aplikácie, resp. výpočetného podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako môže daná integrácia prebehnúť. Prvou možnosťou je využitie tzv. C\texttt{++} addons\footnote{https://nodejs.org/docs/latest-v18.x/api/addons.html} technológie, druhou možnosťou sa naskytuje využiť relatívne novú technológiu -- WebAssembly\footnote{https://webassembly.org}.
+Čo sa týka prepojenia súčasnej aplikácie, resp. výpočetného podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako by mohla daná integrácia prebehnúť. Prvou možnosťou je využitie tzv. C\texttt{++} addons\footnote{https://nodejs.org/docs/latest-v18.x/api/addons.html} technológie, druhou možnosťou sa naskytuje využiť relatívne novú technológiu -- WebAssembly\footnote{https://webassembly.org}.
+
+Nakoľko je potrebné pred samotným prepojením webovej aplikácie s \texttt{grid-tracker} podprogramom samotný podprogram upraviť, táto sekcia poslúži najmä autorom pokračujúcim vo vývoji webovej aplikácie. 
 
 \subsection {C\texttt{++} addons}
 C\texttt{++} addons je technológia, ktorá poskytuje rozhranie medzi C/C\texttt{++} knižnicami a JavaScriptom\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript}. Táto technológia je implementovaná v rámci Node.js\footnote{https://nodejs.org/en}, čo je runtime prostredie JavaScriptu, ktoré bude popísané v samostatnej sekcii.
@@ -148,8 +156,8 @@ Webová platforma sa dá vo všeobecnosti rozdeliť na dve časti:
 \item {webové API, ktoré je poskytnuté vývojárom pre kontrolu rozličných funkcionalít webového prehliadača, resp. zariadenia  \cite{webassembly_concepts} (vlastný preklad).}
 \end{itemize}
 
-Historicky, VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú väčší výpočetný výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
-WebAssembly bolo navrhnutý tak, aby tieto problémy vyriešilo a prinieslo prostriedky pre vývoj takýchto aplikácií. 
+Historicky VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú väčší výpočetný výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
+WebAssembly bolo navrhnutý takým spôsobom, aby tieto problémy vyriešilo, čím by prinieslo prostriedky pre vývoj takýchto aplikácií. 
 
 Pomocou WebAssembly JS API\footnote{https://developer.mozilla.org/en-US/docs/WebAssembly/Using\textunderscore the\textunderscore JavaScript\textunderscore API} je možné načítať WebAssembly moduly -- čo sú moduly v binárnom formáte -- do JavaScript aplikácie a zdieľať s touto aplikáciou funkcionalitu poskytovanú týmito modulmi \cite{webassembly_concepts} (vlastný preklad).
 
@@ -173,19 +181,24 @@ Celý proces je pre ilustráciu zobrazený na obrázku nižšie:
         \captionof{figure}{Od zdrojového kódu k .wasm modulu \cite{cpp_to_wasm_image}}
 \end {center}
 
+\clearpage
+
 \subsection {Výsledná voľba prepojenia}
 C\texttt{++} addons technológia je implementovaná v Node.js, čo by v prípade zvolenia tejto technológie znamenalo zvolenie architektúry klient-server. Klientom by bol v tomto prípade webový prehliadač, ktorý by posielal HTTP požiadavku serveru s potrebnými dátami pre \texttt{grid-tracker} podprogram. Po výpočte na strane servera by server poslal odpoveď s informáciami o bodoch a úsečkách, ktoré by mali byť vykreslené na všetkých importovaných snímkoch magnetickej rezonancie.
 
-V prípade použitia technológie WebAssembly by všetky výpočetné operácie mohli byť implementované na úrovni klienta. Tým pádom by nebolo nutné posielať žiadne dáta serveru, čo hrá v prospech bezpečnosti. Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-tracker} a knižnica TNL pre zrýchlenie výpočetných algoritmov používajú OpenMP technológiu.
+V prípade použitia technológie WebAssembly by všetky výpočetné operácie mohli byť implementované na úrovni klienta. Tým pádom by nebolo nutné posielať žiadne dáta serveru, čo hrá v prospech bezpečnosti. Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-tracker} a TNL knižnica pre zrýchlenie výpočetných algoritmov používajú OpenMP technológiu.
 Bohužiaľ, WebAssembly túto technológiu nepodporuje, čo by v tomto prípade znamenalo, že by celý výpočet musel prebiehať jednovláknovo alebo byť refaktorovaný, aby používal viacero vlákien pomocou technológie WebAssembly threads \cite{webassembly_threads} (vlastný preklad).
 
-Čo sa týka C\texttt{++} addons, tá OpenMP technológiu podporuje. Taktiež by bol v rámci tejto technológie nutný menší zásah do zdrojového kódu \newline \texttt{grid-tracker} podprogramu, nakoľko by stačilo vytvoriť jednu wrapper funkciu v C\texttt{++}, ktorá by bola zodpovedná za konverziu dát do potrebného formátu a taktiež za vrátenie výsledku. Doterajší kód by mohol zostať prakticky nezmenený, resp. s minimálnymi zmenami.
-Taktiež nie je možné spoľahnúť sa na to, že by webové prehliadače, na ktorých by bežala nová webová aplikácia, podporovala WebAssembly technológiu. Rovnakým spôsobom je možné argumentovať ohľadom výkonu zariadení, na ktorých by daný výpočetný algoritmus bežal, v prípade WebAssembly.
+Čo sa týka C\texttt{++} addons, tá OpenMP technológiu podporuje. Taktiež by bol v rámci tejto technológie nutný menší zásah do zdrojového kódu \newline \texttt{grid-tracker} podprogramu, nakoľko by stačilo vytvoriť jednu wrapper funkciu v C\texttt{++}, ktorá by bola zodpovedná za konverziu dát do potrebného formátu a jeho výstup.
 
-Na základe týchto dôvodov bude lepšou voľbou vybrať technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie nielen rýchlejšia, ale aj s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram. 
+Taktiež nie je možné spoľahnúť sa na to, že by webové prehliadače, na ktorých by bežala nová webová aplikácia, podporovala WebAssembly technológiu. Rovnakým spôsobom je možné argumentovať ohľadom rozličného výkonu zariadení, na ktorých by daný výpočetný algoritmus bežal v prípade použitia WebAssembly technológie.
+
+Na základe týchto dôvodov bude lepšou a istejšou voľbou vybrať si technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie nielen rýchlejšia, ale aj s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram.
+
+\clearpage
 
 \section {Technológie pre vývoj webovej aplikácie}
-Po analýze, ako bude webová aplikácia prepojená s \texttt{grid-tracker} podprogramom, je nutné zvoliť si potrebné technológie, ktoré budú použité pri vývoji webovej aplikácie. V rámci tejto sekcii nebudú popísané žiadne konkrétne balíčky a iné závislosti.
+V rámci tejto analýzy budú popísané technológie, ktoré budú použité pri vývoji webovej aplikácie. Konkrétne balíčky, príp. závislosti sa v tejto sekcii nachádzať nebudú, ale budú popísané už v kapitole implementácie webovej aplikácie.
 
 \subsection {HTML5}
 Pre definovanie štruktúry webového dokumentu a jeho významu bude potrebné použiť značkovací jazyk HTML. Tento jazyk pozostáva zo série značiek (elementov) a k nim príslušných atribútov, pomocou ktorých je možné vytvorený obsah anotovať a významovo ho definovať. Týmto spôsobom je možné vytvoriť nadpisy, odstavce textu, číselné i nečíselné zoznamy, či importovať obrázky alebo sprostredkovať audio/video, atď.
@@ -229,7 +242,7 @@ Definovanie samotného selektoru môže byť pre dané pravidlo sofistikovanejš
 \subsection {JavaScript}
 JavaScript je cross-platformový skriptovací programovací jazyk a treťou základnou technológiou pre vývoj webových stránok a aplikácií, spolu s HTML a CSS. Používa sa pre implementovanie funkcionality, kde kombinácia HTML a CSS nie je pre daný účel vhodná alebo určená, ako napr. dynamická interakcia používateľa s webovou stránkou/aplikáciou, riešenie rôznych výpočetných úloh, odosielanie dát na server a prijímanie odpovede, a iné.
 
-Samotný jazyk bol vytvorený Brendanom Eichom, pracujúcom vo firme Netscape, ktorá taktiež vyvíjala webový prehliadač -- Netscape Navigator. JavaScript bol zahrnutý už vo verzii 2.0 tohto prehliadača, ktorý bol vydaný v roku 1995. Následne sa začal objavovať aj v iných prehliadačoch -- napr. vo všetkých prehliadačoch vytvorených firmou Microsoft počnúc Internet Explorerom 3.0 \cite{ecmascript_specification} (vlastný preklad). 
+Samotný jazyk bol vytvorený Brendanom Eichom, pracujúcom vo firme Netscape, ktorá taktiež vyvíjala webový prehliadač -- Netscape Navigator. \newline JavaScript bol zahrnutý už vo verzii 2.0 tohto prehliadača, ktorý bol vydaný v roku 1995. Následne sa začal objavovať aj v iných prehliadačoch -- napr. vo všetkých prehliadačoch vytvorených firmou Microsoft počnúc Internet Explorerom 3.0 \cite{ecmascript_specification} (vlastný preklad). 
 
 JavaScript nasleduje ECMAScript špecifikáciu\footnote{https://tc39.es/ecma262/}, vytvorenú Ecma International organizáciou. Tá kontinuálne vydáva každý rok novú štandardizovanú ECMAScript špecifikáciu, ktorá slúži ako predloha pre vytvorenie všeobecného skriptovacieho jazyka. JavaScript je v tomto prípade jazyk spĺňajúci tento štandard, nakoľko sa ním riadi a implementuje ho. Momentálne najnovšou verziou štandardu je jeho 14. edícia, ktorá pridala najmä nové metódy pracujúce s poľom (\texttt{Array}).
 
@@ -278,6 +291,8 @@ Vlastne vytvorený image používa väčšinou už image vytvorený inou osobou.
 
 Keďže použitie Dockeru prináša výhody ohľadom nasadenia aplikácie, bude v tomto prípade využitá táto technológia pre spustenie aplikácie. Použitím Dockeru je taktiež možné vyhnúť sa prípadnou nemožnosťou zostavenia aplikácie, čoho príkladom môže byť problematické zostavenie súčasnej desktopovej aplikácie.
 
+\clearpage
+
 \section {Analýza frameworkov pre tvorbu webovej aplikácie}
 Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného kódu, avšak takýto vývoj by bol nie len zdĺhavejší, ale aj pracnejší, nakoľko by sa musel samotný vývojár zamerať na viac než len na implementáciu samotnej aplikácie. Riešením je použitie webového frameworku, ktorý vývojára od takejto práce odbremenia. 
 
@@ -296,24 +311,20 @@ Na pozadí používa Nuxt.js Nitro\footnote{https://nitro.unjs.io/} server, ktor
 \subsubsection {Vue.js}
 Vue.js je JavaScript framework určený pre budovanie používateľského rozhrania postavený na štandardných technológiach ako HTML, CSS a JavaScript. Tento framework poskytuje deklaratívny programovací model založený na znovupoužiteľných komponentoch, ktoré je možné použiť v rámci iných komponentov, čím pomáha zefektívniť proces vývoja znížením nutnosti použitia duplicitného kódu. Pod pojmom \uv{komponent} je možné predstaviť si samostatnú jednotku používateľského rozhrania (v HTML) s definovanými štýlmi (pomocou CSS) a stavom, ktorý je riadený pomocou JavaScriptu.
 
-Nasleduje príklad využitia Vue.js frameworku -- pomocou vytvorenia tzv. Single File Componentu (SFC), ktorý v rámci jedného súboru kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie. \clearpage
+Nasleduje príklad využitia Vue.js frameworku -- pomocou vytvorenia tzv. Single File Componentu (SFC), ktorý v rámci jedného súboru (ParagraphComponent.vue) kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie.
 \begin{minted}{html}
-ParagraphComponent.vue
-
 <template>
   <p>{{ paragraphText }}</p>
 </template>
 
 <script setup lang='ts'>
 import { computed, defineProps } from 'vue';
-
 const props = defineProps({
   text: {
     type: String,
     default: '',
   },
 });
-
 const paragraphText = computed(() => {
   return props.text;
 });
@@ -326,14 +337,14 @@ p {
 </style>
 \end{minted}
 
-Horeuvedený príklad demonštruje dve hlavné funkcie Vue.js frameworku:
+Uvedený príklad demonštruje dve hlavné funkcie Vue.js frameworku:
 \begin {itemize}
 \item {deklaratívne vykreslovanie a}
 \item {reaktivitu \cite{vuejs_introduction} (vlastný preklad).}
 \end {itemize}
 
 V prvom prípade sa jedná o rozšírenie štandardného HTML o template syntax -- \{\{ \}\}, ktorý umožňuje dynamicky vykresliť obsah na základe JavaScript stavu. V uvedenom príklade sa jedná o zobrazenie paragrafu, kde zobrazený text pochádza z premennej \texttt{paragraphText}. Táto premenná obsahuje \texttt{computed} funkciu, ktorá vracia hodnotu \texttt{props.text}. Táto hodnota pochádza zo šablóny iného komponentu, kde bol tento komponent \newline (\texttt{ParagraphComponent.vue}) importovaný. 
-Nasledujúci príklad ukazuje práve tento prípad. \clearpage
+Nasledujúci príklad ukazuje práve tento prípad.
 
 \begin{minted}{html}
 ArticleComponent.vue
@@ -365,7 +376,7 @@ Zostavenie aplikácie je možné príkazom \texttt{next build}. Tento príkaz vy
 \subsubsection {React.js}
 React.js je taktiež JavaScript framework, ktorý poskytuje možnosti pre budovanie používateľského rozhrania. Svojim účelom je podobný Vue.js frameworku a taktiež patrí medzi open-source nástroj, ktorý je avšak spravovaný firmou Meta\footnote{https://about.meta.com/}.
 
-React.js sa od Vue.js líši spôsobom definovania komponentu -- nepoužíva SFC pre definovanie štruktúry komponentu, jeho štýlu a stavu. Pre definovanie štruktúry komponentu používa React.js tzv. JSX, ktorý umožňuje písať HTML v JavaScripte.
+React.js sa od Vue.js líši spôsobom definovania komponentu -- nepoužíva SFC pre definovanie štruktúry komponentu, jeho štýlu a stavu. Pre definovanie štruktúry komponentu používa React.js tzv. JSX, ktorý umožňuje písať HTML v JavaScripte. \clearpage
 
 JSX je oproti HTML striktnejší v tom, že:
 \begin{itemize}
@@ -387,7 +398,7 @@ console.log(answer); // výstupom na konzole bude reťazec 'foo'
 \end{minted}
 
 Pre predstavu je na nasledujúcom príklade ukázaný rovnaký komponent ako v príklade pre Vue.js, avšak upravený pre React.js framework:
-\begin{minted}{html}
+\begin{minted}{typescript}
 import 'paragraph.css';
 
 export default function Paragraph({ paragraphText = '' }) {
@@ -411,7 +422,7 @@ Spracovávanie importovaných MR snímkov by v aplikácii malo prebiehať najmä
 
 Pod pojmom \uv{spracovať} je myslené: čítanie hlavičky DICOM súborov, zobrazenie snímkov nachádzajúcich sa v týchto súboroch, či tieto snímky modifikovať. Medzi ďalšie požiadavky kladené na takúto knižnicu patrí jej aktívny vývoj, dostupná dokumentácia a taktiež použiteľnosť knižnice pre produkčné nasadenie. Je možné, že neexistuje daná knižnica spĺňajúca všetky požiadavky, ktoré sú na ňu kladené. V takom prípade by mal byť nájdený mix knižníc, ktoré spolu tieto podmienky spĺňajú.
 
-Bohužiaľ, všetky požiadavky kladené na hľadanú knižnicu nespĺňa ani jedna nájdená knižnica, ale výber viacero knižníc, kde každá z nich implementuje určitú časť požiadaviek a dokopy podmienky kladené na knižnicu vyššie, spĺňajú.
+Bohužiaľ, všetky požiadavky kladené na hľadanú knižnicu nespĺňa ani jedna nájdená knižnica, ale výber viacero knižníc, kde každá z nich implementuje určitú časť požiadaviek a dokopy podmienky kladené na knižnicu vyššie, spĺňajú. \clearpage
 
 Jedná sa o nasledovné knižnice:
 \begin {itemize}
@@ -436,7 +447,7 @@ Po načítaní DICOM súborov je ich parsovanie prenechané knižnici Dicom Pars
 \subsubsection {Web Workers}
 JavaScript je v prehliadači implementovaný ako jednovláknový jazyk využívajúci jedno hlavné vlákno a exekúcia skriptov tohto jazyka prebieha zvyčajne v tomto vlákne. Výpočetne náročné úlohy by avšak mohli vyústiť do zablokovania tohto vlákna, ktoré sa prejavuje nereagovaním prehliadača na rozličné používateľské akcie alebo nevykreslovaním aktualizácií na webovej stránke. Dôvodom zablokovania hlavného vlákna by v tomto prípade bolo využitie všetkých dostupných prostriedkov prioritne pre danú výpočetne náročnú úlohu.
 
-Web Workers technológia je štandardom, ktorý je implementovaný a poskytovaný webovými prehliadačmi umožňujúci exekúciu takýchto úloh, ktoré by inak pri dlhšom spracovávaní mohli dané hlavné vlákno zablokovať. Pomocou Web Workers je možné predísť zablokovaniu hlavného vlákna jednoduchým vytvorením nového pracovného vlákna pomocou konštruktu \texttt{new Worker(url)}, kde \texttt{url} je adresa skriptu, ktorý má bežať v novom pracovnom vlákne. Takéto pracovné vlákno môže exekuovať JS skript bez zablokovania hlavného vlákna, keďže je od neho nezávislé \cite{using_web_workers}.
+Web Workers technológia je štandardom, ktorý je implementovaný a poskytovaný webovými prehliadačmi umožňujúci exekúciu takýchto úloh, ktoré by inak pri dlhšom spracovávaní mohli dané hlavné vlákno zablokovať. Pomocou Web Workers je možné predísť zablokovaniu hlavného vlákna jednoduchým vytvorením nového pracovného vlákna pomocou konštruktu \texttt{new Worker(url)}, kde \texttt{url} je adresa skriptu, ktorý má bežať v novom pracovnom vlákne. Takéto pracovné vlákno môže exekuovať JS skript bez zablokovania hlavného vlákna, keďže je od neho nezávislé \cite{using_web_workers} (vlastný preklad).
 
 \subsection {Dicom Parser}
 Dicom Parser je knižnica implementujúca parsovanie všetkých známych validných DICOM súborov. Knižnica je navrhnutá pre beh vo všetkých moderných HTML5 prehliadačoch a k svojej funkčnosti nezávisí na iných knižniciach. Dicom Parser poskytuje globálny objekt \texttt{dicomParser}, ktorý obsahuje viacero metód, z ktorých je najzaujímavejšia metóda \texttt{parseDicom}. Argumentom tejto metódy je \texttt{Uint8Array} pole obsahujúce nespracovaný (raw) obsah DICOM súboru. Výsledkom volania tejto metódy spolu s \texttt{Uint8Array} poľom je \texttt{DataSet} objekt obsahujúci vyparsovaný obsah DICOM súboru.
@@ -466,51 +477,12 @@ Pri implementácii mriežky pomocou dedikovaného API by nebolo potrebné udrži
 
 Na druhú stranu, ak by mala byť mriežka implementovaná priamo v Cornerstone Tools knižnici, odpadol by problém s importovaním teoreticky potrebnej funkcionality, nakoľko by sa dal importovať akýkoľvek modul knižnice priamo pomocou JS konštruktu \texttt{import}, bez nutnosti využitia \texttt{importInternal} metódy.
 
-Nakoľko v tomto momente nie je jasné, či bude výsledná implementácia mriežky potrebovať zmenu niektorého zo súborov Cornerstone Tools knižnice, je vhodnejšie začať implementovať mriežku priamo v knižnici. Keď bude implementácia tejto mriežky dokončená, bude nutné posúdiť, či je možné celú funkcionalitu mriežky migrovať do riešenia využívajúceho iba dedikované API pre svoju funkcionalitu.  \todo {v implementácii zhodnotiť že to nie je možné, nakoľko boli potrebné zmeny v samotných súboroch cornerstone tools}.
+Nakoľko v tomto momente nie je jasné, či bude výsledná implementácia mriežky potrebovať zmenu niektorého zo súborov Cornerstone Tools knižnice, je vhodnejšie začať implementovať mriežku priamo v knižnici. Keď bude implementácia tejto mriežky dokončená, bude nutné posúdiť, či je možné celú funkcionalitu mriežky migrovať do riešenia využívajúceho iba dedikované API pre svoju funkcionalitu \todo {v implementácii zhodnotiť že to nie je možné, nakoľko boli potrebné zmeny v samotných súboroch cornerstone tools}.
 
-Ako pri Cornerstone Core, tak aj Cornerstone Tools knižnica bude mať čoskoro svojho nástupcu\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/tools}, ktorá bude určená pre Cornerstone3D. Táto nová knižnica je momentálne v aktívnom vývoji a jej stabilná verzia rovnako ako v prípade Cornerstone3D nebola doteraz vydaná. To je dôvodom, prečo bude pri implementácii aplikácie použitá doterajšia verzia Cornerstone Tools knižnice.
-
-\section {Návrh komunikácie webového rozhrania so serverom}\label{api_endpoint}
-Keďže bude nutné posielať serveru potrebné dáta pre výpočet súradníc bodov mriežok pre každú snímku MR, je nutné navrhnúť túto komunikáciu medzi klientom a serverom. V tomto prípade postačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď klientovi pošle vo formáte potrebnom pre vykreslenie aktualizovaných bodov mriežok.
-
-Detaily o tomto API endpointe sú nasledovné:
-\begin {itemize}
-\item {pre komunikáciu s endpointom bude využitý HTTP protokol,}
-\item {endpoint bude dostupný na adrese <hostname>/api/grid, kde <hostname> predstavuje doménu servera a}
-\item {endpoint bude prijímať dáta vtedy, ak daná požiadavka bude poslaná metódou POST.}
-\end {itemize}
-
-Telo požiadavky bude mať nasledovný formát:
-\begin{minted}{json}
-{
-
-}
-\end{minted}
-
-Následne server spracuje prijaté dáta tak, že ich pošle \texttt{grid-tracker} podprogramu, ktorý prevedie výpočet nad prijatými MR snímkami a mriežkami. Výstup z \texttt{grid-tracker} podprogramu bude nutné serializovať do takej podoby, ktorá by bola vhodná pre odoslanie odpovede klientovi za účelom zobrazenia aktualizovaných mriežok pomocou vytvoreného Grid toolu, ktorý sa bude nachádzať v upravenej Cornerstone Tools knižnici.
-
-Telo odpovede bude obsahovať dáta v nasledujúcom formáte:
-\begin{minted}{json}
-{
-  grids: {
-    {
-      
-    },
-    ...
-  }
-}
-\end{minted}
-
-
-\todo {pridať diagram komunikácie}
-
-\subsection {Anonymizácia DICOM dát}
-Horeuvedené dáta pochádzajúce z DICOM snímkov je potrebné pred ich poslaním anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách 0008 a 0010. Skupina 0008 obsahuje dáta ohľadom štúdie a skupina 0010 obsahuje dáta o pacientovi.
-
-Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte. Táto trieda nahradí obsah tagov z daných skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach.
+Ako pri Cornerstone Core, tak aj Cornerstone Tools knižnica bude mať čoskoro svojho nástupcu\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/tools}, ktorá bude určená pre Cornerstone3D. Táto nová knižnica je momentálne v aktívnom vývoji a jej stabilná verzia rovnako ako v prípade Cornerstone3D nebola doteraz vydaná. To je dôvodom, prečo bude pri implementácii aplikácie použitá doterajšia verzia Cornerstone Tools knižnice. \clearpage
 
 \section {Návrh používateľského rozhrania}
-Pri návrhu používateľského rozhrania som sa inšpiroval UI doterajšej aplikácie, avšak s pár zmenami týkajúcimi sa štruktúry budúceho UI. Návrh samotného rozhrania, ktorý bude slúžiť ako predloha pri vytváraní používateľského rozhrania webovej aplikácie, je priložený nižšie. 
+Pri návrhu používateľského rozhrania som sa inšpiroval UI doterajšej aplikácie, avšak s pár zmenami týkajúcimi sa štruktúry budúceho používateľského rozhrania.
 
 Tento návrh používateľského rozhrania som rozdelil na 4 hlavné časti:
 \begin {itemize}
@@ -520,7 +492,7 @@ Tento návrh používateľského rozhrania som rozdelil na 4 hlavné časti:
 \item {pravý postranný panel.}
 \end {itemize}
 
-Nižšie zobrazený návrh používateľského rozhrania sa skladá z dvoch snímkov, nakoľko sa obsah pravého postranného panelu môže meniť na základe zvolenej karty v pravom postrannom paneli.
+Konečný návrh, ktorý bude slúžiť ako predloha pri vytváraní používateľského rozhrania webovej aplikácie, je priložený nižšie. Ten sa skladá z dvoch snímkov, nakoľko sa obsah pravého postranného panelu môže meniť na základe zvolenej karty.
 
 \begin {center}
 \centering
@@ -536,7 +508,7 @@ Nižšie zobrazený návrh používateľského rozhrania sa skladá z dvoch sní
 \captionof{figure}{Návrh používateľského rozhrania - druhá časť}
 \end {center}
 
-Nasledujúce podsekcie sa budú venovať popisu jednotlivých častí s popisom jednotlivých možností zobrazených v daných častiachl
+Nasledujúce podsekcie sa budú venovať popisu jednotlivých častí s popisom jednotlivých možností zobrazených v daných častiach.
 
 \subsection {Horný panel}
 V hornom paneli sa nachádzajú tlačidlá, na ktoré bude možné kliknúť.
@@ -551,25 +523,108 @@ Pomocou štvrtého tlačidla bude možné priblížiť aktuálne zobrazenú DICO
 
 Šieste tlačidlo umožní posunúť DICOM snímku v ľubovoľnom smere a siedmym tlačidlom bude možné presúvať vykreslenú mriežku alebo jej body v závislosti na aktuálnom nastavení tohto tlačidla.
 
-\subsection {Ľavy postranný panel}
-Ľavý postranný panel obsahuje dve sekcie -- Image information a Grid algorithm parameters.
-
-Image information sekcia informuje používateľa o mene pacienta, ktorému aktuálne zobrazená snímka patrí. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná. Pod týmito informáciami sa nachádzajú informácie o výške a šírke zobrazenej snímky.
-
-Grid algorithm parameters slúži pre nastavenie parametrov pre \texttt{grid-tracker} podprogram. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkoch. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok.
-
 \subsection {Centrálna časť}
 V centrálnej časti aplikácie bude zobrazená aktuálne vybraná DICOM snímka. Pod touto snímkou budú zobrazené náhľady na všetky importované snímky, na ktoré bude možné kliknúť. Po kliknutí na náhľad snímky sa daná snímka zobrazí. Okrem zobrazenia snímky bude možné vykresliť používateľom definovanú mriežku, s ktorou sa bude dať interagovať pomocou myši.
 
+\subsection {Ľavý postranný panel}
+Ľavý postranný panel obsahuje dve sekcie -- \uv{Image information} a \uv{Grid algorithm parameters}.
+
+\uv{Image information} sekcia informuje používateľa o mene pacienta, ktorému aktuálne zobrazená snímka patrí. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná. Pod týmito informáciami sa nachádzajú informácie o výške a šírke zobrazenej snímky.
+
+\uv{Grid algorithm parameters} slúži pre nastavenie parametrov pre SPAMM algoritmus. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkoch. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok. \clearpage
+
 \subsection {Pravý postranný panel}
-Pravý postranný panel je rozdelený na dve karty -- Image tools a Grid tools. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
+Pravý postranný panel je rozdelený na dve karty -- \uv{Image tools} a \uv{Grid tools}. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
 
-Na Image tools karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímok naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímkov, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej animovanej snímky po nastavenie koncovej animovanej snímky, po ktorú bude animácia prehrávaná.
+Na \uv{Image tools} karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímok naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímkov, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej animovanej snímky po nastavenie koncovej animovanej snímky, po ktorú bude animácia prehrávaná.
 
-Grid tools karta bude obsahovať rozličné nastavenia mriežky. Tie sa delia na globálne a lokálne. Globálne nastavenia budú mať efekt pre všetky vytvorené mriežky, lokálne sa budú aplikovať len na mriežku, ktorá je aktuálne zobrazená.
+\uv{Grid tools} karta bude obsahovať rozličné nastavenia mriežky. Tie sa delia na globálne a lokálne. Globálne nastavenia budú mať efekt pre všetky vytvorené mriežky, lokálne sa budú aplikovať len na mriežku, ktorá je aktuálne zobrazená.
 
-V globálnych nastaveniach bude možné nastaviť možnosť interakcie s mriežkou pomocou myši (Move nastavenie). Ak bude zapnutá možnosť \uv{Grid}, potiahnutím bodu mriežky sa celá mriežka posunie o vektor posunu. V prípade zvolenej možnosti \uv{Point} sa nebude posúvať celá mriežka, ale iba myšou zvolený bod.
-Ďalšie nastavenie -- \uv{Show refinement points} -- bude slúžiť na dynamické pridanie, resp. odobranie všetkých refinement bodov, pomocou ktorých bude možné lepšie zarovať používateľom vygenerovanú mriežku so SPAMM mriežkou vygenerovanou MR prístrojom.
+V globálnych nastaveniach bude možné nastaviť možnosť interakcie s mriežkou pomocou myši (nastavenie \uv{Move}). Ak bude zapnutá možnosť \uv{Grid}, potiahnutím bodu mriežky sa celá mriežka posunie o vektor posunu. V prípade zvolenej možnosti \uv{Point} sa nebude posúvať celá mriežka, ale iba myšou zvolený bod mriežky.
+Ďalšie nastavenie -- \uv{Show refinement points} -- bude slúžiť na dynamické pridanie, resp. odobranie refinement bodov zo všetkých mriežok. Tzv. refinement body slúžia pre presnejšie zarovnanie používateľom vygenerovanej mriežky so SPAMM mriežkou vygenerovanou MR prístrojom.
 Tlačidlo \uv{Copy grid to all images} bude slúžiť pre skopírovanie zobrazenej mriežky do všetkých importovaných mriežok. Po klliknutí na toto tlačidlo sa zobrazí modálne okno, ktoré upozorní používateľa o tejto akcii s nemožnosťou prípadného vrátenia tohto kroku. Toto tlačidlo bude aktívne iba v prípade, že na aktuálnom snímku bude zobrazená mriežka.
 
-V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky, ako uhol, offset a iné. Okrem toho bude možné pomocou tlačidla \uv{Create grid} vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí na tlačidlo sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude po kliknutí naň vymazať mriežku na zobrazenej snímke.
+V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky, ako uhol, offset a iné. Okrem toho bude možné pomocou tlačidla \uv{Create grid} vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí na tlačidlo sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude po kliknutí naň vymazať mriežku na zobrazenej snímke. \clearpage
+
+\section {Návrh komunikácie webového rozhrania so serverom}\label{api_endpoint}
+Keďže bude nutné posielať serveru dáta pre výpočet súradníc bodov mriežok, a jeho odpoveď bude nutné poslať klientovi naspäť, je nutné túto komunikáciu navrhnúť. V tomto prípade stačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď pošle klientovi vo dohodnutom formáte.
+
+Detaily o tomto API endpointe sú nasledovné: pre komunikáciu s endpointom bude využitý HTTP protokol, endpoint bude dostupný na adrese \texttt{<hostname>/api/grid}, endpoint prijme dáta vtedy, ak daná požiadavka bude poslaná metódou POST a telo požiadavky a odpovede budú vo formáte JSON.
+
+\subsection {Návrh -- HTTP požiadavka}
+
+Telo požiadavky bude mať nasledovný formát, ktorý je avšak pre popis typov premenných popísaný v TypeScripte:
+\begin{minted}{typescript}
+{
+  "data": [{
+      "image": {
+        "imageId": string;
+        "imageData": Uint8Array;
+      },
+      "grid": {
+        "includesRefinementPoints": boolean;
+        "primaryLines": [{
+            "points": [{
+                "x": number;
+                "y": number;
+                "isCommonPoint": boolean;
+              },
+              ...
+            ]
+          },
+          ...
+        ]
+      }
+    }
+  ]
+}
+\end{minted}
+
+V \texttt{data} poli sa budú nachádzať objekty, z ktorých každý objekt bude reprezentovať jednu entitu skladajúcu sa zo štruktúry snímky (kľúč \texttt{image}) a jej mriežky (kľúč \texttt{grid}).
+
+Kľúč \texttt{image} je objektom, ktorý obsahuje \texttt{imageId} a \texttt{imageData}. \texttt{imageId} je reťazec reprezentujúci ID snímky a \texttt{imageData} pole reprezentujúce raw dáta DICOM súboru.
+
+Kľúč \texttt{grid} je taktiež objektom obsahujúci dva kľúče -- \texttt{primaryLines} a \texttt{includesRefinementPoints}.
+
+\texttt{primaryLines} reprezentuje pole zvislých úsečiek idúcich zľava doprava.
+Každá táto úsečka obsahuje pole \texttt{points}. Toto pole obsahuje objekty reprezentujúce body na danej úsečke.
+Každý bod sa skladá z troch kľúčov objektu -- \texttt{x}, \texttt{y} a \texttt{isCommonPoint}. \texttt{x} reprezentuje x-súradnicu bodu, \texttt{y} invertovanú y-súradnicu a \texttt{isCommonPoint} značí, či je daný bod \uv{common point} (tzv. bod, v ktorom sa pretína vodorovná a zvislá úsečka mriežky) alebo \uv{refinement point}, pomocou ktorého je možné upresniť polohu mriežky. 
+
+\texttt{includesRefinementPoints} značí, či sa v poli \texttt{points} nachádzajú aj tzv. \uv{refinement} body .
+
+Používateľ iniciuje poslanie dát v tejto štruktúre kliknutím na tlačidlo \uv{Compute}.
+Server prijaté dáta spracuje a prevedie výpočet pomocou SPAMM algoritmu. Následne svoj výstup serializuje do podoby, ktorá bude vhodná pre odoslanie odpovede klientovi za účelom zobrazenia mriežok s aktualizovanými súradnicami bodov. Takto upravené mriežky budú zobrazené pomocou novovytvoreného Grid toolu, ktorý sa bude nachádzať v upravenej Cornerstone Tools knižnici.
+
+Návrhom samotnej odpovede sa zaoberá nasledujúca podsekcia. \clearpage
+
+\subsection{Návrh -- HTTP odpoveď}
+
+Telo odpovede servera na požiadavku, ktorá bude obsahovať dáta o odoslaných mriežkach, bude v nasledujúcom formáte:
+\begin{minted}{typescript}
+{
+  "grids": [{
+    "imageId": string;
+    "primaryLines": [{
+      "points": [{
+        "x": number;
+        "y": number;
+        "isCommonPoint": boolean;
+      },
+      ...
+      ]
+    },
+    ...
+    ]
+  },
+  ...
+  ]
+}
+\end{minted}
+
+Odpoveď obsahuje kľúč \texttt{grids}, ktorý obsahuje objekty mriežok. Každý z týchto objektov obsahuje kľúč \texttt{imageId} a \texttt{primaryLines}. Pomocou kľúča \texttt{imageId} je možné spárovať objekt mriežky v odpovedi s mriežkou v aplikácii. Obsahom kľúča \texttt{primaryLines} je pole zvislých úsečiek mriežky idúce zľava doprava.  Každá takáto úsečka obsahuje kľúč \texttt{points} reprezentujúce pole bodov zhora nadol. Každý bod obsahuje svoje súradnice (\texttt{x} a \texttt{y}) a značku, či je bodom, v ktorom sa pretína vodorovná a zvislá úsečka mriežky alebo nie.
+\clearpage
+
+\subsection {Anonymizácia DICOM dát}
+Nakoľko pre účely následného spracovania mriežok na serveri budú taktiež potrebné poslať snímky v DICOM formáte (kľúč \texttt{imageData}), bude nevyhnutné ich pred ich odoslaním na server anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} (vlastný preklad) je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách \uv{0008} a \uv{0010}. Skupina \uv{0008} obsahuje dáta ohľadom štúdie a skupina \uv{0010} obsahuje dáta o pacientovi.
+
+Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte. Táto trieda nahradí obsah tagov z horeuvedených skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach. Takto upravené dáta bude môcť byť následné bezpečne poslané na server.
