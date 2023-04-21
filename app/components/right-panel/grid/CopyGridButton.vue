@@ -18,6 +18,7 @@
     title="Copy grid to other images"
     blur
     hide-default-actions
+    :no-dismiss="showLoadingState"
   >
     <template #default>
       <p>Are you sure to copy grid to all other images?</p>
