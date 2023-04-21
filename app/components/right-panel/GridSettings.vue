@@ -95,6 +95,7 @@
         v-model="showModal"
         blur
         hide-default-actions
+        no-dismiss
       >
         <template #default>
           <p>Please wait...</p>
