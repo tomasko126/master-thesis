@@ -4,7 +4,7 @@
   "include": ["**/*.ts", "**/*.vue", "**/*.d.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "lib": ["DOM", "ES2021"],
+    "lib": ["DOM", "ES2022"],
     "module": "ES2022",
     "target": "ES2022",
     "types": ["node"],
