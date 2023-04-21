@@ -58,9 +58,6 @@ class GridState {
    * Find out, if we are showing refinement points or not
    */
   isShowingRefinementPoints(): boolean|null {
-    if (!this.hasGrid()) {
-      return null;
-    }
     return this.config.showRefinementPoints.global;
   }
 }
