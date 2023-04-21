@@ -2,6 +2,7 @@
   <BaseTool
     popover-message="Zoom out"
     :disabled="!store.imageIds.length || store.isComputingGrids"
+    @click="onClick"
     @mousedown="zoomStart"
   >
     <font-awesome-icon icon="fa-solid fa-magnifying-glass-minus" />
@@ -33,5 +34,9 @@ const zoomStart = (): void => {
   document.addEventListener('mouseup', () => {
     zoomEnd();
   }, { once: true });
+};
+
+const onClick = () => {
+  setZoom(zoomFactorChange.value);
 };
 </script>
