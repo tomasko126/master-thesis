@@ -4,12 +4,14 @@
     prevent-overflow
     stick-to-edges
   >
-    <va-button
-      :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
-      @click="showModal = !showModal"
-    >
-      Copy grid to all images
-    </va-button>
+    <span>
+      <va-button
+        :disabled="!store.hasImageDefinedGrid || store.isLoopingImages || store.isComputingGrids"
+        @click="showModal = !showModal"
+      >
+        Copy grid to all images
+      </va-button>
+    </span>
   </va-popover>
   <va-modal
     v-model="showModal"
