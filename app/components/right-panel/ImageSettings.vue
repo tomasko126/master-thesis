@@ -60,7 +60,7 @@
         :min="1"
         :max="30"
       >
-        <template #trackLabel="slotProps">
+        <template #trackLabel="slotProps: any">
           {{ `${slotProps.value} FPS` }}
         </template>
       </va-slider>
