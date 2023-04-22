@@ -41,17 +41,18 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
       <file>iso-numeric.dbx</file>
+      <file>blx-unicode.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
       <file>iso.bbx</file>
@@ -60,32 +61,32 @@
       <file>iso-fullcite.cbx</file>
       <file>iso-numeric.cbx</file>
       <file>biblatex.cfg</file>
-      <file>czech.lbx</file>
-      <file>czech-iso.lbx</file>
+      <file>slovak.lbx</file>
+      <file>slovak-iso.lbx</file>
       <file>english.lbx</file>
       <file>english-iso.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>ctufit-thesis</infile>
+      <infile>DP_Tomáš_Taro_2023</infile>
     </cmdline>
     <input>
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </input>
     <output>
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>ctufit-thesis.bbl</file>
+      <file>DP_Tomáš_Taro_2023.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>ctufit-thesis.bcf</file>
+      <file>DP_Tomáš_Taro_2023.bcf</file>
     </requires>
     <requires type="editable">
-      <file>text/bib-database.bib</file>
+      <file>bib-database.bib</file>
     </requires>
   </external>
 </requests>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.9" bltxversion="3.18b" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.10" bltxversion="3.19" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -37,6 +37,11 @@
     <bcf:option type="singlevalued">
       <bcf:key>alphaothers</bcf:key>
       <bcf:value>+</bcf:value>
+    </bcf:option>
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
@@ -163,7 +168,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortlocale</bcf:key>
-      <bcf:value>czech</bcf:value>
+      <bcf:value>slovak</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
@@ -280,6 +285,11 @@
   </bcf:options>
   <!-- patent -->
   <bcf:options component="biblatex" type="patent">
+    <bcf:option type="multivalued">
+      <bcf:key>extradatecontext</bcf:key>
+      <bcf:value order="1">labelname</bcf:value>
+      <bcf:value order="2">labeltitle</bcf:value>
+    </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
       <bcf:value>0</bcf:value>
@@ -504,6 +514,7 @@
     <bcf:option datatype="xml">sortingnamekeytemplate</bcf:option>
     <bcf:option datatype="xml">sortingtemplate</bcf:option>
     <bcf:option datatype="xml">extradatespec</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -728,6 +739,7 @@
     <bcf:option datatype="xml">translit</bcf:option>
     <bcf:option datatype="xml">sortexclusion</bcf:option>
     <bcf:option datatype="xml">sortinclusion</bcf:option>
+    <bcf:option datatype="xml">extradatecontext</bcf:option>
     <bcf:option datatype="xml">labelnamespec</bcf:option>
     <bcf:option datatype="xml">labeltitlespec</bcf:option>
     <bcf:option datatype="xml">labeldatespec</bcf:option>
@@ -2367,15 +2379,76 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">text/bib-database.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex" glob="false">bib-database.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">Crochemore2002</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">Motwani2014</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">Sestakova2018</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">Kopka2004</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">def:1</bcf:citekey>
-    <bcf:citekey order="5" intorder="2">def:2</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">mr_usage</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">contrast_agents</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">mr_contraindications</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">basic_principles_of_mri</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">spamm_description</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">spamm_description</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">spamm_description</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">qt_description</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">qt_description</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">qtcore_description</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">qtwidgets_description</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">qtgui_description</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">qttest_description</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">qmake_description</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">Varma_2012</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">about_dicomlibrary</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">dicom_history</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">Varma_2012</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">Varma_2012</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">Varma_2012</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">Varma_2012</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">dicom_transfer_syntax</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">dcmtk_description</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">openmp_description</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">tnl_description</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">master_thesis_app</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">master_thesis_app</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">cpp_addons</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">cpp_addons</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">cpp_addons</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">cpp_addons</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">webassembly_concepts</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">webassembly_concepts</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">webassembly_concepts</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">webassembly_concepts</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">cpp_to_wasm</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">cpp_to_wasm_image</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">webassembly_threads</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">about_css</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">ecmascript_specification</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">ecmascript_specification</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">about_typescript</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">about_nodejs</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">about_docker</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">nuxt_introduction</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">nuxt_introduction</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">vuejs_introduction</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">nextjs_introduction</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">nextjs_introduction</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">jsx_rules</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">reactjs_stylesheet</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">reactjs_stylesheet_module</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">react_state</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">using_web_workers</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">Varma_2012</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
