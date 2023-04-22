@@ -481,6 +481,16 @@ Nakoľko v tomto momente nie je jasné, či bude výsledná implementácia mrie�
 
 Ako pri Cornerstone Core, tak aj Cornerstone Tools knižnica bude mať čoskoro svojho nástupcu\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/tools}, ktorá bude určená pre Cornerstone3D. Táto nová knižnica je momentálne v aktívnom vývoji a jej stabilná verzia rovnako ako v prípade Cornerstone3D nebola doteraz vydaná. To je dôvodom, prečo bude pri implementácii aplikácie použitá doterajšia verzia Cornerstone Tools knižnice. \clearpage
 
+\section {Zobrazenie závislostí medzi knižnicami}
+Pre lepšie znázornenie previazania jednotlivých knižníc uvedených v tejto sekcii bol vytvorený diagram tried, na ktorom sú zobrazené instancie tried a závislosti medzi nimi.
+
+\begin {center}
+        \centering
+        \includegraphics[height=4.75cm]{media/graphs/class_diagram.png}
+        \captionsetup{justification=centering}
+        \captionof{figure}{Class diagram znázorňujúci závislosti medzi knižnicami}
+\end {center}
+
 \section {Návrh používateľského rozhrania}
 Pri návrhu používateľského rozhrania som sa inšpiroval UI doterajšej aplikácie, avšak s pár zmenami týkajúcimi sa štruktúry budúceho používateľského rozhrania.
 
@@ -492,18 +502,18 @@ Tento návrh používateľského rozhrania som rozdelil na 4 hlavné časti:
 \item {pravý postranný panel.}
 \end {itemize}
 
-Konečný návrh, ktorý bude slúžiť ako predloha pri vytváraní používateľského rozhrania webovej aplikácie, je priložený nižšie. Ten sa skladá z dvoch snímkov, nakoľko sa obsah pravého postranného panelu môže meniť na základe zvolenej karty.
+Konečný návrh, ktorý bude slúžiť ako predloha pri vytváraní používateľského rozhrania webovej aplikácie, je priložený nižšie. Ten sa skladá z dvoch snímkov, nakoľko sa obsah pravého postranného panelu môže meniť na základe zvolenej karty. \clearpage
 
 \begin {center}
 \centering
-\includegraphics[height=10cm]{media/wireframes/1.png}
+\includegraphics[height=8cm]{media/wireframes/1.png}
 \captionsetup{justification=centering}
 \captionof{figure}{Návrh používateľského rozhrania - prvá časť}
 \end {center}
 
 \begin {center}
 \centering
-\includegraphics[height=10cm]{media/wireframes/2.png}
+\includegraphics[height=8cm]{media/wireframes/2.png}
 \captionsetup{justification=centering}
 \captionof{figure}{Návrh používateľského rozhrania - druhá časť}
 \end {center}
@@ -531,12 +541,12 @@ V centrálnej časti aplikácie bude zobrazená aktuálne vybraná DICOM snímka
 
 \uv{Image information} sekcia informuje používateľa o mene pacienta, ktorému aktuálne zobrazená snímka patrí. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná. Pod týmito informáciami sa nachádzajú informácie o výške a šírke zobrazenej snímky.
 
-\uv{Grid algorithm parameters} slúži pre nastavenie parametrov pre SPAMM algoritmus. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkoch. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok. \clearpage
+\uv{Grid algorithm parameters} slúži pre nastavenie parametrov pre SPAMM algoritmus. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkoch. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok.
 
 \subsection {Pravý postranný panel}
 Pravý postranný panel je rozdelený na dve karty -- \uv{Image tools} a \uv{Grid tools}. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
 
-Na \uv{Image tools} karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímok naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímkov, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej animovanej snímky po nastavenie koncovej animovanej snímky, po ktorú bude animácia prehrávaná.
+Na \uv{Image tools} karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímkov naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímkov, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej a koncovej animovanej snímky.
 
 \uv{Grid tools} karta bude obsahovať rozličné nastavenia mriežky. Tie sa delia na globálne a lokálne. Globálne nastavenia budú mať efekt pre všetky vytvorené mriežky, lokálne sa budú aplikovať len na mriežku, ktorá je aktuálne zobrazená.
 
@@ -544,7 +554,7 @@ V globálnych nastaveniach bude možné nastaviť možnosť interakcie s mriežk
 Ďalšie nastavenie -- \uv{Show refinement points} -- bude slúžiť na dynamické pridanie, resp. odobranie refinement bodov zo všetkých mriežok. Tzv. refinement body slúžia pre presnejšie zarovnanie používateľom vygenerovanej mriežky so SPAMM mriežkou vygenerovanou MR prístrojom.
 Tlačidlo \uv{Copy grid to all images} bude slúžiť pre skopírovanie zobrazenej mriežky do všetkých importovaných mriežok. Po klliknutí na toto tlačidlo sa zobrazí modálne okno, ktoré upozorní používateľa o tejto akcii s nemožnosťou prípadného vrátenia tohto kroku. Toto tlačidlo bude aktívne iba v prípade, že na aktuálnom snímku bude zobrazená mriežka.
 
-V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky, ako uhol, offset a iné. Okrem toho bude možné pomocou tlačidla \uv{Create grid} vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí na tlačidlo sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude po kliknutí naň vymazať mriežku na zobrazenej snímke. \clearpage
+V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky ako uhol, offset a iné. Pomocou tlačidla \uv{Create grid} bude možné vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí naň sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude po kliknutí naň vymazať mriežku na zobrazenej snímke. \clearpage
 
 \section {Návrh komunikácie webového rozhrania so serverom}\label{api_endpoint}
 Keďže bude nutné posielať serveru dáta pre výpočet súradníc bodov mriežok, a jeho odpoveď bude nutné poslať klientovi naspäť, je nutné túto komunikáciu navrhnúť. V tomto prípade stačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď pošle klientovi vo dohodnutom formáte.
@@ -593,9 +603,7 @@ Každý bod sa skladá z troch kľúčov objektu -- \texttt{x}, \texttt{y} a \te
 \texttt{includesRefinementPoints} značí, či sa v poli \texttt{points} nachádzajú aj tzv. \uv{refinement} body .
 
 Používateľ iniciuje poslanie dát v tejto štruktúre kliknutím na tlačidlo \uv{Compute}.
-Server prijaté dáta spracuje a prevedie výpočet pomocou SPAMM algoritmu. Následne svoj výstup serializuje do podoby, ktorá bude vhodná pre odoslanie odpovede klientovi za účelom zobrazenia mriežok s aktualizovanými súradnicami bodov. Takto upravené mriežky budú zobrazené pomocou novovytvoreného Grid toolu, ktorý sa bude nachádzať v upravenej Cornerstone Tools knižnici.
-
-Návrhom samotnej odpovede sa zaoberá nasledujúca podsekcia. \clearpage
+Server prijaté dáta spracuje a prevedie výpočet pomocou SPAMM algoritmu. Následne svoj výstup serializuje do podoby, ktorá bude vhodná pre odoslanie odpovede klientovi za účelom zobrazenia mriežok s aktualizovanými súradnicami bodov. Takto upravené mriežky budú zobrazené pomocou novovytvoreného Grid toolu, ktorý sa bude nachádzať v upravenej Cornerstone Tools knižnici. \clearpage
 
 \subsection{Návrh -- HTTP odpoveď}
 
@@ -628,3 +636,5 @@ Odpoveď obsahuje kľúč \texttt{grids}, ktorý obsahuje objekty mriežok. Kaž
 Nakoľko pre účely následného spracovania mriežok na serveri budú taktiež potrebné poslať snímky v DICOM formáte (kľúč \texttt{imageData}), bude nevyhnutné ich pred ich odoslaním na server anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} (vlastný preklad) je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách \uv{0008} a \uv{0010}. Skupina \uv{0008} obsahuje dáta ohľadom štúdie a skupina \uv{0010} obsahuje dáta o pacientovi.
 
 Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte. Táto trieda nahradí obsah tagov z horeuvedených skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach. Takto upravené dáta bude môcť byť následné bezpečne poslané na server.
+
+\todo{pridať diagram fyzickej štruktúry, skontrolovať citácie}
