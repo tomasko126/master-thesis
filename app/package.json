@@ -12,7 +12,7 @@
     "@types/cornerstone-core": "^2.3.0",
     "@types/hammerjs": "^2.0.41",
     "@types/node": "^18.16.0",
-    "@typescript-eslint/parser": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
     "nuxt": "^3.4.2",
     "sass": "^1.62.0",
@@ -22,9 +22,6 @@
     "vue-tsc": "^1.4.4"
   },
   "dependencies": {
-    "@fontsource/source-sans-pro": "^4.5.11",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@pinia/nuxt": "^0.4.9",
