@@ -12,7 +12,7 @@
     "@types/cornerstone-core": "^2.3.0",
     "@types/hammerjs": "^2.0.41",
     "@types/node": "^18.16.0",
-    "@typescript-eslint/parser": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
     "nuxt": "^3.4.2",
     "sass": "^1.62.0",
