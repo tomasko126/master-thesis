@@ -1,26 +1,24 @@
-import { GridToolOptions } from '~/functions/types/GridTool';
-
-declare namespace GridCommunication {
-  interface Image {
+export namespace GridCommunication {
+  export interface Image {
     imageId: string;
     imageData: string;
   }
 
-  declare namespace Request {
-    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
+  export namespace Request {
+    import compactPrimaryLine = cornerstoneTools.GridToolOptions.compactPrimaryLine;
 
-    interface AlgorithmOptions {
+    export interface AlgorithmOptions {
       curvature: number;
       force: number;
       stopTime: number;
     }
 
-    interface Grid {
+    export interface Grid {
       includesRefinementPoints: boolean;
       primaryLines: compactPrimaryLine[]|[];
     }
 
-    interface BodyData {
+    export interface BodyData {
       image: Image;
       grid: Grid;
     }
@@ -31,10 +29,10 @@ declare namespace GridCommunication {
     }
   }
 
-  declare namespace Response {
-    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
+  export namespace Response {
+    import compactPrimaryLine = cornerstoneTools.GridToolOptions.compactPrimaryLine;
 
-    interface Grid {
+    export interface Grid {
       imageId: string;
       includesRefinementPoints: boolean;
       primaryLines: compactPrimaryLine[];

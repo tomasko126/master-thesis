@@ -13,7 +13,7 @@ defineProps({
     type: String,
     default: '',
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

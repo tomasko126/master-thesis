@@ -1,7 +1,6 @@
-import { defineStore } from 'pinia';
-import GridState from '~/functions/GridState';
-import DicomHeaderParser from '~/functions/DicomHeaderParser';
-import { ToolName } from '~/functions/types/cornerstoneTools';
+import { defineStore } from 'pinia'
+import GridState from '~/functions/GridState'
+import DicomHeaderParser from '~/functions/DicomHeaderParser'
 
 interface AlgorithmSettings {
   curvature: number;
@@ -33,13 +32,13 @@ export const useGlobalStore = defineStore({
       algorithm: {
         curvature: 0.0015,
         force: 0.5,
-        stopTime: 0.150,
+        stopTime: 0.150
       } as AlgorithmSettings,
       animation: {
         speed: 30, // in fps
         fromIdx: 0, // image idx
         toIdx: 0, // image idx
-        isComputingGrids: false as boolean,
+        isComputingGrids: false as boolean
       } as AnimationSettings,
       isLoopingImages: false as boolean,
       mainImageContainer: null as HTMLElement|null,
@@ -47,14 +46,14 @@ export const useGlobalStore = defineStore({
       isComputingGrids: false as boolean,
       shownImageId: null as string|null,
       activeTool: null as string|null,
-      tools: [] as ToolName[],
+      tools: [] as cornerstoneTools.ToolName[],
       dicomHeaderParser: null as DicomHeaderParser|null,
-      gridState: null as GridState|null,
-    };
+      gridState: null as GridState|null
+    }
   },
   getters: {
-    hasImageDefinedGrid(state) {
-      return state.gridState?.hasGrid() ?? false;
-    },
-  },
-});
+    hasImageDefinedGrid (state) {
+      return state.gridState?.hasGrid() ?? false
+    }
+  }
+})

@@ -15,39 +15,39 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useGlobalStore } from '~/stores';
-import { ToolName } from '~/functions/types/cornerstoneTools';
+import { onMounted } from 'vue'
+import { type ToolName } from '@tarotoma/cornerstone-tools'
+import { useGlobalStore } from '~/stores'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
 const props = defineProps({
   active: {
     type: Boolean,
-    default: false,
+    default: false
   },
   disabled: {
     type: Boolean,
-    default: false,
+    default: false
   },
   popoverMessage: {
     type: String,
-    required: true,
+    required: true
   },
   toolName: {
     type: String,
-    default: '',
-  },
-});
+    default: ''
+  }
+})
 
-defineEmits(['click']);
+defineEmits(['click'])
 
 onMounted(() => {
   if (props.toolName) {
-    const toolName: ToolName = props.toolName as ToolName;
-    store.tools.push(toolName);
+    const toolName: ToolName = props.toolName as ToolName
+    store.tools.push(toolName)
   }
-});
+})
 </script>
 
 <style lang="scss" scoped>

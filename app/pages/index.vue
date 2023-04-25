@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { initLibraries } from '~/functions/Cornerstone';
+import { onMounted } from 'vue'
+import { initLibraries } from '~/functions/Cornerstone'
 
 onMounted(async () => {
-  await initLibraries();
-});
+  await initLibraries()
+})
 </script>
 
 <style lang="scss">

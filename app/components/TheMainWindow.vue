@@ -31,10 +31,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, type Ref } from 'vue';
-import { useToast, VaFile } from 'vuestic-ui';
-import GridState from '../functions/GridState';
-import DicomHeaderParser from '../functions/DicomHeaderParser';
+import { ref, watch, onMounted, onUnmounted, type Ref } from 'vue'
+import { useToast, VaFile } from 'vuestic-ui'
+import GridState from '../functions/GridState'
+import DicomHeaderParser from '../functions/DicomHeaderParser'
 import {
   registerImageContainer,
   registerAllTools,
@@ -43,74 +43,74 @@ import {
   loadImagesFromFiles,
   getGridTool,
   displayImageInElement,
-  activateWheelTool,
-} from '~/functions/Cornerstone';
-import { useGlobalStore } from '~/stores';
+  activateWheelTool
+} from '~/functions/Cornerstone'
+import { useGlobalStore } from '~/stores'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
-const files: Ref<VaFile[]> = ref([]);
-const dicomImage: Ref<HTMLElement|null> = ref(null);
+const files: Ref<VaFile[]> = ref([])
+const dicomImage: Ref<HTMLElement|null> = ref(null)
 
 const onFileAdded = async (): Promise<void> => {
   if (files.value) {
-    const loadedAllImages = await loadImagesFromFiles(files.value);
+    const loadedAllImages = await loadImagesFromFiles(files.value)
 
     if (loadedAllImages === false) {
-      const { init } = useToast();
-      init({ message: 'Some images could not be imported!', color: 'warning' });
+      const { init } = useToast()
+      init({ message: 'Some images could not be imported!', color: 'warning' })
     }
 
-    files.value = [];
+    files.value = []
   }
-};
+}
 
 const onGridRemoved = (): void => {
-  store.gridState = null;
-};
+  store.gridState = null
+}
 
 const onClipStopped = (): void => {
-  store.isLoopingImages = false;
-};
+  store.isLoopingImages = false
+}
 
 const onImageShown = (e: CustomEvent): void => {
-  store.shownImageId = e.detail.image.imageId;
-  const tool = getGridTool();
+  store.shownImageId = e.detail.image.imageId
+  const tool = getGridTool()
   if (tool) {
-    store.gridState = new GridState(tool);
+    store.gridState = new GridState(tool)
   }
-  store.dicomHeaderParser = new DicomHeaderParser();
-};
+  store.dicomHeaderParser = new DicomHeaderParser()
+}
 
 const onMeasurementCompleted = (): void => {
-  const tool = getGridTool();
+  const tool = getGridTool()
   if (tool) {
-    store.gridState = new GridState(tool);
+    store.gridState = new GridState(tool)
   }
-};
+}
 
 const onNewImages = (): void => {
-  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[0]);
-  registerAllTools();
-  activateWheelTool();
-};
+  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[0])
+  registerAllTools()
+  activateWheelTool()
+}
 
 watch(() => store.imageIds, () => {
-  onNewImages();
-});
+  onNewImages()
+})
 
 onMounted(() => {
-  registerImageContainer(dicomImage.value as HTMLElement, true);
-  registerAllTools();
-  activateWheelTool();
+  registerImageContainer(dicomImage.value as HTMLElement, true)
+  registerAllTools()
+  activateWheelTool()
 
-  store.dicomHeaderParser = new DicomHeaderParser();
-});
+  store.dicomHeaderParser = new DicomHeaderParser()
+})
 
 onUnmounted(() => {
-  unregisterImageContainer(dicomImage.value as HTMLElement, true);
-  unregisterAllTools();
-});
+  unregisterImageContainer(dicomImage.value as HTMLElement, true)
+  unregisterAllTools()
+})
 </script>
 
 <style lang="scss" scoped>

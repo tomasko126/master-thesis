@@ -10,33 +10,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref } from 'vue';
-import BaseTool from './BaseTool.vue';
+import { ref, Ref } from 'vue'
+import BaseTool from './BaseTool.vue'
 
-import { useGlobalStore } from '~/stores';
-import { setZoom } from '~/functions/Cornerstone';
+import { useGlobalStore } from '~/stores'
+import { setZoom } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
-const zoomIntervalId: Ref<number|undefined> = ref(undefined);
-const zoomFactorChange = ref(0.025);
+const zoomIntervalId: Ref<number|undefined> = ref(undefined)
+const zoomFactorChange = ref(0.025)
 
 const zoomStart = (): void => {
-  zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value);
+  zoomIntervalId.value = window.setInterval(setZoom, 25, zoomFactorChange.value)
 
   document.addEventListener('mouseup', () => {
-    zoomEnd();
-  }, { once: true });
-};
+    zoomEnd()
+  }, { once: true })
+}
 
 const zoomEnd = (): void => {
   if (zoomIntervalId.value) {
-    clearInterval(zoomIntervalId.value);
-    zoomIntervalId.value = undefined;
+    clearInterval(zoomIntervalId.value as number)
+    zoomIntervalId.value = undefined
   }
-};
+}
 
 const onClick = () => {
-  setZoom(zoomFactorChange.value);
-};
+  setZoom(zoomFactorChange.value)
+}
 </script>

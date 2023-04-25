@@ -16,31 +16,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type Ref } from 'vue';
-import BaseTool from './BaseTool.vue';
-import { useGlobalStore } from '~/stores';
+import { ref, type Ref } from 'vue'
+import { useToast } from 'vuestic-ui'
+import BaseTool from './BaseTool.vue'
+import { useGlobalStore } from '~/stores'
 
-import { loadImagesFromFiles } from '~/functions/Cornerstone';
-import { useToast } from 'vuestic-ui';
+import { loadImagesFromFiles } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
-const fileInput: Ref<HTMLInputElement|null> = ref(null);
+const store = useGlobalStore()
+const fileInput: Ref<HTMLInputElement|null> = ref(null)
 
 const handleFileInput = async (): Promise<void> => {
   if (!fileInput.value) {
-    return;
+    return
   }
-  const files = Array.from(fileInput.value?.files || []);
-  const loadedAllImages = await loadImagesFromFiles(files);
+  const files = Array.from(fileInput.value?.files || [])
+  const loadedAllImages = await loadImagesFromFiles(files)
   if (loadedAllImages === false) {
-    const { init } = useToast();
-    init({ message: 'Some images could not be imported!', color: 'warning' });
+    const { init } = useToast()
+    init({ message: 'Some images could not be imported!', color: 'warning' })
   }
-};
+}
 
 const openFileInput = (): void => {
-  fileInput.value?.click();
-};
+  fileInput.value?.click()
+}
 </script>
 
 <style lang="scss" scoped>

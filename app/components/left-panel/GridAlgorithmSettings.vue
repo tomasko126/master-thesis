@@ -69,33 +69,33 @@
 </template>
 
 <script setup lang="ts">
-import { computed, type Ref, ref } from 'vue';
-import Communication from '../../functions/Communication';
-import { useGlobalStore } from '~/stores';
-import type { GridCommunication } from '~/functions/types/GridCommunication';
-import { $fetch, FetchError } from 'ofetch';
-import { GridToolOptions } from '~/functions/types/GridTool';
+import { computed, type Ref, ref } from 'vue'
+import Communication from '../../functions/Communication'
+import { useGlobalStore } from '~/stores'
+import { $fetch, FetchError } from 'ofetch'
+import { type GridToolOptions } from '@tarotoma/cornerstone-tools'
+import { type GridCommunication } from '~/functions/types/GridCommunication'
 
 const store = useGlobalStore();
-const abortController: Ref<AbortController|null> = ref(null);
+const abortController: Ref<AbortController|null> = ref(null)
 
 const inputRules = computed(() => {
   return [
     (value: string) => (value && value.length !== 0 && !isNaN(parseInt(value))) || !store.imageIds.length || 'This field is required and must be a number',
     (value: string) => parseInt(value) >= 0 || !store.imageIds.length || 'Value must be bigger or equal to 0',
-  ];
-});
+  ]
+})
 
 const isButtonDisabled = computed(() => {
-  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds) || store.isComputingGrids;
-});
+  return store.isLoopingImages || !store.imageIds.length || !store.gridState?.tool.hasGridForImageIds(store.imageIds) || store.isComputingGrids
+})
 
 const popoverMessage = computed(() => {
   if (isButtonDisabled.value) {
-    return 'Grid must be created on every image in order to compute exact grid placements';
+    return 'Grid must be created on every image in order to compute exact grid placements'
   }
-  return 'Compute grid placement for every grid';
-});
+  return 'Compute grid placement for every grid'
+})
 
 const addAdditionalDataToPrimaryLine = (primaryLine: GridToolOptions.compactPrimaryLine): GridToolOptions.primaryLine => {
   return {
@@ -116,39 +116,38 @@ const addAdditionalDataToPrimaryLine = (primaryLine: GridToolOptions.compactPrim
     invalidated: false,
     uuid: primaryLine.uuid,
     visible: true,
-  };
-
-};
+  }
+}
 
 const computeGrids = async (): Promise<void> => {
-  store.isComputingGrids = true;
-  const comm = new Communication();
-  const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody();
+  store.isComputingGrids = true
+  const comm = new Communication()
+  const requestBody: GridCommunication.Request.Body = await comm.buildRequestBody()
 
   try {
-    abortController.value = typeof AbortController !== 'undefined' ? new AbortController() : {} as AbortController;
+    abortController.value = typeof AbortController !== 'undefined' ? new AbortController() : {} as AbortController
 
-    const responseData: GridCommunication.Response.BodyData = await $fetch('/api/grid', { method: 'post', body: requestBody, signal: abortController.value?.signal });
+    const responseData: GridCommunication.Response.BodyData = await $fetch('/api/grid', { method: 'post', body: requestBody, signal: abortController.value?.signal })
 
     for (const grid of responseData.grids) {
-      store.gridState?.tool.setStateForImageIds([], [grid.imageId]);
+      store.gridState?.tool.setStateForImageIds([], [grid.imageId])
 
-      const primaryLines = grid.primaryLines.map((primaryLine) => addAdditionalDataToPrimaryLine(primaryLine));
-      store.gridState?.tool.setStateForImageIds(primaryLines, [grid.imageId], grid.includesRefinementPoints);
+      const primaryLines = grid.primaryLines.map((primaryLine) => addAdditionalDataToPrimaryLine(primaryLine as GridToolOptions.compactPrimaryLine))
+      store.gridState?.tool.setStateForImageIds(primaryLines, [grid.imageId], grid.includesRefinementPoints)
     }
   } catch (e) {
     if (!(e instanceof FetchError)) {
-      throw e;
+      throw e
     }
   } finally {
-    store.isComputingGrids = false;
-    abortController.value = null;
+    store.isComputingGrids = false
+    abortController.value = null
   }
-};
+}
 
 const abortRequest = (): void => {
-  abortController.value?.abort();
-};
+  abortController.value?.abort()
+}
 </script>
 
 <style lang="scss" scoped>

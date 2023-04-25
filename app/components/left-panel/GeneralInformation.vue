@@ -22,30 +22,30 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useGlobalStore } from '~/stores';
+import { computed } from 'vue'
+import { useGlobalStore } from '~/stores'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
 const modality = computed(() => {
-  return store.dicomHeaderParser?.getModality() ?? 'N/A';
-});
+  return store.dicomHeaderParser?.getModality() ?? 'N/A'
+})
 
 const patientName = computed(() => {
-  return store.dicomHeaderParser?.getPatientName() ?? 'N/A';
-});
+  return store.dicomHeaderParser?.getPatientName() ?? 'N/A'
+})
 
 const seriesNumber = computed(() => {
-  return store.dicomHeaderParser?.getSeriesNumber() ?? 'N/A';
-});
+  return store.dicomHeaderParser?.getSeriesNumber() ?? 'N/A'
+})
 
 const windowWidth = computed(() => {
-  return store.dicomHeaderParser?.getWindowWidth() ?? 'N/A';
-});
+  return store.dicomHeaderParser?.getWindowWidth() ?? 'N/A'
+})
 
 const windowHeight = computed(() => {
-  return store.dicomHeaderParser?.getWindowHeight() ?? 'N/A';
-});
+  return store.dicomHeaderParser?.getWindowHeight() ?? 'N/A'
+})
 </script>
 
 <style lang="scss" scoped>

@@ -104,88 +104,86 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-// eslint-disable-next-line import/named
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { useGlobalStore } from '~/stores';
-import { setContrast, setBrightness, displayImageInElement } from '~/functions/Cornerstone';
+import { computed, ref, watch } from 'vue'
+import { useGlobalStore } from '~/stores'
+import { setContrast, setBrightness, displayImageInElement } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
-const counter = ref(1);
-const fromIdx = ref(store.animation.fromIdx + 1);
-const toIdx = ref(store.animation.toIdx + 1);
-const speed = ref(30);
+const counter = ref(1)
+const fromIdx = ref(store.animation.fromIdx + 1)
+const toIdx = ref(store.animation.toIdx + 1)
+const speed = ref(30)
 
 const isButtonDisabled = computed(() => {
-  return store.imageIds.length === 0 || store.isComputingGrids;
-});
+  return store.imageIds.length === 0 || store.isComputingGrids
+})
 
 watch(() => store.shownImageId, () => {
   if (!store.shownImageId) {
-    counter.value = 0;
+    counter.value = 0
   } else {
-    counter.value = store.imageIds.indexOf(store.shownImageId) + 1;
+    counter.value = store.imageIds.indexOf(store.shownImageId) + 1
   }
-});
+})
 
 const onFrameNumberChange = (change: number): void => {
-  const number = counter.value + change - 1;
+  const number = counter.value + change - 1
   if (isNaN(number) || number < 0 || number > store.imageIds.length) {
-    return;
+    return
   }
 
-  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[number]);
-};
+  displayImageInElement(store.mainImageContainer as HTMLElement, store.imageIds[number])
+}
 
 const areInputsDisabled = computed(() => {
-  return store.imageIds.length < 2 || store.isComputingGrids;
-});
+  return store.imageIds.length < 2 || store.isComputingGrids
+})
 
 const fromImageRules = computed(() => {
   if (store.imageIds.length === 1) {
     return [
-      (value: string) => parseInt(value) === 1 || 'Value must be set to 1',
-    ];
+      (value: string) => parseInt(value) === 1 || 'Value must be set to 1'
+    ]
   }
   return [
     (value: string) => (value && value.length !== 0 && !isNaN(parseInt(value))) || !store.imageIds.length || 'This field is required and must be a number',
     (value: string) => parseInt(value) > 0 || !store.imageIds.length || 'Value must be bigger than 0',
     (value: string) => parseInt(value) <= store.imageIds.length - 1 || !store.imageIds.length || `Value must be lower than ${store.imageIds.length - 1}`,
-    (value: string) => parseFloat(value) === parseInt(value) || 'Value must not be a decimal number',
-  ];
-});
+    (value: string) => parseFloat(value) === parseInt(value) || 'Value must not be a decimal number'
+  ]
+})
 
 const toImageRules = computed(() => {
   if (store.imageIds.length === 1) {
     return [
-      (value: string) => parseInt(value) === 1 || 'Value must be set to 1',
-    ];
+      (value: string) => parseInt(value) === 1 || 'Value must be set to 1'
+    ]
   }
   return [
     (value: string) => (value && value.length !== 0 && !isNaN(parseInt(value))) || !store.imageIds.length || 'This field is required and must be a number',
     (value: string) => (parseInt(value) > fromIdx.value && parseInt(value) > 0) || !store.imageIds.length || `Value must be bigger than ${fromIdx.value}`,
     (value: string) => parseInt(value) <= store.imageIds.length || `Value must be lower than ${store.imageIds.length + 1}`,
-    (value: string) => parseFloat(value) === parseInt(value) || 'Value must not be a decimal number',
-  ];
-});
+    (value: string) => parseFloat(value) === parseInt(value) || 'Value must not be a decimal number'
+  ]
+})
 
 watch(fromIdx, (value) => {
-  store.animation.fromIdx = value - 1;
-});
+  store.animation.fromIdx = value - 1
+})
 
 watch(toIdx, (value) => {
-  store.animation.toIdx = value - 1;
-});
+  store.animation.toIdx = value - 1
+})
 
 watch(speed, (value) => {
-  store.animation.speed = value;
-});
+  store.animation.speed = value
+})
 
 watch(() => store.imageIds, (value) => {
-  fromIdx.value = value.length ? 1 : 0;
-  toIdx.value = value.length;
-});
+  fromIdx.value = value.length ? 1 : 0
+  toIdx.value = value.length
+})
 </script>
 
 <style lang="scss" scoped>

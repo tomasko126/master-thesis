@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import TheToolsPanel from './top-panel/TheToolsPanel.vue';
+import TheToolsPanel from './top-panel/TheToolsPanel.vue'
 </script>

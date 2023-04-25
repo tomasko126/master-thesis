@@ -32,42 +32,42 @@
   </va-modal>
 </template>
 <script setup lang="ts">
-import { ref, toRaw, computed } from 'vue';
-import { useGlobalStore } from '~/stores';
-import { refreshGridData } from "~/functions/General";
+import { ref, toRaw, computed } from 'vue'
+import { useGlobalStore } from '~/stores'
+import { refreshGridData } from '~/functions/General'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
-const showModal = ref(false);
-const showLoadingState = ref(false);
+const showModal = ref(false)
+const showLoadingState = ref(false)
 
 const popoverMessage = computed(() => {
   if (!store.hasImageDefinedGrid) {
-    return 'To copy grid to other images, it must be created first';
+    return 'To copy grid to other images, it must be created first'
   }
-  return 'Copy grid from current image to all images';
+  return 'Copy grid from current image to all images'
 });
 
 const copyGrid = async (): Promise<void> => {
-  const gridTool = store?.gridState?.tool;
-  const gridState = store?.gridState?.state;
+  const gridTool = store?.gridState?.tool
+  const gridState = store?.gridState?.state
 
   if (!gridTool || !gridState) {
-    showModal.value = false;
-    return;
+    showModal.value = false
+    return
   }
 
-  showLoadingState.value = true;
+  showLoadingState.value = true
 
-  gridTool.setStateForImageIds(toRaw(gridState), store.imageIds, store.gridState?.isShowingRefinementPoints() as boolean);
-  await refreshGridData();
+  gridTool.setStateForImageIds(toRaw(gridState), store.imageIds, store.gridState?.isShowingRefinementPoints() as boolean)
+  await refreshGridData()
 
-  showModal.value = false;
-  showLoadingState.value = false;
-};
+  showModal.value = false
+  showLoadingState.value = false
+}
 
 const hideModal = (): void => {
-  showModal.value = false;
+  showModal.value = false
 }
 </script>
 

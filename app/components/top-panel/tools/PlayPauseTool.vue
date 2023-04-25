@@ -16,23 +16,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import BaseTool from './BaseTool.vue';
-import { useGlobalStore } from '~/stores';
-import { startLoopingImages, stopLoopingImages } from '~/functions/Cornerstone';
+import { computed, watch } from 'vue'
+import BaseTool from './BaseTool.vue'
+import { useGlobalStore } from '~/stores'
+import { startLoopingImages, stopLoopingImages } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
 const labelName = computed(() => {
   if (store.isLoopingImages) {
-    return 'Stop playing animation';
+    return 'Stop playing animation'
   }
-  return 'Play animation';
-});
+  return 'Play animation'
+})
 
 watch(() => store.animation, () => {
   if (store.isLoopingImages) {
-    startLoopingImages(); // continue looping images with updated animation settings
+    startLoopingImages() // continue looping images with updated animation settings
   }
-}, { deep: true });
+}, { deep: true })
 </script>
