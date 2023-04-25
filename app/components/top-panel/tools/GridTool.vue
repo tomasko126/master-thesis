@@ -15,30 +15,29 @@
 </template>
 
 <script setup lang="ts">
-import BaseTool from './BaseTool.vue';
-import { useGlobalStore } from '~/stores';
-import { activateTool, deactivateTool } from '~/functions/Cornerstone';
-import { unref, computed } from 'vue';
-import {MOVING_MODE} from "~/functions/enums/GridEnums";
-import { GridTool } from '~/functions/types/GridTool';
+import { unref, computed } from 'vue'
+import type cornerstoneTools from '@tarotoma/cornerstone-tools'
+import BaseTool from './BaseTool.vue'
+import { useGlobalStore } from '~/stores'
+import { activateTool, deactivateTool } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
-const toolName = 'Grid';
+const store = useGlobalStore()
+const toolName = 'Grid'
 
 const isToolActive = computed(() => {
-  return store.activeTool === toolName;
-});
+  return store.activeTool === toolName
+})
 
 const onClick = (): void => {
   if (unref(isToolActive)) {
-    deactivateTool(toolName);
-    return;
+    deactivateTool(toolName)
+    return
   }
 
-  activateTool(toolName, { mouseButtonMask: 1 });
-  const gridTool = store.gridState?.tool as GridTool;
-  gridTool.moveOneHandleOnly = false;
-};
+  activateTool(toolName, { mouseButtonMask: 1 })
+  const gridTool = store.gridState?.tool as cornerstoneTools.GridTool
+  gridTool.moveOneHandleOnly = false
+}
 </script>
 
 <style>

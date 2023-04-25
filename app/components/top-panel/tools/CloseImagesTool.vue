@@ -9,9 +9,9 @@ w<template>
 </template>
 
 <script setup lang="ts">
-import BaseTool from './BaseTool.vue';
-import { removeImages } from '~/functions/Cornerstone';
-import { useGlobalStore } from '~/stores';
+import BaseTool from './BaseTool.vue'
+import { removeImages } from '~/functions/Cornerstone'
+import { useGlobalStore } from '~/stores'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 </script>

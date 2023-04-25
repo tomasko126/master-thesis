@@ -19,25 +19,25 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from 'vuestic-ui';
-import { useGlobalStore } from '~/stores';
-import { activateTool, deactivateTool } from '~/functions/Cornerstone';
+import { useToast } from 'vuestic-ui'
+import { useGlobalStore } from '~/stores'
+import { activateTool, deactivateTool } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
 const createGrid = (): void => {
-  activateTool('Grid', { mouseButtonMask: 1 });
+  activateTool('Grid', { mouseButtonMask: 1 })
 
-  const { init } = useToast();
-  init({ message: 'Click on the image to create grid' });
-};
+  const { init } = useToast()
+  init({ message: 'Click on the image to create grid' })
+}
 
 const removeGrid = (): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  deactivateTool('Grid');
-  gridTool.removeGrid();
-};
+  deactivateTool('Grid')
+  gridTool.removeGrid()
+}
 </script>

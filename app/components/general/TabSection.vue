@@ -17,14 +17,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   alignItems: {
     type: String,
     default: 'center',
     validator(value: string) {
-      return ['baseline', 'center'].includes(value);
+      return ['baseline', 'center'].includes(value)
     },
   },
   labelText: {
@@ -35,13 +35,13 @@ const props = defineProps({
     type: String,
     default: '',
   },
-});
+})
 
 const popoverMessageSentences = computed(() => {
   if (!props.popoverMessage) {
-    return '';
+    return ''
   }
-  return props.popoverMessage.split('.');
+  return props.popoverMessage.split('.')
 });
 </script>
 

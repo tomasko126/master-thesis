@@ -105,121 +105,121 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { useGlobalStore } from '~/stores';
-import { MOVING_MODE } from '~/functions/enums/GridEnums';
-import { activateTool } from '~/functions/Cornerstone';
-import { refreshGridData } from '~/functions/General';
+import { computed, ref } from 'vue'
+import { useGlobalStore } from '~/stores'
+import { MOVING_MODE } from '~/functions/enums/GridEnums'
+import { activateTool } from '~/functions/Cornerstone'
+import { refreshGridData } from '~/functions/General'
 
-const store = useGlobalStore();
+const store = useGlobalStore()
 
-const showModal = ref(false);
+const showModal = ref(false)
 
 const moveMode = computed(() => {
-  return store.gridState?.getMovingMode() ?? null;
-});
+  return store.gridState?.getMovingMode() ?? null
+})
 
 const angle = computed(() => {
-  return store.gridState?.tool.angle ?? null;
-});
+  return store.gridState?.tool.angle ?? null
+})
 
 const spacing = computed(() => {
-  return store.gridState?.tool.spacing ?? null;
-});
+  return store.gridState?.tool.spacing ?? null
+})
 
 const offsetX = computed(() => {
-  return store.gridState?.getOffsetX() ?? null;
-});
+  return store.gridState?.getOffsetX() ?? null
+})
 
 const offsetY = computed(() => {
-  return store.gridState?.getOffsetY() ?? null;
-});
+  return store.gridState?.getOffsetY() ?? null
+})
 
 const noOfPrimaryLines = computed(() => {
-  return store.gridState?.tool.noOfPrimaryLines ?? null;
-});
+  return store.gridState?.tool.noOfPrimaryLines ?? null
+})
 
 const noOfSecondaryLines = computed(() => {
-  return store.gridState?.tool.noOfSecondaryLines ?? null;
-});
+  return store.gridState?.tool.noOfSecondaryLines ?? null
+})
 
 const isShowingRefinementPoints = computed(() => {
-  return store.gridState?.isShowingRefinementPoints() ?? null;
-});
+  return store.gridState?.isShowingRefinementPoints() ?? null
+})
 
 const handleModal = async () => {
-  showModal.value = true;
-  await refreshGridData();
-  showModal.value = false;
-};
+  showModal.value = true
+  await refreshGridData()
+  showModal.value = false
+}
 
 const setMoveMode = (input: string): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT;
+  gridTool.moveOneHandleOnly = input === MOVING_MODE.POINT
 
   // Automatically activate Grid tool
-  activateTool('Grid', { mouseButtonMask: 1 });
-};
+  activateTool('Grid', { mouseButtonMask: 1 })
+}
 
 const setAngle = (input: string): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.angle = parseInt(input);
-};
+  gridTool.angle = parseInt(input)
+}
 
 const setSpacing = (input: string): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.spacing = parseFloat(input);
-};
+  gridTool.spacing = parseFloat(input)
+}
 
 const setOffset = (coordinates:{ x: number|null, y: number|null }): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool as cornerstoneTools.default.GridTool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.setOffset(coordinates, false);
-};
+  gridTool.setOffset(coordinates, false)
+}
 
 const setXOffset = (input: string): void => {
-  setOffset({ x: parseFloat(input), y: offsetY.value });
-};
+  setOffset({ x: parseFloat(input), y: offsetY.value })
+}
 
 const setYOffset = (input: string): void => {
-  setOffset({ x: offsetX.value, y: parseFloat(input) });
-};
+  setOffset({ x: offsetX.value, y: parseFloat(input) })
+}
 
 const setNoOfPrimaryLines = (input: string): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.noOfPrimaryLines = parseInt(input);
-};
+  gridTool.noOfPrimaryLines = parseInt(input)
+}
 
 const setNoOfSecondaryLines = (input: string): void => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.noOfSecondaryLines = parseInt(input);
-};
+  gridTool.noOfSecondaryLines = parseInt(input)
+}
 
 const setShowingRefinementPoints = async (input: boolean): Promise<void> => {
-  const gridTool = store.gridState?.tool;
+  const gridTool = store.gridState?.tool
   if (!gridTool) {
-    return;
+    return
   }
-  gridTool.showRefinementPoints = input;
-  await handleModal();
-};
+  gridTool.showRefinementPoints = input
+  await handleModal()
+}
 </script>
 
 <style lang="scss" scoped>

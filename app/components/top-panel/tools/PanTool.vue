@@ -11,19 +11,19 @@
 </template>
 
 <script setup lang="ts">
-import BaseTool from './BaseTool.vue';
-import { useGlobalStore } from '~/stores';
-import { activateTool, disableTool } from '~/functions/Cornerstone';
-import { unref, computed } from 'vue';
+import { unref, computed } from 'vue'
+import BaseTool from './BaseTool.vue'
+import { useGlobalStore } from '~/stores'
+import { activateTool, disableTool } from '~/functions/Cornerstone'
 
-const store = useGlobalStore();
-const toolName = 'Pan';
+const store = useGlobalStore()
+const toolName = 'Pan'
 
 const isToolActive = computed(() => {
-  return store.activeTool === toolName;
-});
+  return store.activeTool === toolName
+})
 
 const onClick = () => {
-  unref(isToolActive) ? disableTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 });
-};
+  unref(isToolActive) ? disableTool(toolName) : activateTool(toolName, { mouseButtonMask: 1 })
+}
 </script>
