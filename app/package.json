@@ -31,7 +31,6 @@
     "dicom-parser": "^1.8.21",
     "hammerjs": "^2.0.8",
     "pinia": "^2.0.35",
-    "vue": "^3.2.47",
     "vuestic-ui": "^1.6.4"
   },
   "type": "module"
