@@ -9,7 +9,7 @@
 import cornerstone from 'cornerstone-core'
 import cornerstoneMath from 'cornerstone-math'
 import dicomParser from 'dicom-parser'
-import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader'
+import cornerstoneDICOMImageLoader from '@cornerstonejs/dicom-image-loader/dist/cornerstoneDICOMImageLoader.bundle.min';
 import Hammer from 'hammerjs'
 
 import { VaFile } from 'vuestic-ui'
@@ -31,10 +31,10 @@ export const initLibraries = (): void => {
   })
 
   // Setup all required cornerstone-wado-image-loader dependencies
-  cornerstoneWADOImageLoader.external.cornerstone = cornerstone
-  cornerstoneWADOImageLoader.external.dicomParser = dicomParser
+  cornerstoneDICOMImageLoader.external.cornerstone = cornerstone
+  cornerstoneDICOMImageLoader.external.dicomParser = dicomParser
 
-  cornerstoneWADOImageLoader.configure({
+  cornerstoneDICOMImageLoader.configure({
     useWebWorkers: true,
     decodeConfig: {
       convertFloatPixelDataToInt: false
@@ -52,7 +52,7 @@ export const initLibraries = (): void => {
     }
   }
 
-  cornerstoneWADOImageLoader.webWorkerManager.initialize(config)
+  cornerstoneDICOMImageLoader.webWorkerManager.initialize(config)
 }
 
 /**
@@ -74,7 +74,7 @@ export const loadImagesFromFiles = async (imageFiles: VaFile[]|[]): Promise<bool
   let processedAllImages = true
 
   for (const imageFile of imageFiles) {
-    const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(imageFile)
+    const imageId = cornerstoneDICOMImageLoader.wadouri.fileManager.add(imageFile)
     try {
       await cornerstone.loadAndCacheImage(imageId)
       imageIds.push(imageId)
