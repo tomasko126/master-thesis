@@ -1,3 +1,5 @@
+import { GridToolOptions } from '@tarotoma/cornerstone-tools';
+
 export namespace GridCommunication {
   export interface Image {
     imageId: string;
@@ -5,7 +7,7 @@ export namespace GridCommunication {
   }
 
   export namespace Request {
-    import compactPrimaryLine = cornerstoneTools.GridToolOptions.compactPrimaryLine;
+    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
 
     export interface AlgorithmOptions {
       curvature: number;
@@ -30,7 +32,7 @@ export namespace GridCommunication {
   }
 
   export namespace Response {
-    import compactPrimaryLine = cornerstoneTools.GridToolOptions.compactPrimaryLine;
+    import compactPrimaryLine = GridToolOptions.compactPrimaryLine;
 
     export interface Grid {
       imageId: string;
