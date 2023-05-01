@@ -146,19 +146,22 @@
       \field{type}{Bakalárska práca}
       \field{year}{2021}
       \verb{urlraw}
-      \verb http://wstag.jcu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-prace-search&studentSearchPrijmeni=jíralová
+      \verb https://theses.cz/id/pk75p4/
       \endverb
       \verb{url}
-      \verb http://wstag.jcu.cz/StagPortletsJSR168/CleanUrl?urlid=prohlizeni-prace-search&studentSearchPrijmeni=j%C3%ADralov%C3%A1
+      \verb https://theses.cz/id/pk75p4/
       \endverb
     \endentry
-    \entry{spamm_description}{article}{}
+    \entry{spamm_description}{incollection}{}
       \name{author}{1}{}{%
         {{hash=5b02c6dc0fa22589eb1739c62c63e907}{%
            family={Elster},
            familyi={E\bibinitperiod},
            given={Allen\bibnamedelima D.},
            giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elster LLC}%
       }
       \strng{namehash}{5b02c6dc0fa22589eb1739c62c63e907}
       \strng{fullhash}{5b02c6dc0fa22589eb1739c62c63e907}
@@ -170,8 +173,8 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{Myocardial tagging/SPAMM - Questions and Answers in MRI}
       \field{howpublished}{online}
-      \field{journaltitle}{Myocardial tagging/SPAMM - Questions and Answers in MRI}
       \field{title}{What is SPAMM?}
       \field{year}{2023 [cit. 2023-03-24]}
       \verb{urlraw}
@@ -179,175 +182,6 @@
       \endverb
       \verb{url}
       \verb https://mriquestions.com/taggingspamm.html
-      \endverb
-    \endentry
-    \entry{qt_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=17d844761cdec480fe5c1fcfca96979f}{%
-           family={Bryant},
-           familyi={B\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{17d844761cdec480fe5c1fcfca96979f}
-      \strng{fullhash}{17d844761cdec480fe5c1fcfca96979f}
-      \strng{bibnamehash}{17d844761cdec480fe5c1fcfca96979f}
-      \strng{authorbibnamehash}{17d844761cdec480fe5c1fcfca96979f}
-      \strng{authornamehash}{17d844761cdec480fe5c1fcfca96979f}
-      \strng{authorfullhash}{17d844761cdec480fe5c1fcfca96979f}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{Main}
-      \field{title}{About Qt. In:}
-      \field{year}{18. júla 2022 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://wiki.qt.io/index.php?title=About_Qt
-      \endverb
-      \verb{url}
-      \verb https://wiki.qt.io/index.php?title=About_Qt
-      \endverb
-    \endentry
-    \entry{qtcore_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
-           family={{THE QT COMPANY}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{doc.qt.io}
-      \field{title}{Qt Core 5.15.13}
-      \field{year}{2023 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://doc.qt.io/qt-5/qtcore-index.html
-      \endverb
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/qtcore-index.html
-      \endverb
-    \endentry
-    \entry{qtwidgets_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
-           family={{THE QT COMPANY}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{doc.qt.io}
-      \field{title}{Qt Widgets 5.15.13}
-      \field{year}{2023 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://doc.qt.io/qt-5/qtwidgets-index.html
-      \endverb
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/qtwidgets-index.html
-      \endverb
-    \endentry
-    \entry{qtgui_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
-           family={{THE QT COMPANY}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \field{extraname}{3}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{doc.qt.io}
-      \field{title}{Qt GUI 5.15.13}
-      \field{year}{2023 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://doc.qt.io/qt-5/qtgui-index.html
-      \endverb
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/qtgui-index.html
-      \endverb
-    \endentry
-    \entry{qttest_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
-           family={{THE QT COMPANY}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \field{extraname}{4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{doc.qt.io}
-      \field{title}{Qt Test 5.15.13}
-      \field{year}{2023 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://doc.qt.io/qt-5/qttest-index.html
-      \endverb
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/qttest-index.html
-      \endverb
-    \endentry
-    \entry{qmake_description}{article}{}
-      \name{author}{1}{}{%
-        {{hash=bdd6671cc14266988cd842c0aef1589d}{%
-           family={{THE QT COMPANY}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{fullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{bibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorbibnamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authornamehash}{bdd6671cc14266988cd842c0aef1589d}
-      \strng{authorfullhash}{bdd6671cc14266988cd842c0aef1589d}
-      \field{extraname}{5}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{doc.qt.io}
-      \field{title}{qmake Manual}
-      \field{year}{2023 [cit. 2023-03-29]}
-      \verb{urlraw}
-      \verb https://doc.qt.io/qt-5/qmake-manual.html
-      \endverb
-      \verb{url}
-      \verb https://doc.qt.io/qt-5/qmake-manual.html
       \endverb
     \endentry
     \entry{Varma_2012}{article}{}
@@ -367,8 +201,8 @@
       \strng{authorbibnamehash}{0103557625597edb85a6b432f5c955b4}
       \strng{authornamehash}{0103557625597edb85a6b432f5c955b4}
       \strng{authorfullhash}{0103557625597edb85a6b432f5c955b4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Indian Journal of Radiology and Imaging}
@@ -380,25 +214,15 @@
       \field{pages}{4\bibrangedash 13}
       \range{pages}{10}
     \endentry
-    \entry{about_dicomlibrary}{article}{}
-      \name{author}{1}{}{%
-        {{hash=eae753c23a21f3bf81f4eed155b3cd35}{%
-           family={{DICOM Library}},
-           familyi={D\bibinitperiod}}}%
+    \entry{about_dicomlibrary}{incollection}{}
+      \list{publisher}{1}{%
+        {DICOM Library}%
       }
-      \strng{namehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{fullhash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{bibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authorbibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authornamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authorfullhash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \field{extraname}{1}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{DICOM Library}
       \field{howpublished}{online}
-      \field{journaltitle}{DICOM Library}
       \field{title}{About DICOM format}
       \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
@@ -408,22 +232,14 @@
       \verb https://www.dicomlibrary.com/dicom/
       \endverb
     \endentry
-    \entry{dicom_history}{article}{}
-      \name{author}{1}{}{%
-        {{hash=06d408ce9053b7da44fc8450a26e4e96}{%
-           family={{The Medical Imaging Technology Association}},
-           familyi={T\bibinitperiod}}}%
+    \entry{dicom_history}{incollection}{}
+      \list{publisher}{1}{%
+        {The Medical Imaging Technology Association}%
       }
-      \strng{namehash}{06d408ce9053b7da44fc8450a26e4e96}
-      \strng{fullhash}{06d408ce9053b7da44fc8450a26e4e96}
-      \strng{bibnamehash}{06d408ce9053b7da44fc8450a26e4e96}
-      \strng{authorbibnamehash}{06d408ce9053b7da44fc8450a26e4e96}
-      \strng{authornamehash}{06d408ce9053b7da44fc8450a26e4e96}
-      \strng{authorfullhash}{06d408ce9053b7da44fc8450a26e4e96}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{dicomstandard.org}
       \field{howpublished}{online}
       \field{journaltitle}{dicomstandard.org}
       \field{title}{History}
@@ -435,25 +251,15 @@
       \verb https://www.dicomstandard.org/history
       \endverb
     \endentry
-    \entry{dicom_transfer_syntax}{article}{}
-      \name{author}{1}{}{%
-        {{hash=eae753c23a21f3bf81f4eed155b3cd35}{%
-           family={{DICOM Library}},
-           familyi={D\bibinitperiod}}}%
+    \entry{dicom_transfer_syntax}{incollection}{}
+      \list{publisher}{1}{%
+        {DICOM Library}%
       }
-      \strng{namehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{fullhash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{bibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authorbibnamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authornamehash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \strng{authorfullhash}{eae753c23a21f3bf81f4eed155b3cd35}
-      \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
+      \field{booktitle}{DICOM Library}
       \field{howpublished}{online}
-      \field{journaltitle}{DICOM Library}
       \field{title}{Transfer Syntax}
       \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
@@ -463,25 +269,139 @@
       \verb https://www.dicomlibrary.com/dicom/transfer-syntax/
       \endverb
     \endentry
-    \entry{dcmtk_description}{article}{}
+    \entry{qt_description}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=cdc3820dd38ca20097dcd2c8bd25e122}{%
-           family={{OFFIS e. V.}},
-           familyi={O\bibinitperiod}}}%
+        {{hash=17d844761cdec480fe5c1fcfca96979f}{%
+           family={Bryant},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
       }
-      \strng{namehash}{cdc3820dd38ca20097dcd2c8bd25e122}
-      \strng{fullhash}{cdc3820dd38ca20097dcd2c8bd25e122}
-      \strng{bibnamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
-      \strng{authorbibnamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
-      \strng{authornamehash}{cdc3820dd38ca20097dcd2c8bd25e122}
-      \strng{authorfullhash}{cdc3820dd38ca20097dcd2c8bd25e122}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
+      \strng{namehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{fullhash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{bibnamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authorbibnamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authornamehash}{17d844761cdec480fe5c1fcfca96979f}
+      \strng{authorfullhash}{17d844761cdec480fe5c1fcfca96979f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Wiki}
+      \field{howpublished}{online}
+      \field{title}{About Qt}
+      \field{year}{18. júla 2022 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://wiki.qt.io/index.php?title=About_Qt
+      \endverb
+      \verb{url}
+      \verb https://wiki.qt.io/index.php?title=About_Qt
+      \endverb
+    \endentry
+    \entry{qtcore_description}{incollection}{}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Documentation}
+      \field{howpublished}{online}
+      \field{journaltitle}{doc.qt.io}
+      \field{title}{Qt Core 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://doc.qt.io/qt-5/qtcore-index.html
+      \endverb
+      \verb{url}
+      \verb https://doc.qt.io/qt-5/qtcore-index.html
+      \endverb
+    \endentry
+    \entry{qtwidgets_description}{incollection}{}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Documentation}
+      \field{howpublished}{online}
+      \field{title}{Qt Widgets 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://doc.qt.io/qt-5/qtwidgets-index.html
+      \endverb
+      \verb{url}
+      \verb https://doc.qt.io/qt-5/qtwidgets-index.html
+      \endverb
+    \endentry
+    \entry{qtgui_description}{incollection}{}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Documentation}
+      \field{howpublished}{online}
+      \field{journaltitle}{doc.qt.io}
+      \field{title}{Qt GUI 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://doc.qt.io/qt-5/qtgui-index.html
+      \endverb
+      \verb{url}
+      \verb https://doc.qt.io/qt-5/qtgui-index.html
+      \endverb
+    \endentry
+    \entry{qttest_description}{incollection}{}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Documentation}
+      \field{howpublished}{online}
+      \field{journaltitle}{doc.qt.io}
+      \field{title}{Qt Test 5.15.13}
+      \field{year}{2023 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://doc.qt.io/qt-5/qttest-index.html
+      \endverb
+      \verb{url}
+      \verb https://doc.qt.io/qt-5/qttest-index.html
+      \endverb
+    \endentry
+    \entry{qmake_description}{incollection}{}
+      \list{publisher}{1}{%
+        {The Qt Company}%
+      }
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Qt Documentation}
+      \field{howpublished}{online}
+      \field{journaltitle}{doc.qt.io}
+      \field{title}{qmake Manual}
+      \field{year}{2023 [cit. 2023-03-29]}
+      \verb{urlraw}
+      \verb https://doc.qt.io/qt-5/qmake-manual.html
+      \endverb
+      \verb{url}
+      \verb https://doc.qt.io/qt-5/qmake-manual.html
+      \endverb
+    \endentry
+    \entry{dcmtk_description}{article}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
       \field{journaltitle}{dicom.offis.de}
-      \field{title}{DCMTK}
+      \field{title}{Description}
       \field{year}{[2023] [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://dicom.offis.de/dcmtk.php.en
@@ -526,7 +446,7 @@
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{online}
-      \field{title}{Homepage - TNL - Template Numerical Library}
+      \field{title}{Template Numerical Library}
       \field{year}{2023 [cit. 2023-03-29]}
       \verb{urlraw}
       \verb https://tnl-project.org
@@ -563,25 +483,156 @@
       \field{type}{Diplomová práca}
       \field{year}{2015}
     \endentry
-    \entry{cpp_addons}{article}{}
+    \entry{about_css}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=263642944f6c498301458458c276f5f3}{%
-           family={{OpenJS Foundation}},
-           familyi={O\bibinitperiod}}}%
+        {{hash=46c3eff113f4f664b056d9a268c4a1c4}{%
+           family={Tab\bibnamedelimb Atkins\bibnamedelima Jr.},
+           familyi={T\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={Florian\bibnamedelima Rivoal},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod},
+           suffix={Elika\bibnamedelimb J.\bibnamedelimi Etemad},
+           suffixi={E\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
       }
-      \strng{namehash}{263642944f6c498301458458c276f5f3}
-      \strng{fullhash}{263642944f6c498301458458c276f5f3}
-      \strng{bibnamehash}{263642944f6c498301458458c276f5f3}
-      \strng{authorbibnamehash}{263642944f6c498301458458c276f5f3}
-      \strng{authornamehash}{263642944f6c498301458458c276f5f3}
-      \strng{authorfullhash}{263642944f6c498301458458c276f5f3}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \list{publisher}{1}{%
+        {World Wide Web Consortium}%
+      }
+      \strng{namehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{fullhash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{bibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authorbibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authornamehash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \strng{authorfullhash}{46c3eff113f4f664b056d9a268c4a1c4}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{World Wide Web Consortium (W3C)}
       \field{howpublished}{online}
-      \field{journaltitle}{Node.js v18.16.0 documentation}
-      \field{title}{C++ addons In:}
+      \field{journaltitle}{w3.org}
+      \field{title}{CSS Snapshot 2022}
+      \field{year}{22. November 2022 [cit. 2023-04-17]}
+      \verb{urlraw}
+      \verb https://www.w3.org/TR/css-2023/
+      \endverb
+      \verb{url}
+      \verb https://www.w3.org/TR/css-2023/
+      \endverb
+    \endentry
+    \entry{ecmascript_specification}{incollection}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=051db1635b5ff82e2607bba600ab76c5}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Shu-yu},
+           giveni={S\bibinithyphendelim y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Ecma International}%
+      }
+      \strng{namehash}{110233eb605e20e9e54bce1f162fd493}
+      \strng{fullhash}{110233eb605e20e9e54bce1f162fd493}
+      \strng{bibnamehash}{110233eb605e20e9e54bce1f162fd493}
+      \strng{authorbibnamehash}{110233eb605e20e9e54bce1f162fd493}
+      \strng{authornamehash}{110233eb605e20e9e54bce1f162fd493}
+      \strng{authorfullhash}{110233eb605e20e9e54bce1f162fd493}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{TC39}
+      \field{howpublished}{online}
+      \field{title}{ECMAScript® 2024 Language Specification}
+      \field{year}{2023 [cit. 2023-04-16]}
+      \verb{urlraw}
+      \verb https://tc39.es/ecma262/
+      \endverb
+      \verb{url}
+      \verb https://tc39.es/ecma262/
+      \endverb
+    \endentry
+    \entry{about_typescript}{incollection}{}
+      \list{publisher}{1}{%
+        {Microsoft}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{TypeScript: JavaScript With Syntax For Types}
+      \field{howpublished}{online}
+      \field{journaltitle}{typescriptlang.org}
+      \field{title}{TypeScript for the New Programmer}
+      \field{year}{Apr 12, 2023 [cit. 2023-04-16]}
+      \verb{urlraw}
+      \verb https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html
+      \endverb
+      \verb{url}
+      \verb https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html
+      \endverb
+    \endentry
+    \entry{about_nodejs}{incollection}{}
+      \list{publisher}{1}{%
+        {OpenJS Foundation}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Node.js}
+      \field{howpublished}{online}
+      \field{title}{About Node.js®}
+      \field{year}{2023 [cit. 2023-04-17]}
+      \verb{urlraw}
+      \verb https://nodejs.org/en/about
+      \endverb
+      \verb{url}
+      \verb https://nodejs.org/en/about
+      \endverb
+    \endentry
+    \entry{about_docker}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=e606e9ae5a2a56e9fd3026fe8987d8d4}{%
+           family={Stijn},
+           familyi={S\bibinitperiod},
+           given={Sebastiaan},
+           giveni={S\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Docker Inc.}%
+      }
+      \strng{namehash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \strng{fullhash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \strng{bibnamehash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \strng{authorbibnamehash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \strng{authornamehash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \strng{authorfullhash}{e606e9ae5a2a56e9fd3026fe8987d8d4}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Docker documentation}
+      \field{howpublished}{online}
+      \field{title}{Docker overview}
+      \field{year}{2023 [cit. 2023-04-17]}
+      \verb{urlraw}
+      \verb https://docs.docker.com/get-started/overview/
+      \endverb
+      \verb{url}
+      \verb https://docs.docker.com/get-started/overview/
+      \endverb
+    \endentry
+    \entry{cpp_addons}{incollection}{}
+      \list{publisher}{1}{%
+        {OpenJS Foundation}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Node.js}
+      \field{howpublished}{online}
+      \field{title}{C++ addons v18.16.0}
       \field{year}{2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://nodejs.org/docs/latest-v18.x/api/addons.html
@@ -590,26 +641,29 @@
       \verb https://nodejs.org/docs/latest-v18.x/api/addons.html
       \endverb
     \endentry
-    \entry{webassembly_concepts}{article}{}
+    \entry{webassembly_concepts}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
-           family={{MDN contributors}},
+        {{hash=5a73698cefe03ed5b4ff1b080730865f}{%
+           family={{Mozilla.org contributors}},
            familyi={M\bibinitperiod}}}%
       }
-      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \list{publisher}{1}{%
+        {Mozilla Corporation}%
+      }
+      \strng{namehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{fullhash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{bibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorbibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authornamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorfullhash}{5a73698cefe03ed5b4ff1b080730865f}
       \field{extraname}{1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{MDN Web Docs}
       \field{howpublished}{online}
-      \field{journaltitle}{MDN Web Docs}
-      \field{title}{WebAssembly Concepts. In:}
+      \field{title}{WebAssembly Concepts}
       \field{year}{Mar 23, 2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts
@@ -618,26 +672,29 @@
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts
       \endverb
     \endentry
-    \entry{cpp_to_wasm}{article}{}
+    \entry{cpp_to_wasm}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
-           family={{MDN contributors}},
+        {{hash=5a73698cefe03ed5b4ff1b080730865f}{%
+           family={{Mozilla.org contributors}},
            familyi={M\bibinitperiod}}}%
       }
-      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \list{publisher}{1}{%
+        {Mozilla Corporation}%
+      }
+      \strng{namehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{fullhash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{bibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorbibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authornamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorfullhash}{5a73698cefe03ed5b4ff1b080730865f}
       \field{extraname}{2}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{MDN Web Docs}
       \field{howpublished}{online}
-      \field{journaltitle}{MDN Web Docs}
-      \field{title}{Compiling a New C/C++ Module to WebAssembly. In:}
+      \field{title}{Compiling a New C/C++ Module to WebAssembly}
       \field{year}{Mar 24, 2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm
@@ -646,26 +703,29 @@
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm
       \endverb
     \endentry
-    \entry{cpp_to_wasm_image}{article}{}
+    \entry{cpp_to_wasm_image}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
-           family={{MDN contributors}},
+        {{hash=5a73698cefe03ed5b4ff1b080730865f}{%
+           family={{Mozilla.org contributors}},
            familyi={M\bibinitperiod}}}%
       }
-      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
+      \list{publisher}{1}{%
+        {Mozilla Corporation}%
+      }
+      \strng{namehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{fullhash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{bibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorbibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authornamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorfullhash}{5a73698cefe03ed5b4ff1b080730865f}
       \field{extraname}{3}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{MDN Web Docs}
       \field{howpublished}{online}
-      \field{journaltitle}{MDN Web Docs}
-      \field{title}{Emscripten Diagram. In:}
+      \field{title}{Emscripten Diagram}
       \field{year}{Mar 23, 2023 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts/emscripten-diagram.png
@@ -674,7 +734,7 @@
       \verb https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts/emscripten-diagram.png
       \endverb
     \endentry
-    \entry{webassembly_threads}{article}{}
+    \entry{webassembly_threads}{incollection}{}
       \name{author}{1}{}{%
         {{hash=f402101ebf2deef4b72bdd8a22bca570}{%
            family={Stepanyan},
@@ -688,13 +748,14 @@
       \strng{authorbibnamehash}{f402101ebf2deef4b72bdd8a22bca570}
       \strng{authornamehash}{f402101ebf2deef4b72bdd8a22bca570}
       \strng{authorfullhash}{f402101ebf2deef4b72bdd8a22bca570}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{web.dev}
       \field{howpublished}{online}
       \field{journaltitle}{web.dev}
-      \field{title}{Using WebAssembly threads from C, C++ and Rust. In:}
+      \field{title}{Using WebAssembly threads from C, C++ and Rust}
       \field{year}{Júl 12, 2021 [cit. 2023-04-13]}
       \verb{urlraw}
       \verb https://web.dev/webassembly-threads/
@@ -703,139 +764,16 @@
       \verb https://web.dev/webassembly-threads/
       \endverb
     \endentry
-    \entry{about_css}{article}{}
-      \name{author}{1}{}{%
-        {{hash=46c3eff113f4f664b056d9a268c4a1c4}{%
-           family={Tab\bibnamedelimb Atkins\bibnamedelima Jr.},
-           familyi={T\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim J\bibinitperiod},
-           given={Florian\bibnamedelima Rivoal},
-           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod},
-           suffix={Elika\bibnamedelimb J.\bibnamedelimi Etemad},
-           suffixi={E\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+    \entry{nuxt_introduction}{incollection}{}
+      \list{publisher}{1}{%
+        {Nuxt}%
       }
-      \strng{namehash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \strng{fullhash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \strng{bibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \strng{authorbibnamehash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \strng{authornamehash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \strng{authorfullhash}{46c3eff113f4f664b056d9a268c4a1c4}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labeltitlesource}{title}
+      \field{booktitle}{Nuxt: The Intuitive Web Framework}
       \field{howpublished}{online}
-      \field{journaltitle}{w3.org}
-      \field{title}{CSS Snapshot 2022. In:}
-      \field{year}{22. November 2022 [cit. 2023-04-17]}
-    \endentry
-    \entry{ecmascript_specification}{article}{}
-      \true{moreauthor}
-      \true{morelabelname}
-      \name{author}{1}{}{%
-        {{hash=375612598612a0070b870941aee8e174}{%
-           family={Shu-yu\bibnamedelima Guo},
-           familyi={S\bibinithyphendelim y\bibinitperiod\bibinitdelim G\bibinitperiod},
-           given={Kevin\bibnamedelima Gibbons},
-           giveni={K\bibinitperiod\bibinitdelim G\bibinitperiod},
-           suffix={Michael\bibnamedelima Ficarra},
-           suffixi={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-      }
-      \strng{namehash}{8e7bca15550cda1520372b7553c6e0e5}
-      \strng{fullhash}{8e7bca15550cda1520372b7553c6e0e5}
-      \strng{bibnamehash}{8e7bca15550cda1520372b7553c6e0e5}
-      \strng{authorbibnamehash}{8e7bca15550cda1520372b7553c6e0e5}
-      \strng{authornamehash}{8e7bca15550cda1520372b7553c6e0e5}
-      \strng{authorfullhash}{8e7bca15550cda1520372b7553c6e0e5}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{tc39.es}
-      \field{title}{ECMAScript{®} 2024 Language Specification. In:}
-      \field{year}{2023 [cit. 2023-04-16]}
-    \endentry
-    \entry{about_typescript}{article}{}
-      \name{author}{1}{}{%
-        {{hash=fc128f81a9c36c61099f0e4e2331b655}{%
-           family={{TypeScript Docs Contributors}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{fc128f81a9c36c61099f0e4e2331b655}
-      \strng{fullhash}{fc128f81a9c36c61099f0e4e2331b655}
-      \strng{bibnamehash}{fc128f81a9c36c61099f0e4e2331b655}
-      \strng{authorbibnamehash}{fc128f81a9c36c61099f0e4e2331b655}
-      \strng{authornamehash}{fc128f81a9c36c61099f0e4e2331b655}
-      \strng{authorfullhash}{fc128f81a9c36c61099f0e4e2331b655}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{typescriptlang.org}
-      \field{title}{TypeScript for the New Programmer. In:}
-      \field{year}{Apr 12, 2023 [cit. 2023-04-16]}
-    \endentry
-    \entry{about_nodejs}{article}{}
-      \name{author}{1}{}{%
-        {{hash=5d756c26a22af4df67c34bcf78ecc573}{%
-           family={{OpenJS Foundation and Node.js contributors}},
-           familyi={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{5d756c26a22af4df67c34bcf78ecc573}
-      \strng{fullhash}{5d756c26a22af4df67c34bcf78ecc573}
-      \strng{bibnamehash}{5d756c26a22af4df67c34bcf78ecc573}
-      \strng{authorbibnamehash}{5d756c26a22af4df67c34bcf78ecc573}
-      \strng{authornamehash}{5d756c26a22af4df67c34bcf78ecc573}
-      \strng{authorfullhash}{5d756c26a22af4df67c34bcf78ecc573}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{node.js}
-      \field{title}{About Node.js{®}}
-      \field{year}{2023 [cit. 2023-04-17]}
-    \endentry
-    \entry{about_docker}{article}{}
-      \name{author}{1}{}{%
-        {{hash=4bd3b392874c74fba4ed57a24eae0ac1}{%
-           family={{Docker Inc.}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \strng{fullhash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \strng{bibnamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \strng{authorbibnamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \strng{authornamehash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \strng{authorfullhash}{4bd3b392874c74fba4ed57a24eae0ac1}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{online}
-      \field{journaltitle}{docs.docker.com}
-      \field{title}{Docker overview. In:}
-      \field{year}{2023 [cit. 2023-04-17]}
-    \endentry
-    \entry{nuxt_introduction}{article}{}
-      \name{author}{1}{}{%
-        {{hash=f31b43928451a63b478c28f5ab8ea421}{%
-           family={{Nuxt.js contributors}},
-           familyi={N\bibinitperiod}}}%
-      }
-      \strng{namehash}{f31b43928451a63b478c28f5ab8ea421}
-      \strng{fullhash}{f31b43928451a63b478c28f5ab8ea421}
-      \strng{bibnamehash}{f31b43928451a63b478c28f5ab8ea421}
-      \strng{authorbibnamehash}{f31b43928451a63b478c28f5ab8ea421}
-      \strng{authornamehash}{f31b43928451a63b478c28f5ab8ea421}
-      \strng{authorfullhash}{f31b43928451a63b478c28f5ab8ea421}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{nuxt.com}
-      \field{title}{Introduction. In:}
+      \field{title}{Introduction}
       \field{year}{2023 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://nuxt.com/docs/getting-started/introduction
@@ -844,24 +782,28 @@
       \verb https://nuxt.com/docs/getting-started/introduction
       \endverb
     \endentry
-    \entry{vuejs_introduction}{article}{}
+    \entry{vuejs_introduction}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=a174180d465ff21cefd74b787ad255d4}{%
-           family={{Vue.js contributors}},
-           familyi={V\bibinitperiod}}}%
+        {{hash=c181205d8e6010f589e6c498afe0fe11}{%
+           family={You},
+           familyi={Y\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod}}}%
       }
-      \strng{namehash}{a174180d465ff21cefd74b787ad255d4}
-      \strng{fullhash}{a174180d465ff21cefd74b787ad255d4}
-      \strng{bibnamehash}{a174180d465ff21cefd74b787ad255d4}
-      \strng{authorbibnamehash}{a174180d465ff21cefd74b787ad255d4}
-      \strng{authornamehash}{a174180d465ff21cefd74b787ad255d4}
-      \strng{authorfullhash}{a174180d465ff21cefd74b787ad255d4}
+      \strng{namehash}{c181205d8e6010f589e6c498afe0fe11}
+      \strng{fullhash}{c181205d8e6010f589e6c498afe0fe11}
+      \strng{bibnamehash}{c181205d8e6010f589e6c498afe0fe11}
+      \strng{authorbibnamehash}{c181205d8e6010f589e6c498afe0fe11}
+      \strng{authornamehash}{c181205d8e6010f589e6c498afe0fe11}
+      \strng{authorfullhash}{c181205d8e6010f589e6c498afe0fe11}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{Vue.js}
+      \field{howpublished}{online}
       \field{journaltitle}{vuejs.org}
-      \field{title}{Introduction. In:}
+      \field{title}{Introduction}
       \field{year}{2023 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://vuejs.org/guide/introduction.html
@@ -870,26 +812,17 @@
       \verb https://vuejs.org/guide/introduction.html
       \endverb
     \endentry
-    \entry{nextjs_introduction}{article}{}
-      \name{author}{1}{}{%
-        {{hash=a3228e7b06434cb80b81a8511f0b3ccc}{%
-           family={Inc.},
-           familyi={I\bibinitperiod},
-           given={Vercel},
-           giveni={V\bibinitperiod}}}%
+    \entry{nextjs_introduction}{incollection}{}
+      \list{publisher}{1}{%
+        {Vercel, Inc.}%
       }
-      \strng{namehash}{a3228e7b06434cb80b81a8511f0b3ccc}
-      \strng{fullhash}{a3228e7b06434cb80b81a8511f0b3ccc}
-      \strng{bibnamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
-      \strng{authorbibnamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
-      \strng{authornamehash}{a3228e7b06434cb80b81a8511f0b3ccc}
-      \strng{authorfullhash}{a3228e7b06434cb80b81a8511f0b3ccc}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{Next.js by Vercel - The React Framework for the Web}
+      \field{howpublished}{online}
       \field{journaltitle}{nextjs.org}
-      \field{title}{What is Next.js? In:}
+      \field{title}{What is Next.js?}
       \field{year}{2023 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs
@@ -898,25 +831,17 @@
       \verb https://nextjs.org/learn/foundations/about-nextjs/what-is-nextjs
       \endverb
     \endentry
-    \entry{jsx_rules}{article}{}
-      \name{author}{1}{}{%
-        {{hash=6c56f762d9ebe73063cd2d157e97351f}{%
-           family={{Meta Open Source}},
-           familyi={M\bibinitperiod}}}%
+    \entry{jsx_rules}{incollection}{}
+      \list{publisher}{1}{%
+        {Meta Open Source}%
       }
-      \strng{namehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{fullhash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{bibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authorbibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authornamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authorfullhash}{6c56f762d9ebe73063cd2d157e97351f}
-      \field{extraname}{1}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{React}
+      \field{howpublished}{online}
       \field{journaltitle}{react.dev}
-      \field{title}{Writing Markup with JSX. In:}
+      \field{title}{Writing Markup with JSX}
       \field{year}{2023 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://react.dev/learn/writing-markup-with-jsx
@@ -925,13 +850,16 @@
       \verb https://react.dev/learn/writing-markup-with-jsx
       \endverb
     \endentry
-    \entry{reactjs_stylesheet}{article}{}
+    \entry{reactjs_stylesheet}{incollection}{}
       \name{author}{1}{}{%
         {{hash=1a0d8da8f6d9596714f6cf9ec34c1849}{%
            family={Llobera},
            familyi={L\bibinitperiod},
            given={Lewis},
            giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Facebook, Inc.}%
       }
       \strng{namehash}{1a0d8da8f6d9596714f6cf9ec34c1849}
       \strng{fullhash}{1a0d8da8f6d9596714f6cf9ec34c1849}
@@ -943,8 +871,9 @@
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{create-react-app.dev}
-      \field{title}{Adding a Stylesheet. In:}
+      \field{booktitle}{Create React App}
+      \field{howpublished}{online}
+      \field{title}{Adding a Stylesheet}
       \field{year}{2/13/2020 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://create-react-app.dev/docs/adding-a-stylesheet
@@ -953,25 +882,31 @@
       \verb https://create-react-app.dev/docs/adding-a-stylesheet
       \endverb
     \endentry
-    \entry{reactjs_stylesheet_module}{article}{}
+    \entry{reactjs_stylesheet_module}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=8ded1012b29d58cd9aea3e946dc8d188}{%
-           family={Hardo},
-           familyi={H\bibinitperiod}}}%
+        {{hash=162e935cf10ace36e6b8b20512e99a7a}{%
+           family={Selbekk},
+           familyi={S\bibinitperiod},
+           given={Kristofer\bibnamedelima Giltvedt},
+           giveni={K\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
       }
-      \strng{namehash}{8ded1012b29d58cd9aea3e946dc8d188}
-      \strng{fullhash}{8ded1012b29d58cd9aea3e946dc8d188}
-      \strng{bibnamehash}{8ded1012b29d58cd9aea3e946dc8d188}
-      \strng{authorbibnamehash}{8ded1012b29d58cd9aea3e946dc8d188}
-      \strng{authornamehash}{8ded1012b29d58cd9aea3e946dc8d188}
-      \strng{authorfullhash}{8ded1012b29d58cd9aea3e946dc8d188}
+      \list{publisher}{1}{%
+        {Facebook, Inc.}%
+      }
+      \strng{namehash}{162e935cf10ace36e6b8b20512e99a7a}
+      \strng{fullhash}{162e935cf10ace36e6b8b20512e99a7a}
+      \strng{bibnamehash}{162e935cf10ace36e6b8b20512e99a7a}
+      \strng{authorbibnamehash}{162e935cf10ace36e6b8b20512e99a7a}
+      \strng{authornamehash}{162e935cf10ace36e6b8b20512e99a7a}
+      \strng{authorfullhash}{162e935cf10ace36e6b8b20512e99a7a}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{create-react-app.dev}
-      \field{title}{Adding a CSS Modules Stylesheet. In:}
-      \field{year}{1/4/2019 [cit. 2023-04-18]}
+      \field{booktitle}{Create React App}
+      \field{howpublished}{online}
+      \field{title}{Adding a CSS Modules Stylesheet}
+      \field{year}{Oct 7, 2018 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://create-react-app.dev/docs/adding-a-css-modules-stylesheet
       \endverb
@@ -979,25 +914,16 @@
       \verb https://create-react-app.dev/docs/adding-a-css-modules-stylesheet
       \endverb
     \endentry
-    \entry{react_state}{article}{}
-      \name{author}{1}{}{%
-        {{hash=6c56f762d9ebe73063cd2d157e97351f}{%
-           family={{Meta Open Source}},
-           familyi={M\bibinitperiod}}}%
+    \entry{react_state}{incollection}{}
+      \list{publisher}{1}{%
+        {Meta Open Source}%
       }
-      \strng{namehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{fullhash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{bibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authorbibnamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authornamehash}{6c56f762d9ebe73063cd2d157e97351f}
-      \strng{authorfullhash}{6c56f762d9ebe73063cd2d157e97351f}
-      \field{extraname}{2}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{react.dev}
-      \field{title}{State: A Component's Memory. In:}
+      \field{booktitle}{React}
+      \field{howpublished}{online}
+      \field{title}{State: A Component's Memory}
       \field{year}{2023 [cit. 2023-04-18]}
       \verb{urlraw}
       \verb https://react.dev/learn/state-a-components-memory
@@ -1006,26 +932,58 @@
       \verb https://react.dev/learn/state-a-components-memory
       \endverb
     \endentry
-    \entry{using_web_workers}{article}{}
+    \entry{about_cornerstone_core}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=3e6aab3cf0a44b513393bfcc83a40f3d}{%
-           family={{MDN contributors}},
-           familyi={M\bibinitperiod}}}%
+        {{hash=b37eea065651be190bb7a6c0a02686cd}{%
+           family={Hafey},
+           familyi={H\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
       }
-      \strng{namehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{fullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{bibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorbibnamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authornamehash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \strng{authorfullhash}{3e6aab3cf0a44b513393bfcc83a40f3d}
-      \field{extraname}{4}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \strng{namehash}{b37eea065651be190bb7a6c0a02686cd}
+      \strng{fullhash}{b37eea065651be190bb7a6c0a02686cd}
+      \strng{bibnamehash}{b37eea065651be190bb7a6c0a02686cd}
+      \strng{authorbibnamehash}{b37eea065651be190bb7a6c0a02686cd}
+      \strng{authornamehash}{b37eea065651be190bb7a6c0a02686cd}
+      \strng{authorfullhash}{b37eea065651be190bb7a6c0a02686cd}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{booktitle}{GitHub}
       \field{howpublished}{online}
-      \field{journaltitle}{MDN Web Docs}
-      \field{title}{Using Web Workers. In:}
+      \field{title}{Readme}
+      \field{year}{Sep 13, 2021 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://github.com/cornerstonejs/cornerstone
+      \endverb
+      \verb{url}
+      \verb https://github.com/cornerstonejs/cornerstone
+      \endverb
+    \endentry
+    \entry{using_web_workers}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=5a73698cefe03ed5b4ff1b080730865f}{%
+           family={{Mozilla.org contributors}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Mozilla Corporation}%
+      }
+      \strng{namehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{fullhash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{bibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorbibnamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authornamehash}{5a73698cefe03ed5b4ff1b080730865f}
+      \strng{authorfullhash}{5a73698cefe03ed5b4ff1b080730865f}
+      \field{extraname}{4}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{MDN Web Docs}
+      \field{howpublished}{online}
+      \field{title}{Using Web Workers}
       \field{year}{Mar 16, 2023 [cit. 2023-04-16]}
       \verb{urlraw}
       \verb https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
