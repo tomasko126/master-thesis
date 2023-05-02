@@ -40,9 +40,7 @@ Do aplikácie by malo byť možné importovať snímky z magnetickej rezonancie 
 Aplikácia by mala umožniť animovať importované snímky pre jednoduchšiu analýzu pohybu myokardu. Parametre animácie ako jej rýchlosť a výber snímky, od/po ktorej/ktorú má animácia prebiehať, by mali byť upraviteľné, napr. pomocou číselného vstupu.
 
 \subsubsection {FR3 -- Zobrazenie a interaktívna úprava mriežky}\label{fr3}
-Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR, ktorá by sa mala dať vygenerovať tlačidlom v používateľskom rozhraní.
-
-Mriežka by taktiež mala byť interaktívna, t.j. polohu jej bodov by malo byť možné interaktívne upravovať, napríklad potiahnutím bodu myšou. Parametre mriežky (\ref{grid_settings}) by sa taktiež mali dať upraviť podľa želania používateľa a ich zmena by mala byť ihneď viditeľná.
+Implementovaná aplikácia by mala vedieť zobraziť mriežku nad snímkou z MR, ktorá by sa mala dať vygenerovať tlačidlom v používateľskom rozhraní. Taktiež je nutné implementovať nastaviteľné parametre mriežky, ktoré boli popísané v sekcii \ref{grid_settings}. Zmena týchto parametrov by mala byť ihneď viditeľná používateľom.
 
 \subsubsection {FR4 -- Zadanie parametrov pre SPAMM algoritmus}\label{fr4}
 Pre korektný výpočet súradníc bodov mriežok je nutné funkčnému SPAMM algoritmu podsunúť rozličné parametre. Ich hodnoty by sa mali dať určiť v aplikácií pre ich neskoršie použitie v tomto algoritme. Výpis týchto parametrov je možné nájsť v \ref{helper_apps}.
@@ -190,7 +188,7 @@ Najnovší štandard priniesol viacero nových značiek ako napr. \texttt{<audio
 \subsection {CSS 3}
 CSS\footnote{https://developer.mozilla.org/en-US/docs/Web/CSS} -- z anglického Cascading Style Sheets -- je jazyk popisujúci vzhľad použitých HTML5 elementov vo webovom dokumente. Tento jazyk definuje súbor pravidiel, ktoré môžu byť aplikované na jednotlivé elementy webového dokumentu, na základe ktorých sa mení vzhľad pravidlami ovplyvnených elementov.
 
-Samotné pravidlo sa skladá zo selektora, ktorý definuje rozsah elementov, ktoré budú ovplyvnené. Nasleduje zoznam vlastností s ich hodnotami, ktoré majú byť aplikované na samotný selektor. Týmto spôsobom je možné definovať vzhľad nielen jedného, ale aj viacerých elementov vo webovom dokumente pomocou jedného pravidla \cite{css_basics} (vlastný preklad).
+Samotné pravidlo sa skladá zo selektora, ktorý definuje rozsah elementov, ktorých sa pravidlo týka. Nasleduje zoznam vlastností s ich hodnotami, ktoré majú byť aplikované na samotný selektor. Týmto spôsobom je možné definovať vzhľad nielen jedného, ale aj viacerých elementov vo webovom dokumente pomocou jedného pravidla \cite{css_basics} (vlastný preklad).
 
 Nižšie je uvedený príklad pravidla, ktoré mení farbu textu vo všetkých elementoch \texttt{p} (\texttt{p} definuje odstavec textu) na červenú \cite{css_basics} (vlastný preklad):
 
@@ -208,7 +206,7 @@ Zoskupené pravidlá sa väčšinou ukladajú do samostatného súboru s prípon
 
 Definovanie samotného selektoru môže byť pre dané pravidlo sofistikovanejšie než ako bolo ukázané v príklade vyššie. Element môže byť špecifikovaný na základe jeho rôznych atribútov, ako ID, zoznam tried, či hodnotou jeho atribútu, atď.
 
-Čo sa týka verzií CSS jazyka, nepoužívajú sa verzie ale tzv. levely. Prvým levelom bol CSS Level 1, ktorý sa stal odporúčanou špecifikáciou W3C konzorcia\footnote{https://www.w3.org} v 1996. Tento level bol základom pre nasledujúce levely tohto jazyka.
+Čo sa týka verzií CSS jazyka, nepoužívajú sa verzie ale tzv. levely. Prvým levelom bol CSS Level 1, ktorý sa stal odporúčanou špecifikáciou W3C konzorcia\footnote{https://www.w3.org} v 1996. Tento level bol základom pre nasledujúce levely tohto jazyka \cite{about_css} (vlastný preklad).
 
 V súčasnosti najnovší level CSS jazyka je CSS Level 3, v ktorom sa narozdiel od predchádzajúcich levelov jednotlivé časti jazyka delia na moduly, z ktorých každý môže mať level vyšší než level CSS jazyka. Z tohto dôvodu sa taktiež rozhodlo, že samotný level CSS jazyka sa už nebude zvyšovať \cite{about_css} (vlastný preklad).
 
@@ -217,7 +215,7 @@ JavaScript je cross-platformový skriptovací programovací jazyk a treťou zák
 
 Samotný jazyk bol vytvorený Brendanom Eichom, pracujúcom vo firme Netscape, ktorá taktiež vyvíjala webový prehliadač -- Netscape Navigator. \newline JavaScript bol zahrnutý už vo verzii 2.0 tohto prehliadača, ktorý bol vydaný v roku 1995. Následne sa začal objavovať aj v iných prehliadačoch -- napr. vo všetkých prehliadačoch vytvorených firmou Microsoft počnúc Internet Explorerom 3.0 \cite{ecmascript_specification} (vlastný preklad). 
 
-JavaScript nasleduje ECMAScript špecifikáciu\footnote{https://tc39.es/ecma262/}, vytvorenú Ecma International organizáciou. Tá kontinuálne vydáva každý rok novú štandardizovanú ECMAScript špecifikáciu, ktorá slúži ako predloha pre vytvorenie všeobecného skriptovacieho jazyka. JavaScript je v tomto prípade jazyk spĺňajúci tento štandard, nakoľko sa ním riadi a implementuje ho. Momentálne najnovšou verziou štandardu je jeho 14. edícia, ktorá pridala najmä nové metódy pracujúce s poľom (\texttt{Array}).
+JavaScript nasleduje ECMAScript špecifikáciu\footnote{https://tc39.es/ecma262/}, vytvorenú organizáciou Ecma International. Tá kontinuálne vydáva každý rok novú štandardizovanú ECMAScript špecifikáciu, ktorá slúži ako predloha pre vytvorenie všeobecného skriptovacieho jazyka. JavaScript je v tomto prípade jazyk spĺňajúci tento štandard, nakoľko sa ním riadi a implementuje ho. Momentálne najnovšou verziou štandardu je jeho 14. edícia, ktorá pridala najmä nové metódy pracujúce s poľom (\texttt{Array}).
 
 Čo sa týka vlastností samotného jazyka, JavaScript je dynamicky typovaným jazykom, čo znamená, že pri vytváraní premenných sa nedefinuje ich typ. To umožňuje do rovnakej premennej na jednom mieste uložiť číslo, a na inom zase reťazec. Taktiež sa jedná objektovo-orientovaný jazyk, kde dedičnosť je riešená mechanizmom prototypov -- metódy a vlastnosti môžu byť za behu pridané do akéhokoľvek objektu \cite{ecmascript_specification} (vlastný preklad).
 
@@ -257,7 +255,7 @@ Node.js je asynchrónne cross-platform runtime prostredie JavaScriptu, ktoré um
 
 Node.js je open-source projektom a jeho vývoj zastrešuje nadácia OpenJS Foundation \cite{about_nodejs} (vlastný preklad). Podobne ako JavaScript v prehliadači, Node.js používa jedno hlavné vlákno pre exekúciu kódu. Súčasne je nad Node.js vyvíjaných mnoho softvérových riešení (knižníc a frameworkov), ktoré sú dostupné vo forme balíčkov.
 
-Tieto balíčky zvyknú byť dostupné v registri balíčkov pre Node.js -- npm\footnote{https://npmjs.com}. Pomocou rovnomenného terminálového programu je možné (globálne i lokálne) nainštalovať rôzne balíčky, ktoré môžu byť použité pri vývoji aplikácií. Pre inštaláciu balíčka stačí exekuovať príkaz \texttt{npm install [-D] packagename}. Tieto balíčky je taktiež možné spravovať, aktualizovať na novšie verzie či odinštalovať. Počas inštalácie Node.js je automaticky nainštalovaný aj tento balíčkový manažér.
+Tieto balíčky zvyknú byť dostupné v registri balíčkov pre Node.js -- npm\footnote{https://npmjs.com}. Pomocou rovnomenného konzolového programu je možné (globálne i lokálne) nainštalovať rôzne balíčky, ktoré môžu byť použité pri vývoji aplikácií. Pre inštaláciu balíčka stačí exekuovať príkaz \texttt{npm install [-D] packagename}. Tieto balíčky je taktiež možné spravovať, aktualizovať na novšie verzie či odinštalovať. Počas inštalácie Node.js je automaticky nainštalovaný aj tento balíčkový manažér.
 
 Okrem iného je vďaka Node.js možné používať len jeden programovací jazyk na vývoj oboch častí webových aplikácii -- frontendu a backendu. Tento fakt predstavuje odpadnutie nutnosti ovládať ďalší programovací jazyk pre vývoj webových aplikácií.
 
@@ -270,33 +268,35 @@ Docker poskytuje možnosť zabaliť aplikáciu a spustiť ju v izolovanom prostr
 
 Vytvorenie kontajneru prebieha z objektu nazývanom \uv{Image}. Image je inými slovami šablóna, ktorá definuje, ako má byť vytvorená zabalená aplikácia. Častokrát obsahuje príkazy, ktoré majú za úlohu nainštalovať aplikačné závislosti, nastaviť dodatočné bezpečnostné vlastnosti či otvoriť porty, cez ktoré je možné s danou aplikáciou komunikovať. Tieto príkazy sú následne uložené do súboru zvanom \texttt{Dockerfile}. Z jedného Docker Imagu je možné spustiť viacero kontajnerov, čím sa stáva škálovanie aplikácie ešte jednoduchším.
 
-Novovytvorený image už väčšinou stavia na existujúcom image vytvoreným inou organizáciou, resp. vývojármi. Takéto image je možné nájsť v registri imageov -- v Docker Hube. Pomocou tejto platformy je možné okrem sťahovania rôznych imageov taktiež zdieľať vlastné obrazy s ostatnými.
+Novovytvorený image už väčšinou stavia na existujúcom image vytvoreným inou organizáciou, resp. vývojármi. Takéto image je možné nájsť v registri imageov -- v Docker Hube. Pomocou tejto platformy je možné okrem sťahovania rôznych imageov taktiež zdieľať vlastný image s ostatnými.
 
-Keďže použitie Dockeru prináša výhody ohľadom nasadenia aplikácie, bude v tomto prípade využitá táto technológia pre spustenie aplikácie. Použitím Dockeru je taktiež možné vyhnúť sa prípadnou nemožnosťou zostavenia aplikácie, čoho príkladom môže byť problematické zostavenie súčasnej desktopovej aplikácie.
+Keďže použitie Dockeru prináša výhody ohľadom nasadenia aplikácie, bude táto technológia v tomto prípade využitá. Použitím Dockeru je taktiež možné vyhnúť sa prípadnou nemožnosťou zostavenia aplikácie, čoho príkladom môže byť problematické zostavenie súčasnej desktopovej aplikácie.
 
 \clearpage
 
 \section {Analýza architektúry webovej aplikácie}
-Medzi prvými krokmi pred vývojom webovej aplikácie patrí analýza prípustných možností architektúry navrhovanej aplikácie. V tomto prípade analýza architektúry závisí najmä na prepojení webového rozhrania so súčasnou aplikáciou, a preto je potrebné najprv zanalyzovať dostupné možnosti tohto prepojenia. Po porovnaní dostupných možností je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
+Medzi prvými krokmi pred vývojom webovej aplikácie patrí analýza prípustných možností architektúry navrhovanej aplikácie. V tomto prípade analýza architektúry závisí najmä na prepojení webového rozhrania so súčasnou aplikáciou, a preto je potrebné najprv zanalyzovať dostupné možnosti tohto prepojenia.
+
+Po porovnaní dostupných možností je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
 
 Čo sa týka prepojenia súčasnej aplikácie, resp. výpočetného podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako by mohla daná integrácia prebehnúť. Prvou možnosťou je využitie tzv. C\texttt{++} addons\footnote{https://nodejs.org/docs/latest-v18.x/api/addons.html} technológie, druhou možnosťou sa naskytuje využiť relatívne novú technológiu -- WebAssembly\footnote{https://webassembly.org}.
 
 Nakoľko je potrebné pred samotným prepojením webovej aplikácie s \texttt{grid-tracker} podprogramom samotný podprogram upraviť, táto sekcia poslúži najmä autorom pokračujúcim vo vývoji webovej aplikácie. 
 
 \subsection {C\texttt{++} addons}
-C\texttt{++} addons je technológia, ktorá poskytuje rozhranie medzi C/C\texttt{++} knižnicami a JavaScriptom\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript} \cite{cpp_addons} (vlastný preklad). Táto technológia je implementovaná v rámci Node.js\footnote{https://nodejs.org/en}, čo je runtime prostredie JavaScriptu, ktoré bude popísané v samostatnej sekcii.
+C\texttt{++} addons je technológia, ktorá poskytuje rozhranie medzi C/C\texttt{++} knižnicami a JavaScriptom\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript} \cite{cpp_addons} (vlastný preklad). Táto technológia je implementovaná v rámci Node.js\footnote{https://nodejs.org/en}.
 
 C\texttt{++} addons umožňuje pristupovať k natívnym API operačného systému a taktiež pomáha integrovať C/C\texttt{++} knižnice tretích strán pre ich priame použitie v Node.js. Doporučeným spôsobom písania takýchto addonov je pomocou technológie Node-API\footnote{https://nodejs.org/docs/latest-v18.x/api/n-api.html}, vďaka ktorej je možné vytvoriť Node-API addon v jazyku C \cite{cpp_addons} (vlastný preklad).
 
 Pre písanie Node-API addonov v C\texttt{++} musí byť použitý modul \texttt{node-addon-api}\footnote{https://github.com/nodejs/node-addon-api}, nakoľko ten obsahuje hlavičkové súbory v C\texttt{++} \cite{cpp_addons} (vlastný preklad).
 
-Výhodou použitia Node-API technológie je jej nemennosť v rámci rôznych verzií Node.js, čo zaručuje použitie skompilovaného addonu v rôznych verziách Node.js bez nutnosti jeho prekompilovania pre rozličné verzie Node.js \cite{cpp_addons} (vlastný preklad).
+Výhodou použitia Node-API technológie je jej nemennosť v rámci rôznych verzií Node.js, čo zaručuje použitie skompilovaného addonu v rôznych verziách Node.js bez nutnosti jeho prekompilovania \cite{cpp_addons} (vlastný preklad).
 
-Nástrojom pre zostavenie takéhoto modulu je build systém \texttt{node-gyp}\footnote{https://github.com/nodejs/node-gyp}. Ten používa \texttt{binding.gyp} súbor, ktorý špecifikuje konfiguráciu zostavenia modulu. Táto konfigurácia zahŕňa okrem iného aj cestu k zdrojovým \texttt{.cpp} a \texttt{.h} súborom. Tie musia byť pred zostavením upravené tak, aby používali Node-API rozhranie \cite{cpp_addons} (vlastný preklad).
+Nástrojom pre zostavenie takéhoto modulu je build systém \texttt{node-gyp}\footnote{https://github.com/nodejs/node-gyp}. Ten používa \texttt{binding.gyp} súbor, ktorý špecifikuje konfiguráciu zostavenia modulu. Táto konfigurácia zahŕňa okrem iného aj cestu k zdrojovým \texttt{.cpp} a \texttt{.h} súborom  \cite{cpp_addons} (vlastný preklad).
 
-Tento krok zahŕňa vytvorenie metód, ktoré budú prijímať vstupné a vracať výstupné argumenty pretypované na Node-API typy.
+Tie musia byť pred zostavením upravené tak, aby používali Node-API rozhranie. Tento krok zahŕňa vytvorenie metód, ktoré budú prijímať vstupné a vracať výstupné argumenty pretypované na Node-API typy.
 
-Pred zostavením addonu je potrebné vygenerovať Makefile pre cieľový operačný systém pomocou príkazu \texttt{node-gyp configure}. Pre zostavenie addonu je následne potrebné exekuovať príkaz \texttt{node-gyp build}. Ten skompiluje želané súbory špecifikované v \texttt{binding.gyp} do jediného súboru s príponou \texttt{.node}. Ten je možné importovať ako modul do iného JavaScript modulu pomocou kľúčového slova \texttt{import}\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}. Po jeho importovaní je možné volať jeho metódy rovnakým spôsobom ako iné JS metódy \cite{cpp_addons} (vlastný preklad).
+Pred zostavením addonu je potrebné vygenerovať Makefile pre cieľový operačný systém pomocou príkazu \texttt{node-gyp configure}. Následne je možné addon zostaviť príkazom \texttt{node-gyp build}. Ten skompiluje súbory špecifikované v \texttt{binding.gyp} do jediného súboru s príponou \texttt{.node}. Ten je možné importovať ako modul do iného JavaScript modulu pomocou kľúčového slova \texttt{import}\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}. Po jeho importovaní je možné volať jeho metódy rovnakým spôsobom ako iné JS metódy \cite{cpp_addons} (vlastný preklad).
 
 \subsection {WebAssembly}
 WebAssembly je nový typ jazyku, ktorý je možné exekuovať vo všetkých moderných webových prehliadačoch. Jeho hlavnou výsadou je zvýšenie rýchlosti exekuovania kódu oproti JavaScriptu blížiaci sa k skoro natívnej exekúcii kódu naprogramovaného v jazykoch C, C\texttt{++} alebo Rust\footnote{https://www.rust-lang.org} a iné. Je navrhnutý tak, aby mohol fungovať spoločne s JavaScriptom \cite{webassembly_concepts} (vlastný preklad).
@@ -353,14 +353,14 @@ Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-
 
 Taktiež nie je možné spoľahnúť sa na výkon zariadení, na ktorých by bežal \texttt{grid-tracker} pomocou WebAssembly. Nakoľko je tento algoritmus náročný na výpočet, bolo by potrebné zaistiť dostatočné výpočetné prostriedky pre každého lekára využívajúcim webovú aplikáciu.
 
-Na základe týchto dôvodov bude lepšou a istejšou voľbou vybrať si technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie  rýchlejšia a s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram.
+Na základe týchto dôvodov bude lepšou a istejšou voľbou vybrať si technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie jednoduchšia a s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram.
 
 \clearpage
 
 \section {Analýza frameworkov pre tvorbu webovej aplikácie}
 Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného kódu, avšak takýto vývoj by bol nie len zdĺhavejší, ale aj pracnejší, nakoľko by sa musel samotný vývojár zamerať na viac než len na implementáciu samotnej aplikácie. Riešením je použitie webového frameworku, ktorý vývojára od takejto práce odbremenia. 
 
-Pre vývoj webovej aplikácie by bolo vhodné využiť framework, ktorý je postavený nad Node.js technológiou, nakoľko by sa klientská a taktiež serverová časť aplikácie dala naprogramovať v jednom jazyku -- JavaScripte. Plusom by v tomto prípade bolo, ak by daný framework natívne podporoval TypeScript, čo by mohlo zredukovať prípadné množstvo chýb v implementácii webovej aplikácie.
+Pre vývoj webovej aplikácie by bolo vhodné využiť framework, ktorý je postavený nad Node.js technológiou, nakoľko by sa klientská a taktiež serverová časť aplikácie dala naprogramovať v jednom jazyku -- JavaScripte. Plusom by v tomto prípade bolo, ak by daný framework natívne podporoval TypeScript, čo by mohlo zredukovať prípadné chyby v implementácii webovej aplikácie.
 Medzi ďalšími výhodami by patrilo použitie fullstack frameworku, vďaka ktorému by bolo potrebné orientovať sa len v jednom frameworku určenom pre obe časti webovej aplikácie -- frontend aj backend.
 
 V súčasnosti medzi najviac používané fullstackové frameworky, ktoré \newline spĺňajú požiadavky uvedené vyššie, patria Nuxt.js\footnote{https://nuxt.com} a Next.js\footnote{https://nextjs.org}.
@@ -372,7 +372,9 @@ Nuxt.js ponúka automatický routing na základe štruktúry súborov v \newline
 
 Samotný framework je naprogramovaný v TypeScripte, čo znamená že je možné využívať type-hinty čo sa týka funkcionality Nuxt.js pri programovaní webovej aplikácie i bez nutnosti použitia TypeScriptu \cite{nuxt_introduction} (vlastný preklad).
 
-Na pozadí používa Nuxt.js Nitro\footnote{https://nitro.unjs.io/} server, ktorý generuje API endpointy na základe štruktúry súborov nachádzajúcich sa v zložke \texttt{server/api} \cite{nuxt_introduction} (vlastný preklad). Nitro je taktiež zodpovedné za zostavenie  aplikácie, pomocou príkazu \texttt{nuxt build} -- jeho výstupom je \texttt{.output} zložka obsahujúca minifikované súbory zbavené všetkých nepoužitých závislostí. Túto zložku je následne možné nasadiť na server podporujúci Node.js a zostavenú aplikáciu spustiť pomocou príkazu \texttt{node .output/server/index.mjs}.
+Na pozadí používa Nuxt.js Nitro\footnote{https://nitro.unjs.io/} server, ktorý generuje API endpointy na základe štruktúry súborov nachádzajúcich sa v zložke \texttt{server/api} \cite{nuxt_introduction} (vlastný preklad).
+
+Zostavenie aplikácie je možné pomocou príkazu \texttt{nuxt build} -- jeho výstupom je \texttt{.output} zložka obsahujúca minifikované súbory. Túto zložku je následne možné nasadiť na server podporujúci Node.js a zostavenú aplikáciu spustiť pomocou príkazu \texttt{node .output/server/index.mjs}.
 
 \subsubsection {Vue.js}
 Vue.js je JavaScript framework určený pre budovanie používateľského rozhrania postavený na štandardných technológiach ako HTML, CSS a JavaScript.
@@ -380,8 +382,9 @@ Vue.js je JavaScript framework určený pre budovanie používateľského rozhra
 Tento framework poskytuje deklaratívny programovací model založený na znovupoužiteľných komponentoch, ktoré je možné použiť v rámci iných komponentov, čím pomáha zefektívniť proces vývoja znížením nutnosti použitia duplicitného kódu \cite{vuejs_introduction} (vlastný preklad).
 
 Pod pojmom \uv{komponent} je možné predstaviť si samostatnú jednotku používateľského rozhrania (v HTML) s definovanými štýlmi (pomocou CSS) a stavom, ktorý je riadený pomocou JavaScriptu.
+Takto definovaný komponent je možné nazvať tzv. Single File Componentom (SFC).
 
-Nasleduje príklad využitia Vue.js frameworku -- pomocou vytvorenia tzv. Single File Componentu (SFC), ktorý v rámci jedného súboru (\texttt{ParagraphComponent.vue}) kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie.
+Nasleduje príklad využitia Vue.js frameworku -- pomocou vytvorenia SFC, ktorý v rámci jedného súboru kombinuje použitie HTML, CSS a JS ako v popise uvádzanom vyššie.
 
 \clearpage
 \begin{minipage}[]{\linewidth}
@@ -422,14 +425,13 @@ V prvom prípade sa jedná o rozšírenie štandardného HTML o template syntax 
 
 V uvedenom príklade sa jedná o zobrazenie paragrafu, kde zobrazený text pochádza z premennej \texttt{paragraphText}. Táto premenná obsahuje \texttt{computed} funkciu, ktorá vracia hodnotu \texttt{props.text}.
 
-Táto hodnota pochádza zo šablóny iného komponentu, kde bol tento komponent (\texttt{ParagraphComponent.vue}) importovaný. Nasledujúci príklad ukazuje práve tento prípad.
+Tá pochádza zo šablóny iného komponentu, kde bol tento komponent importovaný. Nasledujúci príklad zobrazuje šablónu tohto komponentu.
 
 \clearpage
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}{html}
 // ArticleComponent.vue
-
 <template>
   <paragraph-component text="Example text">
 </template>
@@ -441,7 +443,7 @@ import { ParagraphComponent } from './ParagraphComponent.vue';
 \end{minipage}
 
 V súbore \texttt{ArticleComponent.vue} bol importovaný komponent \newline \texttt{ParagraphComponent.vue}, ktorý definuje atribút \texttt{text} a nastavuje ho na hodnotu \uv{Example text}. Hodnota tejto premennej sa tým pádom spropaguje do
-\texttt{ParagraphComponent.vue} komponentu do premennej \texttt{props.text}.
+\texttt{ParagraphComponent.vue} komponentu do kľúča \texttt{text} objektu \texttt{props} (\texttt{props.text}).
 
 \texttt{props} je objekt, v ktorom je možné nájsť všetky takto definované \texttt{properties}. Ak by sa namiesto fixného textu v atribúte \texttt{text} nachádzala premenná, ktorá by zmenila hodnotu, funkcia \texttt{computed} zaistí, že sa jej vrátená hodnota (\texttt{paragraphText}) zmení na základe detekovanej zmeny jej hodnoty.
 Na základe tohto príkladu bola ukázaná sila reaktivity Vue.js frameworku.
@@ -450,21 +452,21 @@ Horeuvedeným spôsobom je možné modulárne vytvárať a zobrazovať rozličn�
 
 Nakoľko webový prehliadač neumožňuje priamo importovať Vue.js komponenty, je nutné ich zostavením skonvertovať do JavaScriptu, napr. pomocou nástroja Vite\footnote{https://vitejs.dev} \cite{vuejs_introduction} (vlastný preklad).
 
-Ten je nutné nainštalovať ako závislosť, napr. pomocou nástroja npm. Následne stačí vytvoriť konfiguračný súbor, v ktorom sa definuje zostavovanie Vue.js komponentov a následne pomocou príkazu \texttt{vite build} je možné zostaviť Vue.js komponenty do \texttt{.js} súborov, ktoré môžu byť následne importované do HTML šablóny \cite{vuejs_introduction} (vlastný preklad).
+Ten je nutné nainštalovať ako závislosť, napr. pomocou nástroja npm. Potom je potrebné vytvoriť konfiguračný súbor, v ktorom sa definuje zostavovanie Vue.js komponentov a následne pomocou príkazu \texttt{vite build} je možné zostaviť Vue.js komponenty do \texttt{.js} súborov, ktoré môžu byť následne importované do HTML šablóny \cite{vuejs_introduction} (vlastný preklad).
 
 \clearpage
 
 \subsection {Next.js}
-Next.js je voľne dostupným, taktiež open-source fullstack frameworkom podobne ako Nuxt.js. Narozdiel od Nuxt.js nepoužíva pre vytváranie znovupoužiteľných UI komponentov knižnicu Vue.js, ale React.js \footnote{https://react.dev/}.
+Next.js je voľne dostupným, taktiež open-source fullstack frameworkom podobným Nuxt.js. Avšak narozdiel od Nuxt.js, Next.js nepoužíva pre vytváranie znovupoužiteľných UI komponentov knižnicu Vue.js ale React.js \footnote{https://react.dev/}.
 
 Next.js ponúka nástroje pre vytváranie API endpointov, ktoré musia byť vytvorené v zložke \texttt{pages/api}. Čo sa týka samotnej funkcionality, taktiež podporuje kompilovanie UI komponentov do spustiteľného JS kódu, jeho minifikovanie pre rýchlejší prenos dát medzi serverom a webovým prehliadačom, code-splitting (rozdelenie kódu pre zvýšenie výkonu aplikácie) až po server-side rendering (SSR, vykreslený obsah na serveri sa pošle klientovi). Samotný framework je naprogramovaný pomocou TypeScriptu, takže je možné využívať nápovedu pri programovaní webovej aplikácie pomocou tohto frameworku \cite{nextjs_introduction} (vlastný preklad).
 
 Zostavenie aplikácie je možné príkazom \texttt{next build}. Tento príkaz vytvorí \texttt{.next} zložku obsahujúcu skompilovaný obsah aplikácie. Takto skompilovanú aplikáciu je možné spustiť príkazom \texttt{next start} \cite{nextjs_introduction} (vlastný preklad). 
 
 \subsubsection {React.js}
-React.js je JavaScript framework, ktorý poskytuje možnosti pre budovanie používateľského rozhrania. Svojim účelom je podobný Vue.js frameworku a tiež patrí medzi open-source nástroj, ktorý je ale spravovaný firmou Meta\footnote{https://about.meta.com/} \cite{about_react} (vlastný preklad).
+React.js je JavaScript framework, ktorý poskytuje možnosti pre budovanie používateľského rozhrania. Svojim účelom je podobný Vue.js frameworku a tiež patrí medzi open-source nástroj, ktorý je ale spravovaný spoločnosťou Meta\footnote{https://about.meta.com/} \cite{about_react} (vlastný preklad).
 
-React.js sa od Vue.js líši spôsobom definovania komponentu -- nepoužíva SFC pre definovanie štruktúry komponentu, jeho štýlu a stavu. Pre definovanie štruktúry komponentu používa React.js tzv. JSX, ktorý umožňuje písať HTML v JavaScripte \cite{about_react} (vlastný preklad). \clearpage
+React.js sa od Vue.js líši spôsobom definovania komponentu -- nepoužíva SFC pre definovanie štruktúry komponentu, jeho štýlu a stavu ale tzv. JSX, ktorý umožňuje písať HTML v JavaScripte \cite{about_react} (vlastný preklad). \clearpage
 
 JSX je oproti HTML striktnejší v tom, že:
 \begin{itemize}
@@ -477,12 +479,13 @@ Použitie CSS je v komponente možné pomocou importovania CSS stylesheetu napí
 
 Taktiež je možné CSS definovať priamo v JS a ten naviazať priamo na element v komponente. CSS naviazané týmto spôsobom je možné dynamicky meniť v závislosti od vnútorného stavu komponentu.
 
-Takto definovanému komponentu zostáva už len definovať jeho stav. Ten sa definuje pomocou funkcie \texttt{useState}, ktorého argumentom je inicializačná hodnota. Táto funkcia vracia pole, kde na nultom indexe sa nachádza aktuálna hodnota daného stavu a na prvom indexe sa nachádza funkcia, ktorú je možné exekuovať pre aktualizáciu stavu \cite{react_state} (vlastný preklad).
+Taémuto komponentu zostáva už len definovať jeho stav. Ten je možné vytvoriť pomocou funkcie \texttt{useState}, ktorého argumentom je inicializačná hodnota stavu. Táto funkcia vracia pole, kde na nultom indexe sa nachádza aktuálna hodnota daného stavu a na prvom indexe sa nachádza funkcia, ktorú je možné exekuovať pre aktualizáciu stavu \cite{react_state} (vlastný preklad).
 
 Nasledujúci príklad zobrazuje použitie tejto funkcie:
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}{typescript}
+// ParagraphComponent.js
 import { useState } from 'react';
 
 const [answer, setAnswer] = useState('');
@@ -494,7 +497,7 @@ console.log(answer); // výstupom na konzole bude reťazec 'foo'
 
 \clearpage
 
-Pre predstavu je na nasledujúcom príklade ukázaný rovnaký komponent ako v príklade pre Vue.js, avšak upravený pre React.js framework:
+Pre porovnanie je na nasledujúcom príklade ukázaný rovnaký komponent ako v príklade pre Vue.js, avšak upravený pre React.js framework:
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}{typescript}
@@ -520,9 +523,9 @@ Na základe doterajších skúseností s Vue.js frameworkom by mal byť vývoj a
 \clearpage
 
 \section {Analýza spracovania MR snímiek}
-Spracovávanie importovaných MR snímiek by v aplikácii malo prebiehať najmä na strane klienta -- vo webovom prehliadači. Takto zvolený prístup zamedzí prípadnému útočníkovi preniknúť k snímkam a dátam o pacientoch, ktoré by v opačnom prípade museli byť uchovávané na strane servera. Z uvedeného vyplýva, že pre implementáciu aplikácie bude potrebné nájsť JavaScript knižnicu resp. knižnice, ktoré sú schopné spracovať DICOM súbory v prehliadači.
+Spracovávanie importovaných MR snímiek by malo čo v najväčšej miere prebiehať najmä na strane klienta -- vo webovom prehliadači. Takto zvolený prístup zamedzí prípadnému útočníkovi preniknúť k snímkam a dátam o pacientoch, ktoré by v opačnom prípade museli byť uchovávané na strane servera. Z uvedeného vyplýva, že pre implementáciu aplikácie bude potrebné nájsť JavaScript knižnicu resp. knižnice, ktoré sú schopné spracovať DICOM súbory v prehliadači.
 
-Pod pojmom \uv{spracovať} je myslené: čítanie hlavičky DICOM súborov, zobrazenie snímiek nachádzajúcich sa v týchto súboroch, či možnosť tieto snímky modifikovať. Medzi ďalšie požiadavky kladené na takúto knižnicu patrí jej aktívny vývoj, dostupná dokumentácia a taktiež použiteľnosť knižnice pre produkčné nasadenie. Je možné, že neexistuje daná knižnica spĺňajúca všetky požiadavky, ktoré sú na ňu kladené. V takom prípade by mal byť nájdený mix knižníc, ktoré spolu tieto podmienky spĺňajú.
+Pod pojmom \uv{spracovať} je myslené: čítanie hlavičky DICOM súborov, zobrazenie snímiek nachádzajúcich sa v týchto súboroch, či možnosť tieto snímky modifikovať. Medzi ďalšie požiadavky kladené na takúto knižnicu patrí jej aktívny vývoj, dostupná dokumentácia a taktiež použiteľnosť knižnice pre produkčné nasadenie.
 
 Bohužiaľ, všetky požiadavky kladené na hľadanú knižnicu nespĺňa ani jedna nájdená knižnica, ale výber viacero knižníc, kde každá z nich implementuje určitú časť požiadaviek a dokopy podmienky kladené na knižnicu vyššie, spĺňajú.
 
@@ -534,11 +537,11 @@ Jedná sa o nasledovné knižnice:
 \end {itemize}
 
 \subsection {Cornerstone Core}
-Cornerstone Core\footnote{https://github.com/cornerstonejs/cornerstone} je knižnica, ktorá má za úlohu zjednodušiť proces vývoja komplexnejších webových aplikácií, ktoré majú za úlohu zobrazovať snímky akéhokoľvek formátu, vrátane bežných medicínskych snímkových formátov. Taktiež poskytuje API, pomocou ktorého je možné zobrazovať DICOM snímky a meniť ich vlastnosti, ako napr. zvýšiť alebo znížiť jas, priblížiť snímku alebo ju oddialiť, a iné \cite{about_cornerstone_core} (vlastný preklad).
+Cornerstone Core\footnote{https://github.com/cornerstonejs/cornerstone} je knižnica, ktorá má za úlohu zjednodušiť proces vývoja komplexnejších webových aplikácií, ktoré majú za úlohu zobrazovať snímky akéhokoľvek formátu, vrátane bežných medicínskych snímkových formátov. Taktiež poskytuje API, pomocou ktorého je možné zobrazovať DICOM snímky a samotné zobrazenie konfigurovať, ako napr. zvýšením alebo znížením intenzity jasi, priblížením a oddialením snímky, a iné \cite{about_cornerstone_core} (vlastný preklad).
 
 Táto knižnica neimplementuje import DICOM súborov a ich spracovanie. Túto funkcionalitu deleguje na tzv. ImageLoaders. Tie po spracovaní DICOM súborov posunú DICOM dáta cez spoločné rozhranie Cornerstone Core knižnici, ktorá ich nakoniec vykreslí \cite{about_cornerstone_core} (vlastný preklad).
 
-Cieľom tohto prístupu Cornerstone Core knižnice je jej dôraz na minimalizmus a poskytnutie flexibility pri spracovávaní rôznych typov obrazových dát. Použitie Cornerstone Core knižnice pre vývoj špecializovaných aplikácií tohto typu je de-facto štandardom  \cite{about_cornerstone_core} (vlastný preklad).
+Cieľom tohto prístupu Cornerstone Core knižnice je jej dôraz na minimalizmus a poskytnutie flexibility pri spracovávaní rôznych typov obrazových dát. Použitie Cornerstone Core knižnice pre vývoj špecializovaných aplikácií tohto typu je de-facto štandardom \cite{about_cornerstone_core} (vlastný preklad).
 
 V súčasnosti sa pripravuje nová \uv{Cornerstone Core} knižnica, ktorej názov sa zmení na \uv{Cornerstone3D}\footnote{https://github.com/cornerstonejs/cornerstone3D-beta}. Keďže je táto knižnica momentálne v beta berzii a stabilná verzia tejto knižnice ešte nebola vydaná, vývoj aplikácie bude postavený na doterajšej Cornerstone Core knižnici.
 Momentálne neexistuje alternatíva tejto knižnice, ktorá by sa špecifikovala na túto oblasť.
@@ -546,17 +549,17 @@ Momentálne neexistuje alternatíva tejto knižnice, ktorá by sa špecifikovala
 \subsection {Cornerstone DICOM Image Loader}
 Cornerstone DICOM Image Loader\footnote{https://github.com/cornerstonejs/cornerstone3D-beta/tree/main/packages/dicomImageLoader} je tzv. ImageLoader, ktorý je zodpovedný za načítanie a spracovanie DICOM súborov. Použitie tejto knižnice je vynútené Cornerstone Core knižnicou. Táto knižnica podporuje nielen načítanie DICOM súborov cez HTTP protokol, ale aj z lokálneho súborového systému pomocou File API\footnote{https://developer.mozilla.org/en-US/docs/Web/API/File\textunderscore API} implementovaného webovými prehliadačmi \cite{about_cornerstone_dicom_image_loader} (vlastný preklad).
 
-Po načítaní DICOM súborov je ich parsovanie prenechané knižnici Dicom Parser. Nakoľko sa veľkosť týchto súborov môže pohybovať v rádoch megabajtov (MB), samotné parsovanie súborov beží tiež pomocou webovej technológie zvanej Web Workers\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Web\textunderscore Workers\textunderscore API}. Pre začiatok priblížim technológiu Web Workers a následne knižnicu Dicom Parser\footnote{https://github.com/cornerstonejs/dicomParser}.
+Po načítaní DICOM súborov je ich parsovanie prenechané knižnici Dicom Parser. Nakoľko sa veľkosť týchto súborov môže pohybovať v rádoch megabajtov (MB), samotné parsovanie súborov prebieha pomocou využitia technológie Web Workers\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Web\textunderscore Workers\textunderscore API}. Pre začiatok priblížim technológiu Web Workers a následne knižnicu Dicom Parser\footnote{https://github.com/cornerstonejs/dicomParser}.
 
 \subsubsection {Web Workers}
 JavaScript je v prehliadači implementovaný ako jednovláknový jazyk využívajúci jedno hlavné vlákno a exekúcia skriptov tohto jazyka prebieha zvyčajne v tomto vlákne. Výpočetne náročné úlohy by avšak mohli vyústiť do zablokovania tohto vlákna, ktoré sa prejavuje nereagovaním prehliadača na rozličné používateľské akcie alebo nevykreslovaním aktualizácií na webovej stránke. Dôvodom zablokovania hlavného vlákna by v tomto prípade bolo využitie všetkých dostupných prostriedkov prioritne pre danú výpočetne náročnú úlohu.
 
 Web Workers technológia je štandardom, ktorý je implementovaný a poskytovaný webovými prehliadačmi umožňujúci exekúciu takýchto úloh, ktoré by inak pri dlhšom spracovávaní mohli dané hlavné vlákno zablokovať.
 
-Pomocou Web Workers je možné predísť zablokovaniu hlavného vlákna jednoduchým vytvorením nového pracovného vlákna pomocou konštruktu \texttt{new Worker(url)}, kde \texttt{url} je adresa skriptu, ktorý má bežať v novom pracovnom vlákne. Takéto pracovné vlákno môže exekuovať JS skript bez zablokovania hlavného vlákna, keďže je od neho nezávislé \cite{using_web_workers} (vlastný preklad).
+Pomocou Web Workers je možné predísť zablokovaniu hlavného vlákna jednoduchým vytvorením nového pracovného vlákna pomocou konštruktu \texttt{new Worker(url)}, kde \texttt{url} je adresa skriptu, ktorý má bežať v novom pracovnom vlákne. Takéto pracovné vlákno môže exekuovať JS skript bez zablokovania hlavného vlákna, keďže je od neho nezávislé a taktiež komunikovať s hlavným vláknom \cite{using_web_workers} (vlastný preklad).
 
 \subsection {Dicom Parser}
-Dicom Parser je knižnica implementujúca parsovanie všetkých známych validných DICOM súborov. Knižnica je navrhnutá pre beh vo všetkých moderných HTML5 prehliadačoch a k svojej funkčnosti nezávisí na iných knižniciach \cite{about_dicom_parser} (vlastný preklad).
+Dicom Parser je knižnica implementujúca parsovanie všetkých známych validných DICOM súborov. Knižnica je navrhnutá pre beh vo všetkých moderných HTML5 prehliadačoch a nie je závislá na žiadnej knižnici \cite{about_dicom_parser} (vlastný preklad).
 
 Dicom Parser poskytuje globálny objekt \texttt{dicomParser}, ktorý obsahuje viacero metód, z ktorých je najzaujímavejšia metóda \texttt{parseDicom}. Argumentom tejto metódy je \texttt{Uint8Array} pole obsahujúce nespracovaný (raw) obsah DICOM súboru. Výsledkom volania tejto metódy spolu s \texttt{Uint8Array} poľom je \texttt{DataSet} objekt obsahujúci vyparsovaný obsah DICOM súboru.
 
@@ -565,14 +568,10 @@ Alternatívou Dicom Parser knižnice by mohla byť knižnica dcm.js\footnote{htt
 \subsection {Zhrnutie}
 Pre zhrnutie informácií v tejto sekcii -- knižnica Cornerstone DICOM Image Loader využíva Web Workers pre vytvorenie nových pracovných vlákien, ktorých úloha je parsovanie DICOM súborov pomocou metódy \texttt{parseDicom} objektu \texttt{dicomParser} pochádzajúceho z Dicom Parser knižnice uvedenej vyššie. Metódou vrátený \texttt{DataSet} objekt je následne poslaný knižnici Cornerstone Core, ktorá sa postará o vykreslenie vyparsovanej DICOM snímky z tohto objektu.
 
-Nasledujúca sekcia sa bude zaoberať analýzou a návrhom, ako vykresliť mriežku na zobrazenú DICOM snímku pomocou knižnice Cornerstone Tools.
-
 \section {Analýza možností implementácie mriežky}
 Pre implementáciu mriežky by bolo vhodné použiť knižnicu, pomocou ktorej by bolo možné danú mriežku vykresliť a upravovať podľa potrieb používateľa.
 
-Rodina Cornerstone frameworkov ponúka pre tento účel Cornerstone Tools\footnote{https://github.com/cornerstonejs/cornerstoneTools} framework, ktorý asistuje nielen pri vytváraní rôznych anotácií pre DICOM snímky načítané pomocou Cornerstone Core, ale aj pri ich segmentácii či rôznych meraní. Taktiež ponúka široký počet nástrojov, ktoré môžu dané snímky modifikovať alebo nad týmito snímkami vykreslovať rôzne informácie či lomené čiary.
-
-Prednosťou Cornerstone Tools knižnice je API\footnote{https://tools.cornerstonejs.org/api/}, pomocou ktorého je možné vytvárať nové nástroje, manažovať ich, či importovať/exportovať ich stav.
+Rodina Cornerstone frameworkov ponúka pre tento účel knižnicu Cornerstone Tools\footnote{https://github.com/cornerstonejs/cornerstoneTools}, ktorá asistuje nielen pri vytváraní rôznych anotácií pre DICOM snímky (zobrazených pomocou Cornerstone Core), ale aj pri ich segmentácii či rôznych meraní. Taktiež ponúka široký počet nástrojov, ktoré môžu dané snímky modifikovať alebo nad týmito snímkami vykreslovať rôzne informácie či lomené čiary.
 
 \subsection {Závislosti knižnice}
 Pre využitie tejto knižnice je potrebná nielen Cornerstone Core knižnica, nakoľko je s ňou úzko previazaná, ale aj knižnica Hammer.js\footnote{https://github.com/hammerjs/hammer.js} a Cornerstone Math\footnote{https://github.com/cornerstonejs/cornerstoneMath}.
@@ -581,15 +580,17 @@ Cornerstone Tools využíva Cornerstone Core knižnicu pre reagovanie na rôzne 
 
 Hammer.js knižnica implementuje podporu rozhrania založeného na dotyku namiesto myši. Túto knižnicu je potrebné importovať bez ohľadu na to, či sa plánujú využívať gestá na báze dotyku alebo nie, nakoľko niektoré nástroje sú od tejto knižnice závislé.
 
-Cornerstone Math, ako už názov napovedá, poskytuje rôzne matematické operácie prevažne týkajúce sa vektorovej matematiky. Niektoré nástroje z Cornerstone Tools knižnice ju používajú napr. pre výpočet vzdialenosti medzi rôznymi bodmi.
+Cornerstone Math, ako už názov napovedá, poskytuje rôzne matematické operácie týkajúce sa prevažne vektorovej matematiky. Niektoré nástroje z Cornerstone Tools knižnice ju používajú napr. pre výpočet vzdialenosti medzi rôznymi bodmi.
 
 \subsection {Spôsoby implementácie mriežky}
-Nakoľko Cornerstone Tools neobsahuje mriežku ako nástroj, ktorý vie knižnica zobraziť a s ňou ďalej pracovať, bude nutné túto mriežku implementovať od základov.
+Nakoľko Cornerstone Tools neobsahuje mriežku ako nástroj, ktorý vie knižnica zobraziť a s ňou ďalej pracovať, bude nutné ju od základov implementovať.
 
-Táto implementácia môže využívať API poskytované knižnicou, pomocou ktorej by bolo možné danú mriežku implementovať bez zásahu do knižnice alebo bude nutné danú mriežku naprogramovať priamo do knižnice. Obe možnosti implementácie majú svoje výhody a nevýhody.
+Táto implementácia môže využívať API\footnote{https://tools.cornerstonejs.org/api/} poskytované knižnicou, pomocou ktorej by bolo možné danú mriežku implementovať bez zásahu do knižnice alebo bude nutné danú mriežku naprogramovať priamo do knižnice.
 
 \subsubsection {Implementácia pomocou Cornerstone Tools API}
-Pri implementácii mriežky pomocou dedikovaného API by nebolo potrebné udržiavať vlastnú kópiu Cornerstone Tools knižnice. V tomto prípade by pre využitie rôznych funkcií implementovaných v samotnej knižnici bolo možné vyžadovanú funkcionalitu importovať pomocou metódy \texttt{importInternal(moduleName)}. Nevýhodou tohto spôsobu je nedostatočná flexibilita spojená s nemožnosťou importovania všetkej funkcionality, ktorá by mohla byť pri vývoji potrebná. Ďalším negatívom zvolenia tohto spôsobu by bola nemožnosť upravenia akéhokoľvek kódu v Cornerstone Tools knižnici.
+Pri implementácii mriežky pomocou dedikovaného API by nebolo potrebné udržiavať vlastnú kópiu Cornerstone Tools knižnice. V tomto prípade by pre využitie rôznych funkcií implementovaných v samotnej knižnici bolo možné vyžadovanú funkcionalitu importovať pomocou metódy \texttt{importInternal(moduleName)}.
+
+Nevýhodou tohto spôsobu je nedostatočná flexibilita spojená s nemožnosťou importovania všetkej funkcionality, ktorá by mohla byť pri vývoji potrebná. Ďalším negatívom zvolenia tohto spôsobu by bola nemožnosť upravenia akéhokoľvek kódu v Cornerstone Tools knižnici.
 
 \subsubsection {Implementácia v rámci Cornerstone Tools knižnice}
 Na druhú stranu, ak by mala byť mriežka implementovaná priamo v Cornerstone Tools knižnici, odpadol by problém s importovaním teoreticky potrebnej funkcionality, nakoľko by sa dal importovať akýkoľvek modul knižnice priamo pomocou JS konštruktu \texttt{import}, bez nutnosti využitia \texttt{importInternal} metódy.
@@ -643,7 +644,7 @@ Nasledujúce podsekcie sa budú venovať popisu jednotlivých častí s popisom 
 \subsection {Horný panel}
 V hornom paneli sa nachádzajú tlačidlá, na ktoré bude možné kliknúť.
 
-Prvé tlačidlo zľava slúži pre načítanie DICOM snímiek. Po kliknutí na toto tlačidlo sa zobrazí systémové okno, kde si bude môcť používateľ vybrať DICOM snímky, ktoré sa majú načítať do aplikácie. Pri každej tejto akcii sa vymažú predchádzajúce načítané snímky (ak existujú) a nahradia sa práve zvolenými snímkami.
+Prvé tlačidlo zľava bude slúžiť pre načítanie DICOM snímiek. Po kliknutí naň sa zobrazí systémové okno, kde si používateľ bude môcť vybrať DICOM snímky, ktoré sa majú importovať do aplikácie. Pri každej tejto akcii sa vymažú doteraz importované snímky a nahradia sa práve importovanými snímkami.
 
 Akonáhle používateľ aplikácie klikne na druhé tlačidlo, vymažú sa všetky načítané snímky a aplikácia sa prepne do stavu pred načítaním snímiek do aplikácie.
 
@@ -654,40 +655,40 @@ Pomocou štvrtého tlačidla bude možné priblížiť aktuálne zobrazenú DICO
 Šieste tlačidlo umožní posunúť DICOM snímku v ľubovoľnom smere a siedmym tlačidlom bude možné presúvať vykreslenú mriežku alebo jej body v závislosti na aktuálnom nastavení tohto tlačidla.
 
 \subsection {Centrálna časť}
-V centrálnej časti aplikácie bude zobrazená aktuálne vybraná DICOM snímka. Pod touto snímkou budú zobrazené náhľady na všetky importované snímky, na ktoré bude možné kliknúť. Po kliknutí na náhľad snímky sa daná snímka zobrazí. Okrem zobrazenia snímky bude možné vykresliť používateľom definovanú mriežku, s ktorou sa bude dať interagovať pomocou myši.
+V centrálnej časti aplikácie bude zobrazená aktuálne vybraná DICOM snímka. Pod touto snímkou budú zobrazené náhľady na všetky importované snímky, ktoré bude možné zobraziť kliknutím na ne. Okrem zobrazenia samotnej snímky bude možné vykresliť používateľom definovanú mriežku, s ktorou bude možné interagovať pomocou myši.
 
 \subsection {Ľavý postranný panel}
-Ľavý postranný panel obsahuje dve sekcie -- \uv{Image information} a \uv{Grid algorithm parameters}.
+Ľavý postranný panel bude obsahovať dve sekcie -- \uv{Image information} a \uv{Grid algorithm parameters}.
 
-\uv{Image information} sekcia informuje používateľa o mene pacienta, ktorému aktuálne zobrazená snímka patrí. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná. Pod týmito informáciami sa nachádzajú informácie o výške a šírke zobrazenej snímky.
+\uv{Image information} sekcia bude informovať používateľa o mene pacienta nachádzajúceho sa na snímke. Okrem mena bude zobrazené číslo série a modalita, ktorej hodnota by pri skenoch MR mala byť rovnomenná (rovnajúca sa hodnote \uv{MR}). Pod týmito informáciami sa budú nachádzať informácie o výške a šírke zobrazenej snímky.
 
-\uv{Grid algorithm parameters} slúži pre nastavenie parametrov pre SPAMM algoritmus. Tieto parametre by mali byť poslané v rámci požiadavky na API endpoint (\ref{api_endpoint}). Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných DICOM snímkach. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku na daný API endpoint s ptorebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok.
+\uv{Grid algorithm parameters} bude slúžiť pre nastavenie parametrov SPAMM algoritmu. Tlačidlo \uv{Compute} bude predvolene vypnuté, dokým nebudú vytvorené mriežky na všetkých importovaných snímkach. V opačnom prípade bude možné kliknúť na toto tlačidlo, ktoré spracuje potrebné informácie z každej snímky a odošle požiadavku SPAMM algoritmu s potrebnými informáciami pre aktualizovanie súradníc bodov všetkých mriežok.
 
 \clearpage
 
 \subsection {Pravý postranný panel}
-Pravý postranný panel je rozdelený na dve karty -- \uv{Image tools} a \uv{Grid tools}. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
+Pravý postranný panel bude rozdelený na dve karty -- \uv{Image tools} a \uv{Grid tools}. Pri kliknutí na jednu z možností sa obsah patriaci aktuálne zobrazenej možnosti skryje, aby bolo možné zobraziť obsah zvolenej karty.
 
 \subsubsection {Image tools karta}
-Na \uv{Image tools} karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímiek naraz. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímiek, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej a koncovej animovanej snímky.
+Na \uv{Image tools} karte bude možné zvoliť si snímku, ktorá sa má zobraziť. Okrem toho bude možné zmeniť jas a kontrast všetkých snímiek. Pod týmito nastaveniami bude možné upravovať nastavenia animácie snímiek, počínajúc nastavením rýchlosti animácie cez nastavenie počiatočnej a koncovej animovanej snímky.
 
 \subsubsection {Grid tools karta}
-\uv{Grid tools} karta bude obsahovať rozličné nastavenia mriežky. Tie sa delia na globálne a lokálne. Globálne nastavenia budú mať efekt pre všetky vytvorené mriežky, lokálne sa budú aplikovať len na mriežku, ktorá je aktuálne zobrazená.
+\uv{Grid tools} karta bude obsahovať rozličné nastavenia mriežky. Tie sa rozdelia na globálne a lokálne nastavenia. Globálne nastavenia budú aplikované pre všetky vytvorené mriežky a lokálne nastavenia len na mriežku, ktorá je aktuálne zobrazená.
 
 \subsubsection*{Globálne nastavenia mriežky}
 V globálnych nastaveniach bude možné nastaviť možnosť interakcie s mriežkou pomocou myši (nastavenie \uv{Move}). Ak bude zapnutá možnosť \uv{Grid}, potiahnutím bodu mriežky sa celá mriežka posunie o vektor posunu. V prípade zvolenej možnosti \uv{Point} sa nebude posúvať celá mriežka, ale iba myšou zvolený bod mriežky.
 
 Ďalšie nastavenie -- \uv{Show refinement points} -- bude slúžiť na dynamické pridanie, resp. odobranie \uv{refinement} bodov zo všetkých mriežok. Tzv. \uv{refinement} body slúžia pre presnejšie zarovnanie používateľom vygenerovanej mriežky so SPAMM mriežkou vygenerovanou MR prístrojom.
 
-Tlačidlo \uv{Copy grid to all images} bude slúžiť pre skopírovanie zobrazenej mriežky do všetkých importovaných mriežok. Po klliknutí na toto tlačidlo sa zobrazí modálne okno, ktoré upozorní používateľa o tejto akcii s nemožnosťou prípadného vrátenia tohto kroku. Toto tlačidlo bude aktívne iba v prípade, že na aktuálnej snímke bude zobrazená mriežka.
+Po klliknutí na tlačidlo \uv{Copy grid to all images} sa zobrazí modálne okno, ktoré upozorní používateľa o možnosti skopírovania aktuálne zobrazenej mriežky do všetkých importovaných snímiek s možnosťou prípadného vrátenia tohto kroku. Toto tlačidlo bude aktívne iba v prípade, že na aktuálnej snímke bude zobrazená mriežka.
 
 \subsubsection* {Lokálne nastavenia mriežky}
 V lokálnych nastaveniach bude možné nastaviť rôzne parametre zobrazenej mriežky ako uhol, offset a iné. Pomocou tlačidla \uv{Create grid} bude možné vytvoriť mriežku s predvolenými nastaveniami. Po kliknutí naň sa tlačidlo zmení na \uv{Remove grid}, ktorého funkcia bude spočívať vo vymazaní mriežky na zobrazenej snímke.
 
 \section {Návrh komunikácie webového rozhrania so serverom}\label{api_endpoint}
-Pre potrebu komunikácie medzi serverom a klientom bude túto komunikáciu potrebnú navrhnúť. 
+Pre potrebu komunikácie medzi serverom a klientom bude nutné túto komunikáciu navrhnúť. 
 
-Serveru bude nutné posielať potrebné dáta o používateľom definovaných mriežkach pre výpočet aktualizovaných súradníc bodov mriežok. Odpoveď klientovi by mala obsahovať aktualizované súradnice mriežok, ktoré webová aplikácia následne vykreslí.
+Serveru sa budú posielať dáta o používateľom definovaných mriežkach pre výpočet aktualizovaných súradníc bodov mriežok. Odpoveď klientovi by mala obsahovať aktualizované súradnice mriežok, ktoré webová aplikácia následne vykreslí.
 
 V tomto prípade stačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď pošle klientovi vo dohodnutom formáte.
 
@@ -695,7 +696,7 @@ Detaily o tomto API endpointe sú nasledovné:
 \begin {itemize}
 \item {pre komunikáciu s endpointom bude využitý HTTP protokol,}
 \item {endpoint bude dostupný na adrese \texttt{<hostname>/api/grid},}
-\item {endpoint prijme dáta vtedy, ak daná požiadavka bude poslaná metódou POST,}
+\item {endpoint prijme dáta vtedy, ak daná požiadavka bude poslaná metódou POST a}
 \item {telo požiadavky a odpovede budú vo formáte JSON.}
 \end {itemize}
 
@@ -703,7 +704,7 @@ Detaily o tomto API endpointe sú nasledovné:
 
 \subsection {HTTP požiadavka}
 
-Telo požiadavky bude mať nasledovný formát, ktorý je avšak pre popis typov premenných popísaný v TypeScripte:
+Telo požiadavky bude mať nasledovný formát, ktorý je pre popis typov premenných popísaný v TypeScripte:
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}{typescript}
@@ -733,32 +734,29 @@ Telo požiadavky bude mať nasledovný formát, ktorý je avšak pre popis typov
 \end{minted}
 \end{minipage}
 
-V \texttt{data} poli sa budú nachádzať objekty, z ktorých každý objekt bude reprezentovať jednu entitu skladajúcu sa zo štruktúry snímky (kľúč \texttt{image}) a jej mriežky (kľúč \texttt{grid}).
+V \texttt{data} poli sa budú nachádzať objekty, z ktorých každý bude reprezentovať entitu skladajúcu sa zo štruktúry snímky (\texttt{image}) a jej mriežky (\texttt{grid}).
 
-Kľúč \texttt{image} je objektom, ktorý obsahuje \texttt{imageId} a \texttt{imageData}. \texttt{imageId} je reťazec reprezentujúci ID snímky a \texttt{imageData} pole reprezentujúce raw dáta DICOM súboru.
+Hodnota \texttt{image} bude objektom, ktorého obsahom bude \texttt{imageId} reprezentujúci ID snímky a \texttt{imageData}, ktorý bude obsahovať pole binárnych dát DICOM súboru.
 
-Kľúč \texttt{grid} je taktiež objektom obsahujúci dva kľúče -- \texttt{primaryLines} a \newline \texttt{includesRefinementPoints}.
+Hodnota \texttt{grid} bude taktiež objekt obsahujúci dva kľúče -- \texttt{primaryLines} a \newline \texttt{includesRefinementPoints}.
 
-\texttt{primaryLines} reprezentuje pole zvislých úsečiek idúcich zľava doprava.
-Každá táto úsečka obsahuje pole \texttt{points}.
+\texttt{primaryLines} bude reprezentovať pole zvislých úsečiek idúcich zľava doprava.
+Obsahom každej takejto úsečky bude pole \texttt{points}, ktorého obsahom budú objekty reprezentujúce body na danej úsečke.
 
-Toto pole obsahuje objekty reprezentujúce body na danej úsečke. Každý bod sa skladá z troch kľúčov objektu -- \texttt{x}, \texttt{y} a \texttt{isCommonPoint}. \texttt{x} reprezentuje x-súradnicu bodu, \texttt{y} invertovanú y-súradnicu a \texttt{isCommonPoint} značí, či je daný bod \uv{common point} (tzv. bod, v ktorom sa pretína vodorovná a zvislá úsečka mriežky) alebo \uv{refinement point}, pomocou ktorého je možné upresniť polohu mriežky. 
+Každý bod sa bude skladať z troch kľúčov objektu: \texttt{x} -- reprezentujúci x-súradnicu bodu, \texttt{y} -- reprezentujúci invertovanú y-súradnicu bodu a príznak \texttt{isCommonPoint} značiaci, či je daný bod \uv{common} bodom (tzv. bod, v ktorom sa pretína vodorovná a zvislá úsečka mriežky) alebo \uv{refinement} bodom, pomocou ktorého je možné upresniť polohu mriežky. 
 
 \texttt{includesRefinementPoints} značí, či sa v poli \texttt{points} nachádzajú aj tzv. \uv{refinement} body .
 
 Používateľ iniciuje poslanie dát v tejto štruktúre kliknutím na tlačidlo \uv{Compute}.
 
 \subsubsection {Anonymizácia DICOM dát}
-Nakoľko pre účely následného spracovania mriežok na serveri budú taktiež potrebné poslať snímky v DICOM formáte (kľúč \texttt{imageData}), bude nevyhnutné ich pred ich odoslaním na server anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} (vlastný preklad) je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách \uv{0008} a \uv{0010}. Skupina \uv{0008} obsahuje dáta ohľadom štúdie a skupina \uv{0010} obsahuje dáta o pacientovi.
+Nakoľko obsahom požiadavky v rámci horeuvedeného API endpointu budú taktiež binárne dáta DICOM snímiek, bude nevyhnutné tieto snímky pred ich odoslaním na server anonymizovať takým spôsobom, aby nebolo možné spojiť snímky z magnetickej rezonancie s konkrétnym pacientom. Podľa \cite{Varma_2012} je nutné anonymizovať všetky DICOM tagy nachádzajúce sa v skupinách \uv{0008} a \uv{0010}. Skupina \uv{0008} obsahuje dáta ohľadom štúdie a skupina \uv{0010} obsahuje dáta o pacientovi.
 
-Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte. Táto trieda nahradí obsah tagov z horeuvedených skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach. Takto upravené dáta bude môcť byť následné bezpečne poslané na server.
-
-\todo{pridať diagram fyzickej štruktúry, skontrolovať citácie}
+Pre tento účel bude potrebné vytvoriť triedu reprezentujúcu DICOM anonymizér, ktorý bude implementovaný v JavaScripte na úrovni klienta. Táto trieda nahradí obsah tagov z horeuvedených skupín prázdnym reťazcom s dĺžkou daného tagu, aby nenastala inkonzistencia v DICOM dátach. Takto upravené dáta bude môcť byť bezpečne poslané na server.
 
 \clearpage
 
 \subsection{HTTP odpoveď}
-
 Telo odpovede servera na požiadavku, ktorá bude obsahovať dáta o odoslaných mriežkach, bude v nasledujúcom formáte:
 
 \begin{minipage}[]{\linewidth}
@@ -784,8 +782,8 @@ Telo odpovede servera na požiadavku, ktorá bude obsahovať dáta o odoslaných
 \end{minted}
 \end{minipage}
 
-Odpoveď obsahuje kľúč \texttt{grids}, ktorý obsahuje objekty mriežok. Každý z týchto objektov obsahuje kľúč \texttt{imageId} a \texttt{primaryLines}.
+Odpoveď bude obsahovať kľúč \texttt{grids}, ktorého obsahom budú objekty mriežok. Každý z týchto objektov bude obsahovať kľúč \texttt{imageId} a \texttt{primaryLines}.
 
-Pomocou kľúča \texttt{imageId} je možné spárovať objekt mriežky v odpovedi s mriežkou v aplikácii. Obsahom kľúča \texttt{primaryLines} je pole zvislých úsečiek mriežky idúce zľava doprava.
+Pomocou kľúča \texttt{imageId} bude možné spárovať objekt mriežky v odpovedi s mriežkou v aplikácii. Obsahom kľúča \texttt{primaryLines} bude pole zvislých úsečiek mriežky idúce zľava doprava.
 
-Každá takáto úsečka obsahuje kľúč \texttt{points} reprezentujúce pole bodov zhora nadol. Každý bod obsahuje svoje súradnice (\texttt{x} a \texttt{y}) a značku, či je bodom, v ktorom sa pretína vodorovná a zvislá úsečka mriežky alebo nie.
+Každá takáto úsečka bude obsahovať kľúč \texttt{points} reprezentujúci pole bodov v grafickej reprezentácii mriežky zhora nadol. Každý bod bude obsahovať svoje súradnice ($x$ a $y$) a príznak \texttt{isCommonPoint}, ktorý bude značiť, či je daný bod bodom, v ktorom sa pretína vodorovná a zvislá úsečka mriežky (\uv{common} bod) alebo nie (\uv{refinement} bod).
