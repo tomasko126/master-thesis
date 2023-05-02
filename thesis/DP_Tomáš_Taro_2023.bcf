@@ -2495,15 +2495,12 @@
     <bcf:citekey order="112" intorder="1">base_tool_description</bcf:citekey>
     <bcf:citekey order="113" intorder="1">base_tool_description</bcf:citekey>
     <bcf:citekey order="114" intorder="1">base_tool_description</bcf:citekey>
-    <bcf:citekey order="115" intorder="1">base_tool_description</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">cornerstone_tools_modes</bcf:citekey>
     <bcf:citekey order="116" intorder="1">cornerstone_tools_modes</bcf:citekey>
     <bcf:citekey order="117" intorder="1">cornerstone_tools_modes</bcf:citekey>
     <bcf:citekey order="118" intorder="1">cornerstone_tools_modes</bcf:citekey>
     <bcf:citekey order="119" intorder="1">cornerstone_tools_modes</bcf:citekey>
     <bcf:citekey order="120" intorder="1">cornerstone_tools_modes</bcf:citekey>
-    <bcf:citekey order="121" intorder="1">cornerstone_tools_modes</bcf:citekey>
-    <bcf:citekey order="122" intorder="1">cornerstone_tools_modes</bcf:citekey>
-    <bcf:citekey order="123" intorder="1">cornerstone_tools_modes</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
