@@ -30,11 +30,11 @@ Jedným z najdôležitejších súborov v tejto štruktúre je \texttt{package.j
 \subsection {Spustenie Nuxt.js serveru}
 Pred spustením Nuxt.js serveru je potrebné doinštalovať projektové závislosti -- balíčky, príkazom \texttt{npm install}. Následne je možné spustiť Nuxt.js server príkazom \texttt{npm run dev}. Spustenie serveru týmto príkazom aktivuje tzv. \uv{file watcher}, ktorý je zodpovedný za skompilovanie aplikácie pri detekovaných zmenách v súboroch aplikácie.
 
+\clearpage
+
 V rámci spustenia tohto príkazu sa na konzolu vypíše adresu servera spolu s jej portom, na ktorej je možné pristúpiť k tomuto serveru. V tomto prípade sa jednalo o adresu \texttt{http://localhost:3000/}. 
 
 Pre produkčné násadenie by mala byť Nuxt.js aplikácia najprv prejsť build procesom (pomocou príkazu \texttt{npm run build}), ktorý okrem iného minifikuje aplikačné súbory, čím zmenší prenášaný obsah aplikácie po sieti.
-
-\clearpage
 
 \section {Použité balíčky}
 V rámci tejto sekcie sú uvedené všetky balíčky, ktoré sa použili pri vývoji webovej aplikácie.
@@ -281,10 +281,10 @@ Metóda \texttt{pointNearTool} vráti pravdivú hodnotu, ak koordináty kliknuti
 
 V rámci metódy \texttt{renderToolData} je nutné implementovať vykreslenie anotácie na snímku. Samotné vykreslenie sa dá dosiahnuť pomocou interných metód ako \texttt{drawJoinedLines} pre vykreslenie úsečiek spojených v určitých bodoch či \texttt{drawHandles} pre vykreslenie bodov, ktoré môžu byť presúvané po ploche snímky \cite{base_tool_description} (vlastný preklad).
 
+\clearpage
+
 \subsubsection {Dostupné módy nástrojov}
 Cornerstone Tools nástroje sa môžu nachádzať v štyroch rôznych módoch,\newline z ktorého je aplikovaný v čase vždy len jeden.
-
-\clearpage
 
 Zoznam týchto módov je nasledovný:
 \begin {itemize}
@@ -338,7 +338,7 @@ export const registerTool = (toolName: cornerstoneTools.ToolName): void => {
 \end{minipage}
 
 \subsubsection {Implementácia nástroja mriežky}
-Grid nástroj -- nástroj mriežky -- bol implementovaný pomocou vhodného doimplementovania abstraktných a virtuálnych funkcií \texttt{BaseTool} a \texttt{BaseAnnotationTool} tried uvedených v tejto práci.
+Grid nástroj -- nástroj mriežky -- bol implementovaný pomocou vhodného doimplementovania abstraktných a virtuálnych funkcií \texttt{BaseTool}\newline a \texttt{BaseAnnotationTool} tried uvedených v tejto práci.
 
 V Cornerstone Tools knižnici je tento nástroj možný nájsť pod súborom\newline \texttt{src/tools/annotation/GridTool.js}. Grid nástroj bol svojou implementáciou inšpirovaný nástrojom \texttt{FreehandRoi}, ktorý umožňuje kresliť po snímku čiary rôznych dĺžok.
 
@@ -353,28 +353,17 @@ Stav mriežky je reprezentovaný poľom obsahujúcim štruktúru vertikálnych �
 
 Postupnosť uložených bodov predstavuje vertikálnu úsečku mriežky. Horizontálne úsečky budú automaticky dopočítané pri renderovaní mriežky pomocou susedných bodov priľahlých vertikálnych úsečiek.
 
-Z horeuvedeného vyplýva, že sa pri volaní metódy \texttt{createNewMeasurement} x-krát vytvorí reprezentácia vertikálnej úsečky (measurement), ktoré budú v cykle ukladané do celkového stavu mriežky pomocou metódy \texttt{addToolState}.
-
-Reprezentácia vertikálnej úsečky mriežky (tzv. \uv{measurement}) bude vyzerať nasledovne:
+Pri volaní metódy \texttt{createNewMeasurement} sa teda x-krát vytvorí reprezentácia vertikálnej úsečky (measurement), ktoré budú v cykle ukladané do celkového stavu mriežky pomocou metódy \texttt{addToolState}. Reprezentácia vertikálnej úsečky mriežky (tzv. \uv{measurement}) bude vyzerať nasledovne:
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}[autogobble,bgcolor=white]{typescript}
-const points = [
-  {
-    x: number;
-    y: number;
-    isCommonPoint: boolean;
-  },
-  ...,
-  {
-    x: number;
-    y: number;
-    isCommonPoint: boolean;
-  }
-];
+{
+  x: number;
+  y: number;
+  isCommonPoint: boolean;
+}
 \end{minted}
 \end{minipage}
-
 Výstup metódy \texttt{getToolState} pre mriežku bude teda nasledujúci objekt:
 
 \begin{minipage}[]{\linewidth}
@@ -416,7 +405,7 @@ Pre zmenu konfigurácie mriežky bolo nutné v jej triede vytvoriť setter metó
 Zoznam implementovaných setter metód je nasledujúci:
 \begin {itemize}
 \item {\texttt{angle(value: number)} -- nastaví uhol mriežky}
-\item {\texttt{moveOneHandleOnly(value: boolean)} -- nastaví mód pohybu mriežky}
+\item {\texttt{moveOneHandleOnly(value: boolean)} -- nastaví mód posunu mriežky}
 \item {\texttt{noOfPrimaryLines(value: number)} -- nastaví počet vertikálnych úsečiek mriežky}
 \item {\texttt{noOfSecondaryLines(value: number)} -- nastaví počet horizontálnych úsečiek mriežky}
 \item {\texttt{spacing(value: number)} -- nastaví rozpätie medzi hlavnými bodmi mriežky}
