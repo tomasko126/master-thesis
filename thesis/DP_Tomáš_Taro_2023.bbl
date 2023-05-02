@@ -490,6 +490,12 @@
       \field{journaltitle}{Web Hypertext Application Technology Working Group (WHATWG)}
       \field{title}{HTML Living Standard}
       \field{year}{2023 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://html.spec.whatwg.org
+      \endverb
+      \verb{url}
+      \verb https://html.spec.whatwg.org
+      \endverb
     \endentry
     \entry{css_basics}{incollection}{}
       \list{publisher}{1}{%
@@ -502,6 +508,12 @@
       \field{howpublished}{online}
       \field{title}{CSS basics}
       \field{year}{2023 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics
+      \endverb
     \endentry
     \entry{about_css}{incollection}{}
       \name{author}{1}{}{%
@@ -848,6 +860,12 @@
       \field{howpublished}{online}
       \field{title}{Describing the UI}
       \field{year}{2023 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://react.dev/learn/describing-the-ui
+      \endverb
+      \verb{url}
+      \verb https://react.dev/learn/describing-the-ui
+      \endverb
     \endentry
     \entry{jsx_rules}{incollection}{}
       \list{publisher}{1}{%
@@ -1069,6 +1087,66 @@
       \endverb
       \verb{url}
       \verb https://github.com/cornerstonejs/dicomParser
+      \endverb
+    \endentry
+    \entry{base_tool_description}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=29071c4ba2ed99c5631abcc4cc3bcbb2}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Danny},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{fullhash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{bibnamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authorbibnamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authornamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authorfullhash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \field{extraname}{1}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{tools.cornerstonejs.org}
+      \field{howpublished}{online}
+      \field{title}{Tool Types}
+      \field{year}{Sep 21, 2018 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://tools.cornerstonejs.org/tool-types/
+      \endverb
+      \verb{url}
+      \verb https://tools.cornerstonejs.org/tool-types/
+      \endverb
+    \endentry
+    \entry{cornerstone_tools_modes}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=29071c4ba2ed99c5631abcc4cc3bcbb2}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Danny},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{fullhash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{bibnamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authorbibnamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authornamehash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \strng{authorfullhash}{29071c4ba2ed99c5631abcc4cc3bcbb2}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{tools.cornerstonejs.org}
+      \field{howpublished}{online}
+      \field{title}{Anatomy of a Tool}
+      \field{year}{Sep 21, 2018 [cit. 2023-05-01]}
+      \verb{urlraw}
+      \verb https://tools.cornerstonejs.org/anatomy-of-a-tool/#modes
+      \endverb
+      \verb{url}
+      \verb https://tools.cornerstonejs.org/anatomy-of-a-tool/#modes
       \endverb
     \endentry
   \enddatalist
