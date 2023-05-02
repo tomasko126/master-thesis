@@ -5,8 +5,12 @@ Cornerstone Core knižnica by mala byť nahradená knižnicou Cornerstone3D, kto
 
 Balíček novej Cornerstone Tools knižnice je tiež už dostupný v npm registri, pod názvom \texttt{@cornerstonejs/tools}. Pred migráciou na novšiu verziu knižnice bude potrebné zanalyzovať, akým spôsobom bude importovaný implementovaný Grid nástroj slúžiaci pre vykreslenie a úpravu mriežky. Výstupom tejto analýzy by mali byť možnosti importovania tohto nástroja, z ktorých by mal byť jeden postup importovania vybraný a následne implementovaný.
 
-Cornerstone DICOM Image Loader knižnica bude taktiež nahradená svojou novšou verziou -- Streaming Image Volume Loader knižnicou. Tá podporuje zobrazenie snímku už počas jeho načítavania. Novú knižnicu je možné nájst v npm registri pod menom \texttt{@cornerstonejs/streaming-image-volume-loader}.
+Cornerstone DICOM Image Loader knižnica bude taktiež nahradená svojou novšou verziou -- Streaming Image Volume Loader knižnicou. Tá podporuje zobrazenie snímku už počas jeho načítavania.
 
-Nakoľko sú novšie verzie týchto knižníc naprogramované v TypeScripte, umožnia jednoduchšiu migráciu zo súčasnej implementácie. \clearpage Väčšiu časovú záťaž v rámci migrácie spôsobí najmä zmigrovanie nástroja pre vykreslenie a úpravu mriežky.
+\clearpage
+
+Novú knižnicu je možné nájst v npm registri pod menom\newline \texttt{@cornerstonejs/streaming-image-volume-loader}.
+
+Nakoľko sú novšie verzie týchto knižníc naprogramované v TypeScripte, umožnia jednoduchšiu migráciu zo súčasnej implementácie. Väčšiu časovú záťaž v rámci migrácie spôsobí najmä zmigrovanie nástroja pre vykreslenie a úpravu mriežky.
 
 Taktiež by bolo vhodné pokračovať na implementácii \texttt{grid-tracker} podprogramu a jeho komunikácii s webovou aplikáciou. Týmto krokom by sa dosiahol väčší potenciál webovej aplikácie, ktorá by následne mohla byť použitá pre detekciu anomálií v pohybe myokardu.
