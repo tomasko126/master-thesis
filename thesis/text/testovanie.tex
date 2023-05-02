@@ -1,1 +1,33 @@
 \chapter {Testovanie}
+Testovanie je neoddeliteľnou súčasťou vývojového procesu aplikácie. To isté platí pre vyvinutú webovú aplikáciu v rámci tejto diplomovej práce.
+
+Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a ZZZ. ZZZ je odborníkom na magnetickú rezonanciu, ktorého momentálne pracovisko je Institut klinické a experimentální medicíny (IKEM) v Prahe. \todo {doplniť meno testera z IKEMU sem a do poďakovania}
+
+\section {Zoznam zaznamenaných problémov aplikácie}
+Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia. Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
+\begin {itemize}
+\item {nefunguje nastavenie rýchlosti animácie počas animácie snímok,}
+\item {zoomovanie alebo odzoomovanie snímky nie je možné v niektorých prípadoch zastaviť,}
+\item {neočakávané správanie polí pre zadávanie $x$ a $y$ offsetov mriežky,}
+\item {nemožnosť opustiť aktivovaný nástroj pre pohyb snímky,}
+\item {nemožnosť scrollovania pre zmenu indexu zobrazenej snímky a}
+\item {absencia automatického zapnutia nástroja pre pohyb s mriežkou pri zmene jej módu}
+\end {itemize}
+
+Tieto pripomienky boli do webovej aplikácie riadne zapracované a verifikované samotnými testermi.
+Príčiny týchto problémov je možné nájsť v nasledujúcej sekcii.
+
+\section {Popis príčin zaznamenaných problémov}
+Nefunkčné nastavenie rýchlosti bolo spôsobené nefungujúcou detekciou pohybu slidera určenom pre zmenu rýchlosti animácie snímok počas ich animácie. Táto situácia bola ošetrená detekciou tejto situácie.
+
+Čo sa týka problému zoomovania, resp. odzoomovania snímiek, daný problém spočíval v situácii, kedy sa \texttt{mouseup}\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup\textunderscore event} event emituje mimo ikony určenej pre zoomovanie/odzoomovanie snímky. Tento problém bol ošetrený pridaním \texttt{mouseup} event listeneru v rámci celého dokumentu, ktorý sa aktivoval počas zoomovania, resp. odzoomovania snímky.
+
+Neočakávané správanie polí pre $x$ a $y$ offsety bol spôsobený ich skracovaním na dve desatinné miesta, čo viedlo k zadaniu iných čísiel aké boli zadávané. Odstránenie tejto modifikácie odstránil ohlásený problém.
+
+Situácia, ktorá neumožňovala opustiť nástroj pre pohyb snímky nastala, ak bol aktivovaný tento nástroj pred vymazaním používateľom vygenerovanej mriežky, keďže aplikácia v prípade neexistencie mriežky neumožňovala prepnúť na tlačidlo pohybu s mriežkou. Tento problém bol vyriešený pridaním možnosti vypnutia daného nástroja pomocou opätovného kliknutia na daný nástroj.
+
+Nemožnosť zmeniť zobrazenú snímku pomocou skrolovania myšou nebolo samo o sebe chybou, avšak iba chýbajúcou vlastnosťou. Avšak túto vlastnosť implementujú aj iné aplikácie, ktoré pracujú so snímkami z magnetickej rezonancie. Dôsledkom toho bola táto vlastnosť implementovaná pomocou využitia \texttt{StackScrollWheel} nástroja z Cornerstone Tools knižnice. Tento nástroj je aktivovaný automaticky pri spustení webovej aplikácie.
+
+\clearpage
+
+Absencia automatického zapnutia nástroja pre pohyb s mriežkou alebo jej bodmi pri zmene jej módu zhoršovalo UX používateľa s aplikáciou, nakoľko je možné očakávať, že pri zmene módu tohto nástroja chce následne používateľ s týmto nástrojom pracovať. Tento chýbajúci krok bol implementovaný automatickým aktivovaním daného nástroja v prípade detekcie zmeny jeho módu.
