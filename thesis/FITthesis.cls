@@ -225,15 +225,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela, ale len pre~nez\'arobkov\'e \'u
 	\ifx4#1 \DeclareRobustCommand{\thedeclarationofauthenticity}{\if\@lang1{%
 		\input{prohlaseni4.tex.txt}
 		}\else\if\@lang2{%
-		Prehlasujem, \v ze som predlo\v zen\'u pr\'acu vypracoval(a) samostatne a \v ze som uviedol(uviedla) v\v setky informa\v cn\'e zdroje v~s\'ulade s~Metodick\'ym pokynom o~etickej pr\'iprave vysoko\v skolsk\'ych z\'avere\v cn\'ych pr\'ac.
+		Vyhlasujem, že som predloženú prácu vypracoval samostatne a že som uviedol všetky použité informačné zdroje v súlade s Metodickým pokynom o dodržiavaní etických princípov pri príprave vysokoškolských záverečných prác.
 
-		Beriem na vedomie, \v ze sa na moju pr\'acu vz\v tahuj\'u pr\'ava a povinnosti vypl\'yvaj\'uce zo z\'akona \v c.~121/2000~Sb., autorsk\'eho z\'akona, v znen\'\i\ neskor\v s\'\i ch predpisov.  V~s\'ulade s ustanoven\'\i m \S{}~46 odst.~6 tohoto z\'akona t\'ymto ude\v lujem bezv\'yhradn\'e opr\'avnenie (licenciu) k~u\v z\'\i vaniu tejto mojej pr\'ace, a to vr\'atane v\v setk\'ych po\v c\'\i ta\v cov\'ych programov ktor\'e s\'u jej s\'u\v cas\v tou alebo pr\'\i lohou a tie\v z v\v setkej ich dokument\'acie (\v dalej len \uv{Dielo}), a to v\v setk\'ym osob\'am, ktor\'e si praj\'u Dielo u\v z\'iva\v t. 
-
-Tieto osoby s\'u opr\'avnen\'e Dielo pou\v z\'\i va\v t ak\'ymko\v lvek 
-sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela, a za ak\'ymko\v lvek \'u\v celom (vr\'atane komer\v cn\'eho vyu\v zitia). Toto opr\'avnenie je \v casovo, \'uzemne a mno\v zstevne neobmedzen\'e.
-Ka\v zd\'a osoba, ktor\'a vyu\v zije vy\v s\v sie uveden\'u licenciu, sa v\v sak zav\"azuje priradi\v t ka\v zd\'emu dielu, ktor\'e vznikne (\v co i len \v ciasto\v cne) na z\'aklade Diela, \'upravou
-Diela, spojen\'\i m Diela s~in\'ym dielom, zaraden\'\i m Diela do diela s\'uborn\'eho \v ci zpracovan\'\i m Diela (vr\'atane prekladu), licenciu aspo\v n vo vy\v s\v sie uvedenom rozsahu
-a~z\'arove\v n sa zav\"azuje spr\'\i stupni\v t zdrojov\'y k\'od tak\'eho diela aspo\v n zrovnate\v ln\'ym sp\^osobom a v~zrovnate\v lnom rozsahu ako je zpr\'\i stupnen\'y zdrojov\'y k\'od Diela.
+		Beriem na vedomie, že sa na moju prácu vzťahujú práva a povinnosti vyplývajúce zo zákona č. 121/2000 Sb., Autorského zákona, v znení neskorších predpisov. V súlade s ust. § 2373 ods. 2 zákona č. 89/2012 Sb., Občiansky zákonník, v znení neskorších predpisov, týmto udeľujem nevýhradné oprávnenie (licenciu) na použitie tejto mojej práce, a to vrátane všetkých počítačových programov, ktoré sú jej súčasťou či prílohou a všetky ich dokumentácie (ďalej súhrnne len „Dielo“), a to všetkým osobám, ktoré si želajú Dielo užiť. Tieto osoby sú oprávnené Dielo použiť akýmkoľvek spôsobom, ktorý neznižuje hodnotu Diela a za akýmkoľvek účelom (vrátane použitia na zárobkové účely). Toto oprávnenie je časovo, teritoriálne i množstevne neobmedzené.
 		}\else{%
 		I hereby declare that the presented thesis is my own work and that I have cited all sources of information in accordance with the Guideline for adhering to ethical principles when elaborating an academic final thesis.
 		
