@@ -1,7 +1,7 @@
 \chapter {Testovanie}
 Testovanie je neoddeliteľnou súčasťou vývojového procesu aplikácie. To isté platí pre vyvinutú webovú aplikáciu v rámci tejto diplomovej práce.
 
-Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a Ing. Radkovi Galabovi. Ing. Radek Galab je odborným pacovníkom Institutu klinické a experimentální medicíny (IKEM) v Prahe, kde sa venuje problematike magnetickej rezonancie a snímkovania.
+Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a Ing. Radkovi Galabovi. Ing. Radek Galab je odborným pracovníkom Institutu klinické a experimentální medicíny (IKEM) v Prahe, kde sa venuje problematike magnetickej rezonancie a snímkovania.
 
 \section {Zoznam zaznamenaných problémov aplikácie}
 Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia, čo sa týka prvých dvoch testerov. Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
@@ -19,7 +19,7 @@ Príčiny týchto problémov je možné nájsť v nasledujúcej sekcii.
 
 Testovanie Ing. Radkom Galabovom prebehlo všeobecným otestovaním aplikácie -- ocenil používateľské rozhranie aplikácie a jej komfortné ovládanie. Pri testovaní nenarazil na žiadne chyby webovej aplikácie, čo mohlo byť spôsobené aj tým, že testovanie aplikácie prebehlo po opravení horeuvedených zaznamenaných problémov.
 
-Ohľadom funkcionality aplikácie bola vznesená jedna pripomienka, a to nemožnosť zmenť jas a kontrast pomocou slidera. Pre tento účel boli implementované tlačidlá, ktoré avšak nefungujú pri neustálom stlačení myši na týchto tlačidlách -- je potrebné neustále klikať na dané tlačidlá upravujúce jas a kontrast. Zmenením správania týchto tlačidiel by mohlo prispieť k lepšiemu zážitku z webovej aplikácie, čo bolo reflektované aj následnou zmenou patričného kódu. 
+Ohľadom funkcionality aplikácie bola vznesená jedna pripomienka, a to nemožnosť zmeniť jas a kontrast pomocou slidera. Pre tento účel boli implementované tlačidlá, ktoré avšak nefungujú pri neustálom stlačení myši na týchto tlačidlách -- je potrebné neustále klikať na dané tlačidlá upravujúce jas a kontrast. Zmenením správania týchto tlačidiel by mohlo prispieť k lepšiemu zážitku z webovej aplikácie, čo bolo reflektované aj následnou zmenou patričného kódu. 
 
 \section {Popis príčin zaznamenaných problémov}
 Nefunkčné nastavenie rýchlosti bolo spôsobené nefungujúcou detekciou pohybu slidera určenom pre zmenu rýchlosti animácie snímok počas ich animácie. Táto situácia bola ošetrená detekciou tejto situácie.

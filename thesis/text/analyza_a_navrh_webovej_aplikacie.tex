@@ -2,7 +2,7 @@
 Obsahom tejto kapitoly je počiatočná analýza mriežky, jej štruktúry a nastaviteľných parametrov. Následne sú zozbierané požiadavky kladené na webovú aplikáciu spolu s prípadmi použitia, ktoré opisujú, ako majú byť jednotlivé požiadavky implementované. Venovaná pozornosť je taktiež technológiam pre vývoj webových aplikácií, či analýzam architektúry a frameworkov pre tvorbu budúcej webovej aplikácie. Tiež nie je možné zabudnúť na analýzu spracovania MR snímiek a implementácie mriežky ako interaktívneho nástroja. Medzi posledné sekcie kapitoly patrí návrh používateľského rozhrania spolu s jej komunikáciou so serverom.
 
 \section {Analýza mriežky ako nástroja}
-Cieľom tejto sekcie je zhrnúť požiadavky kladené na štruktúru mriežky, ktorá sa bude vykreslovať nad zobrazenými DICOM snímkami. Obsahom tejto sekcie je aj zhrnutie nastaviteľných parametrov tejto mriežky používateľom.
+Cieľom tejto sekcie je zhrnúť požiadavky kladené na štruktúru mriežky, ktorá sa bude vykresľovať nad zobrazenými DICOM snímkami. Obsahom tejto sekcie je aj zhrnutie nastaviteľných parametrov tejto mriežky používateľom.
 
 \subsection {Štruktúra mriežky}
 Mriežka pozostáva z horizontálnych a vertikálnych úsečok, ktoré sa navzájom pretínajú. Body, v ktorých sa  úsečky pretínajú, nazveme \uv{hlavnými} bodmi. Tie viažu horizontálnu a vertikálnu úsečku prechádzajúcu týmto bodom.
@@ -11,12 +11,12 @@ Mriežka pozostáva z horizontálnych a vertikálnych úsečok, ktoré sa navzá
 
 To znamená, že posunutím tohto bodu by malo taktiež dojsť k úprave pozícií úsečiek tak, aby stále prechádzali cez presunutý bod.
 
-Okrem spomenutých bodov by mala aplikácia vykresliť aj takzvané \uv{refinement} body na mriežke, ktoré by sa nachádzali medzi bodmi viažucími úsečky. Ich účel je presnejšie zarovnanie mriežky voči mriežke generovanej SPAMM technikou. V súčasnej aplikácii sa generujú tri \uv{refinement} body medzi každými dvoma \uv{hlavnými} bodmi.
+Okrem spomenutých bodov by mala aplikácia vykresliť aj takzvané \uv{refinement} body na mriežke, ktoré by sa nachádzali medzi bodmi pretínajúcich sa úsečiek. Ich účel je presnejšie zarovnanie mriežky voči mriežke generovanej SPAMM technikou. V súčasnej aplikácii sa generujú tri \uv{refinement} body medzi každými dvoma \uv{hlavnými} bodmi.
 
-Vykreslená mriežka by mala byť interaktívna, t.j. úprava jej celkovej polohy alebo polohy samotného bodu by malo byť možné pomocou pohybom myši.
+Vykreslená mriežka by mala byť interaktívna, t.j. úprava jej celkovej polohy alebo polohy samotného bodu by malo byť možné pomocou pohybu myši.
 
 \subsection {Nastaviteľné parametre mriežky}\label{grid_settings}
-Implementácia mriežky by mala obsahovať nastaviteľné parametre, pomocou ktorých by sa dala meniť jej vzhľad, resp. štruktúra.
+Implementácia mriežky by mala obsahovať nastaviteľné parametre, pomocou ktorých by sa dal meniť jej vzhľad, resp. štruktúra.
 
 Zoznam všetkých parametrov mriežky, ktoré by mali byť upraviteľné používateľom, je nasledovný:
 \begin {itemize}
@@ -62,7 +62,7 @@ Prvou nefunkčnou požiadavkou je vytvorenie webovej aplikácie, ktorá by mala 
 Pre interakciu s aplikáciou je nutné navrhnúť a implementovať používateľské rozhranie, pomocou ktorého bude možné s aplikáciou interagovať. Lekári by preferovali používateľské rozhranie podobné iným aplikáciám z tejto oblasti.
 
 \subsubsection {NF3 -- Ochrana pred únikom dát o pacientovi}
-Práca s osobnými dátami by mala byť do maximálnej možnej miere naprieč aplikáciou minimalizovaná, aby sa predišlo únikom citlivých údajov o pacientovi. Týka sa to najmä práce s DICOM súbormi, nakoľko tie obsahujú citlivé dáta o pacientovi.
+Práca s osobnými dátami by mala byť v maximálnej možnej miere naprieč aplikáciou minimalizovaná, aby sa predišlo únikom citlivých údajov o pacientovi. Týka sa to najmä práce s DICOM súbormi, nakoľko tie obsahujú citlivé dáta o pacientovi.
 
 \clearpage
 
@@ -189,7 +189,7 @@ Značka \texttt{<!doctype>} definuje verziu použitého HTML dokumentu, čo je\n
 
 Prvá verzia tohto jazyka bola definovaná v roku 1993 samotným vynálezcom WWW, Timom Berners-Leeom. Momentálne najnovšou verziou HTML jazyka je tzv. HTML5 Living Standard\footnote{https://html.spec.whatwg.org}, vyvíjaný pracovnou skupinou WHATWG\footnote{https://whatwg.org/} \cite{html_standard} (vlastný preklad).
 
-Najnovší štandard priniesol viacero nových značiek ako napr. \texttt{<audio>} pre prehrávanie audia, \texttt{<video>} pre prehrávanie videa, či \texttt{<picture>}, ktorá je určená pre definovanie viacero zdrojov pre obrázok. HTML5 štandard okrem značiek poskytuje niekoľko API, ktoré sú implementované webovými prehliadačmi. Pomocou nich je možné napr. geolokalizovať používateľa využitím HTML5 Geolocation API alebo vykreslovať grafiku použitím HTML5 Canvas API.
+Najnovší štandard priniesol viacero nových značiek ako napr. \texttt{<audio>} pre prehrávanie audia, \texttt{<video>} pre prehrávanie videa, či \texttt{<picture>}, ktorá je určená pre definovanie viacero zdrojov pre obrázok. HTML5 štandard okrem značiek poskytuje niekoľko API, ktoré sú implementované webovými prehliadačmi. Pomocou nich je možné napr. geolokalizovať používateľa využitím HTML5 Geolocation API alebo vykresľovať grafiku použitím HTML5 Canvas API.
 
 \clearpage
 
@@ -214,10 +214,10 @@ Definovanie samotného selektoru môže byť pre dané pravidlo sofistikovanejš
 
 Čo sa týka verzií CSS jazyka, nepoužívajú sa verzie ale tzv. levely. Prvým levelom bol CSS Level 1, ktorý sa stal odporúčanou špecifikáciou W3C konzorcia\footnote{https://www.w3.org} v 1996. Tento level bol základom pre nasledujúce levely tohto jazyka \cite{about_css} (vlastný preklad).
 
-V súčasnosti najnovší level CSS jazyka je CSS Level 3, v ktorom sa narozdiel od predchádzajúcich levelov jednotlivé časti jazyka delia na moduly, z ktorých každý môže mať level vyšší než level CSS jazyka. Z tohto dôvodu sa taktiež rozhodlo, že samotný level CSS jazyka sa už nebude zvyšovať \cite{about_css} (vlastný preklad).
+V súčasnosti najnovší level CSS jazyka je CSS Level 3, v ktorom sa na rozdiel od predchádzajúcich levelov jednotlivé časti jazyka delia na moduly, z ktorých každý môže mať level vyšší než level CSS jazyka. Z tohto dôvodu sa taktiež rozhodlo, že samotný level CSS jazyka sa už nebude zvyšovať \cite{about_css} (vlastný preklad).
 
 \subsection {JavaScript}
-JavaScript je cross-platformový skriptovací programovací jazyk a treťou základnou technológiou pre vývoj webových stránok a aplikácií, po HTML\newline a CSS. Používa sa pre implementovanie funkcionality, ktorú nie je možné dosiahnuť pomocou kombinácie HTML a CSS, ako napr. dynamická interakcia používateľa s webovou stránkou/aplikáciou, riešenie rôznych výpočetných úloh, odosielanie dát na server a prijímanie odpovede, a iné.
+JavaScript je cross-platformový skriptovací programovací jazyk a treťou základnou technológiou pre vývoj webových stránok a aplikácií, po HTML\newline a CSS. Používa sa pre implementovanie funkcionality, ktorú nie je možné dosiahnuť pomocou kombinácie HTML a CSS, ako napr. dynamická interakcia používateľa s webovou stránkou/aplikáciou, riešenie rôznych výpočtových úloh, odosielanie dát na server a prijímanie odpovede, a iné.
 
 Samotný jazyk bol vytvorený Brendanom Eichom, pracujúcom vo firme\newline Netscape, ktorá taktiež vyvíjala webový prehliadač -- Netscape Navigator. \newline JavaScript bol zahrnutý už vo verzii 2.0 tohto prehliadača, ktorý bol vydaný v roku 1995. Následne sa začal objavovať aj v iných prehliadačoch. 
 
@@ -292,7 +292,7 @@ Medzi prvými krokmi pred vývojom webovej aplikácie patrí analýza prípustn�
 
 Po porovnaní dostupných možností je nutné zvoliť jednu z nich. Následne bude možné pokračovať s analýzou technológií, ktoré budú použité pre vývoj aplikácie.
 
-Čo sa týka prepojenia súčasnej aplikácie, resp. výpočetného podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako by mohla daná integrácia prebehnúť.
+Čo sa týka prepojenia súčasnej aplikácie, resp. výpočtového podprogramu \texttt{grid-tracker} s novou webovou aplikáciou, existujú dve možnosti, ako by mohla daná integrácia prebehnúť.
 
 \clearpage
 
@@ -324,7 +324,7 @@ Webová platforma sa dá vo všeobecnosti rozdeliť na dve časti:
 \item {webové API, ktoré je poskytnuté vývojárom pre kontrolu rozličných funkcionalít webového prehliadača, resp. zariadenia  \cite{webassembly_concepts} (vlastný preklad).}
 \end{itemize}
 
-Historicky VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú väčší výpočetný výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
+Historicky VM umožňovala načítať len kód napísaný v JavaScripte. Avšak postupom času sa ukázalo, že JS nie je určený pre aplikácie, ktoré potrebujú väčší výpočtový výkon, ako sú napr. 3D hry, VR/AR, editácia videa či obrázkov a iné.
 WebAssembly bolo navrhnutý takým spôsobom, aby tieto problémy vyriešilo, čím by prinieslo prostriedky pre vývoj takýchto aplikácií \cite{webassembly_concepts} (vlastný preklad). 
 
 Pomocou WebAssembly JS API\footnote{https://developer.mozilla.org/en-US/docs/WebAssembly/Using\textunderscore the\textunderscore JavaScript\textunderscore API} je možné načítať WebAssembly moduly -- čo sú moduly v binárnom formáte -- do JavaScript aplikácie a zdieľať s touto aplikáciou funkcionalitu poskytovanú týmito modulmi \cite{webassembly_concepts} (vlastný preklad).
@@ -358,20 +358,20 @@ C\texttt{++} addons technológia je implementovaná v Node.js, čo by v prípade
 
 Klientom by bol v tomto prípade webový prehliadač, ktorý by posielal HTTP požiadavku serveru s potrebnými dátami pre \texttt{grid-tracker} podprogram.\newline Po skončení výpočtu by server poslal odpoveď s informáciami o bodoch a úsečkách, ktoré by mali byť vykreslené na všetkých importovaných snímkach magnetickej rezonancie.
 
-V prípade použitia technológie WebAssembly by všetky výpočetné operácie mohli byť implementované na úrovni klienta. Tým pádom by nebolo nutné posielať žiadne dáta serveru, čo hrá v prospech bezpečnosti.
+V prípade použitia technológie WebAssembly by všetky výpočtové operácie mohli byť implementované na úrovni klienta. Tým pádom by nebolo nutné posielať žiadne dáta serveru, čo hrá v prospech bezpečnosti.
 
-Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-tracker} a TNL knižnica pre zrýchlenie výpočetných algoritmov používajú OpenMP technológiu. Bohužiaľ, WebAssembly túto technológiu nepodporuje, čo by\newline v tomto prípade znamenalo, že by celý výpočet musel prebiehať jednovláknovo alebo byť refaktorovaný tak, aby používal viacero vlákien pomocou technológie WebAssembly threads \cite{webassembly_threads} (vlastný preklad).
+Avšak, ako z analýzy \texttt{grid-tracker} podprogramu vyplýva, \texttt{grid-tracker} a TNL knižnica pre zrýchlenie výpočtových algoritmov používajú OpenMP technológiu. Bohužiaľ, WebAssembly túto technológiu nepodporuje, čo by\newline v tomto prípade znamenalo, že by celý výpočet musel prebiehať jednovláknovo alebo byť refaktorovaný tak, aby používal viacero vlákien pomocou technológie WebAssembly threads \cite{webassembly_threads} (vlastný preklad).
 
 Čo sa týka C\texttt{++} addons, tá OpenMP technológiu podporuje. Taktiež by bol\newline v rámci tejto technológie nutný menší zásah do zdrojového kódu \texttt{grid-tracker} podprogramu, nakoľko by stačilo vytvoriť jednu wrapper funkciu v C\texttt{++}, ktorá by bola zodpovedná za konverziu dát do potrebného formátu a jeho výstup.
 
 \clearpage
 
-Taktiež nie je možné spoľahnúť sa na výkon zariadení, na ktorých by bežal \texttt{grid-tracker} pomocou WebAssembly. Nakoľko je tento algoritmus náročný na výpočet, bolo by potrebné zaistiť dostatočné výpočetné prostriedky pre každého lekára využívajúcim webovú aplikáciu.
+Taktiež nie je možné spoľahnúť sa na výkon zariadení, na ktorých by bežal \texttt{grid-tracker} pomocou WebAssembly. Nakoľko je tento algoritmus náročný na výpočet, bolo by potrebné zaistiť dostatočné výpočtové prostriedky pre každého lekára využívajúcim webovú aplikáciu.
 
-Na základe týchto dôvodov bude lepšou a istejšou voľbou vybrať si technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie jednoduchšia a s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočetných prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram.
+Na základe týchto dôvodov bude lepšou a istejšou voľbou vybrať si technológiu C\texttt{++} addons, s ktorou by mala byť implementácia prepojenia \texttt{grid-tracker} podprogramu a webovej aplikácie jednoduchšia a s podporou OpenMP technológie. Výpočty v rámci \texttt{grid-tracker} podprogramu by taktiež neboli závislé na dostupných výpočtových prostriedkov klienta ale serveru, čo umožňuje mať väčšiu kontrolu nad potrebným škálovaním výkonu pre \texttt{grid-tracker} podprogram.
 
 \section {Analýza frameworkov pre tvorbu webovej aplikácie}
-Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného kódu, avšak takýto vývoj by bol nie len zdĺhavejší, ale aj pracnejší, nakoľko by sa musel samotný vývojár zamerať na viac než len na implementáciu samotnej aplikácie. Riešením je použitie webového frameworku, ktorý vývojára od takejto práce odbremenia. 
+Webovú aplikáciu je možné od základov naprogramovať len pomocou vlastného kódu, avšak takýto vývoj by bol nielen zdĺhavejší, ale aj pracnejší, nakoľko by sa musel samotný vývojár zamerať na viac než len na implementáciu samotnej aplikácie. Riešením je použitie webového frameworku, ktorý vývojára od takejto práce odbremenia. 
 
 Pre vývoj webovej aplikácie by bolo vhodné využiť framework, ktorý je postavený nad Node.js technológiou, nakoľko by sa klientská a taktiež serverová časť aplikácie dala naprogramovať v jednom jazyku -- JavaScripte. Plusom by v tomto prípade bolo, ak by daný framework natívne podporoval TypeScript, čo by mohlo zredukovať prípadné chyby v implementácii webovej aplikácie.
 Medzi ďalšími výhodami by patrilo použitie fullstack frameworku, vďaka ktorému by bolo potrebné orientovať sa len v jednom frameworku určenom pre obe časti webovej aplikácie -- frontend aj backend.
@@ -433,7 +433,7 @@ p {
 
 Uvedený príklad demonštruje dve hlavné funkcie Vue.js frameworku:
 \begin {itemize}
-\item {deklaratívne vykreslovanie a}
+\item {deklaratívne vykresľovanie a}
 \item {reaktivitu \cite{vuejs_introduction} (vlastný preklad).}
 \end {itemize}
 
@@ -471,7 +471,7 @@ Nakoľko webový prehliadač neumožňuje priamo importovať Vue.js komponenty, 
 Ten je nutné nainštalovať ako závislosť, napr. pomocou nástroja \texttt{npm}.\newline Potom je potrebné vytvoriť konfiguračný súbor, v ktorom sa definuje zostavovanie Vue.js komponentov a následne pomocou príkazu \texttt{vite build} je možné zostaviť Vue.js komponenty do \texttt{.js} súborov, ktoré môžu byť následne importované do HTML šablóny \cite{vuejs_introduction} (vlastný preklad).
 
 \subsection {Next.js}
-Next.js je voľne dostupným, taktiež open-source fullstack frameworkom podobným Nuxt.js. Avšak narozdiel od Nuxt.js, Next.js nepoužíva pre vytváranie znovupoužiteľných UI komponentov knižnicu Vue.js ale React.js \footnote{https://react.dev/}.
+Next.js je voľne dostupným, taktiež open-source fullstack frameworkom podobným Nuxt.js. Avšak na rozdiel od Nuxt.js, Next.js nepoužíva pre vytváranie znovupoužiteľných UI komponentov knižnicu Vue.js ale React.js \footnote{https://react.dev/}.
 
 Next.js ponúka nástroje pre vytváranie API endpointov, ktoré musia byť vytvorené v zložke \texttt{pages/api}. Čo sa týka samotnej funkcionality, taktiež podporuje kompilovanie UI komponentov do spustiteľného JS kódu, jeho minifikovanie pre rýchlejší prenos dát medzi serverom a webovým prehliadačom, code-splitting (rozdelenie kódu pre zvýšenie výkonu aplikácie) až po server-side rendering (SSR, vykreslený obsah na serveri sa pošle klientovi). Samotný framework je naprogramovaný pomocou TypeScriptu, takže je možné využívať nápovedu pri programovaní webovej aplikácie pomocou tohto frameworku \cite{nextjs_introduction} (vlastný preklad).
 
@@ -489,7 +489,7 @@ JSX je oproti HTML striktnejší v tom, že:
 \item {atribúty značiek je potrebné písať v camelCase forme \cite{jsx_rules} (vlastný preklad).}
 \end{itemize}
 
-Použitie CSS je v komponente možné pomocou importovania CSS stylesheetu napísaného pre daný komponent \cite{reactjs_stylesheet} (vlastný preklad), alebo importovania tzv. CSS modulu, ktorý je možné prepoužiť viacerými komponentmi \cite{reactjs_stylesheet_module} (vlastný preklad).
+Použitie CSS je v komponente možné pomocou importovania CSS stylesheetu napísaného pre daný komponent \cite{reactjs_stylesheet} (vlastný preklad), alebo importovania tzv. CSS modulu, ktorý je možné použiť viacerými komponentmi \cite{reactjs_stylesheet_module} (vlastný preklad).
 
 Taktiež je možné CSS definovať priamo v JS a ten naviazať priamo na element v komponente. CSS naviazané týmto spôsobom je možné dynamicky meniť\newline v závislosti od vnútorného stavu komponentu.
 
@@ -543,7 +543,7 @@ Z uvedeného vyplýva, že pre implementáciu aplikácie bude potrebné nájsť 
 
 Pod pojmom \uv{spracovať} je myslené: čítanie hlavičky DICOM súborov, zobrazenie snímiek nachádzajúcich sa v týchto súboroch, či možnosť tieto snímky modifikovať. Medzi ďalšie požiadavky kladené na takúto knižnicu patrí jej aktívny vývoj, dostupná dokumentácia a taktiež použiteľnosť knižnice pre produkčné nasadenie.
 
-Bohužiaľ, všetky požiadavky kladené na hľadanú knižnicu nespĺňa ani jedna nájdená knižnica, ale výber viacero knižníc, kde každá z nich implementuje určitú časť požiadaviek a dokopy podmienky kladené na knižnicu vyššie, spĺňajú.
+Bohužiaľ, všetky požiadavky kladené na hľadanú knižnicu nespĺňa ani jedna nájdená knižnica, ale výber viacero knižníc, kde každá z nich implementuje určitú časť požiadaviek a spolu podmienky kladené na knižnicu vyššie, spĺňajú.
 
 Jedná sa o nasledovné knižnice:
 \begin {itemize}
@@ -568,7 +568,7 @@ Cornerstone DICOM Image Loader\footnote{https://github.com/cornerstonejs/corners
 Po načítaní DICOM súborov je ich parsovanie prenechané knižnici Dicom Parser. Nakoľko sa veľkosť týchto súborov môže pohybovať v rádoch megabajtov (MB), samotné parsovanie súborov prebieha pomocou využitia technológie Web Workers\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Web\textunderscore Workers\textunderscore API}. Pre začiatok priblížim technológiu Web Workers a následne knižnicu Dicom Parser\footnote{https://github.com/cornerstonejs/dicomParser}.
 
 \subsubsection {Web Workers}
-JavaScript je v prehliadači implementovaný ako jednovláknový jazyk využívajúci jedno hlavné vlákno a exekúcia skriptov tohto jazyka prebieha zvyčajne v tomto vlákne. Výpočetne náročné úlohy by avšak mohli vyústiť do zablokovania tohto vlákna, ktoré sa prejavuje nereagovaním prehliadača na rozličné používateľské akcie alebo nevykreslovaním aktualizácií na webovej stránke. Dôvodom zablokovania hlavného vlákna by v tomto prípade bolo využitie všetkých dostupných prostriedkov prioritne pre danú výpočetne náročnú úlohu.
+JavaScript je v prehliadači implementovaný ako jednovláknový jazyk využívajúci jedno hlavné vlákno a exekúcia skriptov tohto jazyka prebieha zvyčajne v tomto vlákne. Výpočtovo náročné úlohy by avšak mohli vyústiť do zablokovania tohto vlákna, ktoré sa prejavuje nereagovaním prehliadača na rozličné používateľské akcie alebo nevykresľovaním aktualizácií na webovej stránke. Dôvodom zablokovania hlavného vlákna by v tomto prípade bolo využitie všetkých dostupných prostriedkov prioritne pre danú výpočtovo náročnú úlohu.
 
 Web Workers technológia je štandardom, ktorý je implementovaný a poskytovaný webovými prehliadačmi umožňujúci exekúciu takýchto úloh, ktoré by inak pri dlhšom spracovávaní mohli dané hlavné vlákno zablokovať.
 
@@ -588,7 +588,7 @@ Pre zhrnutie informácií v tejto sekcii -- knižnica Cornerstone DICOM Image Lo
 \section {Analýza možností implementácie mriežky}
 Pre implementáciu mriežky by bolo vhodné použiť knižnicu, pomocou ktorej by bolo možné danú mriežku vykresliť a upravovať podľa potrieb používateľa.
 
-Rodina Cornerstone frameworkov ponúka pre tento účel knižnicu Cornerstone Tools\footnote{https://github.com/cornerstonejs/cornerstoneTools}, ktorá asistuje nielen pri vytváraní rôznych anotácií pre DICOM snímky (zobrazených pomocou Cornerstone Core), ale aj pri ich segmentácii či rôznych meraní. Taktiež ponúka široký počet nástrojov, ktoré môžu dané snímky modifikovať alebo nad týmito snímkami vykreslovať rôzne informácie či lomené čiary.
+Rodina Cornerstone frameworkov ponúka pre tento účel knižnicu Cornerstone Tools\footnote{https://github.com/cornerstonejs/cornerstoneTools}, ktorá asistuje nielen pri vytváraní rôznych anotácií pre DICOM snímky (zobrazených pomocou Cornerstone Core), ale aj pri ich segmentácii či rôznych meraní. Taktiež ponúka široký počet nástrojov, ktoré môžu dané snímky modifikovať alebo nad týmito snímkami vykresľovať rôzne informácie či lomené čiary.
 
 \subsection {Závislosti knižnice}
 Pre využitie tejto knižnice je potrebná nielen Cornerstone Core knižnica, nakoľko je s ňou úzko previazaná, ale aj knižnica Hammer.js\footnote{https://github.com/hammerjs/hammer.js} a Cornerstone Math\footnote{https://github.com/cornerstonejs/cornerstoneMath}.
@@ -707,7 +707,7 @@ Pre potrebu komunikácie medzi serverom a klientom bude nutné túto komunikáci
 
 Serveru sa budú posielať dáta o používateľom definovaných mriežkach pre výpočet aktualizovaných súradníc bodov mriežok. Odpoveď klientovi by mala obsahovať aktualizované súradnice mriežok, ktoré webová aplikácia následne vykreslí.
 
-V tomto prípade stačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď pošle klientovi vo dohodnutom formáte.
+V tomto prípade stačí, ak server bude poskytovať jeden REST API endpoint, ktorý potrebné dáta príjme, spracuje a odpoveď pošle klientovi v dohodnutom formáte.
 
 Detaily o tomto API endpointe sú nasledovné:
 \begin {itemize}

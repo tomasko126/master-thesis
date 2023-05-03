@@ -15,7 +15,7 @@ Táto sekcia sa venuje popisu použitých technológií v súčasnej desktopovej
 Nasledujúci prehľad použitých technológií je založený na dôslednom preskúmaní zdrojového kódu aplikácie, ktorý sa vyznačoval skoro neexistujúcou dokumentáciou.
 
 \subsection {DICOM}\label{dicom}
-V súčasnosti sú snímky získané pomocou zobrazovacích techník v medicíne zväčša ukladané v archivačnom a komunikačnom systéme snímkov. Tento systém ukladá nielen snímkové dáta ale aj iné relevantné dáta podľa štandardu známym pod skratkou DICOM\footnote{https://www.dicomstandard.org} (Digital Imaging and Communications in Medicine) \cite{Varma_2012} (vlastný preklad).
+V súčasnosti sú snímky získané pomocou zobrazovacích techník v medicíne zväčša ukladané v archivačnom a komunikačnom systéme snímkov. Tento systém ukladá nielen snímkové dáta, ale aj iné relevantné dáta podľa štandardu známym pod skratkou DICOM\footnote{https://www.dicomstandard.org} (Digital Imaging and Communications in Medicine) \cite{Varma_2012} (vlastný preklad).
 
 DICOM je medzinárodným štandardom pre komunikáciu a manažment informácií o medicínskych obrazových a k nim príslušných dátach. Definuje, ako majú byť takéto dáta spracovávané, ukladané, tlačené a prenášané medzi zariadeniami podporujúcimi príjem týchto dát \cite{about_dicomlibrary} (vlastný preklad).
 
@@ -36,7 +36,7 @@ Súčasná aplikácia bola vyvinutá pomocou Qt\footnote{https://www.qt.io/produ
 
 V súčasnosti (od roku 2014) zastrešuje vývoj tohto frameworku spoločnosť The Qt Company.
 
-Výsadou Qt frameworku je rozdelenie jeho funkcionality do jednotlivých modulov. Pri následom vývoji aplikácie sa použijú len tie moduly, ktoré \newline sú v danej aplikácii potrebné \cite{qt_description} (vlastný preklad).
+Výsadou Qt frameworku je rozdelenie jeho funkcionality do jednotlivých modulov. Pri následnom vývoji aplikácie sa použijú len tie moduly, ktoré \newline sú v danej aplikácii potrebné \cite{qt_description} (vlastný preklad).
 
 Existujúca aplikácia využíva tento framework vo verzii 5.15, ktorá sa vyznačuje tým, že je verziou s dlhodobou podporou. Koniec podpory tejto verzie je naplánovaný na koniec mája 2023. Najnovšou verziou Qt frameworku je momentálne verzia 6.5, ktorá je taktiež verziou s dlhodobou podporou.
 
@@ -88,7 +88,7 @@ Vývoj OpenMP v súčasnosti zastrešuje OpenMP Architecture Review Board \cite{
 \clearpage
 OpenMP funguje na báze direktív, pomocou ktorých sa jednotlivé časti programu dajú paralelizovať viacerými spôsobmi -- a to paralelizáciou prevádzania jednotlivých úloh (tzv. funkčný paralelizmus -- vhodný pre paralelizáciu rekurzívnych algoritmov, kde úloha $\equiv{ volanie funkcie}$) alebo paralelizáciou dátovo nezávislých iterácií (tu sa jedná o tzv. iteračný dátový paralelizmus) \cite{openmp_description}.
 
-Existujúca aplikácia využíva direktívy OpenMP pre paralelizáciu výpočetne náročnejších algoritmov. Súčasná verzia OpenMP, verzia 5.2, je plne kompatibilná s aktuálnym zdrojovým kódom aplikácie.
+Existujúca aplikácia využíva direktívy OpenMP pre paralelizáciu výpočtovo náročnejších algoritmov. Súčasná verzia OpenMP, verzia 5.2, je plne kompatibilná s aktuálnym zdrojovým kódom aplikácie.
 
 \subsection {TNL}\label{tnl}
 Template Numerical Library\footnote{https://tnl-project.org} je numerická knižnica, ktorá poskytuje rozličné dátové štruktúry, ktoré uľahčujú prácu s pamäťou a vývoj efektívnych numerických riešičov. Táto knižnica je implementovaná pomocou C\texttt{++} s cieľom poskytnúť flexibilné a užívateľsky prívetivé rozhranie. TNL poskytuje natívnu podporu pre moderné hardwarové architektúry ako sú viacjadrové CPU, GPU a distribuované systémy, ktoré je možné spravovať cez jednotné rozhranie \cite{tnl_description}.
@@ -149,7 +149,7 @@ Nakoľko súčasná aplikácia využíva DCMTK knižnicu, ako bolo popísané\ne
 
 Prvý z uvedených balíčkov nainštaluje samotnú DCMTK knižnicu, druhý obsahuje knižnice a hlavičkové súbory pre vývoj aplikácií používajúce túto knižnicu. Nakoľko sa v \texttt{Dicom.pro} súbore (ktorý je určený pre výsledné zostavenie aplikácie) nachádzajú cesty ku knižniciam z balíčku \texttt{libdcmtk-dev}, je aj tento balíček nutný nainštalovať pre neskoršie korektné spustenie súčasnej aplikácie.
 
-Keďže \texttt{grid-tracker} podprogram obsahuje OpenMP direktívy pre paralelizáciu výpočetných algoritmov, je potrebné nainštalovať OpenMP prostredníctvom balíčku \texttt{libomp-dev}\footnote{sudo apt install libomp-dev}.
+Keďže \texttt{grid-tracker} podprogram obsahuje OpenMP direktívy pre paralelizáciu výpočtových algoritmov, je potrebné nainštalovať OpenMP prostredníctvom balíčku \texttt{libomp-dev}\footnote{sudo apt install libomp-dev}.
 
 \clearpage
 TNL knižnica bude taktiež benefitovať z inštalácie tohto balíčka, nakoľko sama využíva OpenMP pre paralelizáciu algoritmov, čo znamená, že je potrebné tento balíček nainštalovať ešte pred samotnou inštaláciou TNL knižnice.
@@ -172,7 +172,7 @@ Názov posledného priečinku sa môže líšiť, nakoľko je závislý na archi
 
 Ďalším krokom pre úspešné zostavenie aplikácie je definovanie cesty k hlavičkovým súborom TNL knižnice v samotnom \texttt{Cameo.pro} súbore. Po otvorení súboru \texttt{Cameo.pro} je potrebné nastaviť hodnotu premennej \lstinline{DCMTK_LIBS} -- tá obsahuje cesty k DCMTK knižniciam, ktoré súčasná aplikácia využíva.\newline V tomto prípade ju bolo potrebné nastaviť na horeuvedený priečinok \newline \texttt{/usr/lib/aarch64-linux-gnu} a následne daný súbor uložiť.
 
-Po prevedení všetkých predchádzajúcich krokoch je možné spustiť nástroj \texttt{qmake} pomocou krokov popísaných v sekcii \ref{qmake}.\newline Jeho výsledkom je \texttt{Makefile} súbor, ktorý definuje kroky, ako zostaviť súčasnú aplikáciu. V tomto momente je už možné súčasnú aplikáciu skompilovať pomocou príkazu \texttt{make install}.
+Po prevedení všetkých predchádzajúcich krokov je možné spustiť nástroj \texttt{qmake} pomocou krokov popísaných v sekcii \ref{qmake}.\newline Jeho výsledkom je \texttt{Makefile} súbor, ktorý definuje kroky, ako zostaviť súčasnú aplikáciu. V tomto momente je už možné súčasnú aplikáciu skompilovať pomocou príkazu \texttt{make install}.
 
 Po skompilovaní aplikácie sa v rovnakom priečinku objaví spustiteľný súbor \texttt{Cameo}, ktorému je potrebné nastaviť práva pre spustenie príkazom \texttt{chmod +x Cameo}. Následne je možné spustiť aplikáciu príkazom \texttt{./Cameo}. \clearpage
 
@@ -220,7 +220,7 @@ Jeho obsah je nasledovný:
 \item {Aditional [sic] Tools}
 	\begin {enumerate}
 	\item {Grid Tools -- otvorí ľavý postranný panel aplikácie s nastavením mriežky,}
-	\item {Lvf Tools -- otvorí ľavý postranný panel aplikácie s nastavením filtru lokálnej variácie,}
+	\item {Lvf Tools -- otvorí ľavý postranný panel aplikácie s nastavením filtra lokálnej variácie,}
 	\item {Graph Cuts Tools -- otvorí ľavý postranný panel aplikácie s nastavením grafových rezov.}
 	\end {enumerate}
 \item {Help}
@@ -291,7 +291,7 @@ Karta \uv{View Properties} nie je interaktívna -- zobrazuje informácie ako men
 \clearpage
 
 \subsubsection {Tools karta}
-Narozdiel od predchádzajúcej karty, \uv{Tools} karta obsahuje interaktívne prvky, ako napr. zobrazenie a zmena indexu zobrazenej snímky, či slider pre jej priblíženie. Snímke je taktiež možné zmeniť kontrast, jas a gammu pomocou sliderov.
+Na rozdiel od predchádzajúcej karty, \uv{Tools} karta obsahuje interaktívne prvky, ako napr. zobrazenie a zmena indexu zobrazenej snímky, či slider pre jej priblíženie. Snímke je taktiež možné zmeniť kontrast, jas a gammu pomocou sliderov.
 
 Ďalej nasleduje sekcia pre nastavenie oblasti záujmu, pri ktorej je možné nastaviť jej zobrazenie alebo zmeniť jej výšku/šírku -- oblasť záujmu je na základe týchto nastavení vykreslená nad snímkou. 
 
@@ -319,7 +319,7 @@ Vytvorením novej štúdie sa aktivujú polia \uv{Image Processing Programs} sek
 \end {figure}
 
 \subsubsection {History karta}
-Účelom poslednej karty \uv{History} je výpis rozličných záznamov pre informovanie používateľa o prebiehajúcich krokoch aplikácie.
+Účelom poslednej karty \uv{History} je výpis rozličných záznamov pre informovanie používateľa o prebiehajúcich krokov aplikácie.
 
 \begin {figure}[H]
         \centering
@@ -333,7 +333,7 @@ Vytvorením novej štúdie sa aktivujú polia \uv{Image Processing Programs} sek
 
 Počas samotného testovania bolo možné úspešne importovať DICOM súbory a zobraziť ich snímky. Snímky bolo taktiež možné animovať na základe nastavenia animácie, zmeniť im kontrast a jas, či ich priblížiť alebo oddialiť.
 
-Následne bola odtestovaná funkcionalita týkajúca sa vykreslenia mriežky a jej úprav. Vykreslenie mriežky prebehlo bezchybne -- avšak jej počiatočná poloha bola vždy fixne určená v ľavom hornom okraji snímky.
+Následne bola otestovaná funkcionalita týkajúca sa vykreslenia mriežky a jej úprav. Vykreslenie mriežky prebehlo bezchybne -- avšak jej počiatočná poloha bola vždy fixne určená v ľavom hornom okraji snímky.
 
 \clearpage
 

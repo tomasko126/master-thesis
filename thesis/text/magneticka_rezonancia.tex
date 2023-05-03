@@ -1,6 +1,6 @@
 \chapter {Magnetická rezonancia}
 Magnetická rezonancia (MR) je jedna zo zobrazovacích techník, ktorá je používaná k zobrazeniu vnútorných orgánov tela.
-Narozdiel od röntgenového žiarenia a počítačovej tomografie (CT), magnetická rezonancia nepoužíva ionizujúce žiarenie. Avšak medzi spoločné znaky týchto troch zobrazovacích techník patrí ich neinvazívnosť a bezbolestné vyšetrenie \cite{basic_principles_of_mri} (vlastný preklad).
+Na rozdiel od röntgenového žiarenia a počítačovej tomografie (CT), magnetická rezonancia nepoužíva ionizujúce žiarenie. Avšak medzi spoločné znaky týchto troch zobrazovacích techník patrí ich neinvazívnosť a bezbolestné vyšetrenie \cite{basic_principles_of_mri} (vlastný preklad).
 
 Magnetická rezonancia sa používa najmä pri:
 \begin {itemize}
@@ -21,7 +21,7 @@ Všeobecne sa za kontraindikáciu považuje použitie akéhokoľvek magnetickéh
 \section {Princíp magnetickej rezonancie}
 Princípom magnetickej rezonancie je smerové magnetické pole (moment - $\mathcal{B}_{0}$) spojené s pohybom voľných jadier vodíku v tele pacienta. Tieto jadrá majú charakteristický pohyb (spin) vytvárajúci malý magnetický moment s určitým náhodným smerom a veľkosťou  \cite{basic_principles_of_mri} (vlastný preklad).
 
-Keď je pacient umiestnený vo veľkom magnetickom poli (v tubuse MR prístroja), voľné vodíkové jadrá sa zarovnajú v smere $\mathcal{B}_{0}$ (smer $y$) a vytvoria magnetický moment $\mathcal{M}$ paralelne k $\mathcal{B}_{0}$. Vodíkové jadrá začnú náhle prechádzať okolo smeru magnetického pola ako gyroskopy. Toto správanie sa nazýva Larmorova precesia \cite{basic_principles_of_mri} (vlastný preklad).
+Keď je pacient umiestnený vo veľkom magnetickom poli (v tubuse MR prístroja), voľné vodíkové jadrá sa zarovnajú v smere $\mathcal{B}_{0}$ (smer $y$) a vytvoria magnetický moment $\mathcal{M}$ paralelne k $\mathcal{B}_{0}$. Vodíkové jadrá začnú náhle prechádzať okolo smeru magnetického poľa ako gyroskopy. Toto správanie sa nazýva Larmorova precesia \cite{basic_principles_of_mri} (vlastný preklad).
 
 \begin {figure}[H]
         \centering
@@ -41,7 +41,7 @@ Frekvencia Larmorovej precesie, tzv. Larmorova frekvencia, je definovaná ako:
 $\omega_{0}$ = $-\gamma * \mathcal{B}_{0}$,
 \end {center}
 
-kde $\gamma$ predstavuje gyromagnetický pomer a $\mathcal{B}_{0}$ intenzitu magnetického pola.
+kde $\gamma$ predstavuje gyromagnetický pomer a $\mathcal{B}_{0}$ intenzitu magnetického poľa.
 Gyromagnetický pomer je konštanta závislá na jadre danej častice. \newline Pre vodík sa táto konštanta rovná 42.6 MHz/Tesla \cite{basic_principles_of_mri} (vlastný preklad).
 
 \begin {figure}[H]
@@ -64,7 +64,7 @@ Tento signál sa nazýva \uv{voľný indukčný rozpad} -- z anglického Free In
 
 Avšak na jeho vytvorenie musí byť FID signál enkódovaný pre každý rozmer pomocou frekvenčného a fázového kódovania \cite{basic_principles_of_mri} (vlastný preklad).
 
-Kódovanie v axiálnom smere sa dosiahne pridaním gradientového magnetického pola $\mathcal{G}_{y}$ v smere $\mathcal{B}_{0}$ (v smere $y$). Po pridaní $\mathcal{G}_{y}$ sa hodnota Larmorovej frekvencie zmení lineárne v axiálnom smere, tzn. že pre konkrétny axiálny rez existuje konkrétna Larmorova frekvencia, ktorá sa aplikuje vyslaním rádiofrekvenčného impulzu $\mathcal{B}_{rf}$ \cite{basic_principles_of_mri} (vlastný preklad).
+Kódovanie v axiálnom smere sa dosiahne pridaním gradientového magnetického poľa $\mathcal{G}_{y}$ v smere $\mathcal{B}_{0}$ (v smere $y$). Po pridaní $\mathcal{G}_{y}$ sa hodnota Larmorovej frekvencie zmení lineárne v axiálnom smere, tzn. že pre konkrétny axiálny rez existuje konkrétna Larmorova frekvencia, ktorá sa aplikuje vyslaním rádiofrekvenčného impulzu $\mathcal{B}_{rf}$ \cite{basic_principles_of_mri} (vlastný preklad).
 
 Pole $\mathcal{G}_{y}$ sa následne odstráni a ďalšie gradientové magnetické pole -- $\mathcal{G}_{x}$ -- sa aplikuje kolmo na $\mathcal{G}_{y}$. Výsledkom je, že rezonančné frekvencie jadier sa menia\newline v smere $x$ vďaka $\mathcal{G}_{x}$ a majú fázovú variáciu v smere $y$ v dôsledku predtým aplikovaného $\mathcal{G}_{y}$. Vzorky v smere $x$ sú teda kódované frekvenciou a v smere $y$ fázou \cite{basic_principles_of_mri} (vlastný preklad).
 
