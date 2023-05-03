@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import GridState from '~/functions/GridState'
 import DicomHeaderParser from '~/functions/DicomHeaderParser'
+import { ToolName } from '@tarotoma/cornerstone-tools';
 
 interface AlgorithmSettings {
   curvature: number;
@@ -46,7 +47,7 @@ export const useGlobalStore = defineStore({
       isComputingGrids: false as boolean,
       shownImageId: null as string|null,
       activeTool: null as string|null,
-      tools: [] as cornerstoneTools.ToolName[],
+      tools: [] as ToolName[],
       dicomHeaderParser: null as DicomHeaderParser|null,
       gridState: null as GridState|null
     }

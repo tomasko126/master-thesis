@@ -3,6 +3,8 @@
 % arara: xelatex: { synctex: true, shell: true }
 % arara: xelatex: { synctex: true, shell: true }
 \documentclass[thesis=M,slovak]{FITthesis}[2019/03/21]
+\OnehalfSpacing
+\raggedbottom % no huge vertical whitespace between elements on short pages
 
 \usepackage{dirtree}
 \usepackage{lipsum,tikz}
@@ -24,15 +26,18 @@
 
 \RequirePackage[labelsep=space,singlelinecheck=false,font={up,small},labelfont={sf,bf}]{caption}[2020/05/30]
 
-\usepackage{minted}
-\setminted{autogobble=true, tabsize=4}
+\usepackage[hypcap=true]{caption} % fix for figure and table label positioning in PDF
+\BeforeBeginEnvironment{figure}{\vskip\baselineskip}
+\BeforeBeginEnvironment{listing}{\vskip\baselineskip}
+\BeforeBeginEnvironment{table}{\vskip\baselineskip}
+\setlength{\intextsep}{6pt}
+
+\usepackage[chapter]{minted}
+\setminted{autogobble=true,fontsize=\footnotesize,tabsize=4}
 \usemintedstyle{xcode}
+\newmintinline[code]{text}{}
 
-\BeforeBeginEnvironment{minted}{\smallskip}
-\AfterEndEnvironment{minted}{\smallskip}
-
-% empty lines between paragraphs
-\setlength{\parindent}{0.75cm}
+\setlength{\parindent}{0pt}
 \abnormalparskip{\baselineskip}
 
 \usepackage{enumitem}
@@ -42,19 +47,19 @@
 \input{text/metadata.tex}
 
 \begin{document}	
-	\input{text/uvod.tex}
-	\input{text/magneticka_rezonancia.tex}
-	\input{text/analyza_sucasnej_aplikacie.tex}
-	\input{text/analyza_a_navrh_webovej_aplikacie.tex}
-	\input{text/implementacia.tex}
-	\input{text/testovanie.tex}
-	\input{text/zhodnotenie.tex}
-	\input{text/zaver.tex}
+        \input{text/uvod.tex}
+        \input{text/magneticka_rezonancia.tex}
+        \input{text/analyza_sucasnej_aplikacie.tex}
+        \input{text/analyza_a_navrh_webovej_aplikacie.tex}
+        \input{text/implementacia.tex}
+        \input{text/testovanie.tex}
+        \input{text/zhodnotenie.tex}
+        \input{text/zaver.tex}
 
-	\appendix
+        \appendix
 	
-	\printbibliography % print out the BibLaTeX-generated bibliography list
-
-	\input{text/abbrs.tex}
-	\input{text/medium.tex}
+        \printbibliography % print out the BibLaTeX-generated bibliography list
+        \input{text/abbrs.tex}
+	\input{text/ui.tex}
+        \input{text/medium.tex}
 \end{document}
