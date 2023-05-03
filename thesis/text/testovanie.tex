@@ -1,10 +1,10 @@
 \chapter {Testovanie}
 Testovanie je neoddeliteľnou súčasťou vývojového procesu aplikácie. To isté platí pre vyvinutú webovú aplikáciu v rámci tejto diplomovej práce.
 
-Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a ZZZ. ZZZ je odborníkom na magnetickú rezonanciu, ktorého momentálne pracovisko je Institut klinické a experimentální medicíny (IKEM) v Prahe. \todo {doplniť meno testera z IKEMU sem a do poďakovania}
+Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a Ing. Radkovi Galabovi. Ing. Radek Galab je odborným pacovníkom Institutu klinické a experimentální medicíny (IKEM) v Prahe, kde sa venuje problematike magnetickej rezonancie a snímkovania.
 
 \section {Zoznam zaznamenaných problémov aplikácie}
-Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia.\newline Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
+Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia, čo sa týka prvých dvoch testerov. Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
 \begin {itemize}
 \item {nefunguje nastavenie rýchlosti animácie počas animácie snímok,}
 \item {zoomovanie alebo odzoomovanie snímky nie je možné v niektorých prípadoch zastaviť,}
@@ -17,6 +17,10 @@ Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia.\
 Tieto pripomienky boli do webovej aplikácie riadne zapracované a verifikované samotnými testermi.
 Príčiny týchto problémov je možné nájsť v nasledujúcej sekcii.
 
+Testovanie Ing. Radkom Galabovom prebehlo všeobecným otestovaním aplikácie -- ocenil používateľské rozhranie aplikácie a jej komfortné ovládanie. Pri testovaní nenarazil na žiadne chyby webovej aplikácie, čo mohlo byť spôsobené aj tým, že testovanie aplikácie prebehlo po opravení horeuvedených zaznamenaných problémov.
+
+Ohľadom funkcionality aplikácie bola vznesená jedna pripomienka, a to nemožnosť zmenť jas a kontrast pomocou slidera. Pre tento účel boli implementované tlačidlá, ktoré avšak nefungujú pri neustálom stlačení myši na týchto tlačidlách -- je potrebné neustále klikať na dané tlačidlá upravujúce jas a kontrast. Zmenením správania týchto tlačidiel by mohlo prispieť k lepšiemu zážitku z webovej aplikácie, čo bolo reflektované aj následnou zmenou patričného kódu. 
+
 \section {Popis príčin zaznamenaných problémov}
 Nefunkčné nastavenie rýchlosti bolo spôsobené nefungujúcou detekciou pohybu slidera určenom pre zmenu rýchlosti animácie snímok počas ich animácie. Táto situácia bola ošetrená detekciou tejto situácie.
 
@@ -27,7 +31,5 @@ Neočakávané správanie polí pre $x$ a $y$ offsety bol spôsobený ich skraco
 Situácia, ktorá neumožňovala opustiť nástroj pre pohyb snímky nastala, ak bol aktivovaný tento nástroj pred vymazaním používateľom vygenerovanej mriežky, keďže aplikácia v prípade neexistencie mriežky neumožňovala prepnúť na tlačidlo pohybu s mriežkou. Tento problém bol vyriešený pridaním možnosti vypnutia daného nástroja pomocou opätovného kliknutia na daný nástroj.
 
 Nemožnosť zmeniť zobrazenú snímku pomocou skrolovania myšou nebolo samo o sebe chybou, avšak iba chýbajúcou vlastnosťou. Avšak túto vlastnosť implementujú aj iné aplikácie, ktoré pracujú so snímkami z magnetickej rezonancie. Dôsledkom toho bola táto vlastnosť implementovaná pomocou využitia \texttt{StackScrollWheel} nástroja z Cornerstone Tools knižnice. Tento nástroj je aktivovaný automaticky pri spustení webovej aplikácie.
-
-\clearpage
 
 Absencia automatického zapnutia nástroja pre pohyb s mriežkou alebo jej bodmi pri zmene jej módu zhoršovalo UX používateľa s aplikáciou, nakoľko je možné očakávať, že pri zmene módu tohto nástroja chce následne používateľ s týmto nástrojom pracovať. Tento chýbajúci krok bol implementovaný automatickým aktivovaním daného nástroja v prípade detekcie zmeny jeho módu.

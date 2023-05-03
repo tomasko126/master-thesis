@@ -67,8 +67,6 @@ Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou m
 
 \texttt{@fortawesome/free-solid-svg-icons} -- Uvedený balíček obsahuje FontAwesome\footnote{https://fontawesome.com} ikony, z ktorých sú niektoré použité v aplikácii v hornom paneli aplikácie.
 
-\clearpage
-
 \texttt{@fortawesome/vue-fontawesome} -- Úlohou tohto balíčka je transformovať importované FontAwesome ikony do znovupoužiteľneho komponentu, ktorý je následne možné použiť v aplikácii a pomocou neho vyrenderovať požadované ikony.
 
 \texttt{arraybuffer-encoding} -- Tento balíček implementuje konverziu dát\newline z \texttt{ArrayBuffer} do \texttt{base64} a naspäť. Jeho využitie je popísané neskôr v rámci kompresie odosielaných dát na server.
@@ -84,8 +82,6 @@ Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou m
 
 \texttt{@typescript-eslint/eslint-plugin} -- Tento balíček pridáva do ESLintu pravidlá pre TypeScript kód. Použitie tohto balíčka je odporúčané pri použití predchádzajúceho balíčka.
 
-\clearpage
-
 \texttt{sass} -- Sass je CSS preprocesor implementovaný v JavaScripte, ktorý umožňuje vytvárať modulárnejší CSS kód, ktorý je určený pre jednoduchšie opätovné použitie. Okrem iného umožňuje používať CSS premenné, implementuje dedičnosť či vnáranie CSS pravidiel.
 
 \texttt{sass-loader} -- Úlohou tohto balíčka je transpilovať Sass CSS kód do čistého CSS kódu, ktorý je podporovaný CSS prehliadačmi. Pri budovaní projektu je nutné akýkoľvek CSS kód vytvorený pomocou Sass transpilovať do CSS, nakoľko Sass nie je podporovaný webovými prehliadačmi.
@@ -95,9 +91,9 @@ Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou m
 \texttt{vue-tsc} -- Tento balíček je wrapper nástroja \texttt{tsc}, pomocou ktorého je možné transpilovať TypeScript kód do JavaScriptu. Nakoľko sa v projekte využívajú Vue SFC komponenty a samotný \texttt{tsc} balíček nepodporuje kontrolu TypeScriptu v týchto komponentách, je potrebné použiť balíček \texttt{vue-tsc} miesto \texttt{tsc} pre pridanie tejto podpory. 
 
 \section {Inicializácia vybraných knižníc}
-Biznis logika spojená s akýmkoľvek Cornerstone balíčkom a ich závislosťami bude zahrnutá v rámci súboru \texttt{functions/Cornerstone.ts}. V ňom budú tieto balíčky importované a inicializované. Medzi knižnice, ktoré je nutné pred ich použitím inicializovať, patria Cornerstone Tools a Cornerstone DICOM Image Loader (CDIL). Ich inicializácia spočíva v nalinkovaní externých knižníc, ktoré dané dve knižnice využívajú v rámci ich implementácie. Bez tohto nalinkovania by niektoré metódy oboch knižníc nemuseli korektne fungovať a mohli by vyhadzovať výnimky.
+Biznis logika spojená s akýmkoľvek Cornerstone balíčkom a ich závislosťami bude zahrnutá v rámci súboru \texttt{functions/Cornerstone.ts}. V ňom budú tieto balíčky importované a inicializované. Medzi knižnice, ktoré je nutné pred ich použitím inicializovať, patria Cornerstone Tools a Cornerstone DICOM Image Loader (CDIL).
 
-Inicializácia Cornerstone Tools knižnice zahŕňa volanie metódy \texttt{init} s objektom možností, ktorú túto knižnicu pripraví pre jej použitie. Inicializácia CDIL knižnice prebieha podobne, avšak miesto  \texttt{init} používa \texttt{configure} metódiu s objektom definujúcim jej konfiguráciu.
+Ich inicializácia spočíva v nalinkovaní externých knižníc, ktoré dané dve knižnice využívajú v rámci ich implementácie. Bez tohto nalinkovania by metódy oboch knižníc nemuseli korektne fungovať a mohli by vyhadzovať výnimky. Taktiež je potrebné zavolať ich inicializačné metódy.
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}{typescript}
