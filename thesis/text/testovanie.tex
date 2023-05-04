@@ -4,7 +4,9 @@ Testovanie je neoddeliteľnou súčasťou vývojového procesu aplikácie. To is
 Po dokončení jej implementácie bola aplikácia zverená trom testerom -- Erikovi Ekeovi, Timei Bartalskej a Ing. Radkovi Galabovi. Ing. Radek Galab je odborným pracovníkom Institutu klinické a experimentální medicíny (IKEM) v Prahe, kde sa venuje problematike magnetickej rezonancie a snímkovania.
 
 \section {Zoznam zaznamenaných problémov aplikácie}
-Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia, čo sa týka prvých dvoch testerov. Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
+Testovanie aplikácie prebehlo podľa scenárov všetkých prípadov použitia, čo sa týka prvých dvoch testerov. Testovanie prebehlo na reálnych snímkach poskytnutých IKEMom, ktoré ale boli anonymizované.
+
+Výsledkom testovania webovej aplikáce boli nasledujúce pripomienky:
 \begin {itemize}
 \item {nefunguje nastavenie rýchlosti animácie počas animácie snímok,}
 \item {zoomovanie alebo odzoomovanie snímky nie je možné v niektorých prípadoch zastaviť,}
@@ -26,6 +28,8 @@ Nefunkčné nastavenie rýchlosti bolo spôsobené nefungujúcou detekciou pohyb
 
 Čo sa týka problému zoomovania, resp. odzoomovania snímiek, daný problém spočíval v situácii, kedy sa \texttt{mouseup}\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup\textunderscore event} event emituje mimo ikony určenej pre zoomovanie/odzoomovanie snímky. Tento problém bol ošetrený pridaním \texttt{mouseup} event listeneru v rámci celého dokumentu, ktorý sa aktivoval počas zoomovania, resp. odzoomovania snímky.
 
+\clearpage
+
 Neočakávané správanie polí pre $x$ a $y$ offsety bol spôsobený ich skracovaním na dve desatinné miesta, čo viedlo k zadaniu iných čísiel aké boli zadávané. Odstránenie tejto modifikácie odstránil ohlásený problém.
 
 Situácia, ktorá neumožňovala opustiť nástroj pre pohyb snímky nastala, ak bol aktivovaný tento nástroj pred vymazaním používateľom vygenerovanej mriežky, keďže aplikácia v prípade neexistencie mriežky neumožňovala prepnúť na tlačidlo pohybu s mriežkou. Tento problém bol vyriešený pridaním možnosti vypnutia daného nástroja pomocou opätovného kliknutia na daný nástroj.
@@ -33,3 +37,25 @@ Situácia, ktorá neumožňovala opustiť nástroj pre pohyb snímky nastala, ak
 Nemožnosť zmeniť zobrazenú snímku pomocou skrolovania myšou nebolo samo o sebe chybou, avšak iba chýbajúcou vlastnosťou. Avšak túto vlastnosť implementujú aj iné aplikácie, ktoré pracujú so snímkami z magnetickej rezonancie. Dôsledkom toho bola táto vlastnosť implementovaná pomocou využitia \texttt{StackScrollWheel} nástroja z Cornerstone Tools knižnice. Tento nástroj je aktivovaný automaticky pri spustení webovej aplikácie.
 
 Absencia automatického zapnutia nástroja pre pohyb s mriežkou alebo jej bodmi pri zmene jej módu zhoršovalo UX používateľa s aplikáciou, nakoľko je možné očakávať, že pri zmene módu tohto nástroja chce následne používateľ s týmto nástrojom pracovať. Tento chýbajúci krok bol implementovaný automatickým aktivovaním daného nástroja v prípade detekcie zmeny jeho módu.
+
+\section {Problém s veľkosťou požiadavky na server}
+Pri importovaní väčšieho počtu snímok bolo spozorované, že telo požiadavky na server (\texttt{POST api/grid}) malo v určitých prípadoch veľkosť až 28.5MB.
+
+Dôvod tejto veľkosti je spôsob, akým JSON transformuje \texttt{Uint8Array} pole obsahujúce binárne dáta DICOM snímiek do textovej podoby. Toto pole je prevedené do objektu, ktorý pozostáva z kľúčov a ich hodnôt. Kľúč v tomto prípade značí index hodnoty v pôvodnom poli a hodnota predstavuje už samotné dáta.
+
+\clearpage
+
+Pre ukážku je priložený nasledujúci kód zobrazujúci uvedený problém:
+
+\begin{minipage}[]{\linewidth}
+\begin{minted}{javascript}
+const stringifiedValue = JSON.stringify(new Uint8Array([0, 1, 0]))
+console.log(stringifiedValue); // {\"0\":0,\"1\":1,\"2\":0}
+\end{minted}
+\end{minipage}
+
+Keďže veľkosť pôvodného \texttt{Uint8Array} pola sa počítala v tisícoch, objekt vytvorený transformovaním poľa do textovej podoby do veľkej miery obsahuje najmä kľúče jeho dát (najmä pri indexe vyšších rádov), ktoré vo výsledku nie sú až takým potrebným údajom, keďže poradie dát v objekte je rovnaké ako ich poradie v poli.
+
+Riešenie tohto problému spočívalo v enkódovaní \texttt{Uint8Array} poľa do jeho \texttt{base64} podoby. \texttt{base64} je transformačná schéma prevádzajúca binárne dáta na text. Po nasadení tohto enkódovania sa množstvo prenášaných dát znížilo v danom prípade na 5.17MB pri zapnutom zobrazovaní \uv{refinement} bodov a 3.81MB pri vypnutom zobrazovaní týchto bodov.
+
+Taktiež musela byť implementácia endpointu pozmenená tak, aby obsahovala dekódovanie \texttt{imageData} dát v tele požiadavky pred ich ďalšou manipuláciou.
