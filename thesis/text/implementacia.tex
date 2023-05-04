@@ -153,7 +153,7 @@ Pre každú časť tohto rozhrania by mal byť taktiež vytvorený jeden hlavný
 
 Jedná sa o nasledujúce komponenty: \texttt{TheTopPanel.vue}, \texttt{TheLeftPanel.vue}, \texttt{TheMainWindow.vue} a \texttt{TheRightPanel.vue}.
 
-Tie budú importované v jednom entry-point komponente, ktorý bude definovať hlavnú (a jedinú) stránku aplikácie. Tento komponent bude niesť názov \texttt{index.vue} a bude umiestnený v priečinku \texttt{pages}, aby Nuxt.js spároval zobrazenie tohto komponentu pri návšteve index stránky. V tomto komponente bude taktiež importovaná metóda \texttt{initLibraries} uvedená v predchádzajúcej časti kódu. Tá bude exekuovaná v rámci metódy \texttt{onMounted}, ktorá zaručuje exekúciu kódu po tom, čo je používateľské rozhranie súčasťou Document Object Modelu (DOM) webovej aplikácie.
+Tie budú importované v jednom entry-point komponente, ktorý bude definovať hlavnú (a jedinú) stránku aplikácie. Tento komponent bude niesť názov \texttt{index.vue} a bude umiestnený v priečinku \texttt{pages}, aby Nuxt.js spároval zobrazenie tohto komponentu pri návšteve index stránky. V tomto komponente bude taktiež importovaná metóda \texttt{initLibraries} uvedená v predchádzajúcej časti kódu. Tá bude spúšťaná v rámci metódy \texttt{onMounted}, ktorá zaručuje spustenie kódu po tom, čo je používateľské rozhranie súčasťou Document Object Modelu (DOM) webovej aplikácie.
 
 \clearpage
 
@@ -269,7 +269,7 @@ Ich zoznam je nasledovný:
 \item {\texttt{renderToolData} \cite{base_tool_description} (vlastný preklad).}
 \end {itemize}
 
-\texttt{createNewMeasurement} metóda je zodpovedná za vytvorenie novej anotácie a jej uloženie do pamäte. Táto metóda sa exekuuje v rámci práve aktívneho nástroja ak žiaden nástroj neodpovedal na \texttt{mousedown} event \cite{base_tool_description} (vlastný preklad).
+\texttt{createNewMeasurement} metóda je zodpovedná za vytvorenie novej anotácie a jej uloženie do pamäte. Táto metóda sa spúšťa v rámci práve aktívneho nástroja ak žiaden nástroj neodpovedal na \texttt{mousedown} event \cite{base_tool_description} (vlastný preklad).
 
 Metóda \texttt{pointNearTool} vráti pravdivú hodnotu, ak koordináty kliknutia myšou alebo dotyku na dotykovú plochu sa nachádzajú blízko anotácie nástroja. Ak áno, tak daná časť anotácie je poslaná ako argument \texttt{toolSelectedCallback} metódy \cite{base_tool_description} (vlastný preklad).
 
@@ -298,7 +298,7 @@ Nástroje v zapnutom móde je možné vyrenderovať, avšak nereagujú na intera
 
 Vypnutý mód nástroja na rozdiel od všetkých uvedených módov neumožňuje s takýmto nástrojom interagovať a ani tento nástroj vykresliť. Tento mód je taktiež predvoleným módom pre každý nástroj \cite{cornerstone_tools_modes} (vlastný preklad).
 
-Zmena režimu je možná pomocou exekúcie nasledovných metód:
+Zmena režimu je možná pomocou spustenia nasledovných metód:
 \begin {itemize}
 \item {\texttt{cornerstoneTools.setToolActiveForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví aktívny mód nástroja pre daný element,}
 \item {\texttt{cornerstoneTools.setToolPassiveForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví pasívny mód nástroja pre daný element,}
@@ -410,7 +410,7 @@ Zoznam implementovaných setter metód je nasledujúci:
 
 \clearpage
 
-Webová aplikácia si priebežne ukladá referenciu na instanciu nástroja mriežky pomocou metódy \texttt{cornerstoneTools.getToolForElement)}, ktorej návratová hodnota je instancia nástroja. To umožňuje exekuovať implementované setter metódy nástroja mriežky priamo z Vue.js SFC komponentov.
+Webová aplikácia si priebežne ukladá referenciu na instanciu nástroja mriežky pomocou metódy \texttt{cornerstoneTools.getToolForElement)}, ktorej návratová hodnota je instancia nástroja. To umožňuje spustiť implementované setter metódy nástroja mriežky priamo z Vue.js SFC komponentov.
 
 \subsubsection {Komunikácia medzi nástrojom mriežky a používateľským rozhraním}
 Pri akejkoľvek zmene v konfigurácii mriežky ako napr. zmena pozície bodu na mriežke, pridanie/odobratie vertikálnej/horizontálnej úsečky, úpravou konfigurácie mriežky alebo pri jej celkovom zmazaní je UI webovej aplikácie notifikované o zmene stavu mriežky príslušnej k zobrazenému snímku.
@@ -448,7 +448,7 @@ Pre účely anonymizácie DICOM dát bola vytvorená trieda \texttt{DicomAnonymi
 
 \clearpage
 
-V rámci konštruktoru je predaný objekt s obsahom binárnych dát DICOM súboru. Implementovaná metóda \texttt{getAnonymizedImage} vracia požadovaný anonymizovaný DICOM súbor, ktorý je následne vhodný pre jeho zaslanie po sieti. Táto metóda je exekuovaná v rámci vytvárania tela požiadavky na horeuvedený endpoint.
+V rámci konštruktoru je predaný objekt s obsahom binárnych dát DICOM súboru. Implementovaná metóda \texttt{getAnonymizedImage} vracia požadovaný anonymizovaný DICOM súbor, ktorý je následne vhodný pre jeho zaslanie po sieti. Táto metóda je spúšťaná v rámci vytvárania tela požiadavky na horeuvedený endpoint.
 
 \section {Nasadenie aplikácie}
 Pre zrhnutie je na nasledujúcom diagrame nasadenia zobrazená výsledná štruktúra nasadenia implementovanej webovej aplikácie.

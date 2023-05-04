@@ -95,7 +95,7 @@ Template Numerical Library\footnote{https://tnl-project.org} je numerická kniž
 
 Vývoj TNL knižnice od jej počiatku riadi Tomáš Oberhuber z Katedry matematiky na FJFI ČVUT v spolupráci s Jakubom Klinkovským a Alešom Wodeckim.
 
-V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \texttt{String} pre manipuláciu s reťazcami a \texttt{Containers::Array}, \texttt{Containers::\{Vector,\newline StaticVector,MultiVector\}}, čo sú šablóny pre reprezentáciu \newline n-dimenzionálnych polí, ktoré abstrahujú manažment dát a exekúciu bežných operácií na rozličných hardvérových architektúrach.
+V súčasnej aplikácii sú z TNL knižnice použité kolekcie ako napr. \texttt{String} pre manipuláciu s reťazcami a \texttt{Containers::Array}, \texttt{Containers::\{Vector,\newline StaticVector,MultiVector\}}, čo sú šablóny pre reprezentáciu \newline n-dimenzionálnych polí, ktoré abstrahujú manažment dát a spúšťanie bežných operácií na rozličných hardvérových architektúrach.
 
 Aplikácia z TNL knižnice taktiež používa \texttt{Solvers::ODE::Merson} -- jedná sa o riešič používajúci Runge-Kutta-Merson metódu štvrtého rádu s adaptívnym výberom časového kroku, vďaka ktorému je možné získať približné riešenie diferenciálnych rovníc.
 
@@ -160,10 +160,10 @@ Pretože je nutné samotnú knižnicu zo zdrojových kódov zostaviť, je nevyhn
 
 Medzi podporované kompilátory sa radí GCC\footnote{http://gcc.gnu.org} kompilátor vo verzii 8.0\newline a vyššie alebo Clang\footnote{https://clang.llvm.org} vo verzii 7.0 a vyššie. Prvý z nich je možné nainštalovať pomocou balíčku \texttt{gcc}\footnote{sudo apt install gcc} a druhý pomocou balíčku \texttt{clang}\footnote{sudo apt install clang}.
 
-Následne je potrebné exekuovať inštalačný skript \texttt{install}, ktorého účelom je nakonfigurovanie TNL knižnice a jej zostavenia.
-Pred exekuovaním samotného inštalačného skriptu \texttt{install} je potrebné zistiť, či sú nainštalované balíčky \texttt{doxygen}\footnote{https://doxygen.nl/index.html}, \texttt{matplotlib}\footnote{https://matplotlib.org} a \texttt{graphviz}\footnote{https://graphviz.org}.
+Následne je potrebné spustiť inštalačný skript \texttt{install}, ktorého účelom je nakonfigurovanie TNL knižnice a jej zostavenia.
+Pred spustením samotného inštalačného skriptu \texttt{install} je potrebné zistiť, či sú nainštalované balíčky \texttt{doxygen}\footnote{https://doxygen.nl/index.html}, \texttt{matplotlib}\footnote{https://matplotlib.org} a \texttt{graphviz}\footnote{https://graphviz.org}.
 
-Tieto balíčky sa využívajú pri generovaní dokumentácie počas exekúcie \texttt{install} skriptu (pri defaultnej inštalácii). Ak sa niektorý z daných balíčkov nenachádza v systéme, je potrebné ho doinštalovať.
+Tieto balíčky sa využívajú pri generovaní dokumentácie počas spustenia \texttt{install} skriptu (pri defaultnej inštalácii). Ak sa niektorý z daných balíčkov nenachádza v systéme, je potrebné ho doinštalovať.
 
 Po nainštalovaní všetkých potrebných balíčkov sa TNL knižnica zostaví spustením \texttt{install}\footnote{chmod +x install \&\& ./install} skriptu. Po jeho ukončení sa hlavičkové súbory TNL knižnice nachádzajú v priečinku \texttt{/usr/lib/aarch64-linux-gnu}.
 

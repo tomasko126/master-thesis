@@ -82,7 +82,7 @@ Pre lepšiu predstavu sú prípady použitia taktiež znázornené graficky pomo
 \end {figure}
 
 \subsection {UC1 -- Zobrazenie snímiek v aplikácii}\label{uc1}
-Zobrazenie snímiek magnetickej rezonancie v DICOM formáte je jedným\newline z esenciálnych funkčných požiadaviek -- \uv{\nameref{fr1}}. Nasledovný scenár túto požiadavku realizuje.
+Zobrazenie snímiek magnetickej rezonancie v DICOM formáte je jedným\newline z esenciálnych funkčných požiadaviek -- \nameref{fr1}. Nasledovný scenár túto požiadavku realizuje.
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -94,8 +94,8 @@ Zobrazenie snímiek magnetickej rezonancie v DICOM formáte je jedným\newline z
 \end {enumerate}
 	
 \subsection {UC2 -- Animácia snímiek}\label{uc2}
-Nasledovný scenár realizuje funkciu prehrania série snímiek ako animáciu,\newline ako bolo popísané vo funkčnej požiadavke \uv{\nameref{fr2}}.
-Okrem iného taktiež zahŕňa prípad \uv{\nameref{uc1}}. 
+Nasledovný scenár realizuje funkciu prehrania série snímiek ako animáciu,\newline ako bolo popísané vo funkčnej požiadavke \nameref{fr2}.
+Okrem iného taktiež zahŕňa prípad \nameref{uc1}. 
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -114,7 +114,7 @@ Okrem iného taktiež zahŕňa prípad \uv{\nameref{uc1}}.
 \end {enumerate}
 
 \subsection {UC3 -- Vytvorenie mriežky}\label{uc3}
-Vytvorenie mriežky nad snímkou z MR je potrebné pre účely analýzu pohybu myokardu. Nasledujúci scenár čiastočne realizuje funkčnú požiadavku --\newline \uv{\nameref{fr3}}. Taktiež zahŕňa prípad použitia \uv{\nameref{uc1}}.
+Vytvorenie mriežky nad snímkou z MR je potrebné pre účely analýzu pohybu myokardu. Nasledujúci scenár čiastočne realizuje funkčnú požiadavku --\newline \nameref{fr3}. Taktiež zahŕňa prípad použitia \nameref{uc1}.
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -126,7 +126,7 @@ Vytvorenie mriežky nad snímkou z MR je potrebné pre účely analýzu pohybu m
 \end {enumerate}
 
 \subsection {UC4 -- Úprava parametrov mriežky}\label{uc4}
-Medzi prípady použitia patrí aj úprava parametrov mriežky určenej pre analýzu pohybu srdcového svalu. Nakoľko je najprv potrebné mať mriežku pred jej úpravou vytvorenú, zahŕňa nasledovný scenár aj jej vytvorenie. Ten taktiež čiastočne realizuje funkčnú požiadavku \uv{\nameref{fr3}}.
+Medzi prípady použitia patrí aj úprava parametrov mriežky určenej pre analýzu pohybu srdcového svalu. Nakoľko je najprv potrebné mať mriežku pred jej úpravou vytvorenú, zahŕňa nasledovný scenár aj jej vytvorenie. Ten taktiež čiastočne realizuje funkčnú požiadavku \nameref{fr3}.
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -136,7 +136,7 @@ Medzi prípady použitia patrí aj úprava parametrov mriežky určenej pre anal
 \end {enumerate}
 
 \subsection {UC5 -- Zadanie parametrov pre SPAMM algoritmus}\label{uc5}
-Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používateľom voči mriežke vygenerovanej SPAMM technikou je potrebné tomuto algoritmu poslať tri parametre definované v \ref{image_processing_tab}. Tieto parametre budú využité pri použití funkčného SPAMM algoritmu. Nasledujúci scenár tento prípad použitia realizuje spolu s funkčnou požiadavkou -- \uv{\nameref{fr4}}.
+Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používateľom voči mriežke vygenerovanej SPAMM technikou je potrebné tomuto algoritmu poslať tri parametre definované v \ref{image_processing_tab}. Tieto parametre budú využité pri použití funkčného SPAMM algoritmu. Nasledujúci scenár tento prípad použitia realizuje spolu s funkčnou požiadavkou -- \nameref{fr4}.
 
 \subsubsection*{Scenár:}
 \begin {enumerate}
@@ -147,7 +147,7 @@ Pre spustenie algoritmu zodpovedného pre posun mriežky vytvorenej používate�
 \subsection {UC6 -- Spustenie SPAMM algoritmu a zobrazenie jeho výsledkov}\label{uc6}
 Spustenie algoritmu a zobrazenie jeho výsledku vyžaduje mať importované DICOM snímky spolu s používateľom vytvorenými mriežkami a ich modifikáciami.
 
-To je dôvodom, prečo tento scenár použitia zahŕňa prípady \uv{\nameref{uc1}}, \uv{\nameref{uc3}}, \uv{\nameref{uc4}} a \uv{\nameref{uc5}}. Samotný scenár realizuje funkčnú požiadavku \uv{\nameref{fr5}}.
+To je dôvodom, prečo tento scenár použitia zahŕňa prípady \nameref{uc1}, \nameref{uc3}, \nameref{uc4} a \nameref{uc5}. Samotný scenár realizuje funkčnú požiadavku \nameref{fr5}.
 
 \clearpage
 
@@ -261,7 +261,7 @@ Počas transpilácie TypeScript kódu do JavaScriptu dochádza k vymazaniu všet
 Pre horeuvedené výhody tohto jazyka bude TypeScript použitý pri vývoji webovej aplikácie.
 
 \subsection {Node.js}
-Node.js je asynchrónne cross-platform runtime prostredie JavaScriptu, ktoré umožňuje vývojárom exekuovať JavaScript kód mimo prehliadača. Pomocou neho je možné vyvíjať nielen konzolové aplikácie, ale aj budovať škálovateľné webové služby \cite{about_nodejs} (vlastný preklad).
+Node.js je asynchrónne multiplatformové behové prostredie JavaScriptu, ktoré umožňuje vývojárom exekuovať JavaScript kód mimo prehliadača. Pomocou neho je možné vyvíjať nielen konzolové aplikácie, ale aj budovať škálovateľné webové služby \cite{about_nodejs} (vlastný preklad).
 
 Node.js je open-source projektom a jeho vývoj zastrešuje nadácia OpenJS Foundation \cite{about_nodejs} (vlastný preklad).
 
@@ -316,11 +316,11 @@ Tie musia byť pred zostavením upravené tak, aby používali Node-API rozhrani
 Pred zostavením addonu je potrebné vygenerovať Makefile pre cieľový operačný systém pomocou príkazu \texttt{node-gyp configure}. Následne je možné addon zostaviť príkazom \texttt{node-gyp build}. Ten skompiluje súbory špecifikované v \texttt{binding.gyp} do jediného súboru s príponou \texttt{.node}. Ten je možné importovať ako modul do iného JavaScript modulu pomocou kľúčového slova \texttt{import}\footnote{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}. Po jeho importovaní je možné volať jeho metódy rovnakým spôsobom ako iné JS metódy \cite{cpp_addons} (vlastný preklad).
 
 \subsection {WebAssembly}
-WebAssembly je nový typ jazyku, ktorý je možné exekuovať vo všetkých moderných webových prehliadačoch. Jeho hlavnou výsadou je zvýšenie rýchlosti exekuovania kódu oproti JavaScriptu blížiaci sa k skoro natívnej exekúcii kódu naprogramovaného v jazykoch C, C\texttt{++} alebo Rust\footnote{https://www.rust-lang.org} a iné. Je navrhnutý tak, aby mohol fungovať spoločne s JavaScriptom \cite{webassembly_concepts} (vlastný preklad).
+WebAssembly je nový typ jazyku, ktorý je možné spúšťať vo všetkých moderných webových prehliadačoch. Jeho hlavnou výsadou je zvýšenie rýchlosti kódu oproti JavaScriptu blížiaci sa k skoro natívnemú behu kódu naprogramovaného v jazykoch C, C\texttt{++} alebo Rust\footnote{https://www.rust-lang.org} a iné. Je navrhnutý tak, aby mohol fungovať spoločne s JavaScriptom \cite{webassembly_concepts} (vlastný preklad).
 
 Webová platforma sa dá vo všeobecnosti rozdeliť na dve časti:
 \begin{itemize}
-\item {VM, pomocou ktorej sa exekuuje kód webovej aplikácie a}
+\item {VM, pomocou ktorej beží kód webovej aplikácie a}
 \item {webové API, ktoré je poskytnuté vývojárom pre kontrolu rozličných funkcionalít webového prehliadača, resp. zariadenia  \cite{webassembly_concepts} (vlastný preklad).}
 \end{itemize}
 
