@@ -110,7 +110,11 @@ import { setContrast, setBrightness, displayImageInElement } from '~/functions/C
 
 const store = useGlobalStore()
 
-const counter = ref(1)
+let counter = ref(1)
+if (store.shownImageId) {
+  counter.value = store.imageIds.indexOf(store.shownImageId) + 1
+}
+
 const fromIdx = ref(store.animation.fromIdx + 1)
 const toIdx = ref(store.animation.toIdx + 1)
 const speed = ref(30)
