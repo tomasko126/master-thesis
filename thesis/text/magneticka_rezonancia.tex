@@ -1,6 +1,6 @@
 \chapter {Magnetická rezonancia}
 Magnetická rezonancia (MR) je jedna zo zobrazovacích techník, ktorá je používaná k zobrazeniu vnútorných orgánov tela.
-Narozdiel od röntgenového žiarenia a počítačovej tomografie (CT), magnetická rezonancia nepoužíva ionizujúce žiarenie. Avšak medzi spoločné znaky týchto troch zobrazovacích techník patrí ich neinvazívnosť a bezbolestné vyšetrenie \cite{basic_principles_of_mri} (vlastný preklad).
+Na rozdiel od röntgenového žiarenia a počítačovej tomografie (CT), magnetická rezonancia nepoužíva ionizujúce žiarenie. Avšak medzi spoločné znaky týchto troch zobrazovacích techník patrí ich neinvazívnosť a bezbolestné vyšetrenie \cite{basic_principles_of_mri} (vlastný preklad).
 
 Magnetická rezonancia sa používa najmä pri:
 \begin {itemize}
@@ -10,48 +10,50 @@ Magnetická rezonancia sa používa najmä pri:
 \item {pri rozličných ochoreniach pečene a iných brušných orgánov \cite{mr_usage} (vlastný preklad).}
 \end {itemize}
 
-Pred niektorými MR procedúrami sa pacientovi môže intravenózne podať kontrastná látka, ktorá zlepší kontrast a vzájomnú odlíšiteľnosť orgánov \newline a mäkkých tkanív \cite{contrast_agents}.
+Pred niektorými MR procedúrami sa pacientovi môže intravenózne podať kontrastná látka, ktorá zlepší kontrast a vzájomnú odlíšiteľnosť orgánov a mäkkých tkanív \cite{contrast_agents}.
 
-Bohužiaľ, existujú aj určité kontraindikácie, pri ktorých použitie MR nie je\newline pre človeka vhodné.
+Bohužiaľ, existujú aj určité kontraindikácie, pri ktorých použitie MR nie je pre človeka vhodné.
 Jedným z kontraindikácií je implantovaný kardiostimulátor, v prípade že nie je kompatibilný s MR prístrojom.
 \clearpage
 
 Všeobecne sa za kontraindikáciu považuje použitie akéhokoľvek magnetického materiálu v tele. Taktiež je MR vyšetrenie kontraindikované ženám v prvom trimestri tehotenstva \cite{mr_contraindications}.
 
 \section {Princíp magnetickej rezonancie}
-Princípom magnetickej rezonancie je smerové magnetické pole (moment - $\mathcal{B}_{0}$) spojené s pohybom voľných jadier vodíku v tele pacienta. Tieto jadrá majú charakteristický pohyb (spin) vytvárajúci malý magnetický moment s určitým náhodným smerom a veľkosťou  \cite{basic_principles_of_mri} (vlastný preklad).
+Princípom magnetickej rezonancie je smerové magnetické pole (moment -- $\mathcal{B}_{0}$) spojené s pohybom voľných jadier vodíku v tele pacienta. Tieto jadrá majú charakteristický pohyb (spin) vytvárajúci malý magnetický moment s určitým náhodným smerom a veľkosťou (obr. \ref{fig:atoms}a) \cite{basic_principles_of_mri} (vlastný preklad).
 
-Keď je pacient umiestnený vo veľkom magnetickom poli (v tubuse MR prístroja), voľné vodíkové jadrá sa zarovnajú v smere $\mathcal{B}_{0}$ (smer $y$) a vytvoria magnetický moment $\mathcal{M}$ paralelne k $\mathcal{B}_{0}$. Vodíkové jadrá začnú náhle prechádzať okolo smeru magnetického pola ako gyroskopy. Toto správanie sa nazýva Larmorova precesia \cite{basic_principles_of_mri} (vlastný preklad).
+Keď je pacient umiestnený vo veľkom magnetickom poli (v tubuse MR prístroja), voľné vodíkové jadrá sa zarovnajú v smere $\mathcal{B}_{0}$ (smer $y$) a vytvoria magnetický moment $\mathcal{M}$ paralelne k $\mathcal{B}_{0}$. Vodíkové jadrá začnú náhle prechádzať okolo smeru magnetického poľa ako gyroskopy obr. \ref{fig:atoms}b). Toto správanie sa nazýva Larmorova precesia \cite{basic_principles_of_mri} (vlastný preklad).
 
 \begin {figure}[H]
         \centering
         \includegraphics[height=6cm]{media/hydrogen/hydrogen_moving_freely.png}
         \includegraphics[height=6cm]{media/hydrogen/hydrogen_oscilating.png}
         \captionsetup{justification=centering}
-        \captionof{figure}[Voľný pohyb vodíkových jadier a ich zarovnanie v smere $\mathcal{B}_{0}$]{Na ľavom obrázku je možné vidieť voľný pohyb vodíkových jadier,\newline na pravom obrázku ich zarovnanie v smere $\mathcal{B}_{0}$ \cite{basic_principles_of_mri}.}
+        \captionof{figure}[Voľný pohyb vodíkových jadier a ich zarovnanie v smere $\mathcal{B}_{0}$]{Na ľavom obrázku je možné vidieť voľný pohyb vodíkových jadier, na pravom obrázku ich zarovnanie v smere $\mathcal{B}_{0}$ \cite{basic_principles_of_mri}.}
+        \label{fig:atoms}
 \end {figure}
 
-Následne sa aplikuje rádiofrekvenčný impulz $\mathcal{B}_{rf}$ kolmo na $\mathcal{B}_{0}$. \newline
-Tento impulz rovnajúci sa frekvencii Larmorovej precesie spôsobí posun \newline $\mathcal{M}$ od $\mathcal{B}_{0}$ \cite{basic_principles_of_mri} (vlastný preklad).
+Následne sa aplikuje rádiofrekvenčný impulz $\mathcal{B}_{rf}$ kolmo na $\mathcal{B}_{0}$.
+Tento impulz rovnajúci sa frekvencii Larmorovej precesie spôsobí posun $\mathcal{M}$ od $\mathcal{B}_{0}$ (obr. \ref{fig:atoms_move}) \cite{basic_principles_of_mri} (vlastný preklad).
 
 \clearpage
-
-Frekvencia Larmorovej precesie, tzv. Larmorova frekvencia, je definovaná ako:
-\begin {center}
-$\omega_{0}$ = $-\gamma * \mathcal{B}_{0}$,
-\end {center}
-
-kde $\gamma$ predstavuje gyromagnetický pomer a $\mathcal{B}_{0}$ intenzitu magnetického pola.
-Gyromagnetický pomer je konštanta závislá na jadre danej častice. \newline Pre vodík sa táto konštanta rovná 42.6 MHz/Tesla \cite{basic_principles_of_mri} (vlastný preklad).
 
 \begin {figure}[H]
         \centering
         \includegraphics[height=6cm]{media/hydrogen/hydrogen_reacting_to_rf.png}
         \captionsetup{justification=centering}
         \captionof{figure}[Kolmá aplikácia RF impulzu $\mathcal{B}_{rf}$ na vodíkové jadrá]{Kolmá aplikácia RF impulzu $\mathcal{B}_{rf}$ na vodíkové jadrá \cite{basic_principles_of_mri}.}
+        \label{fig:atoms_move}
 \end {figure}
 
-Akonáhle prestane pôsobiť rádiofrekvenčný impulz $\mathcal{B}_{rf}$, vodíkové jadrá sa presunú naspäť tak, že ich $\mathcal{M}$ je znovu paralelný s $\mathcal{B}_{0}$. Tento návrat vodíkových jadier sa nazýva relaxácia. Počas nej jadrá strácajú energiu vysielaním ich vlastného rádiofrekvenčného signálu  \cite{basic_principles_of_mri} (vlastný preklad).
+Frekvencia Larmorovej precesie, tzv. Larmorova frekvencia, je definovaná ako:
+\begin {center}
+$\omega_{0}$ = $-\gamma * \mathcal{B}_{0}$,
+\end {center}
+
+kde $\gamma$ predstavuje gyromagnetický pomer a $\mathcal{B}_{0}$ intenzitu magnetického poľa.
+Gyromagnetický pomer je konštanta závislá na jadre danej častice. Pre vodík sa táto konštanta rovná 42.6 MHz/Tesla \cite{basic_principles_of_mri} (vlastný preklad).
+
+Akonáhle prestane pôsobiť rádiofrekvenčný impulz $\mathcal{B}_{rf}$, vodíkové jadrá sa presunú naspäť tak, že ich $\mathcal{M}$ je znovu paralelný s $\mathcal{B}_{0}$. Tento návrat vodíkových jadier sa nazýva relaxácia. Počas nej jadrá strácajú energiu vysielaním ich vlastného rádiofrekvenčného signálu (obr. \ref{fig:atoms_fid}) \cite{basic_principles_of_mri} (vlastný preklad).
 
 Tento signál sa nazýva \uv{voľný indukčný rozpad} -- z anglického Free Induction Decay (FID). Ten sa zmeria vodivým poľom MR prístroja za účelom vyhotovenia 3D MR snímky v odtieňoch šedej \cite{basic_principles_of_mri} (vlastný preklad).
 
@@ -60,15 +62,16 @@ Tento signál sa nazýva \uv{voľný indukčný rozpad} -- z anglického Free In
         \includegraphics[height=6cm]{media/hydrogen/hydrogen_emitting_rf.png}
         \captionsetup{justification=centering}
         \captionof{figure}[Emitovanie FID signálu vodíkovými jadrami]{Emitovanie FID signálu vodíkovými jadrami \cite{basic_principles_of_mri}.}
+        \label{fig:atoms_fid}
 \end {figure}
 
 Avšak na jeho vytvorenie musí byť FID signál enkódovaný pre každý rozmer pomocou frekvenčného a fázového kódovania \cite{basic_principles_of_mri} (vlastný preklad).
 
-Kódovanie v axiálnom smere sa dosiahne pridaním gradientového magnetického pola $\mathcal{G}_{y}$ v smere $\mathcal{B}_{0}$ (v smere $y$). Po pridaní $\mathcal{G}_{y}$ sa hodnota Larmorovej frekvencie zmení lineárne v axiálnom smere, tzn. že pre konkrétny axiálny rez existuje konkrétna Larmorova frekvencia, ktorá sa aplikuje vyslaním rádiofrekvenčného impulzu $\mathcal{B}_{rf}$ \cite{basic_principles_of_mri} (vlastný preklad).
+Kódovanie v axiálnom smere sa dosiahne pridaním gradientového magnetického poľa $\mathcal{G}_{y}$ v smere $\mathcal{B}_{0}$ (v smere $y$). Po pridaní $\mathcal{G}_{y}$ sa hodnota Larmorovej frekvencie zmení lineárne v axiálnom smere, tzn. že pre konkrétny axiálny rez existuje konkrétna Larmorova frekvencia, ktorá sa aplikuje vyslaním rádiofrekvenčného impulzu $\mathcal{B}_{rf}$ \cite{basic_principles_of_mri} (vlastný preklad).
 
-Pole $\mathcal{G}_{y}$ sa následne odstráni a ďalšie gradientové magnetické pole -- $\mathcal{G}_{x}$ -- sa aplikuje kolmo na $\mathcal{G}_{y}$. Výsledkom je, že rezonančné frekvencie jadier sa menia\newline v smere $x$ vďaka $\mathcal{G}_{x}$ a majú fázovú variáciu v smere $y$ v dôsledku predtým aplikovaného $\mathcal{G}_{y}$. Vzorky v smere $x$ sú teda kódované frekvenciou a v smere $y$ fázou \cite{basic_principles_of_mri} (vlastný preklad).
+Pole $\mathcal{G}_{y}$ sa následne odstráni a ďalšie gradientové magnetické pole -- $\mathcal{G}_{x}$ -- sa aplikuje kolmo na $\mathcal{G}_{y}$. Výsledkom je, že rezonančné frekvencie jadier sa menia v smere $x$ vďaka $\mathcal{G}_{x}$ a majú fázovú variáciu v smere $y$ v dôsledku predtým aplikovaného $\mathcal{G}_{y}$. Vzorky v smere $x$ sú teda kódované frekvenciou a v smere $y$ fázou \cite{basic_principles_of_mri} (vlastný preklad).
 
-Následne sa použije 2D inverzná Fourierova transformácia pre transformáciu vzoriek na snímku \cite{basic_principles_of_mri} (vlastný preklad).\clearpage
+Následne sa použije 2D inverzná Fourierova transformácia pre transformáciu vzoriek na snímku \cite{basic_principles_of_mri} (vlastný preklad).
 
 Kontrast získanej snímky závisí od nasledujúcich dvoch parametrov:
 
@@ -77,9 +80,9 @@ Kontrast získanej snímky závisí od nasledujúcich dvoch parametrov:
 \item {od času priečnej relaxácie -- čas T2.}
 \end {itemize}
 
-Čas T1 je čas potrebný pre jadrá vodíkov k ich relaxácii a čas T2 predstavuje čas, za ktorý sa FID signál prechádzajúci cez dané tkanivo rozpadne. \newline Oba časy závisia od daného typu tkaniva nachádzajúceho sa v pacientovi \cite{basic_principles_of_mri} (vlastný preklad).
+Čas T1 je čas potrebný pre jadrá vodíkov k ich relaxácii a čas T2 predstavuje čas, za ktorý sa FID signál prechádzajúci cez dané tkanivo rozpadne. Oba časy závisia od daného typu tkaniva nachádzajúceho sa v pacientovi \cite{basic_principles_of_mri} (vlastný preklad).
 
-Po získaní MR snímky sa impulz $\mathcal{B}_{rf}$ opakuje vopred stanovenou rýchlosťou. Zmenou sekvencie impulzov ($\mathcal{B}_{rf}$) sa vytvárajú rôzne typy snímiek.\newline Čas opakovania ($TR$) je množstvo času medzi po sebe nasledujúcimi pulznými sekvenciami aplikovanými na rovnaký rez. Time to Echo ($TE$) je čas medzi dodaním impulzu $\mathcal{B}_{rf}$ a prijatím odozvy. Úpravou $TR$ je možné meniť výsledný kontrast na snímke medzi rôznymi typmi tkanív \cite{basic_principles_of_mri} (vlastný preklad).
+Po získaní MR snímky sa impulz $\mathcal{B}_{rf}$ opakuje vopred stanovenou rýchlosťou. Zmenou sekvencie impulzov ($\mathcal{B}_{rf}$) sa vytvárajú rôzne typy snímiek. Čas opakovania ($TR$) je množstvo času medzi po sebe nasledujúcimi pulznými sekvenciami aplikovanými na rovnaký rez. Time to Echo ($TE$) je čas medzi dodaním impulzu $\mathcal{B}_{rf}$ a prijatím odozvy. Úpravou $TR$ je možné meniť výsledný kontrast na snímke medzi rôznymi typmi tkanív \cite{basic_principles_of_mri} (vlastný preklad).
 
 \section {SPAMM}
 SPAMM -- z anglického (SPAtial Modulation of Magnetization), čo v preklade znamená \uv{priestorová modulácia magnetizácie} -- je technika používajúca rádiofrekvenčné saturačné impulzy pre umiestnenie mriežky na myokard, za cieľom sledovania jeho pohybu počas srdcového cyklu \cite{spamm_description} (vlastný preklad).
@@ -91,15 +94,16 @@ SPAMM -- z anglického (SPAtial Modulation of Magnetization), čo v preklade zna
         \captionof{figure}[Tagovaná snímka myokardu pomocou techniky SPAMM]{Otagovaná snímka myokardu pomocou techniky SPAMM \cite{spamm_description}.}
 \end {figure}
 
-V súčasnej praxi sa SPAMM technika používa v situáciách, kde informácia o kontrakcii myokardu je kľúčová, ako napr. podozrenie na ischemickú chorobu srdca alebo na abnormality týkajúce sa neprirodzeného pohybu stien myokardu \cite{spamm_description} (vlastný preklad).
+V súčasnej praxi sa SPAMM technika používa v situáciách, kde je informácia o kontrakcii myokardu kľúčová, ako napr. podozrenie na ischemickú chorobu srdca alebo na abnormality týkajúce sa neprirodzeného pohybu stien myokardu \cite{spamm_description} (vlastný preklad).
 
-Nevýhodou použitia tejto techniky je skutočnosť, že táto mriežka sa stráca s blížiacim sa koncom srdcového cyklu. Samotné čiary mriežky sa pri konci systoly (časť srdcového cyklu, počas ktorej sa komory srdca sťahujú po naplnení krvou) môžu zlúčiť alebo úplne vyblednúť, čo sťažuje následnú analýzu pohybu srdca \cite{spamm_description} (vlastný preklad).
+Nevýhodou použitia tejto techniky je skutočnosť, že táto mriežka sa stráca s blížiacim sa koncom srdcového cyklu. Samotné čiary mriežky sa pri konci systoly (časť srdcového cyklu, počas ktorej sa komory srdca sťahujú po naplnení krvou) môžu zlúčiť alebo úplne vyblednúť, čo sťažuje následnú analýzu pohybu srdca (obr. \ref{fig:grid_dimishing}) \cite{spamm_description} (vlastný preklad).
 
 \begin {figure}[H]
         \centering
         \includegraphics[height=6cm]{media/heart/early_late_systole.png}
         \captionsetup{justification=centering}
         \captionof{figure}[Ukážka vyblednutia SPAMM mriežky]{Ľavý obrázok zobrazuje začiatok systoly, pravý jej koniec.}
+        \label{fig:grid_dimishing}
 \end {figure}
 
 \clearpage

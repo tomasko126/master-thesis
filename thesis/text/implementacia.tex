@@ -2,9 +2,7 @@
 Táto kapitola sa zaoberá celým procesom implementácie webovej aplikácie, od poopisu počiatočnej štruktúry projektu pri jeho inicializácii, cez zoznam použitých balíčkov s ich popisom a inicializáciou. Taktiež je venovaná pozornosť štruktúre komponentov používateľského rozhrania a implementácii aplikácie podľa prípadov použití. Koniec kapitoly sa venuje následnému nasadeniu hotovej webovej aplikácie.
 
 \section {Počiatočná štruktúra projektu}
-Implementácia webovej aplikácie započala vytvorením základnej štruktúry projektu pomocou oficiálneho nástroja pre tento účel -- \texttt{nuxi}.
-
-Príkazom \texttt{npx nuxi init diploma-thesis} sa vytvorila zložka \texttt{diploma-thesis}, ktorej štruktúra bola nasledovná:
+Implementácia webovej aplikácie započala vytvorením základnej štruktúry projektu pomocou oficiálneho nástroja pre tento účel -- \texttt{nuxi}. Príkazom \texttt{npx nuxi init diploma-thesis} sa vytvorila zložka \texttt{diploma-thesis}, ktorej štruktúra bola nasledovná:
 
 \begin{figure}[H]
 	\dirtree{%
@@ -25,16 +23,14 @@ Obsahom \texttt{app.vue} súboru je Vue.js SFC komponent, ktorý reprezentuje Nu
 
 Pomocou súboru \texttt{tsconfig.json} je možné nakonfigurovať TypeScript pre celý projekt. Jeho počiatočným obsahom je referencia na \texttt{tsconfig.json} súbor samotného Nuxt frameworku --- čo znamená, že sa pre tento projekt aplikujú pravidlá TypeScriptu predvolené pre Nuxt.js projekt.
 
-Jedným z najdôležitejších súborov v tejto štruktúre je \texttt{package.json}. Obsah tohto súboru definuje meno a detaily projektu spolu\newline s balíčkami, ktoré sú využité v rámci samotného projektu. Popisu použitým balíčkom sa venuje nasledujúca sekcia.
+Jedným z najdôležitejších súborov v tejto štruktúre je \texttt{package.json}. Obsah tohto súboru definuje meno a detaily projektu spolu s balíčkami, ktoré sú využité v rámci samotného projektu. Popisu použitým balíčkom sa venuje nasledujúca sekcia.
 
 \subsection {Spustenie Nuxt.js serveru}
 Pred spustením Nuxt.js serveru je potrebné doinštalovať projektové závislosti -- balíčky, príkazom \texttt{npm install}. Následne je možné spustiť Nuxt.js server príkazom \texttt{npm run dev}. Spustenie serveru týmto príkazom aktivuje tzv. \uv{file watcher}, ktorý je zodpovedný za skompilovanie aplikácie pri detekovaných zmenách v súboroch aplikácie.
 
-\clearpage
-
 V rámci spustenia tohto príkazu sa na konzolu vypíše adresu servera spolu s jej portom, na ktorej je možné pristúpiť k tomuto serveru. V tomto prípade sa jednalo o adresu \texttt{http://localhost:3000/}. 
 
-Pre produkčné násadenie by mala byť Nuxt.js aplikácia najprv prejsť build procesom (pomocou príkazu \texttt{npm run build}), ktorý okrem iného minifikuje aplikačné súbory, čím zmenší prenášaný obsah aplikácie po sieti.
+Pre produkčné nasadenie by mala byť Nuxt.js aplikácia najprv prejsť build procesom (pomocou príkazu \texttt{npm run build}), ktorý okrem iného minifikuje aplikačné súbory, čím zmenší prenášaný obsah aplikácie po sieti.
 
 \section {Použité balíčky}
 V rámci tejto sekcie sú uvedené všetky balíčky, ktoré sa použili pri vývoji webovej aplikácie.
@@ -45,19 +41,19 @@ Zmyslom tohto delenia je definovať, aké balíčky sa majú nachádzať v produ
 \subsection {Balíčky pre produkčné prostredie}
 \texttt{cornerstone-core} -- Balíček poskytujúci Cornerstone Core knižnicu, ktorá je zodpovedná za zobrazenie DICOM snímiek v správnom formáte a jednoduchú manipuláciu s týmito snímkami.
 
-\texttt{@tarotoma/cornerstone-tools} -- Fork \texttt{cornerstone-tools} balíčku, ktorý obsahuje rôzne nástroje určené pre prácu s DICOM snímkami. V tomto forku bol pridaný Grid nástroj implementovaný v rámci tejto diplomovej práce. Samotné knižnica taktiež upravuje prehrávanie animácií a pridáva vlastné TypeScript definície pre metódy používané vo webovej aplikácii, čo umožňuje lepšie našeptávanie IDE pri práci s týmto balíčkom.
+\texttt{@tarotoma/cornerstone-tools} -- Fork \texttt{cornerstone-tools} balíčku, ktorý obsahuje rôzne nástroje určené pre prácu s DICOM snímkami. V tomto forku bol pridaný Grid nástroj implementovaný v rámci tejto diplomovej práce. Samotná knižnica taktiež upravuje prehrávanie animácií a pridáva vlastné TypeScript definície pre metódy používané vo webovej aplikácii, čo umožňuje lepšie našeptávanie IDE pri práci s týmto balíčkom.
 
 \texttt{cornerstone-math} -- Tento balíček umožňuje použiť Cornerstone Math knižnicu v projekte. Tá slúži pre rôzne výpočty v oblasti vektorovej matematiky. V tomto prípade je táto knižnica potrebná len ako závislosť balíčka \texttt{@tarotoma/cornerstone-tools}.
 
-\texttt{hammerjs} -- Účelom knižnice Hammer.js je pridanie podpory multi-dotykových gést pri práci s webovou apllikáciou. Táto funkcionalita nebola vo webovej aplikácii využitá, avšak je nutnou závislosťou balíčka \texttt{@tarotoma/cornerstone-tools}.
+\texttt{hammerjs} -- Účelom knižnice Hammer.js je pridanie podpory multi-dotykových gést pri práci s webovou apllikáciou. Táto funkcionalita nebola vo webovej aplikácii využitá, avšak táto knižnica je nutnou závislosťou balíčka \texttt{@tarotoma/cor-\newline nerstone-tools}.
 
 \texttt{dicom-parser} -- Dicom Parser je knižnica určená pre parsovanie DICOM súborov do štruktúrovaných objektov, s ktorými je možné ďalej pracovať.
 
 \texttt{@cornerstonejs/dicom-image-loader} -- Cornerstone DICOM Image Loader a.k.a CDIL knižnica je určená pre importovanie DICOM súborov do webovej aplikácie. Táto knižnica umožňuje využiť Web Workers technológiu pre parsovanie DICOM súborov pomocou Dicom Parser knižnice.
 
-\texttt{pinia} -- Pinia.js je knižnica určená pre tzv. state management aplikácie.\newline Umožňuje ukladať stav aplikácie tak, aby bol dostupný v rámci všetkých Vue.js komponentov. Bez použitia tejto knižnice by zdieľanie stavových premenných Vue.js komponentov s inými komponentami bolo komplikovanejšie a implementačne náročnejšie.
+\texttt{pinia} -- Pinia.js je knižnica určená pre tzv. state management aplikácie. Umožňuje ukladať stav aplikácie tak, aby bol dostupný v rámci všetkých Vue.js komponentov. Bez použitia tejto knižnice by zdieľanie stavových premenných Vue.js komponentov s inými komponentami bolo komplikovanejšie a implementačne náročnejšie.
 
-Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou modulárnych \uv{Stores}. Tie môžu byť importované nezávisle na sebe. Knižnica je taktiež plne implementovaná pomocou TypeScriptu a ponúka podporu\newline pre konzolu prehliadača na inšpekciu aktuálneho stavu aplikácie.
+Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou modulárnych \uv{Stores}. Tie môžu byť importované nezávisle na sebe. Knižnica je taktiež plne implementovaná pomocou TypeScriptu a ponúka podporu pre konzolu prehliadača na inšpekciu aktuálneho stavu aplikácie.
 
 \texttt{@pinia/nuxt} -- Tento balíček pridáva podporu pre integráciu Pinie do Nuxt.js aplikácie.
 
@@ -67,20 +63,24 @@ Stav aplikácie je možné rozdeliť do rôznych samostatných častí pomocou m
 
 \texttt{@fortawesome/free-solid-svg-icons} -- Uvedený balíček obsahuje FontAwesome\footnote{https://fontawesome.com} ikony, z ktorých sú niektoré použité v aplikácii v hornom paneli aplikácie.
 
+\clearpage
+
 \texttt{@fortawesome/vue-fontawesome} -- Úlohou tohto balíčka je transformovať importované FontAwesome ikony do znovupoužiteľneho komponentu, ktorý je následne možné použiť v aplikácii a pomocou neho vyrenderovať požadované ikony.
 
-\texttt{arraybuffer-encoding} -- Tento balíček implementuje konverziu dát\newline z \texttt{ArrayBuffer} do \texttt{base64} a naspäť. Jeho využitie je popísané neskôr v rámci kompresie odosielaných dát na server.
+\texttt{arraybuffer-encoding} -- Tento balíček implementuje konverziu dát z dátovej štruktúry \texttt{ArrayBuffer} do \texttt{base64} a naspäť. Jeho využitie je popísané neskôr v rámci kompresie odosielaných dát na server.
 
 \texttt{crypto-random-string} -- Uvedený balíček implementuje správnu podporu generovania kryptograficky silných reťazcov. Tieto reťazce sú využívané pri anonymizácií DICOM dát pred ich odoslaním na server tak, aby nebolo možné priradiť odoslanú snímku konkrétnemu pacientovi.
 
 \subsection {Balíčky pre vývojárske prostredie}
 \texttt{nuxt} -- Inštalácia tohto balíčka je nutná pre vytvorenie a vývoj v rámci Nuxt.js projektu.
 
-\texttt{eslint} -- ESLint je open-source JavaScript nástroj, ktorý kontroluje kód a reportuje prípadné nezrovnalosti v ňom. Medzi tieto nezrovnalosti partrí nekonzistentné odsadenie kódu, či používanie jazykových konštruktov, ktoré nedodržiavajú určité jednotné pravidlá. Tieto pravidlá je možné konfigurovať,\newline ale aj importovať z iných projektov. Konfigurácia pravidiel, parsera a iných konfiguračných možností je možné pomocou \texttt{.eslintrc.cjs} súboru umiestneného v projekte.
+\texttt{eslint} -- ESLint je open-source JavaScript nástroj, ktorý kontroluje kód a reportuje prípadné nezrovnalosti v ňom. Medzi tieto nezrovnalosti patrí nekonzistentné odsadenie kódu, či používanie jazykových konštruktov, ktoré nedodržiavajú určité jednotné pravidlá. Tieto pravidlá je možné konfigurovať, ale aj importovať z iných projektov. Konfigurácia pravidiel, parsera a iných konfiguračných možností je možné pomocou \texttt{.eslintrc.cjs} súboru umiestneného v projekte.
 
 \texttt{@typescript-eslint/parser} -- Nakoľko ESLint nepodporuje kontrolu TypeScript kódu, keďže používa Espree parser podporujúci len JavaScript, je nutné použiť tento balíček pre pridanie podpory kontroly Typescript kódu. 
 
 \texttt{@typescript-eslint/eslint-plugin} -- Tento balíček pridáva do ESLintu pravidlá pre TypeScript kód. Použitie tohto balíčka je odporúčané pri použití predchádzajúceho balíčka.
+
+\clearpage
 
 \texttt{sass} -- Sass je CSS preprocesor implementovaný v JavaScripte, ktorý umožňuje vytvárať modulárnejší CSS kód, ktorý je určený pre jednoduchšie opätovné použitie. Okrem iného umožňuje používať CSS premenné, implementuje dedičnosť či vnáranie CSS pravidiel.
 
@@ -153,7 +153,7 @@ Pre každú časť tohto rozhrania by mal byť taktiež vytvorený jeden hlavný
 
 Jedná sa o nasledujúce komponenty: \texttt{TheTopPanel.vue}, \texttt{TheLeftPanel.vue}, \texttt{TheMainWindow.vue} a \texttt{TheRightPanel.vue}.
 
-Tie budú importované v jednom entry-point komponente, ktorý bude definovať hlavnú (a jedinú) stránku aplikácie. Tento komponent bude niesť názov \texttt{index.vue} a bude umiestnený v priečinku \texttt{pages}, aby Nuxt.js spároval zobrazenie tohto komponentu pri návšteve index stránky. V tomto komponente bude taktiež importovaná metóda \texttt{initLibraries} uvedená v predchádzajúcej časti kódu. Tá bude exekuovaná v rámci metódy \texttt{onMounted}, ktorá zaručuje exekúciu kódu po tom, čo je používateľské rozhranie súčasťou Document Object Modelu (DOM) webovej aplikácie.
+Tie budú importované v jednom entry-point komponente, ktorý bude definovať hlavnú (a jedinú) stránku aplikácie. Tento komponent bude niesť názov \texttt{index.vue} a bude umiestnený v priečinku \texttt{pages}, aby Nuxt.js spároval zobrazenie tohto komponentu pri návšteve index stránky. V tomto komponente bude taktiež importovaná metóda \texttt{initLibraries} uvedená v predchádzajúcej časti kódu. Tá bude spúšťaná v rámci metódy \texttt{onMounted}, ktorá zaručuje spustenie kódu po tom, čo je používateľské rozhranie súčasťou Document Object Modelu (DOM) webovej aplikácie.
 
 \clearpage
 
@@ -192,26 +192,27 @@ Parsovanie importovaných DICOM snímiek je možné dosiahnuť pomocou CDIL kni�
 
 Následne je možné použiť statickú metódu \texttt{displayImage} Cornerstone Core knižnice pre zobrazenie MR snímky. Tá bude vykreslená vo zvolenom označenom HTML elemente.
 
-Bližší pohľad na algoritmus zodpovedný za import snímiek, ich parsovanie až po výsledné zobrazenie je možné vidieť na nasledujúcom sekvenčnom diagrame.
+Bližší pohľad na algoritmus zodpovedný za import snímiek, ich parsovanie až po výsledné zobrazenie je možné vidieť na nasledujúcom sekvenčnom diagrame (obr. \ref{fig:sequence_diagram}).
 
 \begin {figure}[H]
         \centering
         \includegraphics[height=9cm]{media/graphs/render_images.png}
         \captionsetup{justification=centering}
         \captionof{figure}{Sekvenčný diagram zobrazujúci import, parsovanie a zobrazenie DICOM snímiek}
+        \label{fig:sequence_diagram}
 \end {figure}
 
 \subsection {UC2 -- Animácia snímiek}
 Knižnica Cornerstone Tools ponúka nástroj \uv{PlayClip}, pomocou ktorého je možné importované snímky animovať.
 
-Avšak po bližšej analýze tohto nástroja bolo zistené, že nie je konfigurovateľný do takej miery, ako vyžaduje alternatívny scenár tohto prípadu použitia.\newline PlayClip nástroj neprijíma indexy snímiek ako argumenty, od akej,\newline resp. po akú snímku sa animácia má prehrávať.
+Avšak po bližšej analýze tohto nástroja bolo zistené, že nie je konfigurovateľný do takej miery, ako vyžaduje alternatívny scenár tohto prípadu použitia. Tento nástroj neprijíma indexy snímiek ako argumenty, od akej, resp. po akú snímku sa má animácia prehrávať.
 
 \subsubsection {Vytvorenie a publikácia forku Cornerstone Tools knižnice}
-Táto skutočnosť viedla k potrebe vytvorenia vlastného forku Cornerstone Tools knižnice za účelom zmeny \uv{PlayClip} nástroja. Algoritmus tohto nástroja - metóda \texttt{playClip} -- bol zmenený tak, aby prijímal chýbajúce argumenty a na ich základe animoval snímky. Pomocou metódy \texttt{stopClip} je možné prebiehajúcu animáciu zastaviť.
+Táto skutočnosť viedla k potrebe vytvorenia vlastného forku Cornerstone Tools knižnice za účelom zmeny \uv{PlayClip} nástroja. Algoritmus tohto nástroja -- metóda \texttt{playClip} -- bol zmenený tak, aby prijímal chýbajúce argumenty a na ich základe animoval snímky. Pomocou metódy \texttt{stopClip} je možné prebiehajúcu animáciu zastaviť.
 
-Takto upravená knižnica bola publikovaná do npm registru pod názvom\newline \texttt{@tarotoma/cornerstone-tools}. Pre použitie upravenej knižnice v projekte je nutné zmazať existujúcu knižnicu a nahradiť ju forknutou verziou. 
+Takto upravená knižnica bola publikovaná do npm registru pod názvom \texttt{@taro-\newline toma/cornerstone-tools}. Pre použitie upravenej knižnice v projekte je nutné zmazať existujúcu knižnicu a nahradiť ju forknutou verziou. 
 
-Na to, aby mohol \uv{PlayClip} nástroj korektne fungovať, je potrebné ho pridať spolu s nástrojom \texttt{stack} do tzv. \uv{Stack stratégie manažovania stavu nástrojov}. K stavu nástrojov spravovaných touto stratégiou je možné pristupovať\newline z akejkoľvek snímky. Predvolene je stav nástrojov oddelený pre každú snímku, nakoľko je pri väčšine nástrojov žiaduce mať zobrazené informácie viažuce sa k danej snímke.
+Na to, aby mohol \uv{PlayClip} nástroj korektne fungovať, je potrebné ho pridať spolu s nástrojom \texttt{stack} do tzv. \uv{Stack stratégie manažovania stavu nástrojov}. K stavu nástrojov spravovaných touto stratégiou je možné pristupovať z akejkoľvek snímky. Predvolene je stav nástrojov oddelený pre každú snímku, nakoľko je pri väčšine nástrojov žiaduce mať zobrazené informácie viažuce sa k danej snímke.
 
 Okrem úpravy \uv{PlayClip} nástroja boli taktiež vytvorené TypeScript definície typov pre metódy používané webovou aplikáciou.
 
@@ -238,9 +239,9 @@ Poskytované virtuálne funkcie sú nasledovné:
 
 \texttt{preMouseDownCallback} je funkcia, ktorá je spustená pred tým, ako sa začne spracovávať \texttt{mousedown}\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown\textunderscore event} event emitovaný prehliadačom zo zvoleného elementu zobrazujúcom snímku. Predvolene táto callback funkcia nerobí nič \cite{base_tool_description} (vlastný preklad).
 
-\texttt{postMouseDownCallback} je funkcia, ktorá je spustená po spracovaní \texttt{mousedown} eventu taktiež emitovaného zo zvoleného elementu zobrazujúcom snímku.\newline Predvolene taktiež nič nerobí \cite{base_tool_description} (vlastný preklad).
+\texttt{postMouseDownCallback} je funkcia, ktorá je spustená po spracovaní \texttt{mousedown} eventu taktiež emitovaného zo zvoleného elementu zobrazujúcom snímku. Predvolene taktiež nič nerobí \cite{base_tool_description} (vlastný preklad).
 
-Posledné dve funkcie -- \texttt{preTouchStartCallback} a \texttt{postTouchStartCallback} sú funkcie, ktoré sú funkcionalitou podobné funkciám \texttt{preMouseDownCallback} a \texttt{postMouseDownCallback}. Rozdiel medzi nimi je ten, že zatiaľ čo prvé dve reagujú na stlačenie tlačidla myši (\texttt{mousedown} event), posledné dve reagujú\newline na dotyk dotykovej plochy (\texttt{touchstart}\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart\textunderscore event} event) \cite{base_tool_description} (vlastný preklad).
+Posledné dve funkcie -- \texttt{preTouchStartCallback} a \texttt{postTouchStartCallback} sú funkcie, ktoré sú funkcionalitou podobné funkciám \texttt{preMouseDownCallback} a \texttt{postMouseDownCallback}. Rozdiel medzi nimi je ten, že zatiaľ čo prvé dve reagujú na stlačenie tlačidla myši (\texttt{mousedown} event), posledné dve reagujú na dotyk dotykovej plochy (\texttt{touchstart}\footnote{https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart\textunderscore event} event) \cite{base_tool_description} (vlastný preklad).
 
 \subsubsection* {\texttt{BaseAnnotationTool} trieda}
 Táto trieda rozširuje počet virtuálnych metód o nasledujúce 4 metódy:
@@ -269,9 +270,9 @@ Ich zoznam je nasledovný:
 \item {\texttt{renderToolData} \cite{base_tool_description} (vlastný preklad).}
 \end {itemize}
 
-\texttt{createNewMeasurement} metóda je zodpovedná za vytvorenie novej anotácie a jej uloženie do pamäte. Táto metóda sa exekuuje v rámci práve aktívneho nástroja ak žiaden nástroj neodpovedal na \texttt{mousedown} event \cite{base_tool_description} (vlastný preklad).
+\texttt{createNewMeasurement} metóda je zodpovedná za vytvorenie novej anotácie a jej uloženie do pamäte. Táto metóda sa spúšťa v rámci práve aktívneho nástroja ak žiaden nástroj neodpovedal na \texttt{mousedown} event \cite{base_tool_description} (vlastný preklad).
 
-Metóda \texttt{pointNearTool} vráti pravdivú hodnotu, ak koordináty kliknutia myšou alebo dotyku na dotykovú plochu sa nachádzajú blízko anotácie nástroja. Ak áno, tak daná časť anotácie je poslaná ako argument \texttt{toolSelectedCallback} metódy \cite{base_tool_description} (vlastný preklad).
+Metóda \texttt{pointNearTool} vráti pravdivú hodnotu, ak koordináty kliknutia myšou alebo dotyku na dotykovú plochu sa nachádzajú blízko anotácie nástroja. Ak áno, tak daná časť anotácie je poslaná ako argument \texttt{toolSelectedCallba-\newline ck} metódy \cite{base_tool_description} (vlastný preklad).
 
 \texttt{distanceFromPoint} metóda vracia počet pixelov medzi zadanou súradnicou a najbližšou časťou anotácie \cite{base_tool_description} (vlastný preklad).
 
@@ -280,7 +281,7 @@ V rámci metódy \texttt{renderToolData} je nutné implementovať vykreslenie an
 \clearpage
 
 \subsubsection {Dostupné módy nástrojov}
-Cornerstone Tools nástroje sa môžu nachádzať v štyroch rôznych módoch,\newline z ktorého je aplikovaný v čase vždy len jeden.
+Cornerstone Tools nástroje sa môžu nachádzať v štyroch rôznych módoch, z ktorého je aplikovaný v čase vždy len jeden.
 
 Zoznam týchto módov je nasledovný:
 \begin {itemize}
@@ -292,18 +293,18 @@ Zoznam týchto módov je nasledovný:
 
 Ak je nástroj v aktívnom móde, je mu umožnené zobraziť jeho obsah a meniť svoj vnútorný stav. Nástroj v tomto stave môže tiež reagovať na interakciu používateľa s týmto nástrojom \cite{cornerstone_tools_modes} (vlastný preklad).
 
-Narozdiel od aktívneho módu, pasívny mód umožňuje všetko čo aktívny mód s tým rozdielom, že nie je možné vytvoriť nový stav nástroja (ako napr. vytvorenie novej zvislej úsečky mriežky), ale len manipulovať s jeho existujúcim stavom \cite{cornerstone_tools_modes} (vlastný preklad).
+Na rozdiel od aktívneho módu, pasívny mód umožňuje všetko čo aktívny mód s tým rozdielom, že nie je možné vytvoriť nový stav nástroja (ako napr. vytvorenie novej zvislej úsečky mriežky), ale len manipulovať s jeho existujúcim stavom \cite{cornerstone_tools_modes} (vlastný preklad).
 
 Nástroje v zapnutom móde je možné vyrenderovať, avšak nereagujú na interakciu používateľa s takýmto nástrojom. Jedná sa vlastne o taký \uv{read-only} mód nástroja \cite{cornerstone_tools_modes} (vlastný preklad).
 
-Vypnutý mód nástroja narozdiel od všetkých uvedených módov neumožňuje s takýmto nástrojom interagovať a ani tento nástroj vykresliť. Tento mód je taktiež predvoleným módom pre každý nástroj \cite{cornerstone_tools_modes} (vlastný preklad).
+Vypnutý mód nástroja na rozdiel od všetkých uvedených módov neumožňuje s takýmto nástrojom interagovať a ani tento nástroj vykresliť. Tento mód je taktiež predvoleným módom pre každý nástroj \cite{cornerstone_tools_modes} (vlastný preklad).
 
-Zmena režimu je možná pomocou zavolania nasledovných metód:
+Zmena režimu je možná pomocou spustenia nasledovných metód:
 \begin {itemize}
-\item {\texttt{cornerstoneTools.setToolActiveForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví aktívny mód nástroja pre daný element,}
-\item {\texttt{cornerstoneTools.setToolPassiveForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví pasívny mód nástroja pre daný element,}
-\item {\texttt{cornerstoneTools.setToolEnabledForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví zapnutý mód nástroja pre daný element a}
-\item {\texttt{cornerstoneTools.setToolDisabledForElement(element: HTMLElement, toolName: string, options: object)} -- volanie tejto metódy nastaví vypnutý mód nástroja pre daný element  \cite{cornerstone_tools_modes} (vlastný preklad).}
+\item {\texttt{cornerstoneTools.setToolActiveForElement(element: HTMLEleme-\newline nt, toolName: string, options: object)} -- volanie tejto metódy nastaví aktívny mód nástroja pre daný element,}
+\item {\texttt{cornerstoneTools.setToolPassiveForElem ent(element: HTMLEle-\newline ment, toolName: string, options: object)} -- volanie tejto metódy nastaví pasívny mód nástroja pre daný element,}
+\item {\texttt{cornerstoneTools.setToolEnabledForElement(element: HTMLEle-\newline ment, toolName: string, options: object)} -- volanie tejto metódy nastaví zapnutý mód nástroja pre daný element a}
+\item {\texttt{cornerstoneTools.setToolDisabledForElement(element: HTMLEle-\newline ment, toolName: string, options: object)} -- volanie tejto metódy nastaví vypnutý mód nástroja pre daný element  \cite{cornerstone_tools_modes} (vlastný preklad).}
 \end {itemize}
 
 Cornerstone Tools umožňuje danému nástroju reagovať na zmenu jeho módu pomocou nasledovných callback funkcií, ktoré je možné definovať v rámci triedy implementovaného nástroja:
@@ -334,22 +335,28 @@ export const registerTool = (toolName: cornerstoneTools.ToolName): void => {
 \end{minipage}
 
 \subsubsection {Implementácia nástroja mriežky}
-Grid nástroj -- nástroj mriežky -- bol implementovaný pomocou vhodného doimplementovania abstraktných a virtuálnych funkcií \texttt{BaseTool}\newline a \texttt{BaseAnnotationTool} tried uvedených v tejto práci.
+Grid nástroj -- nástroj mriežky -- bol implementovaný pomocou vhodného doimplementovania abstraktných a virtuálnych funkcií \texttt{BaseTool} a \texttt{BaseAnnot-\newline ationTool} tried uvedených v tejto práci.
 
-V Cornerstone Tools knižnici je tento nástroj možný nájsť pod súborom\newline \texttt{src/tools/annotation/GridTool.js}. Grid nástroj bol svojou implementáciou inšpirovaný nástrojom \texttt{FreehandRoi}, ktorý umožňuje kresliť po snímku čiary rôznych dĺžok.
+V Cornerstone Tools knižnici je tento nástroj možný nájsť pod súborom \texttt{src/t-\newline ools/annotation/GridTool.js}. Grid nástroj bol svojou implementáciou inšpirovaný nástrojom \texttt{FreehandRoi}, ktorý umožňuje kresliť po snímku čiary rôznych dĺžok.
 
-Taktiež boli v rámci Grid nástroja implementované pomocné metódy ako napr. metódy pre vytváranie vertikálnych úsečiek (\texttt{generateMainPrimaryLine}) a ich mazanie (\texttt{removeLastPrimaryLine}), metódy uľahčujúce prechádzanie týchto úsečiek (\texttt{getAllMainPrimaryLines}, \texttt{getPreviousPrimaryLines},\newline \texttt{getNextMainPrimaryLine}) či metódy určené pre generovanie pomocných úsečiek a ich bodov, na ktorých sa nachádzajú \uv{refinement} body\newline (\texttt{generateSubsidiaryPrimaryLines} či \newline \texttt{generateRefinementPointsOnCurrentPrimaryLines}).
+Taktiež boli v rámci Grid nástroja implementované pomocné metódy ako napr. metódy pre vytváranie vertikálnych úsečiek (\texttt{generateMainPrimaryLine}) a ich mazanie (\texttt{removeLastPrimaryLine}), metódy uľahčujúce iteráciu týchto úsečiek (\texttt{getAllMainPrimaryLines}, \texttt{getPreviousPrimaryLines}, \texttt{getNextMain-\newline PrimaryLine}) či metódy určené pre generovanie pomocných úsečiek a ich bodov, na ktorých sa nachádzajú \uv{refinement} body (\texttt{generateSubsidiaryPrim-\newline aryLines} či \texttt{generateRefinementPointsOnCurrentPrimaryLines}).
 
 Okrem horeuvedenej funkcionality je taktiež nutné myslieť na reprezentáciu mriežky ako stavu nástroja. Tomuto problému sa venuje nasledujúca podsekcia.
 
 \subsubsection* {Reprezentácia a manažment stavu mriežky}
-Stav nástrojov je možné uložiť a získať pomocou metód\newline \texttt{addToolState(element: HTMLElement, toolName: string)}\newline a \texttt{getToolState(element: HTMLElement, toolName: string)} po ich importovaní zo súboru \texttt{stateManagement/toolState.js} nachádzajúceho sa v Cornerstone Tools knižnici.
+Stav nástrojov je možné uložiť a získať pomocou metód:
+\begin {itemize}
+\item {\texttt{addToolState(element: HTMLElement, toolName: string)} a}
+\item {\texttt{getToolState(element: HTMLElement, toolName: string)}.}
+\end {itemize}
+Tie je nutné importovať zo súbora \texttt{stateManagement/toolState.js} nachádzajúceho sa v Cornerstone Tools knižnici.
 
-Stav mriežky je reprezentovaný poľom obsahujúcim štruktúru vertikálnych úsečiek. Jedna takáto úsečka predstavuje tzv. measurement. V rámci measurementu sú uložené body tejto úsečky. Tie obsahujú $x$ a $y$ koordináty bodu spolu s príznakom, či je daný bod hlavným (\uv{common}) bodom alebo\newline \uv{refinement} bodom.
+Stav mriežky je reprezentovaný poľom obsahujúcim štruktúru vertikálnych úsečiek. Jedna takáto úsečka predstavuje tzv. measurement. V rámci measurementu sú uložené body tejto úsečky.
 
-Postupnosť uložených bodov predstavuje vertikálnu úsečku mriežky. Horizontálne úsečky budú automaticky dopočítané pri renderovaní mriežky pomocou susedných bodov priľahlých vertikálnych úsečiek.
 
-Pri volaní metódy \texttt{createNewMeasurement} sa teda x-krát vytvorí reprezentácia vertikálnej úsečky (measurement), ktoré budú v cykle ukladané do celkového stavu mriežky pomocou metódy \texttt{addToolState}. Reprezentácia vertikálnej úsečky mriežky (tzv. \uv{measurement}) bude vyzerať nasledovne:
+Tie obsahujú $x$ a $y$ koordináty bodu spolu s príznakom, či je daný bod hlavným (\uv{common}) bodom alebo \uv{refinement} bodom. Postupnosť uložených bodov predstavuje vertikálnu úsečku mriežky. Horizontálne úsečky budú automaticky dopočítané pri renderovaní mriežky pomocou susedných bodov priľahlých vertikálnych úsečiek.
+
+Pri volaní metódy \texttt{createNewMeasurement} sa teda x-krát vytvorí reprezentácia vertikálnej úsečky (tzv. \uv{measurement}), ktoré budú v cykle ukladané do celkového stavu mriežky pomocou metódy \texttt{addToolState}. Jej reprezentácia bude vyzerať nasledovne:
 
 \begin{minipage}[]{\linewidth}
 \begin{minted}[autogobble,bgcolor=white]{typescript}
@@ -373,16 +380,11 @@ Výstup metódy \texttt{getToolState} pre mriežku bude teda nasledujúci objekt
           y: number;
           isCommonPoint: boolean;
         },
-        ...,
-        {
-          x: number;
-          y: number;
-          isCommonPoint: boolean;
-        }
+        ...
       ]
     }
   },
-  ...,
+  ...
   ]
 }
 \end{minted}
@@ -400,17 +402,17 @@ Pre zmenu konfigurácie mriežky bolo nutné v jej triede vytvoriť setter metó
 
 Zoznam implementovaných setter metód je nasledujúci:
 \begin {itemize}
-\item {\texttt{angle(value: number)} -- nastaví uhol mriežky}
-\item {\texttt{moveOneHandleOnly(value: boolean)} -- nastaví mód posunu mriežky}
-\item {\texttt{noOfPrimaryLines(value: number)} -- nastaví počet vertikálnych úsečiek mriežky}
-\item {\texttt{noOfSecondaryLines(value: number)} -- nastaví počet horizontálnych úsečiek mriežky}
-\item {\texttt{spacing(value: number)} -- nastaví rozpätie medzi hlavnými bodmi mriežky}
-\item {\texttt{showRefinementPoints(value: boolean)} -- vygeneruje/zmaže \uv{refinement} body}
+\item {\texttt{angle(value: number)} -- nastaví uhol mriežky,}
+\item {\texttt{moveOneHandleOnly(value: boolean)} -- nastaví mód posunu mriežky,}
+\item {\texttt{noOfPrimaryLines(value: number)} -- nastaví počet vertikálnych úsečiek mriežky,}
+\item {\texttt{noOfSecondaryLines(value: number)} -- nastaví počet horizontálnych úsečiek mriežky,}
+\item {\texttt{spacing(value: number)} -- nastaví rozpätie medzi hlavnými bodmi mriežky a}
+\item {\texttt{showRefinementPoints(value: boolean)} -- vygeneruje/zmaže \uv{refinement} body.}
 \end {itemize}
 
 \clearpage
 
-Webová aplikácia si priebežne ukladá referenciu na instanciu nástroja mriežky pomocou metódy \texttt{cornerstoneTools.getToolForElement)}, ktorej návratová hodnota je instancia nástroja. To umožňuje exekuovať implementované setter metódy nástroja mriežky priamo z Vue.js SFC komponentov.
+Webová aplikácia si priebežne ukladá referenciu na instanciu nástroja mriežky pomocou metódy \texttt{cornerstoneTools.getToolForElement)}, ktorej návratová hodnota je instancia nástroja. To umožňuje spustiť implementované setter metódy nástroja mriežky priamo z Vue.js SFC komponentov.
 
 \subsubsection {Komunikácia medzi nástrojom mriežky a používateľským rozhraním}
 Pri akejkoľvek zmene v konfigurácii mriežky ako napr. zmena pozície bodu na mriežke, pridanie/odobratie vertikálnej/horizontálnej úsečky, úpravou konfigurácie mriežky alebo pri jej celkovom zmazaní je UI webovej aplikácie notifikované o zmene stavu mriežky príslušnej k zobrazenému snímku.
@@ -448,10 +450,10 @@ Pre účely anonymizácie DICOM dát bola vytvorená trieda \texttt{DicomAnonymi
 
 \clearpage
 
-V rámci konštruktoru je predaný objekt s obsahom binárnych dát DICOM súboru. Implementovaná metóda \texttt{getAnonymizedImage} vracia požadovaný anonymizovaný DICOM súbor, ktorý je následne vhodný pre jeho zaslanie po sieti. Táto metóda je exekuovaná v rámci vytvárania tela požiadavky na horeuvedený endpoint.
+V rámci konštruktoru je predaný objekt s obsahom binárnych dát DICOM súboru. Implementovaná metóda \texttt{getAnonymizedImage} vracia požadovaný anonymizovaný DICOM súbor, ktorý je následne vhodný pre jeho zaslanie po sieti. Táto metóda je spúšťaná v rámci vytvárania tela požiadavky na horeuvedený endpoint.
 
 \section {Nasadenie aplikácie}
-Pre zrhnutie je na nasledujúcom diagrame nasadenia zobrazená výsledná štruktúra nasadenia implementovanej webovej aplikácie.
+Pre zrhnutie je na nasledujúcom diagrame (obr. \ref{fig:deployment_diagram}) nasadenia zobrazená výsledná štruktúra nasadenia implementovanej webovej aplikácie.
 
 Jej frontendová časť beží u klienta -- tá zahŕňa používateľské rozhranie implementované pomocou Vue.js aplikácie a manipuláciu s obrazovými dátami pomocou frameworkov rodiny Cornerstone.
 
@@ -462,6 +464,7 @@ V rámci backendu aplikácie beží Nitro server s implementáciou jediného API
         \includegraphics[height=5.4cm]{media/graphs/deployment_diagram.png}
         \captionsetup{justification=centering}
         \captionof{figure}{Diagram nasadenia zobrazujúci štruktúru webovej aplikácie}
+        \label{fig:deployment_diagram}
 \end {figure}
 
 Výsledná aplikácia bola nasadená pomocou služby Vercel\footnote{https://vercel.com/}. Táto služba poskytuje aj integráciu so službou GitHub, určenou pre vytváranie \texttt{git} repozitárov.
