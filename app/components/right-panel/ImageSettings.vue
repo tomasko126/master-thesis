@@ -117,7 +117,7 @@ if (store.shownImageId) {
 
 const fromIdx = ref(store.animation.fromIdx + 1)
 const toIdx = ref(store.animation.toIdx + 1)
-const speed = ref(30)
+const speed = ref(store.animation.speed)
 
 const isButtonDisabled = computed(() => {
   return store.imageIds.length === 0 || store.isComputingGrids
