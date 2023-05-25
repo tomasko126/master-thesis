@@ -22,6 +22,6 @@ export default defineNuxtConfig({
   ssr: false,
   telemetry: false,
   typescript: {
-    typeCheck: true
+    typeCheck: true,
   }
 })

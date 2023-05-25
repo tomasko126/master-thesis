@@ -9,11 +9,7 @@ class DicomHeaderParser {
    */
   getModality (): string|null {
     const image = getImage()
-    if (!image) {
-      return null
-    }
-
-    return image.data.string('x00080060')
+    return image?.data.string('x00080060') ?? null;
   }
 
   /**
@@ -21,10 +17,7 @@ class DicomHeaderParser {
    */
   getPatientName (): string|null {
     const image = getImage()
-    if (!image) {
-      return null
-    }
-    return image.data.string('x00100010')
+    return image?.data.string('x00100010') ?? null;
   }
 
   /**
@@ -32,10 +25,7 @@ class DicomHeaderParser {
    */
   getSeriesNumber (): string|null {
     const image = getImage()
-    if (!image) {
-      return null
-    }
-    return image.data.string('x00200011')
+    return image?.data.string('x00200011') ?? null;
   }
 
   /**
@@ -43,10 +33,7 @@ class DicomHeaderParser {
    */
   getWindowWidth (): number|null {
     const image = getImage()
-    if (!image) {
-      return null
-    }
-    return image.width
+    return image?.width ?? null
   }
 
   /**
@@ -54,10 +41,7 @@ class DicomHeaderParser {
    */
   getWindowHeight (): number|null {
     const image = getImage()
-    if (!image) {
-      return null
-    }
-    return image.rows
+    return image?.rows ?? null;
   }
 }
 

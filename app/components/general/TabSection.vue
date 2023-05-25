@@ -38,10 +38,7 @@ const props = defineProps({
 })
 
 const popoverMessageSentences = computed(() => {
-  if (!props.popoverMessage) {
-    return ''
-  }
-  return props.popoverMessage.split('.')
+  return props.popoverMessage?.split('.') ?? '';
 });
 </script>
 
