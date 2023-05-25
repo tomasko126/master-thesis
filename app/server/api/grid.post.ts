@@ -1,6 +1,6 @@
 import { defineEventHandler, H3Error, readBody } from 'h3'
-import type { GridCommunication } from '~/functions/types/GridCommunication'
-// import { Decode } from 'arraybuffer-encoding/base64/standard';
+import type { GridCommunication } from '../../functions/types/GridCommunication'
+// import { Decode } from 'arraybuffer-encoding/base64/standard'
 
 const throwError = (message: string): never => {
   const error = new H3Error()
@@ -9,7 +9,8 @@ const throwError = (message: string): never => {
   throw error
 }
 
-const validateRequest = (requestBody: GridCommunication.Request.Body): void => {
+const validateRequest = (requestBody: any): void => {
+
   if (!Object.hasOwn(requestBody, 'data')) {
     throwError('Request body does not contain |data| property!')
   }
@@ -161,7 +162,7 @@ const validateRequest = (requestBody: GridCommunication.Request.Body): void => {
  * API endpoint - POST /api/grid
  */
 export default defineEventHandler(async (event) => {
-  const requestBody: GridCommunication.Request.Body = await readBody(event)
+  const requestBody = await readBody(event)
 
   const responseBody: GridCommunication.Response.BodyData = {
     grids: []
