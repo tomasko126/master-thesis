@@ -29,14 +29,5 @@ const tabIndex = ref(0)
 @use 'assets/global';
 .right-panel {
   border: 2px solid global.$border-color;
-
-  :deep(nav) {
-    justify-content: space-evenly;
-  }
-
-  .va-tabs {
-    align-items: unset;
-    flex-direction: column;
-  }
 }
 </style>
